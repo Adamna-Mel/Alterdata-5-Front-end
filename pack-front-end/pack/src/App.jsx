@@ -29,7 +29,7 @@ function App() {
       <header className="App-header">
         <h1 style={{textAlign:"center"}}>Teste</h1>
         <div className={classes.card}>
-          <UserCard nome="Maicon" role="Visual" icon={CoffeeCup}/><UserCard nome="Luan" role="Interatividade" icon="CoffeeCup"/><UserCard nome="Giovanne" role="Flex" icon="Merge"/>
+          <UserCard nome="Maicon" role="Visual"/><UserCard nome="Luan" role="Interatividade" icon="CoffeeCup"/><UserCard nome="Giovanne" role="Flex" icon="Merge"/>
         </div>
       </header>
     </div>
