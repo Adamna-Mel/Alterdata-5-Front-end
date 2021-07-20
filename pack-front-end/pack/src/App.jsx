@@ -1,15 +1,36 @@
-import React, { useState } from 'react'
-import logo from './logo.svg'
+import React from 'react'
+
+import { makeStyles } from '@material-ui/core/styles';
+
 import './App.css'
+import UserCard from './components/UserCard'
+
+const useStyles = makeStyles({
+  card: {
+    flex: 1,
+    display: "flex",
+    flexDirection: "row",
+  },
+  app: {
+    flex: 1,
+    display: "flex",
+    alignSelf: "center",
+    backgroundColor: "#f5f3f4",
+    padding: 20,
+    alignItems: "center"
+  }
+});
 
 function App() {
   
+  const classes = useStyles();
   return (
-    <div className="App">
+    <div className={classes.app}>
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <h1>E Lá vamos nós...</h1>
-        <h1>Simbora time!!</h1>
+        <h1 style={{textAlign:"center"}}>Teste</h1>
+        <div className={classes.card}>
+          <UserCard nome="Maicon" role="Visual" icon={CoffeeCup}/><UserCard nome="Luan" role="Interatividade" icon="CoffeeCup"/><UserCard nome="Giovanne" role="Flex" icon="Merge"/>
+        </div>
       </header>
     </div>
   )
