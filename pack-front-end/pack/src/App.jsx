@@ -1,18 +1,36 @@
-import React, { useState } from 'react'
-import logo from './logo.svg'
-import './App.css'
+import React from "react";
+
+import { makeStyles } from "@material-ui/core/styles";
+
+import "./App.css";
+
+import Rotas from "./router/Rotas";
+
+const useStyles = makeStyles({
+	card: {
+		flex: 1,
+		display: "flex",
+		flexDirection: "row",
+	},
+	app: {
+		flex: 1,
+		display: "flex",
+		alignSelf: "center",
+		backgroundColor: "#f5f3f4",
+		padding: 20,
+		alignItems: "center",
+	},
+});
 
 function App() {
-  
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <h1>E Lá vamos nós...</h1>
-        <h1>Simbora time!!</h1>
-      </header>
-    </div>
-  )
+	const classes = useStyles();
+	return (
+		<div className={classes.app}>
+			<header className="App-header">
+				<Rotas />
+			</header>
+		</div>
+	);
 }
 
-export default App
+export default App;
