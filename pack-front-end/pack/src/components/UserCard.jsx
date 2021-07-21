@@ -1,13 +1,9 @@
 import React from 'react';
 
 import { makeStyles } from '@material-ui/core/styles';
-import CardMedia from '@material-ui/core/CardMedia';
 import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
-import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import { FullscreenExitTwoTone } from '@material-ui/icons';
 import Avatar from '@material-ui/core/Avatar';
 import SvgColor from 'react-svg-color';
 
@@ -26,7 +22,9 @@ const useStyles = makeStyles({
         height: "auto",
         marginRight: 10,
         marginLeft: 10,
-        backgroundColor: "#ffffff"
+        marginTop: 10,
+        marginBottom: 10,
+        backgroundColor: "#ffffff",
     },
     userName: {
         fontSize: 20,
@@ -84,16 +82,11 @@ function UserCard(props) {
                 </div>
             
                 <Typography className={classes.userName}>
-                    {props.nome}
+                    {props.name}
                 </Typography>
                 <Typography className={classes.userStatus}>
                     Status
                 </Typography>
-                {/* <CardMedia
-                    className={classes.userRole}
-                    image="src/assets/icons/crystal-shine.svg"
-                    title="Icone"
-                /> */}
                 <CardContent className={classes.userRole}>
                     <SvgColor 
                         svg={CoffeeCup} 
