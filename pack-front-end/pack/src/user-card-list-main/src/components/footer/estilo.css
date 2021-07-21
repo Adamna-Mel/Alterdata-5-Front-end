@@ -1,0 +1,8 @@
+.main-footer {
+    color: white;
+    background-color: #1A2228;
+    /**padding-top: 3em; Se quiser aumentar o tamanho */
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+  }
