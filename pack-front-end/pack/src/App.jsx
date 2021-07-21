@@ -5,6 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import './App.css'
 import UserCard from './components/UserCard'
 import TeamTitle from './components/TeamTitle'
+import Nav from './components/Nav'
 
 const useStyles = makeStyles({
   card: {
@@ -32,14 +33,16 @@ function App() {
   
   const classes = useStyles();
   return (
-    <div className={classes.app}>
-      <header className={classes.header}>
-          <TeamTitle className={classes.teamName} team="Alterdata 5"/>
-        {/* <h1 className={classes.header}>ALTERDATA 5</h1> */}
-      </header>
-        <div className={classes.card}>
-          <UserCard name="Maicon" role="Visual"/><UserCard name="Luan" role="Interatividade" icon="CoffeeCup"/><UserCard name="Giovanne" role="Flex" icon="Merge"/>
-        </div>
+    <div>
+    <Nav/>
+      <div className={classes.app}>
+        <header className={classes.header}>
+            <TeamTitle className={classes.teamName} team="Alterdata 5"/>
+        </header>
+          <div className={classes.card}>
+            <UserCard name="Maicon" role="Visual"/><UserCard name="Luan" role="Interatividade" icon="CoffeeCup"/><UserCard name="Giovanne" role="Flex" icon="Merge"/>
+          </div>
+      </div>
     </div>
   )
 }
