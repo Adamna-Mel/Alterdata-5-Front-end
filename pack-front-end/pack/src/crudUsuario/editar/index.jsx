@@ -1,9 +1,11 @@
 import React from "react";
 
 import api from "../../services/api.usuarios";
+import { useParams } from "react-router-dom";
 
 function Editar() {
-	const [id, setId] = React.useState("");
+	const { id } = useParams();
+
 	const [status, setStatus] = React.useState("");
 	const [papel, setPapel] = React.useState("");
 
@@ -13,17 +15,12 @@ function Editar() {
 			papel,
 		};
 
-		api.editarUsuario(id, novo).then((res) => console.log(novo, "\n", res));
+		console.log(id);
+
+		// api.editarUsuario(id, novo).then((res) => console.log(novo, "\n", res));
 	};
 	return (
 		<>
-			<input
-				type="number"
-				value={id}
-				placeholder="ID"
-				onChange={(e) => setId(+e.target.value)}
-			/>
-
 			<input
 				type="text"
 				value={status}
