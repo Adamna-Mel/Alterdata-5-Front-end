@@ -15,7 +15,7 @@ function Time(props) {
 						id={u.id}
 						name={u.nome}
 						status={u.status}
-						role={u.papel}
+						role={u.cargo}
 					/>
 				))
 			) : (

@@ -24,11 +24,11 @@ function AtualizarUsuario() {
 		const novo = {
 			nome,
 			status,
-			papel,
+			cargo,
 			senha,
 			login,
 			avatar,
-			time,
+			equipe,
 		};
 
 		const validar =

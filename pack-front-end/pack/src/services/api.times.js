@@ -1,26 +1,26 @@
 import api from "./api";
 
-const obterTimes = async () => {
+const obterequipes = async () => {
 	try {
-		const { data } = await api.get("times");
+		const { data } = await api.get("equipes");
 		return data;
 	} catch (e) {
 		console.log(e);
 	}
 };
 
-const obterTimesId = async (id) => {
+const obterequipesId = async (id) => {
 	try {
-		const { data } = await api.get(`times/${id}`);
+		const { data } = await api.get(`equipes/${id}`);
 		return data;
 	} catch (e) {
 		console.log(e);
 	}
 };
 
-const obterTimesNome = async (nome) => {
+const obterequipesNome = async (nome) => {
 	try {
-		const { data } = await api.get(`times/nome/${nome}`);
+		const { data } = await api.get(`equipes/nome/${nome}`);
 		return data;
 	} catch (e) {
 		console.log(e);
@@ -29,7 +29,7 @@ const obterTimesNome = async (nome) => {
 
 const adicionarTime = async (novoTime) => {
 	try {
-		return await api.post(`times`, novoTime);
+		return await api.post(`equipes`, novoTime);
 	} catch (e) {
 		console.log(e);
 	}
@@ -37,7 +37,7 @@ const adicionarTime = async (novoTime) => {
 
 const atualizarTime = async (id, timeAtualizado) => {
 	try {
-		const { data } = await api.put(`times/${id}`, timeAtualizado);
+		const { data } = await api.put(`equipes/${id}`, timeAtualizado);
 		return data;
 	} catch (e) {
 		console.log(e);
@@ -46,16 +46,16 @@ const atualizarTime = async (id, timeAtualizado) => {
 
 const apagarTime = async (id) => {
 	try {
-		return await api.delete(`times/${id}`);
+		return await api.delete(`equipes/${id}`);
 	} catch (e) {
 		console.log(e);
 	}
 };
 
 export default {
-	obterTimes,
-	obterTimesId,
-	obterTimesNome,
+	obterequipes,
+	obterequipesId,
+	obterequipesNome,
 	adicionarTime,
 	atualizarTime,
 	apagarTime,

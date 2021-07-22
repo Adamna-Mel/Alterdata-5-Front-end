@@ -19,11 +19,11 @@ function AdicionarUsuario() {
 		const novo = {
 			nome,
 			status,
-			papel,
+			cargo,
 			senha,
 			login,
 			avatar,
-			time,
+			equipe,
 		};
 
 		const validar =
