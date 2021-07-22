@@ -13,6 +13,7 @@ class Footer extends Component {
                   <img src={serratec} style={{width:220, height:40, marginBottom:11}}/>
                 </div>
               </div>
+              
             );
       }
     }
