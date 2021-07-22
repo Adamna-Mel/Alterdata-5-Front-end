@@ -1,27 +1,27 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
+import Card from "../../components/UserCard";
+
 import api from "../../services/api.usuarios";
-import Card from "../../components/card/index";
-import CadastrarUsuario from "../../froms/AtualizarUsuario/index";
 
-function Time() {
-	const [users, setUsers] = React.useState([]);
-
-	const [nome, setNome] = React.useState("");
-	const [status, setStatus] = React.useState("");
-	const [cargo, setCargo] = React.useState("");
-
-	React.useEffect(() => {
-		api.obterUsuarios().then((data) => setUsers(data));
-	}, []);
-
+function Time(props) {
 	return (
 		<>
-			<CadastrarUsuario />
-			{users.map((u) => (
-				<Card nome={u.nome} cargo={u.cargo} status={u.status} />
-			))}
+			{props.usuarios != undefined ? (
+				props.usuarios.map((u) => (
+					<Card
+						key={u.id}
+						id={u.id}
+						name={u.nome}
+						status={u.status}
+						role={u.papel}
+					/>
+				))
+			) : (
+				<h1>Time Vazio</h1>
+			)}
 		</>
 	);
 }
-
 export default Time;

@@ -52,9 +52,25 @@ const apagarUsuario = async (id) => {
 	}
 };
 
-const editarUsuario = async (id, usuarioEditado) => {
+const editarStatus = async (id, novoStatus) => {
 	try {
-		return await api.patch(`usuarios/${id}`, usuarioEditado);
+		return await api.patch(`usuarios/${id}`, novoStatus);
+	} catch (e) {
+		console.log(e);
+	}
+};
+
+const editarPapel = async (id, idPapel) => {
+	try {
+		return await api.patch(`usuarios/${id}/papel/${idPapel}`);
+	} catch (e) {
+		console.log(e);
+	}
+};
+
+const editarTime = async (id, idTime) => {
+	try {
+		return await api.patch(`usuarios/${id}/time/${idTime}`);
 	} catch (e) {
 		console.log(e);
 	}
@@ -67,5 +83,7 @@ export default {
 	adicionarUsuario,
 	atualizarUsuario,
 	apagarUsuario,
-	editarUsuario,
+	editarStatus,
+	editarPapel,
+	editarTime,
 };
