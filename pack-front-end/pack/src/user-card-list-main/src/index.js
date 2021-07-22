@@ -10,8 +10,8 @@ ReactDOM.render(
   <StrictMode>
     <Nav />
     <App />
-    <Footer />
     <Robo />
+    <Footer />
   </StrictMode>,
   rootElement
 );
