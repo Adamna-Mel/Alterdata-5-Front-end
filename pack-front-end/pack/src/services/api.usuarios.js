@@ -62,7 +62,7 @@ const editarStatus = async (id, novoStatus) => {
 
 const editarPapel = async (id, idPapel) => {
 	try {
-		return await api.patch(`usuarios/${id}/papel/${idPapel}`);
+		return await api.patch(`usuarios/${id}/cargo/${idPapel}`);
 	} catch (e) {
 		console.log(e);
 	}
@@ -70,7 +70,7 @@ const editarPapel = async (id, idPapel) => {
 
 const editarTime = async (id, idTime) => {
 	try {
-		return await api.patch(`usuarios/${id}/time/${idTime}`);
+		return await api.patch(`usuarios/${id}/equipe/${idTime}`);
 	} catch (e) {
 		console.log(e);
 	}

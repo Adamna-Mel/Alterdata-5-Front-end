@@ -17,7 +17,7 @@ function EditarTime() {
 	const [times, setTimes] = React.useState([]);
 
 	React.useEffect(() => {
-		apiTime.obterTimes().then((res) => {
+		apiTime.obterequipes().then((res) => {
 			setTimes(res);
 			console.log(times);
 		});

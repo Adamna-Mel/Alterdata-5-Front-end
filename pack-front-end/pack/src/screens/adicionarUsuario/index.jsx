@@ -8,11 +8,11 @@ import "./style.css";
 function AdicionarUsuario() {
 	const [nome, setNome] = React.useState("");
 	const [status, setStatus] = React.useState("");
-	const [papel, setPapel] = React.useState("");
+	const [cargo, setPapel] = React.useState("");
 	const [senha, setSenha] = React.useState("");
 	const [login, setLogin] = React.useState("");
 	const [avatar, setAvatar] = React.useState("");
-	const [time, setTime] = React.useState("");
+	const [equipe, setTime] = React.useState("");
 
 	const handleClick = (e) => {
 		e.preventDefault();
@@ -79,14 +79,14 @@ function AdicionarUsuario() {
 
 			<input
 				type="text"
-				value={papel}
+				value={cargo}
 				placeholder="Papel"
 				onChange={(e) => setPapel(e.target.value)}
 			/>
 
 			<input
 				type="text"
-				value={time}
+				value={equipe}
 				placeholder="Time"
 				onChange={(e) => setTime(e.target.value)}
 			/>

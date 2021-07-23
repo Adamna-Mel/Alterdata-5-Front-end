@@ -1,20 +1,20 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import api from "../../services/api.times";
+import api from "../../services/api.papeis";
 
-function TodosTimes() {
-	const [equipes, setEquipes] = React.useState([]);
+function Cargos() {
+	const [cargos, setCargo] = React.useState([]);
 
 	React.useEffect(() => {
-		api.obterequipes().then((res) => {
-			setEquipes(res);
+		api.obterPepeis().then((res) => {
+			setCargo(res);
 		});
 	}, []);
 
 	return (
 		<div>
-			{equipes.map((e) => (
+			{cargos.map((e) => (
 				<div key={e.id}>
 					<p>{e.nome}</p>
 					<Link to={`/editar/${e.id}`}>
@@ -30,4 +30,4 @@ function TodosTimes() {
 	);
 }
 
-export default TodosTimes;
+export default Cargos;

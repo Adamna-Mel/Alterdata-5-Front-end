@@ -1,27 +1,25 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 import Card from "../../components/UserCard";
-
-import api from "../../services/api.usuarios";
+import "./style.css";
 
 function Time(props) {
 	return (
-		<>
+		<div className="container">
 			{props.usuarios != undefined ? (
-				props.usuarios.map((u) => (
+				props.usuarios.map((usuario) => (
 					<Card
-						key={u.id}
-						id={u.id}
-						name={u.nome}
-						status={u.status}
-						role={u.cargo}
+						key={usuario.id}
+						id={usuario.id}
+						name={usuario.nome}
+						status={usuario.status}
+						role={usuario.cargo}
 					/>
 				))
 			) : (
 				<h1>Time Vazio</h1>
 			)}
-		</>
+		</div>
 	);
 }
 export default Time;

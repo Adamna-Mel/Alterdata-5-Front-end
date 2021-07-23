@@ -21,8 +21,6 @@ export default function PrimarySearchAppBar() {
 	const classes = useStyles();
 	const [anchorEl, setAnchorEl] = React.useState(null);
 	const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
-	const [login, setLogin] = React.useState("");
-	const [usuarios, setUsuarios] = React.useState([]);
 
 	const isMenuOpen = Boolean(anchorEl);
 	const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -95,12 +93,15 @@ export default function PrimarySearchAppBar() {
 		</Menu>
 	);
 
+	const [login, setLogin] = React.useState("");
+	const [usuarios, setUsuarios] = React.useState([]);
+
 	React.useEffect(() => {
 		console.log(login);
 		if (login.length > 0) {
 			api.obterUsuariosPorLogin(login).then((res) => {
-				setUsuarios(res);
 				console.log(res);
+				console.log(usuarios);
 			});
 		} else {
 			api.obterUsuarios().then((res) => {
