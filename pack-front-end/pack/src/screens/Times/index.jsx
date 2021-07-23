@@ -3,6 +3,7 @@ import React from "react";
 import Card from "../../components/UserCard";
 import "./style.css";
 
+//TODO: Descomentar o cargo
 function Time(props) {
 	return (
 		<div className="container">
@@ -13,7 +14,7 @@ function Time(props) {
 						id={usuario.id}
 						name={usuario.nome}
 						status={usuario.status}
-						role={usuario.cargo}
+						// role={usuario.cargo.nome}
 					/>
 				))
 			) : (

@@ -101,12 +101,11 @@ export default function PrimarySearchAppBar() {
 		if (login.length > 0) {
 			api.obterUsuariosPorLogin(login).then((res) => {
 				console.log(res);
-				console.log(usuarios);
+				setUsuarios(res);
 			});
 		} else {
 			api.obterUsuarios().then((res) => {
 				setUsuarios(res);
-				console.log(res);
 			});
 		}
 	}, [login]);
