@@ -19,12 +19,12 @@ const useStyles = makeStyles({
     card: {
         borderRadius: 20,
         width: 300,
-        height: "auto",
+        height: 300,
         marginRight: 10,
         marginLeft: 10,
         marginTop: 10,
         marginBottom: 10,
-        backgroundColor: "#ffffff",
+        backgroundColor: "#FFFFFF",
     },
     userName: {
         fontSize: 20,
@@ -39,13 +39,13 @@ const useStyles = makeStyles({
     profileImage: {
         height: 100,
         width: 100,
-        marginLeft: 85
+        marginLeft: 84
     },
     cardContent: {
         alignItems: "center",
     },
     userRole: {
-        marginTop: 50,
+        marginTop: 30,
         backgroundColor: "#1A2228",
         borderRadius: 20,
         height: 22,
@@ -60,7 +60,7 @@ const useStyles = makeStyles({
     userRoleText: {
         fontSize: 20,
         color: "#ffffff",
-        marginLeft: 10
+        marginLeft: 1
     },
     cardTop: {
         flex: 1,
@@ -85,7 +85,7 @@ function UserCard(props) {
                     {props.name}
                 </Typography>
                 <Typography className={classes.userStatus}>
-                    Status
+                    {props.status}
                 </Typography>
                 <CardContent className={classes.userRole}>
                     <SvgColor 

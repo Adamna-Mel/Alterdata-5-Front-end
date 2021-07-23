@@ -128,7 +128,7 @@ export default function PrimarySearchAppBar() {
   };
 
   const handleDrawerClose = () => {
-    setAnchorEl(null);
+    setAnchorElDrawer(null);
   };
 //
   const mobileMenuId = 'primary-search-account-menu-mobile';
@@ -159,14 +159,15 @@ export default function PrimarySearchAppBar() {
     <div className={classes.grow}>
       <AppBar position="static" color="default">
         <Toolbar>
-          <IconButton
+          {/* <IconButton
             edge="start"
             className={classes.menuButton}
             color="inherit"
             aria-label="open drawer"
+            aria-haspopup="true"
             onClick={handleDrawerClick}
-          >
-        <Menu
+          > */}
+        {/* <Menu
             id="long-menu"
             anchorEl={anchorElDrawer}
             keepMounted
@@ -181,23 +182,23 @@ export default function PrimarySearchAppBar() {
         >
         <MenuItem onClick={handleDrawerClose}>
           Editar Nome
-        </MenuItem>
-        <MenuItem>
+        </MenuItem> 
+        <MenuItem onClick={handleDrawerClose}>
         Editar Status
         </MenuItem>
-        <MenuItem>
+        <MenuItem onClick={handleDrawerClose}>
           Editar Papel
         </MenuItem>
-        <MenuItem>
+        <MenuItem onClick={handleDrawerClose}>
           Mudar Time
         </MenuItem>
-        <MenuItem>
+        <MenuItem onClick={handleDrawerClose}>
           Remover Usuário
         </MenuItem>
 
-        </Menu>
-            <MenuIcon />
-          </IconButton>
+        </Menu> */}
+            {/* <MenuIcon /> */}
+          {/* </IconButton> */}
           <img src={a} width="190" height="70" />
           <div className={classes.search}>
             <div className={classes.searchIcon}>
