@@ -4,11 +4,17 @@ import { Link, useParams, useHistory } from "react-router-dom";
 import apiUsuarios from "../../../services/api.usuarios";
 import apiPapeis from "../../../services/api.papeis";
 
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert from '@material-ui/lab/Alert'
 import Button from "@material-ui/core/Button";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
+
+function Alert(props) {
+	return <MuiAlert elevation={6} variant="filled" {...props} />;
+  }
 
 function EditarPapel() {
 	const { id } = useParams();
@@ -30,6 +36,22 @@ function EditarPapel() {
 
 	}
 
+	//Snackbar/Alert
+	//AlertSucess
+	const [openAlert, setOpenAlert] = React.useState(false);
+	const handleClickAlert = () => {
+		setOpenAlert(true);
+	  };
+	  
+
+	const handleCloseAlert = (event, reason) => {
+		if (reason === 'clickaway') {
+		return;
+		}
+
+		setOpenAlert(false);
+	};	
+
 	const handleClick = () => {
 		if (nome.length != 0) {
 			const novo = {
@@ -40,7 +62,36 @@ function EditarPapel() {
 				apiUsuarios.editarPapel(id, res.data.idCargo);
 			});
 		}
+		setOpenAlert(true);
 	};
+
+		//AlertInfo
+		const [openAlertInfo, setOpenAlertInfo] = React.useState(false);
+		const handleClickAlertInfo = () => {
+			setOpenAlertInfo(true);
+		  };
+		  
+	
+		const handleCloseAlertInfo = (event, reason) => {
+			if (reason === 'clickaway') {
+			return;
+			}
+	
+			setOpenAlertInfo(false);
+		};	
+	
+		const handleClickInfo = () => {
+			if (nome.length != 0) {
+				const novo = {
+					nome,
+				};
+				apiPapeis.adicionarPapel(novo).then((res) => {
+					console.log(res);
+					apiUsuarios.editarPapel(id, res.data.idCargo);
+				});
+			}
+			setOpenAlertInfo(true);
+		};
 
 	const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -57,7 +108,16 @@ function EditarPapel() {
 	return (
 		<div className={classes.container}>
 			{" "}
-
+			<Snackbar open={openAlertInfo} autoHideDuration={6000} onClose={handleCloseAlertInfo}>
+					<Alert onClose={handleCloseAlertInfo} severity="info">
+					Cargo criado com sucesso!!
+					</Alert>
+			</Snackbar>
+			<Snackbar open={openAlert} autoHideDuration={6000} onClose={handleCloseAlert}>
+					<Alert onClose={handleCloseAlert} severity="success">
+					Cargo do cliente atualizado com sucesso!!
+					</Alert>
+			</Snackbar>
 			<TextField
 					id="filled-required"
 					label="Criar Cargo (MAX. 12)"
@@ -94,6 +154,7 @@ function EditarPapel() {
 							onClick={() => {
 								handleClose;
 								apiUsuarios.editarPapel(id, p.idCargo);
+								setOpenAlert(true);
 							}}
 						>
 							{p.nome}

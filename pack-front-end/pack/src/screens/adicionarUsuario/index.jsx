@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert'
@@ -22,15 +22,15 @@ function AdicionarUsuario() {
 	const [login, setLogin] = React.useState("");
 	const [avatar, setAvatar] = React.useState("");
 	
-	//Snackbar/Alert
-
+	
 	const history = useHistory();
 	const home = () => {
 		history.push("/");
 		history.go(0)
-
+		
 	}
 	
+		//Snackbar/Alert
 		//AlertSucess
 
 		const [openAlert, setOpenAlert] = React.useState(false);

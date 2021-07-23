@@ -1,12 +1,18 @@
 import React from "react";
 import { useParams, useHistory } from "react-router";
 
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert from '@material-ui/lab/Alert'
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 
 
 import api from "../../../services/api.usuarios";
+
+function Alert(props) {
+	return <MuiAlert elevation={6} variant="filled" {...props} />;
+  }
 
 function EditarStatus() {
 	const { id } = useParams();
@@ -20,11 +26,28 @@ function EditarStatus() {
 
 	}
 
+	//Snackbar/Alert
+	//AlertSucess
+
+	const [openAlert, setOpenAlert] = React.useState(false);
+	const handleClickAlert = () => {
+		setOpenAlert(true);
+	  };
+	  
+
+	const handleCloseAlert = (event, reason) => {
+		if (reason === 'clickaway') {
+		return;
+		}
+
+		setOpenAlert(false);
+	};
 
 	const handleChange = () => {
 		const novo = {
 			status,
 		};
+		setOpenAlert(true);
 
 		api.editarStatus(id, novo).then((res) => {
 			console.log(res);
@@ -35,6 +58,11 @@ function EditarStatus() {
 
 	return (
 		<div className={classes.container}>
+			<Snackbar open={openAlert} autoHideDuration={6000} onClose={handleCloseAlert}>
+					<Alert onClose={handleCloseAlert} severity="success">
+					Status atualizado com sucesso!!
+					</Alert>
+				</Snackbar>
 			<TextField
 				id="filled-required"
 				label="Status (MAX: 25)"

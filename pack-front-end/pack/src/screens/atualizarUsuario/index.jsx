@@ -1,12 +1,17 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { useParams, useHistory } from "react-router-dom";
 
 import api from "../../services/api.usuarios";
 
+import Snackbar from '@material-ui/core/Snackbar';
+import MuiAlert from '@material-ui/lab/Alert'
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+
+function Alert(props) {
+	return <MuiAlert elevation={6} variant="filled" {...props} />;
+  }
 
 //TODO: fazer tratamento
 function AtualizarUsuario() {
@@ -27,7 +32,46 @@ function AtualizarUsuario() {
 		history.go(0);
 	}
 
+			//Snackbar/Alert
+		//AlertSucess
 
+		const [openAlert, setOpenAlert] = React.useState(false);
+
+		const handleClickAlert = () => {
+			setOpenAlert(true);
+		  };
+
+		  
+	
+		const handleCloseAlert = (event, reason) => {
+			if (reason === 'clickaway') {
+			return;
+			}
+	
+			setOpenAlert(false);
+		};
+		
+		//
+
+		//Alert Error
+
+		const [openAlertError, setOpenAlertError] = React.useState(false);
+
+		const handleClickAlertError = () => {
+			setOpenAlertError(true);
+		  };
+
+		  
+	
+		const handleCloseAlertError = (event, reason) => {
+			if (reason === 'clickaway') {
+			return;
+			}
+	
+			setOpenAlertError(false);
+		};
+
+		//
 
 
 	const handleClick = (e) => {
@@ -53,7 +97,7 @@ function AtualizarUsuario() {
 		if (validar) {
 			api.atualizarUsuario(id, novo).then((res) => {
 				if (res.status === 200) {
-					alert("Usuario atualizado com sucesso!");
+					setOpenAlert(true);
 					setNome("");
 					setStatus("");
 					setPapel("");
@@ -62,11 +106,11 @@ function AtualizarUsuario() {
 					setAvatar("");
 					setTime("");
 				} else {
-					alert("Algo deu errado!");
+					setOpenAlertError(true);
 				}
 			});
 		} else {
-			alert("Campo obrigatorio.");
+			setOpenAlertError(true);
 		}
 	};
 
@@ -75,6 +119,16 @@ function AtualizarUsuario() {
 	return (
 		<form className={classes.root}>
 			<div>
+				<Snackbar open={openAlert} autoHideDuration={6000} onClose={handleCloseAlert}>
+					<Alert onClose={handleCloseAlert} severity="success">
+					Usuário atualizado com sucesso!!
+					</Alert>
+				</Snackbar>
+				<Snackbar open={openAlertError} autoHideDuration={6000} onClose={handleCloseAlertError}>
+					<Alert onClose={handleCloseAlertError} severity="error">
+					Houve algum erro ao atualizar o usuário. Confira se todos os campos estão preenchidos corretamente!
+					</Alert>
+				</Snackbar>
 
 				<TextField
 					required
