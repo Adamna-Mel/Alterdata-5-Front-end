@@ -15,8 +15,8 @@ function CardOptions(props) {
 	const options = [
 		<Link to={`/atualizar/${props.id}`}>Editar Nome</Link>,
 		"Editar Status",
-		"Editar Cargo",
-		"Mudar Equipe",
+		"Editar Papel",
+		"Mudar Time",
 		"Remover Usuário",
 		<Link to={`/apagar/${props.id}`}>Deletar Usuário</Link>,
 	];

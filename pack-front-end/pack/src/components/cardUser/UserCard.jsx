@@ -27,7 +27,7 @@ function UserCard(props) {
 				<CardContent className={classes.cardContent}>
 					<div className={classes.cardTop}>
 						<Avatar
-							alt="Perfil"
+							alt="Pefil"
 							src="src/assets/profile.jpg"
 							className={classes.profileImage}
 						/>
