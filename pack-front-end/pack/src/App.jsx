@@ -1,10 +1,8 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 
 import { makeStyles } from "@material-ui/core/styles";
 import { createTheme } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/core";
-
-
 
 import "./App.css";
 import UserCard from "./components/UserCard";
@@ -18,29 +16,16 @@ import Rotas from "./routers/Rotas";
 
 import RotasPrincipais from "./routers/RotasPrincipais";
 
-import Paper from '@material-ui/core/Paper';
+import Paper from "@material-ui/core/Paper";
 
-import Login from './components/login/Login'
+import Login from "./components/login/Login";
 
-
-import RotasTeste from './routers/RotasTeste'
-
+import RotasTeste from "./routers/RotasTeste";
 
 function App() {
-
-
-	  
-	return (
-			<Nav/>
-	)
+  return <Nav />;
 }
 
 export default App;
-
-
-
-
-
-  
 
 //TODO: Alterar a forma de reload da pagina

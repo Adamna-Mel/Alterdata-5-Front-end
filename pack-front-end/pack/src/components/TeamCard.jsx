@@ -35,49 +35,46 @@ import Database from "../assets/icons/database.svg";
 
 import CardOptions from "./CardOptions";
 
-
 function TeamCard(props) {
-	
-	const classes = useStyles();
-	
-	return (
-		<div>
-			<Card className={classes.card} color="default">
-				<CardContent className={classes.cardContent}>
-					<div className={classes.cardTop}>
-                    <SvgColor svg={Cancel} width={50} colors={["#cf1527", "#000000"]} />
-					<Typography className={classes.teamName}>Nome do Time</Typography>
-					</div>
-				</CardContent>
-			</Card>
-		</div>
-	);
+  const classes = useStyles();
+
+  return (
+    <div>
+      <Card className={classes.card} color="default">
+        <CardContent className={classes.cardContent}>
+          <div className={classes.cardTop}>
+            <SvgColor svg={Cancel} width={50} colors={["#cf1527", "#000000"]} />
+            <Typography className={classes.teamName}>Nome do Time</Typography>
+          </div>
+        </CardContent>
+      </Card>
+    </div>
+  );
 }
 export default TeamCard;
 
 const useStyles = makeStyles({
-	card: {
-		borderRadius: 20,
-		width: 400,
-		height: 80,
-		marginRight: 10,
-		marginLeft: 10,
-		marginTop: 10,
-		marginBottom: 10,
-	},
-	teamName: {
-		fontSize: 30,
-		textAlign: "center",
-	},
-	cardContent: {
-		alignItems: "center",
-        justifyContent: "center",
-        
-	},
-	cardTop: {
-		flex: 1,
-		display: "flex",
-		flexDirection: "row",
-		columnGap: 10,
-	},
+  card: {
+    borderRadius: 20,
+    width: 400,
+    height: 80,
+    marginRight: 10,
+    marginLeft: 10,
+    marginTop: 10,
+    marginBottom: 10,
+  },
+  teamName: {
+    fontSize: 30,
+    textAlign: "center",
+  },
+  cardContent: {
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  cardTop: {
+    flex: 1,
+    display: "flex",
+    flexDirection: "row",
+    columnGap: 10,
+  },
 });

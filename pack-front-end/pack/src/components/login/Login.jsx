@@ -1,43 +1,42 @@
-import React from 'react';
-import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
-import Link from '@material-ui/core/Link';
-import Grid from '@material-ui/core/Grid';
-import Box from '@material-ui/core/Box';
-import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
-import LogoAlterdata from "../../assets/1.svg"
-import { createTheme, ThemeProvider } from '@material-ui/core/styles';
+import React from "react";
+import Button from "@material-ui/core/Button";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import TextField from "@material-ui/core/TextField";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Checkbox from "@material-ui/core/Checkbox";
+import Link from "@material-ui/core/Link";
+import Grid from "@material-ui/core/Grid";
+import Box from "@material-ui/core/Box";
+import Typography from "@material-ui/core/Typography";
+import { makeStyles } from "@material-ui/core/styles";
+import Container from "@material-ui/core/Container";
+import LogoAlterdata from "../../assets/1.svg";
+import { createTheme, ThemeProvider } from "@material-ui/core/styles";
 
 import { useHistory } from "react-router";
 
-import SvgColor from 'react-svg-color';
+import SvgColor from "react-svg-color";
 
-import auth from '../../services/auth'
+import auth from "../../services/auth";
 
 export default function SignIn() {
-
-  const history = useHistory()
+  const history = useHistory();
 
   const [login, setLogin] = React.useState("");
   const [senha, setSenha] = React.useState("");
-	const handleClick = (e) => {
-		e.preventDefault();
-		const novo = {
-			login,
-			senha,
-		};
-    console.log(novo)
-		auth.fazerLogin(novo).then((res) => {
-			console.log(res);
+  const handleClick = (e) => {
+    e.preventDefault();
+    const novo = {
+      login,
+      senha,
+    };
+    console.log(novo);
+    auth.fazerLogin(novo).then((res) => {
+      console.log(res);
 
       // res.status === 200 ? history.push(`/`) : alert(res.data.mensagem);
-		});
-	};
+    });
+  };
 
   const classes = useStyles();
 
@@ -84,7 +83,7 @@ export default function SignIn() {
             fullWidth
             variant="contained"
             className={classes.submit}
-            color= 'primary'
+            color="primary"
             onClick={handleClick}
           >
             Logar
@@ -108,17 +107,17 @@ export default function SignIn() {
 }
 
 const useStyles = makeStyles({
-paper: {
-  marginTop: 40,
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-},
-form: {
-  width: '100%', // Fix IE 11 issue.
-  // marginTop: theme.spacing(1),
-},
-submit: {
-  // margin: theme.spacing(3, 0, 2),
-},
+  paper: {
+    marginTop: 40,
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+  },
+  form: {
+    width: "100%", // Fix IE 11 issue.
+    // marginTop: theme.spacing(1),
+  },
+  submit: {
+    // margin: theme.spacing(3, 0, 2),
+  },
 });
