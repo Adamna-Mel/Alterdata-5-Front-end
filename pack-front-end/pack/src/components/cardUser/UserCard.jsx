@@ -18,6 +18,7 @@ import Merge from "../../assets/icons/merge.svg";
 import FireExtinguisher from "../../assets/icons/fire-extinguisher.svg";
 
 import CardOptions from "./CardOptions";
+import StatusBar from "./StatusBar";
 
 function UserCard(props) {
 	const classes = useStyles();
@@ -35,7 +36,14 @@ function UserCard(props) {
 					</div>
 
 					<Typography className={classes.userName}>{props.nome}</Typography>
-					<Typography className={classes.userStatus}>{props.status}</Typography>
+					<Typography className={classes.userStatus}> 
+							<StatusBar 
+								id={props.id} 
+								status={props.status}
+								className={classes.userStatus}
+								/> 
+					</Typography>
+					{/*<Typography className={classes.userStatus}>{props.status}</Typography>*/}
 					{/* <CardMedia
                     className={classes.userRole}
                     image="src/assets/icons/crystal-shine.svg"
@@ -72,6 +80,7 @@ const useStyles = makeStyles({
 		fontSize: 15,
 		color: "#1A2228",
 		textAlign: "center",
+		height:'1px'
 	},
 	profileImage: {
 		height: 100,
