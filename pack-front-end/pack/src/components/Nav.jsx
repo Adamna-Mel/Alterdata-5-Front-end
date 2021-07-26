@@ -1,5 +1,6 @@
-import React from "react";
+import React, {useState} from "react";
 import { alpha, makeStyles } from "@material-ui/core/styles";
+import Switch from '@material-ui/core/Switch';
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
@@ -11,7 +12,11 @@ import MenuIcon from "@material-ui/icons/Menu";
 import SearchIcon from "@material-ui/icons/Search";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import MoreIcon from "@material-ui/icons/MoreVert";
-import a from "../assets/1.svg";
+import SvgColor from "react-svg-color";
+import LogoAlterdata from "../assets/1.svg";
+
+import { createTheme } from "@material-ui/core/styles";
+import { ThemeProvider } from "@material-ui/core";
 
 import Rotas from "../routers/Rotas";
 
@@ -96,58 +101,63 @@ export default function PrimarySearchAppBar() {
 	const [login, setLogin] = React.useState("");
 	const [usuarios, setUsuarios] = React.useState([]);
 
-	React.useEffect(() => {
-		console.log(login);
+	const chamarAPI = () => {
 		if (login.length > 0) {
 			api.obterUsuariosPorLogin(login).then((res) => {
-				console.log(res);
 				setUsuarios(res);
 			});
 		} else {
 			api.obterUsuarios().then((res) => {
 				setUsuarios(res);
+			
+			
 			});
 		}
+	};
+
+	React.useEffect(() => {
+		chamarAPI()
 	}, [login]);
 
+	const [darkMode, setDarkMode] = useState(false);
+
+	const theme = createTheme({
+		palette: {
+			  type: darkMode ? "dark" : "light",
+			  primary: {
+				  light: "#7bbbdb",
+				  main: "#0083c1",
+				  dark: "#0d5375",
+				  contrastText: "#fff",
+			  },
+			  secondary: {
+				  light: "#fafafa",
+				  main: "#F5f3f4",
+				  dark: "#808080",
+				  contrastText: "#000"
+			  },
+			  alert: {
+				  light: "#d4463b",
+				  primary: "#a11a10",
+				  dark: "#5e0e08",
+				  contrastText: "#fff"
+			  },
+		  }
+		
+	  })
+
 	return (
+		<ThemeProvider theme={theme}>
 		<div className={classes.grow}>
-			<AppBar position="static" color="default">
+			<AppBar position="static" color="inherit">
 				<Toolbar>
-					{/* <IconButton
-						edge="start"
-						className={classes.menuButton}
-						color="inherit"
-						aria-label="open drawer"
-						onClick={handleDrawerClick}
-					>
-						<Menu
-							id="long-menu"
-							anchorEl={anchorElDrawer}
-							keepMounted
-							open={open}
-							onClose={handleDrawerClose}
-							PaperProps={{
-								style: {
-									maxHeight: ITEM_HEIGHT * 5,
-									width: "20ch",
-								},
-							}}
-						>
-							<MenuItem onClick={handleDrawerClose}>Editar Nome</MenuItem>
-							<MenuItem>Editar Status</MenuItem>
-							<MenuItem>Editar Papel</MenuItem>
-							<MenuItem>Mudar Time</MenuItem>
-							<MenuItem>Remover Usuário</MenuItem>
-						</Menu>
-						<MenuIcon />
-					</IconButton> */}
-						<img src={a} width="190" height="70" />
+				<SvgColor svg={LogoAlterdata} width={190} colors={darkMode ? ["#ffffff"] : ["#0083c1"]} />
 					<div className={classes.search}>
 						<div className={classes.searchIcon}>
 							<SearchIcon />
 						</div>
 						<InputBase
+							style={darkMode ? {color: "#fff"} : {color: "#000"}}
 							placeholder="Pesquisar…"
 							classes={{
 								root: classes.inputRoot,
@@ -156,28 +166,36 @@ export default function PrimarySearchAppBar() {
 							value={login}
 							inputProps={{ "aria-label": "search" }}
 							onChange={(e) => setLogin(e.target.value)}
+							color="secondary"
 						/>
 					</div>
 					<div className={classes.grow} />
 					<div className={classes.sectionDesktop}>
+						<div style={{textAlign: "center"}}>
+							<Switch color="primary" checked={darkMode} onChange={() => setDarkMode(!darkMode)}/>
+							<Typography style={darkMode ? {color: "#fff"} : {color: "#000"}}>DarkMode</Typography>
+						</div>						
 						<IconButton
 							edge="end"
 							aria-label="account of current user"
 							aria-controls={menuId}
 							aria-haspopup="true"
 							onClick={handleProfileMenuOpen}
-							color="#0d5375"
+							color="primary"
 						>
 							<AccountCircle />
 						</IconButton>
 					</div>
 					<div className={classes.sectionMobile}>
+					<div style={{alignSelf: "center"}}>
+							<Switch color="primary" checked={darkMode} onChange={() => setDarkMode(!darkMode)}/>
+						</div>
 						<IconButton
 							aria-label="show more"
 							aria-controls={mobileMenuId}
 							aria-haspopup="true"
 							onClick={handleMobileMenuOpen}
-							color="inherit"
+							color="default"
 						>
 							<MoreIcon />
 						</IconButton>
@@ -186,8 +204,11 @@ export default function PrimarySearchAppBar() {
 			</AppBar>
 			{renderMobileMenu}
 			{renderMenu}
-			<Rotas usuarios={usuarios} />
+			<div style={darkMode ? {backgroundColor: "#303030", height: "100vh"} : {backgroundColor: "#F5F3F4", height: "100vh"} }>
+				<Rotas usuarios={usuarios} chamarAPI={chamarAPI}/>
+			</div>
 		</div>
+		</ThemeProvider>
 	);
 }
 
@@ -207,10 +228,6 @@ const useStyles = makeStyles((theme) => ({
 	search: {
 		position: "relative",
 		borderRadius: theme.shape.borderRadius,
-		backgroundColor: "#FFFFFF",
-		"&:hover": {
-			backgroundColor: "#cccccc",
-		},
 		marginRight: theme.spacing(2),
 		marginLeft: 0,
 		width: "100%",
@@ -227,7 +244,7 @@ const useStyles = makeStyles((theme) => ({
 		display: "flex",
 		alignItems: "center",
 		justifyContent: "center",
-		color: "#0d5375",
+		color: "#0083c1",
 	},
 	inputRoot: {
 		color: "inherit",

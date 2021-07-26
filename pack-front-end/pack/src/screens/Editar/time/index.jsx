@@ -11,7 +11,7 @@ import apiUsuario from "../../../services/api.usuarios";
 import apiTime from "../../../services/api.times";
 import api from "../../../services/api";
 
-function EditarTime() {
+function EditarTime(props) {
 	const { id } = useParams();
 
 	const [nome, setNome] = React.useState("");
@@ -29,7 +29,7 @@ function EditarTime() {
 
 	const home = () => {
 		history.push('/');
-		history.go(0)
+		props.chamarAPI()
 	}
 
 	const handleClick = () => {

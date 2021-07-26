@@ -1,6 +1,10 @@
-import React from "react";
+import React, {useState} from "react";
 
 import { makeStyles } from "@material-ui/core/styles";
+import { createTheme } from "@material-ui/core/styles";
+import { ThemeProvider } from "@material-ui/core";
+
+
 
 import "./App.css";
 import UserCard from "./components/UserCard";
@@ -14,32 +18,29 @@ import Rotas from "./routers/Rotas";
 
 import RotasPrincipais from "./routers/RotasPrincipais";
 
+import Paper from '@material-ui/core/Paper';
+
+import Login from './components/login/Login'
+
+
+import RotasTeste from './routers/RotasTeste'
+
+
 function App() {
-	const classes = useStyles();
-	return <Nav />;
+
+
+	  
+	return (
+			<Nav/>
+	)
 }
 
 export default App;
 
-const useStyles = makeStyles({
-	card: {
-		display: "flex",
-		flexDirection: "row",
-		flexWrap: "wrap",
-		alignSelf: "center",
-		margin: "auto",
-	},
-	app: {
-		backgroundColor: "#f5f3f4",
-		padding: 20,
-	},
-	header: {
-		textAlign: "center",
-		bottomMargin: 10,
-	},
-	teamName: {
-		alignSelf: "center",
-	},
-});
+
+
+
+
+  
 
 //TODO: Alterar a forma de reload da pagina

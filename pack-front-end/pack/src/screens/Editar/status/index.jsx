@@ -1,6 +1,7 @@
 import React from "react";
 import { useParams, useHistory } from "react-router";
 
+import Card from '@material-ui/core/Card';
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert'
 import TextField from '@material-ui/core/TextField';
@@ -14,7 +15,7 @@ function Alert(props) {
 	return <MuiAlert elevation={6} variant="filled" {...props} />;
   }
 
-function EditarStatus() {
+function EditarStatus(props) {
 	const { id } = useParams();
 
 	const [status, setStatus] = React.useState("");
@@ -22,9 +23,9 @@ function EditarStatus() {
 	const history = useHistory();
 	const home = () => {
 		history.push("/");
-		history.go(0)
+		props.chamarAPI();
+	};
 
-	}
 
 	//Snackbar/Alert
 	//AlertSucess
@@ -43,6 +44,8 @@ function EditarStatus() {
 		setOpenAlert(false);
 	};
 
+	//
+
 	const handleChange = () => {
 		const novo = {
 			status,
@@ -57,12 +60,15 @@ function EditarStatus() {
 	const classes = useStyles();
 
 	return (
-		<div className={classes.container}>
+		<form className={classes.root}>
+			<Card className={classes.card}>
 			<Snackbar open={openAlert} autoHideDuration={6000} onClose={handleCloseAlert}>
 					<Alert onClose={handleCloseAlert} severity="success">
 					Status atualizado com sucesso!!
 					</Alert>
-				</Snackbar>
+			</Snackbar>
+
+			<h1 style={{textAlign:"center"}}>Editar status</h1>
 			<TextField
 				id="filled-required"
 				label="Status (MAX: 25)"
@@ -72,44 +78,40 @@ function EditarStatus() {
 				value={status}
 				inputProps={{ maxLength: 25 }}
 			/>
-			<div className={classes.buttons}>
-				<Button onClick={handleChange} variant="contained" className={classes.blueButton}>
+			<div>
+				<Button onClick={handleChange} variant="contained" color="primary" className={classes.button}>
 						Salvar
 				</Button>
-				<Button variant="contained"  onClick={home} className={classes.grayButton}>
+				<Button variant="contained"  onClick={home} color="secondary" className={classes.button}>
 						Cancelar
 				</Button>
 			</div>
-		</div>
+			</Card>
+		</form>
 	);
 }
 
 const useStyles = makeStyles({
-	buttons:{
-		display: "flex",
-		justifyContent: "center",
-	},
-    blueButton:{
-		backgroundColor: "#0083C1",
-		color: "#ffffff",
+    button:{
 		margin: 5,
-		'&:hover': {
-			backgroundColor: "#7BBBDB",
-			color: "#000000",
-		}
 	},
-	grayButton:{
-		backgroundColor: "#F5F3F4",
-		color: "#000000",
-		margin: 5
-	},
-	container: {
-		flex: 1,
-		display: "flex",
+	root: {
+		maxWidth: 600,
+		'& .MuiTextField-root': {
+		  margin: 5,
+		  width: '25ch',
+		},
+	  },
+	card: {
 		justifyContent: "center",
-		margin: "auto",
-		flexDirection: "column",
-		maxWidth: 300
+		borderRadius: 20,
+        maxWidth: 500,
+        height: "auto",
+        marginRight: 10,
+        marginLeft: 10,
+		padding: 10,
+		margin: "35%",
+		textAlign: "center"
 	}
   })
 

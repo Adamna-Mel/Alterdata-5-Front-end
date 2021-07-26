@@ -3,6 +3,7 @@ import { useParams, useHistory } from "react-router-dom";
 
 import api from "../../services/api.usuarios";
 
+import Card from '@material-ui/core/Card';
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert'
 import { makeStyles } from '@material-ui/core/styles';
@@ -14,7 +15,7 @@ function Alert(props) {
   }
 
 //TODO: fazer tratamento
-function AtualizarUsuario() {
+function AtualizarUsuario(props) {
 	const [nome, setNome] = React.useState("");
 	const [status, setStatus] = React.useState("");
 	const [cargo, setCargo] = React.useState("");
@@ -29,8 +30,8 @@ function AtualizarUsuario() {
 
 	const home = () => {
 		history.push("/");
-		history.go(0);
-	}
+		props.chamarAPI();
+	};
 
 			//Snackbar/Alert
 		//AlertSucess
@@ -118,6 +119,7 @@ function AtualizarUsuario() {
 
 	return (
 		<form className={classes.root}>
+			<Card className={classes.card}>
 			<div>
 				<Snackbar open={openAlert} autoHideDuration={6000} onClose={handleCloseAlert}>
 					<Alert onClose={handleCloseAlert} severity="success">
@@ -130,6 +132,7 @@ function AtualizarUsuario() {
 					</Alert>
 				</Snackbar>
 
+				<h1 style={{textAlign:"center"}}>Editar Usuário</h1>
 				<TextField
 					required
 					id="filled-required1"
@@ -189,70 +192,44 @@ function AtualizarUsuario() {
 					type="text"
 					inputProps={{ maxLength: 12 }}
 				/>
-
-				{/* <TextField
-					id="filled-required6"
-					label="Avatar"
-					defaultValue=""
-					variant="filled"
-					onChange={(e) => setAvatar(e.target.value)}
-					value={avatar}
-					type="text"
-				/> */}
 			</div>
 
-			{/* <input
-				type="text"
-				value={avatar}
-				placeholder="Avatar"
-				onChange={(e) => setAvatar(e.target.value)}
-			/> */}
-
 			<div className="botoes">
-				<Button onClick={handleClick} variant="contained" className={classes.blueButton}>
+				<Button onClick={handleClick} variant="contained" color="primary" className={classes.button}>
 					Enviar
 				</Button>
 				{/* <Link style={{ textDecoration: 'none', display: 'flex', justifyContent: 'center' }} to="/" refresh="true"> */}
-					<Button variant="contained" className={classes.grayButton} onClick={home}>
+					<Button variant="contained" color="secondary" onClick={home} className={classes.button}>
 						Voltar
 					</Button>
 				{/* </Link> */}
 			</div>
+			</Card>
 		</form>
 	);
 }
 
 const useStyles = makeStyles({
-    blueButton:{
-		backgroundColor: "#0083C1",
-		color: "#ffffff",
-		margin: 5,
-		'&:hover': {
-			backgroundColor: "#7BBBDB",
-			color: "#000000",
-		}
-	},
-	grayButton:{
-		backgroundColor: "#F5F3F4",
-		color: "#000000",
+    button:{
 		margin: 5
 	},
 	root: {
+		maxWidth: 600,
 		'& .MuiTextField-root': {
 		  margin: 5,
 		  width: '25ch',
 		},
-		'& .MuiOutlinedInput-root': {
-			'& fieldset': {
-				borderColor: "#0083C1",
-			},
-		},
-		'& .MuiInput-underline:after': {
-			borderBottomColor: "#0083C1",
-		},
-		'&.Mui-focused fieldset': {
-			borderColor: "#0083C1",
-		  },
 	  },
+	  card: {
+		justifyContent: "center",
+		borderRadius: 20,
+        maxWidth: 500,
+        height: "auto",
+        marginRight: 10,
+        marginLeft: 10,
+		padding: 10,
+		margin: "35%",
+		textAlign: "center"
+	}
   })
 export default AtualizarUsuario;

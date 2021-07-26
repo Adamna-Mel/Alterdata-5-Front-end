@@ -35,7 +35,6 @@ function UserCard(props) {
 					</div>
 
 					<Typography className={classes.userName}>{props.nome}</Typography>
-					<Typography className={classes.userStatus}>{props.status}</Typography>
 					{/* <CardMedia
                     className={classes.userRole}
                     image="src/assets/icons/crystal-shine.svg"

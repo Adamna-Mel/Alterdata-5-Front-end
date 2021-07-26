@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from '@material-ui/core/Button';
 
+
 import './Rotas.css'
 
 import Time from "../screens/times/index";
@@ -13,44 +14,53 @@ import Atualizar from "../screens/atualizarUsuario/index";
 import EditarPapel from "../screens/Editar/papel/index";
 import EditarTime from "../screens/Editar/time/index";
 import EditarStatus from "../screens/Editar/status/index";
+import TeamCard from "../components/TeamCard"
+import Login from '../components/login/Login'
 
 function Rotas(props) {
-	const classes = useStyles();
 	return (
 		<Router>
 			<Link to="/adicionar" style={{ textDecoration: 'none', display: 'flex', justifyContent: 'center' }}>
-				<Button variant="contained" className={classes.blueButton}>
+				<Button variant="contained" color="primary">
 					Adicionar usuário
 				</Button>
 			</Link>
+			{/* <Login/> */}
+			{/* <TeamCard/> */}
 
+		
 			<Switch>
+			<Route path={"/login"}>
+					<Login  />
+				</Route>
+
 				<Route path={"/editar-status/:id"}>
-					<EditarStatus />
+					<EditarStatus chamarAPI={props.chamarAPI} />
 				</Route>
 
 				<Route path={"/editar-time/:id"}>
-					<EditarTime />
+					<EditarTime chamarAPI={props.chamarAPI} />
 				</Route>
 
 				<Route path={"/editar-papel/:id"}>
-					<EditarPapel />
+					<EditarPapel chamarAPI={props.chamarAPI} />
 				</Route>
 
 				<Route path={"/atualizar/:id"}>
-					<Atualizar />
+					<Atualizar chamarAPI={props.chamarAPI} />
 				</Route>
 
 				<Route path={"/adicionar"}>
-					<Adicionar />
+					<Adicionar chamarAPI={props.chamarAPI} />
 				</Route>
 
 				<Route path={"/apagar/:id"}>
-					<Apagar />
+					<Apagar chamarAPI={props.chamarAPI} />
 				</Route>
 
+
 				<Route path={"/"}>
-					<Time usuarios={props.usuarios} />
+					<Time usuarios={props.usuarios} chamarAPI={props.chamarAPI} />
 				</Route>
 			</Switch>
 		</Router>

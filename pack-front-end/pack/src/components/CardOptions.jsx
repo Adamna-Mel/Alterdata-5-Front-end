@@ -2,23 +2,15 @@ import React from "react";
 
 import { makeStyles } from "@material-ui/core/styles";
 import { Link } from "react-router-dom";
-
 import IconButton from "@material-ui/core/IconButton";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
+import { Typography } from "@material-ui/core";
 
 const ITEM_HEIGHT = 45;
 
-const useStyles = makeStyles({
-	delete: {
-		color: "red",
-	},
-	link: {
-		textDecoration: "none",
-		color: "#000000"
-	}
-});
+
 
 function CardOptions(props) {
 	const [anchorEl, setAnchorEl] = React.useState(null);
@@ -56,21 +48,21 @@ function CardOptions(props) {
 					},
 				}}
 			>
-				<MenuItem onClick={handleClose}>
-					<Link to={`atualizar/${props.id}`} style={{ textDecoration: 'none', color: '#000000' }}>Editar Usuário</Link>
+				<MenuItem onClick={handleClose} >
+					<Link to={`atualizar/${props.id}`} className={classes.link} >Editar Usuário</Link>
 				</MenuItem>
 				<MenuItem>
-					<Link to={`editar-status/${props.id}`} style={{ textDecoration: 'none', color: '#000000' }}>Editar Status</Link>
+					<Link to={`editar-status/${props.id}`} className={classes.link}>Editar Status</Link>
 				</MenuItem>
 				<MenuItem>
-					<Link to={`editar-papel/${props.id}`} style={{ textDecoration: 'none', color: '#000000' }}>Editar Cargo</Link>
+					<Link to={`editar-papel/${props.id}`} className={classes.link}>Editar Cargo</Link>
 				</MenuItem>
 				<MenuItem>
-					<Link to={`editar-time/${props.id}`} style={{ textDecoration: 'none', color: '#000000' }}>Mudar Time</Link>
+					<Link to={`editar-time/${props.id}`} className={classes.link}>Mudar Time</Link>
 				</MenuItem>
 				{/* <MenuItem>Remover Usuário</MenuItem> */}
 				<MenuItem>
-					<Link to={`apagar/${props.id}`} style={{ textDecoration: 'none', color: '#000000' }}>
+					<Link to={`apagar/${props.id}`} className={classes.link}>
 						<span className={classes.delete}>Deletar Usuário</span>
 					</Link>
 				</MenuItem>
@@ -78,5 +70,15 @@ function CardOptions(props) {
 		</div>
 	);
 }
+
+const useStyles = makeStyles({
+	delete: {
+		color: "red",
+	},
+	link: {
+		textDecoration: "none",
+		color: 'inherit' 
+	}
+});
 
 export default CardOptions;

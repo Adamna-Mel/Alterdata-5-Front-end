@@ -4,12 +4,14 @@ import { makeStyles } from "@material-ui/core/styles";
 
 import Card from "../../components/UserCard";
 
+import apiEquipe from '../../services/api.times'
 
 function Time(props) {
-
 	const classes = useStyles();
+
+	
 	return (
-		<div  className={classes.card}>
+		<div className={classes.card}>
 			{props.usuarios != undefined ? (
 				props.usuarios.map((usuario) => (
 					<Card
@@ -30,12 +32,12 @@ function Time(props) {
 
 const useStyles = makeStyles({
 	card: {
-	  display: "flex",
-	  flexDirection: "row",
-	  flexWrap: "wrap",
-	  justifyContent: "center",
-	  alignItems : "center",
-	  margin: "auto",
+		display: "flex",
+		flexDirection: "row",
+		flexWrap: "wrap",
+		justifyContent: "center",
+		alignItems: "center",
+		margin: "auto",
 	},
 });
 

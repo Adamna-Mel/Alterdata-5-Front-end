@@ -1,6 +1,7 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 
+import Card from '@material-ui/core/Card';
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert'
 import TextField from '@material-ui/core/TextField';
@@ -15,7 +16,7 @@ function Alert(props) {
 	return <MuiAlert elevation={6} variant="filled" {...props} />;
   }
 
-function AdicionarUsuario() {
+function AdicionarUsuario(props) {
 	const [nome, setNome] = React.useState("");
 	const [status, setStatus] = React.useState("");
 	const [senha, setSenha] = React.useState("");
@@ -26,9 +27,8 @@ function AdicionarUsuario() {
 	const history = useHistory();
 	const home = () => {
 		history.push("/");
-		history.go(0)
-		
-	}
+		// props.chamarAPI();
+	};
 	
 		//Snackbar/Alert
 		//AlertSucess
@@ -112,8 +112,8 @@ function AdicionarUsuario() {
 
 
 	return (
-
 		<form className={classes.root}>
+			<Card className={classes.card}>
 			<div>
 				<Snackbar open={openAlert} autoHideDuration={6000} onClose={handleCloseAlert}>
 					<Alert onClose={handleCloseAlert} severity="success">
@@ -125,6 +125,8 @@ function AdicionarUsuario() {
 					Houve algum erro no cadastro. Confira se todos os campos estão preenchidos corretamente!
 					</Alert>
 				</Snackbar>
+
+				<h1 style={{textAlign:"center"}}>Adicionar usuário</h1>
 				<TextField
 					required
 					id="filled-required"
@@ -175,12 +177,12 @@ function AdicionarUsuario() {
 
 	
 
-			<div className="botoes">
-				<Button onClick={handleClick} variant="contained" className={classes.blueButton}>
+			<div>
+				<Button onClick={handleClick} variant="contained" color="primary" className={classes.button}>
 					Enviar
 				</Button>
 				
-					<Button variant="contained" className={classes.grayButton} onClick={home}>
+					<Button variant="contained" color="secondary" onClick={home} className={classes.button}>
 						Voltar
 					</Button>
 			
@@ -188,32 +190,33 @@ function AdicionarUsuario() {
 
 
 	
+		</Card>
 		</form>
 	);
 }
 
 const useStyles = makeStyles({
     blueButton:{
-		backgroundColor: "#0083C1",
-		color: "#ffffff",
 		margin: 5,
-		'&:hover': {
-			backgroundColor: "#7BBBDB",
-			color: "#000000",
-		}
-	},
-	grayButton:{
-		backgroundColor: "#F5F3F4",
-		color: "#000000",
-		margin: 5
 	},
 	root: {
-		  maxWidth: 600,
+		maxWidth: 600,
 		'& .MuiTextField-root': {
 		  margin: 5,
 		  width: '25ch',
 		},
 	  },
+	card: {
+		justifyContent: "center",
+		borderRadius: 20,
+        maxWidth: 500,
+        height: "auto",
+        marginRight: 10,
+        marginLeft: 10,
+		padding: 10,
+		margin: "35%",
+		textAlign: "center"
+	}
   })
 
 
