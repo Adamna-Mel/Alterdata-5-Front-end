@@ -1,17 +1,44 @@
-import React, { Component } from "react";
-import robo from "../../assets/3-3.png";
+import React, { useState } from "react";
+import robo from "../../assets/3-4.png";
 import "./estilo.css";
-class Robo extends Component {
 
-    render(){
-        return(
-            <div className="main-image">
-                <div>
-                  <img src={robo} style={{width:600}}/>
-                </div>
-              </div>
-            );
-      }
-    }
-      
-      export default Robo;
+export default function Robo() {
+  const [modal, setModal] = useState(false);
+
+  const toggleModal = () => {
+    setModal(!modal);
+  };
+
+  if(modal) {
+    document.body.classList.add('active-modal')
+  } else {
+    document.body.classList.remove('active-modal')
+  }
+
+  return (
+    <>
+
+      <img src={robo} onClick={toggleModal} className="btn-modal"/>
+    
+      {modal && (
+        <div className="modal">
+          <div onClick={toggleModal} className="overlay"></div>
+          <div className="modal-content">
+            <ul className="text">
+            <li>Adicione Usuários; </li>
+            <li>Crie sua Equipe; </li>
+            <li>Informe o Status dos integrantes; </li>
+            <li>Defina o cargo dos integrantes; </li>
+            <li>Filtre os integrantes;</li>
+            <li>Remova Usuários</li>
+            </ul>
+            
+            <button className="fechar-modal" onClick={toggleModal}>
+              Fechar
+            </button>
+          </div>
+        </div>
+      )}
+    </>
+  );
+}
