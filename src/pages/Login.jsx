@@ -30,9 +30,8 @@ export default function Login() {
 		auth.fazerLogin(novo)
       .then((res) => {
 			    console.log(res);
-          auth.guardarToken(res.data.token);
+          auth.guardarToken(res.data.token,res.data.usuario.id);
           alert("Usuário logado!");
-          history.push('/');
 		})
       .catch((e)=> {
           alert("Usuário n pode ser logado!");

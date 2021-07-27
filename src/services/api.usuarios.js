@@ -9,7 +9,7 @@ const obterUsuarios = async () => {
 	}
 };
 
-const obterUsuariosPorId = async (id) => {
+const obterUsuarioPorId = async (id) => {
 	try {
 		const { data } = await api.get(`usuarios/${id}`);
 		return data;
@@ -79,7 +79,7 @@ const editarTime = async (id, idTime) => {
 export default {
 	obterUsuarios,
 	obterUsuariosPorLogin,
-	obterUsuariosPorId,
+	obterUsuarioPorId,
 	adicionarUsuario,
 	atualizarUsuario,
 	apagarUsuario,

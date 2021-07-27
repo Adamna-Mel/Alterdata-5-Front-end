@@ -2,8 +2,9 @@ import api from "./api";
 
 const isAuthenticated = () => localStorage.getItem("@token-jwt") !== null
 const getToken = () => localStorage.getItem("@token-jwt");
-const guardarToken = (token) => {
+const guardarToken = (token,id) => {
 	localStorage.setItem("@token-jwt", token);
+	localStorage.setItem("@user-id", id);
 };
 const logout = () => localStorage.removeItem("@token-jwt");
 const fazerLogin = async (credenciais) => {
