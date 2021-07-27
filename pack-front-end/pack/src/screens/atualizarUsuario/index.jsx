@@ -29,7 +29,7 @@ function AtualizarUsuario(props) {
   let history = useHistory();
 
   const home = () => {
-    history.push("/");
+    history.goBack();
     props.chamarAPI();
   };
 
@@ -115,7 +115,14 @@ function AtualizarUsuario(props) {
   return (
     <form className={classes.root}>
       <Card className={classes.card}>
-        <div>
+        <div
+          style={{
+            alignSelf: "center",
+            flexDirection: "column",
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
           <Snackbar
             open={openAlert}
             autoHideDuration={6000}
@@ -137,68 +144,71 @@ function AtualizarUsuario(props) {
           </Snackbar>
 
           <h1 style={{ textAlign: "center" }}>Editar Usuário</h1>
-          <TextField
-            required
-            id="filled-required1"
-            label="Nome (MAX. 20)"
-            defaultValue=""
-            variant="filled"
-            onChange={(e) => setNome(e.target.value)}
-            value={nome}
-            type="text"
-            inputProps={{ maxLength: 20 }}
-          />
+          <div
+            style={{
+              alignSelf: "center",
+              flexDirection: "column",
+              display: "flex",
+              justifyContent: "center",
+            }}
+          >
+            <TextField
+              required
+              id="filled-required1"
+              label="Nome (MAX. 20)"
+              defaultValue=""
+              variant="filled"
+              onChange={(e) => setNome(e.target.value)}
+              value={nome}
+              type="text"
+              inputProps={{ maxLength: 20 }}
+            />
 
-          <TextField
-            required
-            id="filled-required2"
-            label="Login"
-            defaultValue=""
-            variant="filled"
-            onChange={(e) => setLogin(e.target.value)}
-            value={login}
-            type="text"
-          />
-        </div>
+            <TextField
+              required
+              id="filled-required2"
+              label="Login"
+              defaultValue=""
+              variant="filled"
+              onChange={(e) => setLogin(e.target.value)}
+              value={login}
+              type="text"
+            />
 
-        <div>
-          <TextField
-            required
-            id="filled-required3"
-            label="Senha"
-            defaultValue=""
-            variant="filled"
-            onChange={(e) => setSenha(e.target.value)}
-            value={senha}
-            type="password"
-          />
+            <TextField
+              required
+              id="filled-required3"
+              label="Senha"
+              defaultValue=""
+              variant="filled"
+              onChange={(e) => setSenha(e.target.value)}
+              value={senha}
+              type="password"
+            />
 
-          <TextField
-            id="filled-required4"
-            label="Status (MAX. 25)"
-            defaultValue=""
-            variant="filled"
-            onChange={(e) => setStatus(e.target.value)}
-            value={status}
-            type="text"
-            inputProps={{ maxLength: 25 }}
-          />
-        </div>
+            <TextField
+              id="filled-required4"
+              label="Status (MAX. 25)"
+              defaultValue=""
+              variant="filled"
+              onChange={(e) => setStatus(e.target.value)}
+              value={status}
+              type="text"
+              inputProps={{ maxLength: 25 }}
+            />
 
-        <div>
-          <TextField
-            id="filled-required5"
-            label="Cargo (MAX. 12)"
-            defaultValue=""
-            variant="filled"
-            onChange={(e) => setCargo(e.target.value)}
-            value={cargo}
-            type="text"
-            inputProps={{ maxLength: 12 }}
-          />
-        </div>
+            <TextField
+              id="filled-required5"
+              label="Cargo (MAX. 12)"
+              defaultValue=""
+              variant="filled"
+              onChange={(e) => setCargo(e.target.value)}
+              value={cargo}
+              type="text"
+              inputProps={{ maxLength: 12 }}
+            />
+          </div>
 
-        <div className="botoes">
           <Button
             onClick={handleClick}
             variant="contained"
@@ -207,7 +217,7 @@ function AtualizarUsuario(props) {
           >
             Enviar
           </Button>
-          {/* <Link style={{ textDecoration: 'none', display: 'flex', justifyContent: 'center' }} to="/" refresh="true"> */}
+
           <Button
             variant="contained"
             color="secondary"
@@ -216,7 +226,6 @@ function AtualizarUsuario(props) {
           >
             Voltar
           </Button>
-          {/* </Link> */}
         </div>
       </Card>
     </form>
@@ -242,7 +251,7 @@ const useStyles = makeStyles({
     marginRight: 10,
     marginLeft: 10,
     padding: 10,
-    margin: "35%",
+    margin: "10%",
     textAlign: "center",
   },
 });

@@ -10,16 +10,16 @@ import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
-import LogoAlterdata from "../../assets/1.svg";
+import LogoAlterdata from "../../assets/alterdata.svg";
 import { createTheme, ThemeProvider } from "@material-ui/core/styles";
 
-import { useHistory } from "react-router";
+import { useHistory, useParams } from "react-router";
 
 import SvgColor from "react-svg-color";
 
 import auth from "../../services/auth";
 
-export default function SignIn() {
+export default function Login() {
   const history = useHistory();
 
   const [login, setLogin] = React.useState("");
@@ -31,11 +31,22 @@ export default function SignIn() {
       senha,
     };
     console.log(novo);
-    auth.fazerLogin(novo).then((res) => {
-      console.log(res);
-
-      // res.status === 200 ? history.push(`/`) : alert(res.data.mensagem);
-    });
+    auth
+      .fazerLogin(novo)
+      .then((res) => {
+        console.log(res);
+        alert("Usuário logado com sucesso");
+        auth.guardarToken(res.data.token);
+        /*
+      res.status === 200
+        ? history.push(`/inicio/${res.data.usuario.id}`)
+        : alert(res.data.mensagem);
+      */
+      })
+      .catch((e) => {
+        console.log(e);
+        alert("Usuário não pode ser logado! ");
+      });
   };
 
   const classes = useStyles();
@@ -45,7 +56,7 @@ export default function SignIn() {
       <CssBaseline />
       <div className={classes.paper}>
         <SvgColor svg={LogoAlterdata} width={400} colors={["#0083c1"]} />
-        <Typography component="h1" variant="h5" color="Primary">
+        <Typography component="h1" variant="h5" color="primary">
           Controle de Equipe - Alterdata Login
         </Typography>
         <form className={classes.form} noValidate>
@@ -85,6 +96,7 @@ export default function SignIn() {
             className={classes.submit}
             color="primary"
             onClick={handleClick}
+            style={{ margin: 5 }}
           >
             Logar
           </Button>

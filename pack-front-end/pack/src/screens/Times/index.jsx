@@ -1,8 +1,9 @@
 import React from "react";
 
 import { makeStyles } from "@material-ui/core/styles";
+import Card from "@material-ui/core/Card";
 
-import Card from "../../components/UserCard";
+import UserCard from "../../components/UserCard";
 
 import apiEquipe from "../../services/api.times";
 
@@ -10,10 +11,10 @@ function Time(props) {
   const classes = useStyles();
 
   return (
-    <div className={classes.card}>
+    <div className={classes.userCard}>
       {props.usuarios != undefined ? (
         props.usuarios.map((usuario) => (
-          <Card
+          <UserCard
             key={usuario.id}
             id={usuario.id}
             name={usuario.nome}
@@ -23,20 +24,33 @@ function Time(props) {
           />
         ))
       ) : (
-        <h1>Time Vazio</h1>
+        <Card>
+          <h1>Time Vazio</h1>
+        </Card>
       )}
     </div>
   );
 }
 
 const useStyles = makeStyles({
-  card: {
+  userCard: {
     display: "flex",
     flexDirection: "row",
     flexWrap: "wrap",
     justifyContent: "center",
     alignItems: "center",
     margin: "auto",
+  },
+  card: {
+    justifyContent: "center",
+    borderRadius: 20,
+    maxWidth: 500,
+    height: "auto",
+    marginRight: 10,
+    marginLeft: 10,
+    padding: 10,
+    margin: "10%",
+    textAlign: "center",
   },
 });
 

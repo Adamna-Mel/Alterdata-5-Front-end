@@ -21,7 +21,7 @@ function EditarStatus(props) {
 
   const history = useHistory();
   const home = () => {
-    history.push("/");
+    history.goBack();
     props.chamarAPI();
   };
 
@@ -59,27 +59,43 @@ function EditarStatus(props) {
   return (
     <form className={classes.root}>
       <Card className={classes.card}>
-        <Snackbar
-          open={openAlert}
-          autoHideDuration={6000}
-          onClose={handleCloseAlert}
+        <div
+          style={{
+            alignSelf: "center",
+            flexDirection: "column",
+            display: "flex",
+            justifyContent: "center",
+          }}
         >
-          <Alert onClose={handleCloseAlert} severity="success">
-            Status atualizado com sucesso!!
-          </Alert>
-        </Snackbar>
+          <Snackbar
+            open={openAlert}
+            autoHideDuration={6000}
+            onClose={handleCloseAlert}
+          >
+            <Alert onClose={handleCloseAlert} severity="success">
+              Status atualizado com sucesso!!
+            </Alert>
+          </Snackbar>
 
-        <h1 style={{ textAlign: "center" }}>Editar status</h1>
-        <TextField
-          id="filled-required"
-          label="Status (MAX: 25)"
-          defaultValue=""
-          variant="filled"
-          onChange={(e) => setStatus(e.target.value)}
-          value={status}
-          inputProps={{ maxLength: 25 }}
-        />
-        <div>
+          <h1 style={{ textAlign: "center" }}>Editar status</h1>
+          <div
+            style={{
+              alignSelf: "center",
+              flexDirection: "column",
+              display: "flex",
+              justifyContent: "center",
+            }}
+          >
+            <TextField
+              id="filled-required"
+              label="Status (MAX: 25)"
+              defaultValue=""
+              variant="filled"
+              onChange={(e) => setStatus(e.target.value)}
+              value={status}
+              inputProps={{ maxLength: 25 }}
+            />
+          </div>
           <Button
             onClick={handleChange}
             variant="contained"
@@ -107,7 +123,7 @@ const useStyles = makeStyles({
     margin: 5,
   },
   root: {
-    maxWidth: 600,
+    maxWidth: 300,
     "& .MuiTextField-root": {
       margin: 5,
       width: "25ch",

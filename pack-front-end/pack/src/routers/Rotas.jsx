@@ -1,5 +1,11 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useHistory,
+} from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 
@@ -35,10 +41,6 @@ function Rotas(props) {
       {/* <TeamCard/> */}
 
       <Switch>
-        <Route path={"/login"}>
-          <Login />
-        </Route>
-
         <Route path={"/editar-status/:id"}>
           <EditarStatus chamarAPI={props.chamarAPI} />
         </Route>
@@ -61,6 +63,10 @@ function Rotas(props) {
 
         <Route path={"/apagar/:id"}>
           <Apagar chamarAPI={props.chamarAPI} />
+        </Route>
+
+        <Route path={"/login"}>
+          <Login />
         </Route>
 
         <Route path={"/"}>

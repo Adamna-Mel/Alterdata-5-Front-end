@@ -50,7 +50,7 @@ function Alert(props) {
 
 function EditarPapel(props) {
   //#region Icones
-  const [iconeTime, setIconeTime] = useState(Luchador);
+  const [icone, setIcone] = useState(Luchador);
   const [primaryColor, setPrimaryColor] = useState("#fff");
   const [showPrimaryColorPicker, setShowPrimaryColorPicker] = useState(false);
   const [secondaryColor, setSecondaryColor] = useState("#000");
@@ -87,7 +87,7 @@ function EditarPapel(props) {
   function IconeAtual() {
     return (
       <SvgColor
-        svg={iconeTime}
+        svg={icone}
         width={200}
         colors={[secondaryColor, primaryColor]}
       />
@@ -109,7 +109,7 @@ function EditarPapel(props) {
 
   const history = useHistory();
   const home = () => {
-    history.push("/");
+    history.goBack();
     props.chamarAPI();
   };
 
@@ -205,7 +205,6 @@ function EditarPapel(props) {
         <TextField
           id="filled-required"
           label="Criar Cargo (MAX. 12)"
-          defaultValue=""
           variant="filled"
           onChange={(e) => setNome(e.target.value)}
           value={nome}
@@ -230,7 +229,7 @@ function EditarPapel(props) {
               {showListaIcones && (
                 <div className={classes.icones}>
                   {listaIcones.map((icone) => (
-                    <div onClick={() => setIconeTime(icone)}>
+                    <div onClick={() => setIcone(icone)}>
                       <SvgColor
                         svg={icone}
                         width={40}
@@ -244,7 +243,7 @@ function EditarPapel(props) {
             <div className={classes.buttons}>
               <Button
                 variant="contained"
-                className={classes.blueButton}
+                className={classes.button}
                 color="primary"
                 onClick={() =>
                   setShowPrimaryColorPicker(
@@ -270,7 +269,7 @@ function EditarPapel(props) {
             <div className={classes.buttons}>
               <Button
                 variant="contained"
-                className={classes.blueButton}
+                className={classes.button}
                 color="primary"
                 onClick={() =>
                   setShowSecondaryColorPicker(
@@ -321,7 +320,7 @@ function EditarPapel(props) {
             aria-controls="simple-menu"
             aria-haspopup="true"
             onClick={handleClick2}
-            className={classes.blueButton}
+            className={classes.button}
           >
             Escolher cargo já existente
           </Button>

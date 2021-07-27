@@ -28,7 +28,7 @@ function EditarTime(props) {
   const history = useHistory();
 
   const home = () => {
-    history.push("/");
+    history.goBack();
     props.chamarAPI();
   };
 

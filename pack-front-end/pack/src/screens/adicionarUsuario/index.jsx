@@ -25,8 +25,8 @@ function AdicionarUsuario(props) {
 
   const history = useHistory();
   const home = () => {
-    history.push("/");
-    // props.chamarAPI();
+    history.goBack();
+    props.chamarAPI();
   };
 
   //Snackbar/Alert
@@ -103,7 +103,14 @@ function AdicionarUsuario(props) {
   return (
     <form className={classes.root}>
       <Card className={classes.card}>
-        <div>
+        <div
+          style={{
+            alignSelf: "center",
+            flexDirection: "column",
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
           <Snackbar
             open={openAlert}
             autoHideDuration={6000}
@@ -124,56 +131,58 @@ function AdicionarUsuario(props) {
             </Alert>
           </Snackbar>
 
-          <h1 style={{ textAlign: "center" }}>Adicionar usuário</h1>
-          <TextField
-            required
-            id="filled-required"
-            label="Nome (MAX. 20)"
-            defaultValue=""
-            variant="filled"
-            onChange={(e) => setNome(e.target.value)}
-            value={nome}
-            type="text"
-            inputProps={{ maxLength: 20 }}
-          />
+          <h1>Adicionar usuário</h1>
+          <div
+            style={{
+              alignSelf: "center",
+              flexDirection: "column",
+              display: "flex",
+              justifyContent: "center",
+            }}
+          >
+            <TextField
+              required
+              id="filled-required"
+              label="Nome (MAX. 20)"
+              defaultValue=""
+              variant="filled"
+              onChange={(e) => setNome(e.target.value)}
+              value={nome}
+              type="text"
+              inputProps={{ maxLength: 20 }}
+            />
+            <TextField
+              required
+              id="filled-required"
+              label="Login"
+              defaultValue=""
+              variant="filled"
+              onChange={(e) => setLogin(e.target.value)}
+              value={login}
+              type="text"
+            />
+            <TextField
+              required
+              id="filled-required"
+              label="Senha"
+              defaultValue=""
+              variant="filled"
+              onChange={(e) => setSenha(e.target.value)}
+              value={senha}
+              type="password"
+            />
 
-          <TextField
-            required
-            id="filled-required"
-            label="Login"
-            defaultValue=""
-            variant="filled"
-            onChange={(e) => setLogin(e.target.value)}
-            value={login}
-            type="text"
-          />
-        </div>
-
-        <div>
-          <TextField
-            required
-            id="filled-required"
-            label="Senha"
-            defaultValue=""
-            variant="filled"
-            onChange={(e) => setSenha(e.target.value)}
-            value={senha}
-            type="password"
-          />
-
-          <TextField
-            id="filled-required"
-            label="Status (MAX. 25)"
-            defaultValue=""
-            variant="filled"
-            onChange={(e) => setStatus(e.target.value)}
-            value={status}
-            type="text"
-            inputProps={{ maxLength: 25 }}
-          />
-        </div>
-
-        <div>
+            <TextField
+              id="filled-required"
+              label="Status (MAX. 25)"
+              defaultValue=""
+              variant="filled"
+              onChange={(e) => setStatus(e.target.value)}
+              value={status}
+              type="text"
+              inputProps={{ maxLength: 25 }}
+            />
+          </div>
           <Button
             onClick={handleClick}
             variant="contained"
@@ -198,7 +207,7 @@ function AdicionarUsuario(props) {
 }
 
 const useStyles = makeStyles({
-  blueButton: {
+  button: {
     margin: 5,
   },
   root: {
@@ -216,7 +225,7 @@ const useStyles = makeStyles({
     marginRight: 10,
     marginLeft: 10,
     padding: 10,
-    margin: "35%",
+    margin: "10%",
     textAlign: "center",
   },
 });

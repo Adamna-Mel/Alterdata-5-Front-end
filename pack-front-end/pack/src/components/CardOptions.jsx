@@ -47,28 +47,28 @@ function CardOptions(props) {
         }}
       >
         <MenuItem onClick={handleClose}>
-          <Link to={`atualizar/${props.id}`} className={classes.link}>
+          <Link to={`/atualizar/${props.id}`} className={classes.link}>
             Editar Usuário
           </Link>
         </MenuItem>
         <MenuItem>
-          <Link to={`editar-status/${props.id}`} className={classes.link}>
+          <Link to={`/editar-status/${props.id}`} className={classes.link}>
             Editar Status
           </Link>
         </MenuItem>
         <MenuItem>
-          <Link to={`editar-papel/${props.id}`} className={classes.link}>
+          <Link to={`/editar-papel/${props.id}`} className={classes.link}>
             Editar Cargo
           </Link>
         </MenuItem>
         <MenuItem>
-          <Link to={`editar-time/${props.id}`} className={classes.link}>
+          <Link to={`/editar-time/${props.id}`} className={classes.link}>
             Mudar Time
           </Link>
         </MenuItem>
         {/* <MenuItem>Remover Usuário</MenuItem> */}
         <MenuItem>
-          <Link to={`apagar/${props.id}`} className={classes.link}>
+          <Link to={`/apagar/${props.id}`} className={classes.link}>
             <span className={classes.delete}>Deletar Usuário</span>
           </Link>
         </MenuItem>

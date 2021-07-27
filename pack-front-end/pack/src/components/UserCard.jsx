@@ -34,6 +34,7 @@ import Cancel from "../assets/icons/cancel.svg";
 import Database from "../assets/icons/database.svg";
 
 import CardOptions from "./CardOptions";
+import StatusBar from "./StatusBar";
 
 function UserCard(props) {
   const classes = useStyles();

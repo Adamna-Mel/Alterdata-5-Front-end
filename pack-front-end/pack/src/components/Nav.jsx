@@ -12,8 +12,9 @@ import MenuIcon from "@material-ui/icons/Menu";
 import SearchIcon from "@material-ui/icons/Search";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import MoreIcon from "@material-ui/icons/MoreVert";
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import SvgColor from "react-svg-color";
-import LogoAlterdata from "../assets/1.svg";
+import LogoAlterdata from "../assets/alterdata.svg";
 
 import { createTheme } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/core";
@@ -21,6 +22,7 @@ import { ThemeProvider } from "@material-ui/core";
 import Rotas from "../routers/Rotas";
 
 import api from "../services/api.usuarios";
+import auth from "../services/auth";
 
 export default function PrimarySearchAppBar() {
   const classes = useStyles();
@@ -58,6 +60,7 @@ export default function PrimarySearchAppBar() {
       onClose={handleMenuClose}
     >
       <MenuItem onClick={handleMenuClose}>Usuário</MenuItem>
+      <MenuItem onClick={auth.logoutUsuario}>Logout</MenuItem>
     </Menu>
   );
   //MENU
@@ -93,6 +96,16 @@ export default function PrimarySearchAppBar() {
           color="inherit"
         >
           <AccountCircle />
+        </IconButton>
+      </MenuItem>
+      <MenuItem onClick={handleProfileMenuOpen}>
+        <IconButton
+          aria-label="account of current user"
+          aria-controls="primary-search-account-menu"
+          aria-haspopup="true"
+          color="inherit"
+        >
+          <ExitToAppIcon />
         </IconButton>
       </MenuItem>
     </Menu>
