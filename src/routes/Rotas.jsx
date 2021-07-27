@@ -1,16 +1,23 @@
-import React from 'react';
+import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import Login from '../pages/Login'; 
+import Login from "../pages/Login";
+import Principal from "../pages/Principal";
+import NavBar from "../components/NavBar/NavBar";
+import ListaDeUsuarios from "../pages/ListaDeUsuarios";
 
-export default function Rotas(){
-  return(
-    <Router>
-            <Switch>
-                <Route path={"/login"} component={Login}/>
-                <Route path={"/"} component={Principal}/>
-            </Switch>
-    </Router>
-  );
+export default function Rotas() {
+	return (
+		<Router>
+			<NavBar />
+			<Switch>
+				<Route path={"/login"}>
+					<Login />
+				</Route>
+
+				<Route path={"/"}>
+					<Principal />
+				</Route>
+			</Switch>
+		</Router>
+	);
 }
-    
-    

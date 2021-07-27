@@ -27,15 +27,17 @@ export default function Login() {
 			senha,
 		};
 
-		auth.fazerLogin(novo)
-      .then((res) => {
-			    console.log(res);
-          auth.guardarToken(res.data.token,res.data.usuario.id);
-          alert("Usuário logado!");
-		})
-      .catch((e)=> {
-          alert("Usuário n pode ser logado!");
-    })
+		auth
+			.fazerLogin(novo)
+			.then((res) => {
+				console.log(res);
+				auth.guardarToken(res.data.token, res.data.usuario.id);
+				alert("Usuário logado!");
+				history.push("/");
+			})
+			.catch((e) => {
+				alert("Usuário n pode ser logado!");
+			});
 	};
 
 	const classes = useStyles();
