@@ -8,6 +8,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
+import Paper from "@material-ui/core/Paper";
 
 //SVGColor
 import SvgColor from "react-svg-color";
@@ -61,7 +62,7 @@ function ListaDeUsuarios() {
   return (
     <>
       <div>
-        <div className={classes.header}>
+        <Paper elevation={0} className={classes.header}>
           <SvgColor svg={Ninja} width={90} colors={["#000000", "#0083C1"]} />
           <Typography className={classes.teamName}>{nomeDaEquipe}</Typography>
           <IconButton
@@ -72,7 +73,7 @@ function ListaDeUsuarios() {
           >
             <MoreVertIcon />
           </IconButton>
-        </div>
+        </Paper>
         <Menu
           id="simple-menu"
           anchorEl={anchorEl}
@@ -94,7 +95,7 @@ function ListaDeUsuarios() {
               history.push("apagar-equipe", idEquipe);
             }}
           >
-            Apagar
+            <span style={{ color: "red" }}>Apagar</span>
           </MenuItem>
         </Menu>
       </div>
@@ -135,6 +136,9 @@ const useStyles = makeStyles({
     width: 400,
     marginTop: 15,
     margin: "auto",
+    borderRadius: 20,
+    padding: 10,
+    backgroundColor: "#00000000",
   },
   teamName: {
     marginLeft: 10,
