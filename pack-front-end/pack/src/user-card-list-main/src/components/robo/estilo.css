@@ -4,9 +4,9 @@ body.active-modal {
 
 .robo-modal {
     display: block;
-    margin-left: 76%;
-    width: 22%;
-    margin-top: 8%;
+    margin-left: 82%;
+    width: 250px;
+    margin-bottom: 1%;
     position: fixed;
     bottom: 0;
 }
@@ -28,14 +28,16 @@ body.active-modal {
 .modal-conteudo {
     position: absolute;
     top: 40%;
-    left: 85%;
+    left: 87%;
     transform: translate(-50%, -50%);
-    line-height: 2.0;
+    line-height: 1.6;
     background: #dcf1ff;
-    padding: 15px 20px;
-    border-radius: 3px;
+    padding: 5px 5px;
+    border-radius: 15px;
+    border-color: rgb(4, 4, 104);
+    border-style: solid;
     max-width: 600px;
-    min-width: 300px;
+    min-width: 290px;
     opacity: 0.9;
 }
 
