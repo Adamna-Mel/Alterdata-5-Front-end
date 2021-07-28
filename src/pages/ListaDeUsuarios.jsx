@@ -14,8 +14,32 @@ import Paper from "@material-ui/core/Paper";
 import SvgColor from "react-svg-color";
 
 //ASSETS
-//icons
+//#region Icones
+import CrystalShine from "../assets/icons/crystal-shine.svg";
+import BatMask from "../assets/icons/bat-mask.svg";
+import Clockwork from "../assets/icons/clockwork.svg";
+import Controller from "../assets/icons/controller.svg";
+import Daggers from "../assets/icons/daggers.svg";
+import Fireball from "../assets/icons/fireball.svg";
+import Hades from "../assets/icons/hades.svg";
+import MineralHeart from "../assets/icons/mineral-heart.svg";
+import MoonBat from "../assets/icons/moon-bats.svg";
+import Mouse from "../assets/icons/mouse.svg";
+import NightSky from "../assets/icons/night-sky.svg";
 import Ninja from "../assets/icons/ninja.svg";
+import NinjaCloud from "../assets/icons/ninja-cloud.svg";
+import Palette from "../assets/icons/palette.svg";
+import PawHeart from "../assets/icons/paw-heart.svg";
+import PencilBrush from "../assets/icons/pencil-brush.svg";
+import SharkBite from "../assets/icons/shark-bite.svg";
+import Shuriken from "../assets/icons/shuriken.svg";
+import Sly from "../assets/icons/sly.svg";
+import Smartphone from "../assets/icons/smartphone.svg";
+import Cancel from "../assets/icons/cancel.svg";
+import Database from "../assets/icons/database.svg";
+import Luchador from "../assets/icons/luchador.svg";
+
+//#endregion
 
 //COMPONENTS
 import UserCard from "../components/UserCard/UserCard";
@@ -29,6 +53,9 @@ function ListaDeUsuarios() {
 
   const [idEquipe, setIdEquipe] = useState("");
   const [nomeDaEquipe, setNomeDaEquipe] = useState("");
+  const [corPrimaria, setCorPrimaria] = useState("");
+  const [corSecundaria, setCorSecundaria] = useState("");
+  const [iconeEquipe, setIconeEquipe] = useState("");
   const [usuarios, setUsuarios] = useState([]);
   const [anchorEl, setAnchorEl] = useState(null);
   const history = useHistory();
@@ -49,8 +76,13 @@ function ListaDeUsuarios() {
         setIdEquipe(res.equipe.idEquipe);
 
         apiEquipes.obterEquipesPorId(res.equipe.idEquipe).then((res) => {
+          console.log(res.icone);
+          console.log(Luchador);
           setUsuarios(res.membros);
           setNomeDaEquipe(res.nome);
+          setCorPrimaria(res.cor1);
+          setCorSecundaria(res.cor2);
+          setIconeEquipe(res.icone);
         });
       })
       .catch((e) => {
@@ -58,12 +90,22 @@ function ListaDeUsuarios() {
       });
   }, []);
 
+  function IconeDoTime() {
+    return (
+      <SvgColor
+        svg={iconeEquipe}
+        width={90}
+        colors={[corPrimaria, corSecundaria]}
+      />
+    );
+  }
+
   const classes = useStyles();
   return (
     <>
       <div>
         <Paper elevation={0} className={classes.header}>
-          <SvgColor svg={Ninja} width={90} colors={["#000000", "#0083C1"]} />
+          <IconeDoTime />
           <Typography className={classes.teamName}>{nomeDaEquipe}</Typography>
           <IconButton
             aria-label="more"
