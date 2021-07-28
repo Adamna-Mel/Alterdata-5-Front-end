@@ -4,6 +4,7 @@ import Login from "../pages/Login";
 import Principal from "../pages/Principal";
 import NavBar from "../components/NavBar/NavBar";
 import ListaDeUsuarios from "../pages/ListaDeUsuarios";
+import Footer from "../components/Footer/Footer"
 
 import { createTheme } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/core";
@@ -57,6 +58,7 @@ function Rotas() {
           </Switch>
         </div>
       </Router>
+      <Footer />
     </ThemeProvider>
   );
 }
