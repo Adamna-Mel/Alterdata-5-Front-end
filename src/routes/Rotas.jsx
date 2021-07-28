@@ -1,14 +1,17 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+
+//MATERIAL-UI
+import { createTheme } from "@material-ui/core/styles";
+import { ThemeProvider } from "@material-ui/core";
+
+//COMPONENTS
 import Login from "../pages/Login";
 import Principal from "../pages/Principal";
 import NavBar from "../components/NavBar/NavBar";
 import ListaDeUsuarios from "../pages/ListaDeUsuarios";
 import Footer from "../components/Footer/Footer";
 import TeamStepper from "../components/CreateTeam/TeamStepper/TeamStepper";
-
-import { createTheme } from "@material-ui/core/styles";
-import { ThemeProvider } from "@material-ui/core";
 
 function Rotas() {
   const [darkMode, setDarkMode] = useState(false);

@@ -1,12 +1,20 @@
 import React from "react";
 
+//MATERIAL-UI
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import Avatar from "@material-ui/core/Avatar";
+
+//SVGColor
 import SvgColor from "react-svg-color";
 
+//COMPONENTS
+import CardOptions from "./CardOptions/CardOptions";
+import StatusBar from "../StatusBar/StatusBar";
+
+//ASSETS
 //Icones
 import CrystalShine from "../../assets/icons/crystal-shine.svg";
 import CoffeeCup from "../../assets/icons/coffee-cup.svg";
@@ -33,45 +41,42 @@ import Smartphone from "../../assets/icons/smartphone.svg";
 import Cancel from "../../assets/icons/cancel.svg";
 import Database from "../../assets/icons/database.svg";
 
-import CardOptions from "./CardOptions/CardOptions";
-import StatusBar from "../StatusBar/StatusBar";
-
 function UserCard(props) {
-	const classes = useStyles();
-	function RoleAvatar(props) {
-		if (props.icone == "Sem cargo") {
-			return (
-				<SvgColor svg={Cancel} width={30} colors={["#cf1527", "#000000"]} />
-			);
-		} else if (props.icone == "FrontEnd") {
-			return (
-				<SvgColor svg={Palette} width={30} colors={["#FFFFFF", "#e8dbb7"]} />
-			);
-		} else if (props.icone == "BackEnd") {
-			return (
-				<SvgColor svg={Database} width={30} colors={["#787551", "#dbca12"]} />
-			);
-		} else {
-			return (
-				<SvgColor svg={Ninja} width={30} colors={["#000000", "#0083C1"]} />
-			);
-		}
-	}
-	return (
-		<div>
-			<Card className={classes.card} color="default">
-				<CardContent className={classes.cardContent}>
-					<div className={classes.cardTop}>
-						<Avatar
-							alt="Perfil"
-							src="src/assets/profile.jpg"
-							className={classes.profileImage}
-						/>
-						<CardOptions id={props.id} />
-					</div>
-					<Typography className={classes.userName}>{props.name}</Typography>
-					<Typography className={classes.userStatus}>
-            <StatusBar 
+  const classes = useStyles();
+  function RoleAvatar(props) {
+    if (props.icone == "Sem cargo") {
+      return (
+        <SvgColor svg={Cancel} width={30} colors={["#cf1527", "#000000"]} />
+      );
+    } else if (props.icone == "FrontEnd") {
+      return (
+        <SvgColor svg={Palette} width={30} colors={["#FFFFFF", "#e8dbb7"]} />
+      );
+    } else if (props.icone == "BackEnd") {
+      return (
+        <SvgColor svg={Database} width={30} colors={["#787551", "#dbca12"]} />
+      );
+    } else {
+      return (
+        <SvgColor svg={Ninja} width={30} colors={["#000000", "#0083C1"]} />
+      );
+    }
+  }
+  return (
+    <div>
+      <Card className={classes.card} color="default">
+        <CardContent className={classes.cardContent}>
+          <div className={classes.cardTop}>
+            <Avatar
+              alt="Perfil"
+              src="src/assets/profile.jpg"
+              className={classes.profileImage}
+            />
+            <CardOptions id={props.id} />
+          </div>
+          <Typography className={classes.userName}>{props.name}</Typography>
+          <Typography className={classes.userStatus}>
+            <StatusBar
               id={props.id}
               status={props.status}
               className={classes.UserStatus}

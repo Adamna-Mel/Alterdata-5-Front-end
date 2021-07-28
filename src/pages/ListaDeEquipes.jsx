@@ -1,9 +1,13 @@
 import React from "react";
 //import { Link, useParams } from "react-router-dom";
 
+//MATERIAL-UI
 import { makeStyles } from "@material-ui/core/styles";
 
+//COMPONENTS
 import TeamCard from "../components/TeamCard/TeamCard";
+
+//SERVICES
 import api from "../services/api.equipes";
 import apiUsuarios from "../services/api.usuarios";
 

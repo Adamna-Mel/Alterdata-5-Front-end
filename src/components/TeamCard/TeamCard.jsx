@@ -1,14 +1,17 @@
 import React from "react";
 
+//MATERIAL-UI
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 
+//SVGColor
 import SvgColor from "react-svg-color";
 
-//Icones
+//ASSETS
+//icons
 import CrystalShine from "../../assets/icons/crystal-shine.svg";
 import CoffeeCup from "../../assets/icons/coffee-cup.svg";
 import FireExtinguisher from "../../assets/icons/fire-extinguisher.svg";

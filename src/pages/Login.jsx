@@ -1,21 +1,26 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
+
+//MATERIAL-UI
+import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Checkbox from "@material-ui/core/Checkbox";
 import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
-import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
-import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
-import LogoAlterdata from "../assets/alterdata.svg";
-import { useHistory } from "react-router-dom";
-import SvgColor from "react-svg-color";
-import auth from "../services/auth";
 import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";
+
+//SVGColor
+import SvgColor from "react-svg-color";
+
+//ASSETS
+import LogoAlterdata from "../assets/alterdata.svg";
+
+//SERVICES
+import auth from "../services/auth";
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -89,7 +94,7 @@ export default function Login() {
       <CssBaseline />
       <Snackbar
         open={openAlert}
-        autoHideDuration={6000}
+        autoHideDuration={3000}
         onClose={handleCloseAlert}
       >
         <Alert onClose={handleCloseAlert} severity="success">
@@ -98,7 +103,7 @@ export default function Login() {
       </Snackbar>
       <Snackbar
         open={openAlertError}
-        autoHideDuration={6000}
+        autoHideDuration={4000}
         onClose={handleCloseAlertError}
       >
         <Alert onClose={handleCloseAlertError} severity="error">

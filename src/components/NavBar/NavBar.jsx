@@ -1,5 +1,9 @@
 import React, { useState } from "react";
+
+//MATERIAL-UI
 import { makeStyles } from "@material-ui/core/styles";
+import { createTheme } from "@material-ui/core/styles";
+import { ThemeProvider } from "@material-ui/core";
 import Switch from "@material-ui/core/Switch";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -12,12 +16,14 @@ import SearchIcon from "@material-ui/icons/Search";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import MoreIcon from "@material-ui/icons/MoreVert";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+
+//SVGColor
 import SvgColor from "react-svg-color";
+
+//ASSETS
 import LogoAlterdata from "../../assets/alterdata.svg";
 
-import { createTheme } from "@material-ui/core/styles";
-import { ThemeProvider } from "@material-ui/core";
-
+//SERVICES
 import auth from "../../services/auth";
 
 function NavBar({ check, change }) {
