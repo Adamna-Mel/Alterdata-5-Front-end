@@ -17,6 +17,7 @@ export default function Principal() {
 
 	const handleLogout = () => {
 		auth.logout();
+		history.push("/login");
 	};
 
 	React.useEffect(() => {

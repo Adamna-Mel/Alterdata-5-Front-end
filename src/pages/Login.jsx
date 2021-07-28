@@ -20,7 +20,7 @@ export default function Login() {
 
 	const [login, setLogin] = React.useState("");
 	const [senha, setSenha] = React.useState("");
-	const handleClick = (e) => {
+	const handleSubmit = (e) => {
 		e.preventDefault();
 		const novo = {
 			login,
@@ -50,7 +50,7 @@ export default function Login() {
 				<Typography component="h1" variant="h5" color="Primary">
 					Controle de Equipe - Alterdata Login
 				</Typography>
-				<form className={classes.form} noValidate>
+				<form className={classes.form} noValidate onSubmit={handleSubmit}>
 					<TextField
 						variant="outlined"
 						margin="normal"
@@ -75,6 +75,7 @@ export default function Login() {
 						autoComplete="current-password"
 						value={senha}
 						onChange={(e) => setSenha(e.target.value)}
+						ke
 					/>
 					{/*<FormControlLabel
             control={<Checkbox value="Lembrar" color="primary" />}
@@ -86,7 +87,6 @@ export default function Login() {
 						variant="contained"
 						className={classes.submit}
 						color="primary"
-						onClick={handleClick}
 					>
 						Logar
 					</Button>
