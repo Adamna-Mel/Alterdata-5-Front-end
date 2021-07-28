@@ -11,6 +11,9 @@ import Paper from "@material-ui/core/Paper";
 import Card from "@material-ui/core/Card";
 import Typography from "@material-ui/core/Typography";
 
+//COMPONENTS
+import Create from "./Create";
+
 function getSteps() {
   return [
     "Crie um nome para o time",
@@ -22,7 +25,7 @@ function getSteps() {
 function getStepContent(step) {
   switch (step) {
     case 0:
-      return `COLOCAR INPUT NOME DO TIME`;
+      return <Create />;
     case 1:
       return "COLOCAR LISTA DE ICONES PARA ESCOLHA";
     case 2:
