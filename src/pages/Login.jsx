@@ -17,7 +17,7 @@ import MuiAlert from "@material-ui/lab/Alert";
 import SvgColor from "react-svg-color";
 
 //ASSETS
-import LogoAlterdata from "../assets/alterdata.svg";
+import LogoAlterdata from "../assets/controledeequipelogo.svg";
 
 //SERVICES
 import auth from "../services/auth";
@@ -112,10 +112,7 @@ export default function Login() {
         </Alert>
       </Snackbar>
       <div className={classes.paper}>
-        <SvgColor svg={LogoAlterdata} width={400} colors={["#0083c1"]} />
-        <Typography component="h1" variant="h5" color="Primary">
-          Controle de Equipe - Alterdata Login
-        </Typography>
+        <SvgColor svg={LogoAlterdata} width={350} colors={["#0083c1"]} />
         <form className={classes.form} noValidate onSubmit={handleSubmit}>
           <TextField
             variant="outlined"
