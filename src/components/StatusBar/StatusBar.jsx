@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 //MATERIAL-UI
 import { ClickAwayListener } from "@material-ui/core";
+import TextField from "@material-ui/core/TextField";
 
 //SERVICES
 import apiUsuarios from "../../services/api.usuarios";
@@ -24,12 +25,17 @@ export default function StatusBar(props) {
       onClickAway={handleClickAway}
     >
       {condicao ? (
-        <input
+        <TextField
           className={props.className}
-          value={status}
-          onChange={(e) => setStatus(e.target.value)}
+          id="filled-required"
+          label="Status"
+          defaultValue=""
           onKeyDown={handleKeyDown}
+          onChange={(e) => setStatus(e.target.value)}
+          value={status}
           type="text"
+          size="small"
+          style={{ marginBottom: 27 }}
         />
       ) : (
         <div
@@ -38,7 +44,7 @@ export default function StatusBar(props) {
             setCondicao(true);
           }}
         >
-          {status}
+          <div style={{ marginBottom: 50 }}>{status}</div>
         </div>
       )}
     </ClickAwayListener>

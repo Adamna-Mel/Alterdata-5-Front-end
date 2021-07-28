@@ -122,7 +122,6 @@ const useStyles = makeStyles({
     alignItems: "center",
   },
   userRole: {
-    marginTop: 50,
     backgroundColor: "#1A2228",
     borderRadius: 20,
     height: 22,
