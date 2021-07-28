@@ -18,6 +18,11 @@ export default function Principal() {
 	}, []);
 
 	return (
-		{temEquipe ? <ListaDeUsuarios/> : <ListaDeEquipes />}
+		<>
+		{auth.isAuthenticated() ? 
+				(temEquipe? <ListaDeUsuarios/> : <ListaDeEquipes/>)
+				: <Login/>
+		}
+		</>
 	);
 }

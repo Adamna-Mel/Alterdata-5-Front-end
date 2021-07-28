@@ -4,7 +4,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
-import Avatar from "@material-ui/core/Avatar";
+import Button from "@material-ui/core/Button";
+
 import SvgColor from "react-svg-color";
 
 //Icones
@@ -33,79 +34,42 @@ import Smartphone from "../../assets/icons/smartphone.svg";
 import Cancel from "../../assets/icons/cancel.svg";
 import Database from "../../assets/icons/database.svg";
 
-import CardOptions from "./CardOptions/CardOptions";
-import StatusBar from "../StatusBar/StatusBar";
-
-function UserCard(props) {
-	const classes = useStyles();
-	function RoleAvatar(props) {
-		if (props.icone == "Sem cargo") {
-			return (
-				<SvgColor svg={Cancel} width={30} colors={["#cf1527", "#000000"]} />
-			);
-		} else if (props.icone == "FrontEnd") {
-			return (
-				<SvgColor svg={Palette} width={30} colors={["#FFFFFF", "#e8dbb7"]} />
-			);
-		} else if (props.icone == "BackEnd") {
-			return (
-				<SvgColor svg={Database} width={30} colors={["#787551", "#dbca12"]} />
-			);
-		} else {
-			return (
-				<SvgColor svg={Ninja} width={30} colors={["#000000", "#0083C1"]} />
-			);
-		}
-	}
-	return (
-		<div>
-			<Card className={classes.card} color="default">
-				<CardContent className={classes.cardContent}>
-					<div className={classes.cardTop}>
-						<Avatar
-							alt="Perfil"
-							src="src/assets/profile.jpg"
-							className={classes.profileImage}
-						/>
-						<CardOptions id={props.id} />
-					</div>
-					<Typography className={classes.userName}>{props.name}</Typography>
-					<Typography className={classes.userStatus}>
-            <StatusBar 
-              id={props.id}
-              status={props.status}
-              className={classes.UserStatus}
-            />
-          </Typography>
-          <CardContent className={classes.userRole}>
-            <RoleAvatar icone={props.role} />
-            <Typography className={classes.userRoleText}>
-              {props.role}
-            </Typography>
+function TeamCard(props) {
+  const classes = useStyles();
+  return (
+    <div>
+      <Card className={classes.card} color="default">
+        <CardContent className={classes.cardContent}>
+          <div className={classes.cardTop}>
+            <SvgColor svg={Ninja} width={50} colors={["#000000", "#0083C1"]} />
+            <Typography className={classes.teamName}>{props.name}</Typography>
+          </div>
+          <CardContent style={{ textAlign: "center" }}>
+            <Button variant="contained" color="primary">
+              Entrar
+            </Button>
           </CardContent>
         </CardContent>
       </Card>
     </div>
   );
 }
-export default UserCard;
+export default TeamCard;
 
 const useStyles = makeStyles({
   card: {
     borderRadius: 20,
     width: 300,
-    height: "auto",
+    height: 150,
     marginRight: 10,
     marginLeft: 10,
     marginTop: 10,
     marginBottom: 10,
+    alignItems: "center",
+    justofyContent: "center",
   },
-  userName: {
-    fontSize: 20,
-    textAlign: "center",
-  },
-  userStatus: {
-    fontSize: 15,
+  teamName: {
+    fontSize: 25,
     textAlign: "center",
   },
   profileImage: {
@@ -115,23 +79,7 @@ const useStyles = makeStyles({
   },
   cardContent: {
     alignItems: "center",
-  },
-  userRole: {
-    marginTop: 50,
-    backgroundColor: "#1A2228",
-    borderRadius: 20,
-    height: 22,
-    width: 200,
-    flex: 1,
-    display: "flex",
-    flexDirection: "row",
-    marginLeft: 18,
-    verticalAlign: "center",
-  },
-  userRoleText: {
-    fontSize: 20,
-    color: "#ffffff",
-    marginLeft: 10,
+    justofyContent: "center",
   },
   cardTop: {
     flex: 1,
