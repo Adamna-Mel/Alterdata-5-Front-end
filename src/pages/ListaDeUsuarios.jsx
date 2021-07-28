@@ -22,17 +22,6 @@ function ListaDeUsuarios() {
 			.catch((e) => {
 				console.log(e);
 			});
-
-		/*apiUsuarios.obterUsuarioPorId(idUsuario).then((res) => {
-          apiEquipes.obterEquipes().then((resposta) => {
-              resposta.map((r) => {
-                  if (r.nome === res.equipe.nome) {
-                      setUsuarios(r.membros);
-                  }
-              });
-          });
-      });
-      */
 	}, []);
 
 	const classes = useStyles();

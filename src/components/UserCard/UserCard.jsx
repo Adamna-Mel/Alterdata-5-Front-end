@@ -63,15 +63,13 @@ function UserCard(props) {
 				<CardContent className={classes.cardContent}>
 					<div className={classes.cardTop}>
 						<Avatar
-							alt="Pefil"
+							alt="Perfil"
 							src="src/assets/profile.jpg"
 							className={classes.profileImage}
 						/>
 						<CardOptions id={props.id} />
 					</div>
 					<Typography className={classes.userName}>{props.name}</Typography>
-					{//<Typography className={classes.userStatus}>{props.status}</Typography>
-					}
 					<Typography className={classes.userStatus}>
             <StatusBar 
               id={props.id}

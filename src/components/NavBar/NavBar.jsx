@@ -64,7 +64,7 @@ export default function PrimarySearchAppBar() {
 			onClose={handleMenuClose}
 		>
 			<MenuItem onClick={handleMenuClose}>Usuário</MenuItem>
-			<MenuItem onClick={auth.logoutUsuario}>Logout</MenuItem>
+			<MenuItem onClick={auth.logout}>Logout</MenuItem>
 		</Menu>
 	);
 	//MENU

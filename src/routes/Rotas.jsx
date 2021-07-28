@@ -10,12 +10,11 @@ export default function Rotas() {
 		<Router>
 			<NavBar />
 			<Switch>
-				<Route path={"/login"}>
-					<Login />
-				</Route>
-
 				<Route path={"/"}>
 					<Principal />
+				</Route>
+				<Route path={"/login"}>
+					<Login />
 				</Route>
 			</Switch>
 		</Router>
