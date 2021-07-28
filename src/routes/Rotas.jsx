@@ -40,7 +40,6 @@ function Rotas() {
   return (
     <ThemeProvider theme={theme}>
       <Router>
-        <NavBar check={darkMode} change={() => setDarkMode(!darkMode)} />
         <div
           style={
             darkMode
@@ -48,6 +47,7 @@ function Rotas() {
               : { backgroundColor: "#F5F3F4", height: "100vh" }
           }
         >
+          <NavBar check={darkMode} change={() => setDarkMode(!darkMode)} />
           <Switch>
             <Route path={"/login"}>
               <Login />

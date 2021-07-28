@@ -98,11 +98,13 @@ function TeamStepper() {
 const useStyles = makeStyles({
   card: {
     borderRadius: 20,
-    width: 800,
+    width: "auto",
+    maxWidth: 800,
     height: "auto",
     marginRight: "auto",
     marginLeft: "auto",
     marginBottom: 10,
+    marginTop: "5%",
   },
   button: {
     marginTop: 5,
