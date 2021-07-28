@@ -4,7 +4,8 @@ import Login from "../pages/Login";
 import Principal from "../pages/Principal";
 import NavBar from "../components/NavBar/NavBar";
 import ListaDeUsuarios from "../pages/ListaDeUsuarios";
-import Footer from "../components/Footer/Footer"
+import Footer from "../components/Footer/Footer";
+import TeamStepper from "../components/CreateTeam/TeamStepper/TeamStepper";
 
 import { createTheme } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/core";
@@ -50,6 +51,10 @@ function Rotas() {
           <Switch>
             <Route path={"/login"}>
               <Login />
+            </Route>
+
+            <Route path={"/criartime"}>
+              <TeamStepper />
             </Route>
 
             <Route path={"/"}>
