@@ -11,7 +11,9 @@ import Principal from "../pages/Principal";
 import NavBar from "../components/NavBar/NavBar";
 import ListaDeUsuarios from "../pages/ListaDeUsuarios";
 import Footer from "../components/Footer/Footer";
-import TeamStepper from "../components/CreateTeam/TeamStepper/TeamStepper";
+import TeamStepper from "../components/Team/Create/TeamStepper";
+import EditTeam from "../components/Team/Edit/Edit";
+import DeleteTeam from "../components/Team/Delete/Delete";
 
 function Rotas() {
   const [darkMode, setDarkMode] = useState(false);
@@ -52,6 +54,14 @@ function Rotas() {
         >
           <NavBar check={darkMode} change={() => setDarkMode(!darkMode)} />
           <Switch>
+            <Route path={"/apagar-equipe"}>
+              <DeleteTeam />
+            </Route>
+
+            <Route path={"/editar-equipe"}>
+              <EditTeam />
+            </Route>
+
             <Route path={"/login"}>
               <Login />
             </Route>
