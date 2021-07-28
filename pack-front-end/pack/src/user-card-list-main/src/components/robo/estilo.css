@@ -2,13 +2,13 @@ body.active-modal {
     overflow-y: hidden;
 }
 
-.btn-modal {
+.robo-modal {
     display: block;
     margin-left: 76%;
     width: 22%;
     margin-top: 8%;
     position: fixed;
-    height: auto;
+    bottom: 0;
 }
 
 .modal, .overlay {
@@ -25,7 +25,7 @@ body.active-modal {
     background: rgba(49,49,49,0.8);
     opacity: 0.7;
 }
-.modal-content {
+.modal-conteudo {
     position: absolute;
     top: 40%;
     left: 85%;

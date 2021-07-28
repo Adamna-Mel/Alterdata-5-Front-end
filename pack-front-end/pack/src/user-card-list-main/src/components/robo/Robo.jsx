@@ -18,12 +18,11 @@ export default function Robo() {
   return (
     <>
 
-      <img src={robo} onClick={toggleModal} className="btn-modal"/>
-    
+      <img src={robo} onClick={toggleModal} className="robo-modal"/>
       {modal && (
         <div className="modal">
           <div onClick={toggleModal} className="overlay"></div>
-          <div className="modal-content">
+          <div className="modal-conteudo">
             <ul className="text">
             <li>Adicione Usuários; </li>
             <li>Crie sua Equipe; </li>
