@@ -40,8 +40,13 @@ function NavBar({ check, change }) {
   };
 
   React.useEffect(() => {
-    auth.isAuthenticated ? setMenu(true) : setMenu(false);
+    auth.isAuthenticated() ? setMenu(true) : setMenu(false);
   }, []);
+
+  const handleLogout = ()=> {
+    auth.logout();
+    window.location.reload(false);
+  }
 
   const handleMobileMenuClose = () => {
     setMobileMoreAnchorEl(null);
@@ -68,7 +73,7 @@ function NavBar({ check, change }) {
       onClose={handleMenuClose}
     >
       <MenuItem onClick={handleMenuClose}>Usuário</MenuItem>
-      <MenuItem onClick={auth.logout}>Logout</MenuItem>
+      <MenuItem onClick={handleLogout}>Logout</MenuItem>
     </Menu>
   );
   //MENU

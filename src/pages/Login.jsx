@@ -44,7 +44,7 @@ export default function Login() {
         console.log(res);
         auth.guardarToken(res.data.token, res.data.usuario.id);
         setOpenAlert(true);
-        history.push("/");
+        window.location.reload(false);
       })
       .catch((e) => {
         setOpenAlertError(true);
