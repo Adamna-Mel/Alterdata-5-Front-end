@@ -17,7 +17,7 @@ export default function Principal() {
   React.useEffect(() => {
     apiUsuarios.obterUsuarioPorId(idUsuario).then((res) => {
       console.log(res);
-      res.equipe.idEquipe === 1 ? setTemEquipe(false) : setTemEquipe(true);
+      res.equipe === null ? setTemEquipe(false) : setTemEquipe(true);
     });
   }, []);
 

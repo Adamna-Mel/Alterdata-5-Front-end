@@ -44,7 +44,7 @@ import Database from "../../assets/icons/database.svg";
 function UserCard(props) {
   const classes = useStyles();
   function RoleAvatar(props) {
-    if (props.icone == "Sem cargo") {
+    if (props.icone === "Sem cargo" ){
       return (
         <SvgColor svg={Cancel} width={30} colors={["#cf1527", "#000000"]} />
       );

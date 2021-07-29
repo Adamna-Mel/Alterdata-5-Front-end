@@ -149,7 +149,7 @@ function ListaDeUsuarios() {
               id={usuario.id}
               name={usuario.nome}
               status={usuario.status}
-              role={usuario.cargo.nome}
+              role={usuario.cargo != null ? usuario.cargo.nome : "Sem cargo"}
               avatar={usuario.avatar}
             />
           ))

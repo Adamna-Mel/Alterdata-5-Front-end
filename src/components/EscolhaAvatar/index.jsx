@@ -1,8 +1,19 @@
 import React,{ useState } from "react";
 import Avatar from "react-avatar-edit";
+import Modal from '@material-ui/core/Modal';
 
 function EscolhaAvatar() {
   const [preview, setPreview] = useState(null);
+  const [open, setOpen] = React.useState(false);
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   function onClose() {
     setPreview(null);
   }
@@ -25,8 +36,14 @@ function EscolhaAvatar() {
         onBeforeFileLoad={onBeforeFileLoad}
         src={null}
         label={'Escolha o avatar'}
+        onClick={handleOpen}
       />
-      {preview && <img src={preview} alt="Preview" />}
+       <Modal
+        open={open}
+        onClose={handleClose}
+      >
+        <img src={preview} alt="Preview" />
+      </Modal>
     </div>
   );
 }
