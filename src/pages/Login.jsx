@@ -180,7 +180,6 @@ export default function Login() {
 
 const useStyles = makeStyles({
   paper: {
-    marginTop: "10vh",
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
