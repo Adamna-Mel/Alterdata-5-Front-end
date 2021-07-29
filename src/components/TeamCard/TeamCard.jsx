@@ -41,7 +41,7 @@ function TeamCard(props) {
   const classes = useStyles();
   return (
     <div>
-      <Card className={classes.card} color="default">
+      <Card elevation={7} className={classes.card} color="default">
         <CardContent className={classes.cardContent}>
           <div className={classes.cardTop}>
             <SvgColor svg={Ninja} width={50} colors={["#000000", "#0083C1"]} />
@@ -64,10 +64,10 @@ const useStyles = makeStyles({
     borderRadius: 20,
     width: 300,
     height: 150,
-    marginRight: 10,
-    marginLeft: 10,
-    marginTop: 10,
-    marginBottom: 10,
+    marginRight: 20,
+    marginLeft: 20,
+    marginTop: 20,
+    marginBottom: 20,
     alignItems: "center",
     justofyContent: "center",
   },

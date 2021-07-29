@@ -36,6 +36,7 @@ export default function StatusBar(props) {
           type="text"
           size="small"
           style={{ marginBottom: 27 }}
+          inputProps={{ maxLength: 90 }}
         />
       ) : (
         <div

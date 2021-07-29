@@ -76,8 +76,6 @@ function ListaDeUsuarios() {
         setIdEquipe(res.equipe.idEquipe);
 
         apiEquipes.obterEquipesPorId(res.equipe.idEquipe).then((res) => {
-          console.log(res.icone);
-          console.log(Luchador);
           setUsuarios(res.membros);
           setNomeDaEquipe(res.nome);
           setCorPrimaria(res.cor1);
@@ -151,6 +149,9 @@ function ListaDeUsuarios() {
               status={usuario.status}
               role={usuario.cargo != null ? usuario.cargo.nome : "Sem cargo"}
               avatar={usuario.avatar}
+              corcargo1={usuario.cargo.cor1}
+              corcargo2={usuario.cargo.cor2}
+              cargoicone={usuario.cargo.icone}
             />
           ))
         ) : (
@@ -190,6 +191,7 @@ const useStyles = makeStyles({
     marginBottom: "auto",
     marginTop: "auto",
   },
+  container: {},
 });
 
 export default ListaDeUsuarios;

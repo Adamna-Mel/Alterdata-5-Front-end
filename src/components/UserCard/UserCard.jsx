@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 //MATERIAL-UI
 import { makeStyles } from "@material-ui/core/styles";
@@ -64,7 +64,7 @@ function UserCard(props) {
   }
   return (
     <div>
-      <Card className={classes.card} color="default">
+      <Card elevation={7} className={classes.card} color="default">
         <CardContent className={classes.cardContent}>
           <div className={classes.cardTop}>
             <Avatar
@@ -83,7 +83,11 @@ function UserCard(props) {
             />
           </Typography>
           <CardContent className={classes.userRole}>
-            <RoleAvatar icone={props.role} />
+            <SvgColor
+              svg={props.cargoicone}
+              width={200}
+              colors={[props.corcargo1, props.corcargo2]}
+            />
             <Typography className={classes.userRoleText}>
               {props.role}
             </Typography>
@@ -100,8 +104,8 @@ const useStyles = makeStyles({
     borderRadius: 20,
     width: 300,
     height: "auto",
-    marginRight: 10,
-    marginLeft: 10,
+    marginRight: 20,
+    marginLeft: 20,
     marginTop: 10,
     marginBottom: 10,
   },
