@@ -16,7 +16,7 @@ import TextField from "@material-ui/core/TextField";
 import SvgColor from "react-svg-color";
 
 //COLOR PICKER
-import { SketchPicker } from "react-color";
+import { TwitterPicker } from "react-color";
 
 //#region Icones
 import CrystalShine from "../../../assets/icons/crystal-shine.svg";
@@ -59,16 +59,6 @@ function getSteps() {
 
 function getStepContent(step) {
   function IconeAtual() {
-    return (
-      <SvgColor
-        svg={iconeEquipe}
-        width={200}
-        colors={[corPrimaria, corSecundaria]}
-      />
-    );
-  }
-
-  function IconeAtual2() {
     return (
       <SvgColor
         svg={iconeEquipe}
@@ -152,31 +142,25 @@ function getStepContent(step) {
           <TextField
             required
             id="filled-required"
-            label="Nome da Equipe"
+            label="Nome da Equipe (MAX. 20)"
             defaultValue=""
             variant="filled"
             onChange={(e) => SetNome(e.target.value)}
             value={nome}
             type="text"
+            inputProps={{ maxLength: 20 }}
+            style={{ width: 300 }}
           />
-          <Button variant="contained" color="primary" type="submit">
-            Salvar
-          </Button>
+          <div>
+            <Button variant="contained" color="primary" type="submit">
+              Salvar
+            </Button>
+          </div>
         </div>
       );
     case 1:
       return (
         <div>
-          <div
-            style={{
-              margin: "auto",
-              alignItens: "center",
-              display: "flex",
-              justifyContent: "center",
-            }}
-          >
-            <IconeAtual />
-          </div>
           <div className={classes.icones}>
             {listaIcones.map((icone) => (
               <div onClick={() => setIconeEquipe(icone)}>
@@ -195,16 +179,6 @@ function getStepContent(step) {
         <div>
           <div
             style={{
-              margin: "auto",
-              alignItens: "center",
-              display: "flex",
-              justifyContent: "center",
-            }}
-          >
-            <IconeAtual />
-          </div>
-          <div
-            style={{
               display: "flex",
               justifyContent: "center",
               flexDirection: "row",
@@ -220,7 +194,7 @@ function getStepContent(step) {
               }}
             >
               <p>Cor Primária</p>
-              <SketchPicker
+              <TwitterPicker
                 color={corPrimaria}
                 onChange={(corPrimariaAtualizada) =>
                   setCorPrimaria(corPrimariaAtualizada.hex)
@@ -236,13 +210,23 @@ function getStepContent(step) {
               }}
             >
               <p>Cor Secundária</p>
-              <SketchPicker
+              <TwitterPicker
                 color={corSecundaria}
                 onChange={(corSecundariaAtualizada) =>
                   setCorSecundaria(corSecundariaAtualizada.hex)
                 }
               />
             </div>
+          </div>
+          <div
+            style={{
+              margin: "auto",
+              alignItens: "center",
+              display: "flex",
+              justifyContent: "center",
+            }}
+          >
+            <IconeAtual />
           </div>
         </div>
       );
@@ -323,11 +307,12 @@ const useStyles = makeStyles({
     borderRadius: 20,
     width: "auto",
     maxWidth: 800,
+    maxHeight: "auto",
     height: "auto",
     marginRight: "auto",
     marginLeft: "auto",
     marginBottom: 10,
-    marginTop: "5%",
+    marginTop: "2%",
   },
   button: {
     marginTop: 5,

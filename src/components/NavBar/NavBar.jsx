@@ -27,6 +27,7 @@ import LogoAlterdata from "../../assets/alterdata.svg";
 //SERVICES
 import auth from "../../services/auth";
 
+//TODO: switch Dark Mode no modo Mobile duplicado, necessario remover
 function NavBar({ check, change }) {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -164,13 +165,8 @@ function NavBar({ check, change }) {
           <div className={classes.grow} />
           {menu ? (
             <div className={classes.sectionDesktop}>
-              <div style={{ textAlign: "center" }}>
+              <div style={{ marginTop: 5 }}>
                 <Switch color="primary" checked={check} onChange={change} />
-                <Typography
-                  style={check ? { color: "#fff" } : { color: "#000" }}
-                >
-                  Dark Mode
-                </Typography>
               </div>
               <IconButton
                 edge="end"
@@ -179,17 +175,15 @@ function NavBar({ check, change }) {
                 aria-haspopup="true"
                 onClick={handleProfileMenuOpen}
                 color="primary"
+                size="medium"
               >
-                <AccountCircle />
+                <AccountCircle fontSize="inherit" />
               </IconButton>
             </div>
           ) : null}
           {auth.isAuthenticated() ? null : (
             <div style={{ textAlign: "center" }}>
               <Switch color="primary" checked={check} onChange={change} />
-              <Typography style={check ? { color: "#fff" } : { color: "#000" }}>
-                Dark Mode
-              </Typography>
             </div>
           )}
           <div className={classes.sectionMobile}>

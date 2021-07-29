@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 //MATERIAL-UI
 import { createTheme } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/core";
+import CssBaseline from "@material-ui/core/CssBaseline";
 
 //COMPONENTS
 import Login from "../pages/Login";
@@ -14,7 +15,7 @@ import Footer from "../components/Footer/Footer";
 import TeamStepper from "../components/Team/Create/TeamStepper";
 import EditTeam from "../components/Team/Edit/Edit";
 import DeleteTeam from "../components/Team/Delete/Delete";
-import UserProfile from "../components/UserProfile"
+import UserProfile from "../components/UserProfile";
 
 function Rotas() {
   const [darkMode, setDarkMode] = useState(false);
@@ -49,11 +50,23 @@ function Rotas() {
         <div
           style={
             darkMode
-              ? { backgroundColor: "#303030", height: "100vh" }
-              : { backgroundColor: "#F5F3F4", height: "100vh" }
+              ? {
+                  backgroundColor: "#303030",
+                  height: "100%",
+                  marginBottom: 50,
+                }
+              : {
+                  backgroundColor: "#F5F3F4",
+                  height: "100%",
+                  marginBottom: 50,
+                }
           }
         >
-          <NavBar check={darkMode} change={() => setDarkMode(!darkMode)} />
+          <NavBar
+            style={{ marginBottom: 100 }}
+            check={darkMode}
+            change={() => setDarkMode(!darkMode)}
+          />
           <Switch>
             <Route path={"/apagar-equipe"}>
               <DeleteTeam />
@@ -72,7 +85,7 @@ function Rotas() {
             </Route>
 
             <Route path={"/perfil"}>
-              <UserProfile/>
+              <UserProfile />
             </Route>
 
             <Route path={"/"}>

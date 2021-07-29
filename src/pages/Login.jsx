@@ -22,6 +22,9 @@ import LogoAlterdata from "../assets/controledeequipelogo.svg";
 //SERVICES
 import auth from "../services/auth";
 
+//HOOKS
+import useWindowDimensions from "../hooks/WindowDimension";
+
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
@@ -87,102 +90,105 @@ export default function Login() {
   };
 
   //
+
+  const { height, width } = useWindowDimensions();
   const classes = useStyles();
 
   return (
-    <Container component="main" maxWidth="xs">
-      <CssBaseline />
-      <Snackbar
-        open={openAlert}
-        autoHideDuration={3000}
-        onClose={handleCloseAlert}
-      >
-        <Alert onClose={handleCloseAlert} severity="success">
-          Usuário logado com sucesso!!!
-        </Alert>
-      </Snackbar>
-      <Snackbar
-        open={openAlertError}
-        autoHideDuration={4000}
-        onClose={handleCloseAlertError}
-      >
-        <Alert onClose={handleCloseAlertError} severity="error">
-          Houve algum erro ao fazer login. Confira se seu login ou senha estão
-          corretos
-        </Alert>
-      </Snackbar>
-      <div className={classes.paper}>
-        <SvgColor svg={LogoAlterdata} width={350} colors={["#0083c1"]} />
-        <form className={classes.form} noValidate onSubmit={handleSubmit}>
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            id="Usuário"
-            label="Nome de Usuário"
-            name="Usuário"
-            autoFocus
-            value={login}
-            onChange={(e) => setLogin(e.target.value)}
-          />
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            name="Senha"
-            label="Senha"
-            type="password"
-            id="senha"
-            autoComplete="current-password"
-            value={senha}
-            onChange={(e) => setSenha(e.target.value)}
-            ke
-          />
-          {/*<FormControlLabel
+    <div style={{ height: height }}>
+      <Container component="main" maxWidth="xs">
+        <CssBaseline />
+        <Snackbar
+          open={openAlert}
+          autoHideDuration={3000}
+          onClose={handleCloseAlert}
+        >
+          <Alert onClose={handleCloseAlert} severity="success">
+            Usuário logado com sucesso!!!
+          </Alert>
+        </Snackbar>
+        <Snackbar
+          open={openAlertError}
+          autoHideDuration={4000}
+          onClose={handleCloseAlertError}
+        >
+          <Alert onClose={handleCloseAlertError} severity="error">
+            Houve algum erro ao fazer login. Confira se seu login ou senha estão
+            corretos
+          </Alert>
+        </Snackbar>
+        <div className={classes.paper}>
+          <SvgColor svg={LogoAlterdata} width={350} colors={["#0083c1"]} />
+          <form className={classes.form} noValidate onSubmit={handleSubmit}>
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              id="Usuário"
+              label="Nome de Usuário"
+              name="Usuário"
+              autoFocus
+              value={login}
+              onChange={(e) => setLogin(e.target.value)}
+            />
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              name="Senha"
+              label="Senha"
+              type="password"
+              id="senha"
+              autoComplete="current-password"
+              value={senha}
+              onChange={(e) => setSenha(e.target.value)}
+              ke
+            />
+            {/*<FormControlLabel
             control={<Checkbox value="Lembrar" color="primary" />}
             label="Lembre de mim"
           />*/}
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            className={classes.submit}
-            color="primary"
-          >
-            Logar
-          </Button>
-          <Grid container>
-            <Grid item xs>
-              <Link href="#" variant="body2">
-                Esqueceu sua senha?
-              </Link>
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              className={classes.submit}
+              color="primary"
+            >
+              Logar
+            </Button>
+            <Grid container>
+              <Grid item xs>
+                <Link href="#" variant="body2">
+                  Esqueceu sua senha?
+                </Link>
+              </Grid>
+              <Grid item>
+                <Link href="#" variant="body2">
+                  {"Não tem conta? Cadastre-se"}
+                </Link>
+              </Grid>
             </Grid>
-            <Grid item>
-              <Link href="#" variant="body2">
-                {"Não tem conta? Cadastre-se"}
-              </Link>
-            </Grid>
-          </Grid>
-        </form>
-      </div>
-    </Container>
+          </form>
+        </div>
+      </Container>
+    </div>
   );
 }
 
 const useStyles = makeStyles({
   paper: {
-    marginTop: 40,
+    marginTop: "10vh",
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
+    justifyContent: "center",
+    padding: "1vh",
   },
   form: {
     width: "100%", // Fix IE 11 issue.
     // marginTop: theme.spacing(1),
-  },
-  submit: {
-    // margin: theme.spacing(3, 0, 2),
   },
 });

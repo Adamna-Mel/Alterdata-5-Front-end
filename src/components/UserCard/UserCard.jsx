@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 //MATERIAL-UI
 import { makeStyles } from "@material-ui/core/styles";
@@ -43,28 +43,10 @@ import Database from "../../assets/icons/database.svg";
 
 function UserCard(props) {
   const classes = useStyles();
-  function RoleAvatar(props) {
-    if (props.icone == "Sem cargo") {
-      return (
-        <SvgColor svg={Cancel} width={30} colors={["#cf1527", "#000000"]} />
-      );
-    } else if (props.icone == "FrontEnd") {
-      return (
-        <SvgColor svg={Palette} width={30} colors={["#FFFFFF", "#e8dbb7"]} />
-      );
-    } else if (props.icone == "BackEnd") {
-      return (
-        <SvgColor svg={Database} width={30} colors={["#787551", "#dbca12"]} />
-      );
-    } else {
-      return (
-        <SvgColor svg={Ninja} width={30} colors={["#000000", "#0083C1"]} />
-      );
-    }
-  }
+
   return (
     <div>
-      <Card className={classes.card} color="default">
+      <Card elevation={7} className={classes.card} color="default">
         <CardContent className={classes.cardContent}>
           <div className={classes.cardTop}>
             <Avatar
@@ -83,7 +65,11 @@ function UserCard(props) {
             />
           </Typography>
           <CardContent className={classes.userRole}>
-            <RoleAvatar icone={props.role} />
+            <SvgColor
+              svg={props.cargoicone}
+              width={200}
+              colors={[props.corcargo1, props.corcargo2]}
+            />
             <Typography className={classes.userRoleText}>
               {props.role}
             </Typography>
@@ -100,8 +86,8 @@ const useStyles = makeStyles({
     borderRadius: 20,
     width: 300,
     height: "auto",
-    marginRight: 10,
-    marginLeft: 10,
+    marginRight: 20,
+    marginLeft: 20,
     marginTop: 10,
     marginBottom: 10,
   },
