@@ -35,8 +35,10 @@ export default function StatusBar(props) {
           value={status}
           type="text"
           size="small"
-          style={{ marginBottom: 27 }}
+          multiline
+          rows={3}
           inputProps={{ maxLength: 90 }}
+          style={{ marginBottom: 10 }}
         />
       ) : (
         <div
@@ -45,7 +47,22 @@ export default function StatusBar(props) {
             setCondicao(true);
           }}
         >
-          <div style={{ marginBottom: 50 }}>{status}</div>
+          <TextField
+            className={props.className}
+            id="filled-required"
+            label="Status"
+            defaultValue=""
+            onKeyDown={handleKeyDown}
+            onChange={(e) => setStatus(e.target.value)}
+            value={status}
+            type="text"
+            size="small"
+            multiline
+            defaultValue={status}
+            rows={3}
+            inputProps={{ maxLength: 90 }}
+            style={{ marginBottom: 10 }}
+          />
         </div>
       )}
     </ClickAwayListener>
