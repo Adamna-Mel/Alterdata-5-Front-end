@@ -50,6 +50,10 @@ function NavBar({ check, change }) {
     window.location.reload(false);
   };
 
+  const handleProfile = () => {
+    history.push("/perfil");
+  }
+
   const handleMobileMenuClose = () => {
     setMobileMoreAnchorEl(null);
   };
@@ -73,7 +77,7 @@ function NavBar({ check, change }) {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>Usuário</MenuItem>
+      <MenuItem onClick={handleProfile}>Usuário</MenuItem>
       <MenuItem onClick={handleLogout}>Logout</MenuItem>
     </Menu>
   );
