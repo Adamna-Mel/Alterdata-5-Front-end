@@ -10,6 +10,7 @@ import Button from "@material-ui/core/Button";
 
 import api from "../../services/api.usuarios";
 import EscolhaAvatar from "../EscolhaAvatar";
+import { Typography } from "@material-ui/core";
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -101,7 +102,7 @@ function UserProfile(props) {
 
   return (
     <form className={classes.root}>
-      <Card className={classes.card}>
+      <Card elevation={7} className={classes.card}>
         <div
           style={{
             alignSelf: "center",
@@ -130,7 +131,7 @@ function UserProfile(props) {
             </Alert>
           </Snackbar>
 
-          <h1>Adicionar usuário</h1>
+          <Typography>Cadastrar Usuário</Typography>
           <div
             style={{
               alignSelf: "center",
@@ -149,6 +150,7 @@ function UserProfile(props) {
               value={nome}
               type="text"
               inputProps={{ maxLength: 20 }}
+              style={{ width: 300 }}
             />
             <TextField
               required
@@ -159,6 +161,7 @@ function UserProfile(props) {
               onChange={(e) => setLogin(e.target.value)}
               value={login}
               type="text"
+              style={{ width: 300 }}
             />
             <TextField
               required
@@ -169,6 +172,7 @@ function UserProfile(props) {
               onChange={(e) => setSenha(e.target.value)}
               value={senha}
               type="password"
+              style={{ width: 300 }}
             />
 
             <TextField
@@ -180,10 +184,11 @@ function UserProfile(props) {
               value={status}
               type="text"
               inputProps={{ maxLength: 25 }}
+              style={{ width: 300 }}
             />
-            <EscolhaAvatar/>
+            <EscolhaAvatar />
           </div>
-         
+
           <Button
             onClick={handleClick}
             variant="contained"
@@ -213,6 +218,7 @@ const useStyles = makeStyles({
   },
   root: {
     maxWidth: 600,
+    margin: "auto",
     "& .MuiTextField-root": {
       margin: 5,
       width: "25ch",

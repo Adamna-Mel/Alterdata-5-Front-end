@@ -9,6 +9,7 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";
+import Typography from "@material-ui/core/Typography";
 
 //SERVICES
 import apiEquipes from "../../../services/api.equipes";
@@ -32,8 +33,8 @@ function Edit() {
     };
     apiEquipes
       .atualizarEquipe(idEquipe, novo)
-      .then(alert("Equipe atualizada com sucesso!"))
-      .catch(alert("Algo deu errado!"));
+      .then(setOpenAlert(true))
+      .catch(setOpenAlertError(true));
   };
 
   const handleClick = () => {
@@ -102,6 +103,7 @@ function Edit() {
       </Snackbar>
       <Card className={classes.card}>
         <CardContent>
+          <Typography className={classes.title}>Editar Equipe</Typography>
           <form onSubmit={handleSubmit}>
             <TextField
               required
@@ -115,13 +117,17 @@ function Edit() {
               inputProps={{ maxLength: 20 }}
               style={{ width: 300 }}
             />
-            <CardContent className={classes.buttons}>
-              <Button variant="contained" color="primary" type="submit">
+            <CardContent className={classes.buttonContainer}>
+              <Button
+                className={classes.button}
+                variant="contained"
+                color="primary"
+                type="submit"
+              >
                 Salvar
               </Button>
-            </CardContent>
-            <CardContent className={classes.buttons}>
               <Button
+                className={classes.button}
                 variant="contained"
                 color="secondary"
                 onClick={handleClick}
@@ -148,12 +154,23 @@ const useStyles = makeStyles({
     justifyContent: "center",
     display: "flex",
   },
-  buttons: {
+  buttonContainer: {
     display: "flex",
     flexDirection: "column",
+    alignSelf: "center",
   },
   container: {
     marginTop: "auto",
     marginBottom: "auto",
+    justifyContent: "center",
+  },
+  title: {
+    fontSize: 40,
+    textAlign: "center",
+    fontWeight: "bold",
+  },
+  button: {
+    marginBottom: 5,
+    marginTop: 5,
   },
 });
