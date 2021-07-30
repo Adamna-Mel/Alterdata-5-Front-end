@@ -9,37 +9,7 @@ import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import Paper from "@material-ui/core/Paper";
-
-//SVGColor
-import SvgColor from "react-svg-color";
-
-//ASSETS
-//#region Icones
-import CrystalShine from "../assets/icons/crystal-shine.svg";
-import BatMask from "../assets/icons/bat-mask.svg";
-import Clockwork from "../assets/icons/clockwork.svg";
-import Controller from "../assets/icons/controller.svg";
-import Daggers from "../assets/icons/daggers.svg";
-import Fireball from "../assets/icons/fireball.svg";
-import Hades from "../assets/icons/hades.svg";
-import MineralHeart from "../assets/icons/mineral-heart.svg";
-import MoonBat from "../assets/icons/moon-bats.svg";
-import Mouse from "../assets/icons/mouse.svg";
-import NightSky from "../assets/icons/night-sky.svg";
-import Ninja from "../assets/icons/ninja.svg";
-import NinjaCloud from "../assets/icons/ninja-cloud.svg";
-import Palette from "../assets/icons/palette.svg";
-import PawHeart from "../assets/icons/paw-heart.svg";
-import PencilBrush from "../assets/icons/pencil-brush.svg";
-import SharkBite from "../assets/icons/shark-bite.svg";
-import Shuriken from "../assets/icons/shuriken.svg";
-import Sly from "../assets/icons/sly.svg";
-import Smartphone from "../assets/icons/smartphone.svg";
-import Cancel from "../assets/icons/cancel.svg";
-import Database from "../assets/icons/database.svg";
-import Luchador from "../assets/icons/luchador.svg";
-
-//#endregion
+import Avatar from "@material-ui/core/Avatar";
 
 //COMPONENTS
 import UserCard from "../components/UserCard/UserCard";
@@ -88,22 +58,16 @@ function ListaDeUsuarios() {
       });
   }, []);
 
-  function IconeDoTime() {
-    return (
-      <SvgColor
-        svg={iconeEquipe}
-        width={90}
-        colors={[corPrimaria, corSecundaria]}
-      />
-    );
-  }
-
   const classes = useStyles();
   return (
     <>
       <div>
         <Paper elevation={0} className={classes.header}>
-          <IconeDoTime />
+          <Avatar
+            alt="Perfil"
+            src="src/assets/profile.jpg"
+            className={classes.teamImage}
+          />
           <Typography className={classes.teamName}>{nomeDaEquipe}</Typography>
           <IconButton
             aria-label="more"
@@ -191,7 +155,10 @@ const useStyles = makeStyles({
     marginBottom: "auto",
     marginTop: "auto",
   },
-  container: {},
+  teamImage: {
+    height: 100,
+    width: 100,
+  },
 });
 
 export default ListaDeUsuarios;

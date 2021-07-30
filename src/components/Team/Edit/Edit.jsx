@@ -89,7 +89,7 @@ function Edit() {
         onClose={handleCloseAlert}
       >
         <Alert onClose={handleCloseAlert} severity="success">
-          Nome do time atualizado com sucesso!!!
+          Nome da equipe atualizada com sucesso!!!
         </Alert>
       </Snackbar>
       <Snackbar
@@ -98,7 +98,7 @@ function Edit() {
         onClose={handleCloseAlertError}
       >
         <Alert onClose={handleCloseAlertError} severity="error">
-          Houve algum erro ao mudar o nome do time.
+          Houve algum erro ao mudar o nome da equipe.
         </Alert>
       </Snackbar>
       <Card className={classes.card}>
