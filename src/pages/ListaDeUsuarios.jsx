@@ -10,6 +10,7 @@ import IconButton from "@material-ui/core/IconButton";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import Paper from "@material-ui/core/Paper";
 import Avatar from "@material-ui/core/Avatar";
+import LinearProgress from "@material-ui/core/LinearProgress";
 
 //COMPONENTS
 import UserCard from "../components/UserCard/UserCard";
@@ -21,6 +22,7 @@ import apiEquipes from "../services/api.equipes";
 function ListaDeUsuarios() {
   const idUsuario = localStorage.getItem("@user-id");
 
+  const [loading, setLoading] = React.useState(false);
   const [idEquipe, setIdEquipe] = useState("");
   const [nomeDaEquipe, setNomeDaEquipe] = useState("");
   const [corPrimaria, setCorPrimaria] = useState("");
@@ -52,6 +54,9 @@ function ListaDeUsuarios() {
           setCorSecundaria(res.cor2);
           setIconeEquipe(res.icone);
         });
+        setTimeout(() => {
+          setLoading(true);
+        }, 1300);
       })
       .catch((e) => {
         console.log(e);
@@ -62,64 +67,76 @@ function ListaDeUsuarios() {
   return (
     <>
       <div>
-        <Paper elevation={0} className={classes.header}>
-          <Avatar
-            alt="Perfil"
-            src="src/assets/profile.jpg"
-            className={classes.teamImage}
-          />
-          <Typography className={classes.teamName}>{nomeDaEquipe}</Typography>
-          <IconButton
-            aria-label="more"
-            aria-controls="long-menu"
-            aria-haspopup="true"
-            onClick={handleClick}
-          >
-            <MoreVertIcon />
-          </IconButton>
-        </Paper>
-        <Menu
-          id="simple-menu"
-          anchorEl={anchorEl}
-          keepMounted
-          open={Boolean(anchorEl)}
-          onClose={handleClose}
-        >
-          <MenuItem
-            onClick={() => {
-              handleClose;
-              history.push("editar-equipe", idEquipe);
-            }}
-          >
-            Editar
-          </MenuItem>
-          <MenuItem
-            onClick={() => {
-              handleClose;
-              history.push("apagar-equipe", idEquipe);
-            }}
-          >
-            <span style={{ color: "red" }}>Apagar</span>
-          </MenuItem>
-        </Menu>
-      </div>
-      <div className={classes.card}>
-        {usuarios != undefined ? (
-          usuarios.map((usuario) => (
-            <UserCard
-              key={usuario.id}
-              id={usuario.id}
-              name={usuario.nome}
-              status={usuario.status}
-              role={usuario.cargo != null ? usuario.cargo.nome : "Sem cargo"}
-              avatar={usuario.avatar}
-              corcargo1={usuario.cargo.cor1}
-              corcargo2={usuario.cargo.cor2}
-              cargoicone={usuario.cargo.icone}
-            />
-          ))
+        {loading ? (
+          <div>
+            <div>
+              <Paper elevation={0} className={classes.header}>
+                <Avatar
+                  alt="Perfil"
+                  src="src/assets/profile.jpg"
+                  className={classes.teamImage}
+                />
+                <Typography className={classes.teamName}>
+                  {nomeDaEquipe}
+                </Typography>
+                <IconButton
+                  aria-label="more"
+                  aria-controls="long-menu"
+                  aria-haspopup="true"
+                  onClick={handleClick}
+                >
+                  <MoreVertIcon />
+                </IconButton>
+              </Paper>
+              <Menu
+                id="simple-menu"
+                anchorEl={anchorEl}
+                keepMounted
+                open={Boolean(anchorEl)}
+                onClose={handleClose}
+              >
+                <MenuItem
+                  onClick={() => {
+                    handleClose;
+                    history.push("editar-equipe", idEquipe);
+                  }}
+                >
+                  Editar
+                </MenuItem>
+                <MenuItem
+                  onClick={() => {
+                    handleClose;
+                    history.push("apagar-equipe", idEquipe);
+                  }}
+                >
+                  <span style={{ color: "red" }}>Apagar</span>
+                </MenuItem>
+              </Menu>
+            </div>
+            <div className={classes.card}>
+              {usuarios != undefined ? (
+                usuarios.map((usuario) => (
+                  <UserCard
+                    key={usuario.id}
+                    id={usuario.id}
+                    name={usuario.nome}
+                    status={usuario.status}
+                    role={
+                      usuario.cargo != null ? usuario.cargo.nome : "Sem cargo"
+                    }
+                    avatar={usuario.avatar}
+                    corcargo1={usuario.cargo.cor1}
+                    corcargo2={usuario.cargo.cor2}
+                    cargoicone={usuario.cargo.icone}
+                  />
+                ))
+              ) : (
+                <h1>Time Vazio</h1>
+              )}
+            </div>
+          </div>
         ) : (
-          <h1>Time Vazio</h1>
+          <LinearProgress />
         )}
       </div>
     </>

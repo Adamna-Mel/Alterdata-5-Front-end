@@ -1,5 +1,8 @@
 import React from "react";
 
+//MATERIAL-UI
+import LinearProgress from "@material-ui/core/LinearProgress";
+
 //COMPONENTS
 import ListaDeEquipes from "./ListaDeEquipes";
 import ListaDeUsuarios from "./ListaDeUsuarios";
@@ -10,6 +13,7 @@ import auth from "../services/auth";
 import apiUsuarios from "../services/api.usuarios";
 
 export default function Principal() {
+  const [loading, setLoading] = React.useState(false);
   const [temEquipe, setTemEquipe] = React.useState(false);
 
   const idUsuario = localStorage.getItem("@user-id");
@@ -19,18 +23,27 @@ export default function Principal() {
       console.log(res);
       res.equipe === null ? setTemEquipe(false) : setTemEquipe(true);
     });
+    setTimeout(() => {
+      setLoading(true);
+    }, 1300);
   }, []);
 
   return (
     <>
-      {auth.isAuthenticated() ? (
-        temEquipe ? (
-          <ListaDeUsuarios />
-        ) : (
-          <ListaDeEquipes />
-        )
+      {loading ? (
+        <div>
+          {auth.isAuthenticated() ? (
+            temEquipe ? (
+              <ListaDeUsuarios />
+            ) : (
+              <ListaDeEquipes />
+            )
+          ) : (
+            <Login />
+          )}
+        </div>
       ) : (
-        <Login />
+        <LinearProgress />
       )}
     </>
   );
