@@ -53,7 +53,7 @@ function NavBar({ check, change }) {
 
   const handleProfile = () => {
     history.push("/perfil");
-  }
+  };
 
   const handleMobileMenuClose = () => {
     setMobileMoreAnchorEl(null);
@@ -187,22 +187,22 @@ function NavBar({ check, change }) {
             </div>
           )}
           <div className={classes.sectionMobile}>
-            <div style={{ alignSelf: "center" }}>
-              <Switch color="primary" checked={check} onChange={change} />
-            </div>
-            <IconButton
-              aria-label="show more"
-              aria-controls={mobileMenuId}
-              aria-haspopup="true"
-              onClick={handleMobileMenuOpen}
-              color="default"
-            >
-              <MoreIcon />
-            </IconButton>
+            {auth.isAuthenticated() ? (
+              <IconButton
+                aria-label="show more"
+                aria-controls={mobileMenuId}
+                aria-haspopup="true"
+                onClick={handleMobileMenuOpen}
+                color="default"
+              >
+                <MoreIcon />
+              </IconButton>
+            ) : null}
           </div>
         </Toolbar>
       </AppBar>
-      {auth.isAuthenticated() ? (renderMobileMenu, renderMenu) : null}
+      {auth.isAuthenticated() ? renderMobileMenu : null}
+      {auth.isAuthenticated() ? renderMenu : null}
     </div>
   );
 }
