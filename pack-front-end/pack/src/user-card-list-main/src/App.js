@@ -1,86 +1,37 @@
-import "./styles.css";
-import { useEffect, useState } from "react";
-import Card from "./Card.js";
+import React from 'react'
+import { Grid, Paper, TextField, Button } from '@material-ui/core'
+import avatar from "./assets/2.png"
 
-export default function App() {
-  const [users, setUsers] = useState([]);
-  const [newName, setNewName] = useState("");
-  const [newMail, setNewMail] = useState("");
-  const [newPhone, setNewPhone] = useState("");
-  const [search, setSearch] = useState("");
-
-  useEffect(() => {
-    fetch("http://localhost:3000/users")
-      .then((res) => res.json())
-      .then((data) => setUsers(data));
-  }, []);
-
-  const handleDel = (user) => {
-    setUsers(users.filter((adam) => adam.id !== user.id));
-  };
-
-  let newUser = {};
-  newUser.name = newName;
-  newUser.email = newMail;
-  newUser.phone = newPhone;
-  newUser.id = Math.random() * 10000;
-
-  const searchHandler = (e) => {
-    setSearch(e.target.value);
-  };
-
-  return (
-    <div className="App">
-      <input
-        placeholder="Entre com o nome"
-        onChange={(e) => setNewName(e.target.value)}
-      />{" "}
-      <input
-        placeholder="Entre com o papel"
-        onChange={(e) => setNewMail(e.target.value)}
-      />{" "}
-      <input
-        placeholder="Entre com Status"
-        onChange={(e) => setNewPhone(e.target.value)}
-      />{" "}
-      <br></br>
-      <a
-        href="#"
-        className="myButton"
-        onClick={() => setUsers([...users, newUser])}
-      >
-        Add New User!
-      </a>
-      <br></br>
-      <br></br>
-      <input
-        className="css-input"
-        placeholder="Procure o usuario:"
-        onChange={searchHandler}
-      />
-      {search === ""
-        ? users.map((user) => (
-            <Card
-              key={user.id}
-              name={user.name}
-              email={user.email}
-              phone={user.phone}
-              handleDel={() => handleDel(user)}
-            />
-          ))
-        : users
-            .filter((user) =>
-              user.name.toLowerCase().includes(search.toLowerCase())
-            )
-            .map((user) => (
-              <Card
-                key={user.id}
-                name={user.name}
-                email={user.email}
-                phone={user.phone}
-                handleDel={() => handleDel(user)}
-              />
-            ))}
-    </div>
-  );
+const App = () => {
+    const papercss = { padding: '25px 20px',
+     width: 400, 
+     margin: "30px auto", 
+    }
+    return (
+        <Grid>
+            <Paper elevation={20} style={papercss}>
+                <Grid align='center'>
+                    <img src={avatar}  style={{width: 100, 
+                      height: 100, 
+                      borderRadius: 400/ 2, 
+                      borderStyle: "solid", 
+                      borderColor:"purple", 
+                      marginTop:-50}}/>
+                    <h2 style={{fontFamily:"initial", color:"#1A2228"}}>Cadastrar Usuário</h2>
+                </Grid>
+                <form>
+                    <TextField fullWidth label='Teste' placeholder="-" />
+                    <TextField fullWidth label='Teste' placeholder="-" />
+                    <TextField fullWidth label='Teste' placeholder="-" />
+                    <TextField fullWidth label='Teste' placeholder="-" />
+                    <TextField fullWidth label='Teste' placeholder="-" />
+                    <Button type='submit' color='primary'>Cadastrar</Button>
+                    <Button variant="outlined" color="secondary" style={{marginLeft:"50%"}}>
+                    Voltar</Button>
+                </form>
+            </Paper>
+        </Grid>
+    )
 }
+
+export default App;

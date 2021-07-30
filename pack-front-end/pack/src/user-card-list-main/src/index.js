@@ -11,7 +11,6 @@ ReactDOM.render(
   <StrictMode>
     <Nav />
     <App />
-    <Robo />
     <Footer />
   </StrictMode>,
   rootElement
