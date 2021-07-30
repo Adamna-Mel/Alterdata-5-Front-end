@@ -37,7 +37,7 @@ export default function StatusBar(props) {
           size="small"
           multiline
           rows={3}
-          inputProps={{ maxLength: 90 }}
+          inputProps={{ maxLength: 140 }}
           style={{ marginBottom: 10 }}
         />
       ) : (
@@ -60,7 +60,7 @@ export default function StatusBar(props) {
             multiline
             defaultValue={status}
             rows={3}
-            inputProps={{ maxLength: 90 }}
+            inputProps={{ maxLength: 140 }}
             style={{ marginBottom: 10 }}
           />
         </div>
