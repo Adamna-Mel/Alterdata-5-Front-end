@@ -18,6 +18,7 @@ export default function StatusBar(props) {
     setCondicao(false);
     apiUsuarios.editarStatus(props.id, { status });
   };
+
   return (
     <ClickAwayListener
       mouseEvent="onMouseDown"

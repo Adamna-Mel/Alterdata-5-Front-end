@@ -17,6 +17,8 @@ import SearchIcon from "@material-ui/icons/Search";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import MoreIcon from "@material-ui/icons/MoreVert";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import Brightness4Icon from "@material-ui/icons/Brightness4";
+import Brightness7Icon from "@material-ui/icons/Brightness7";
 
 //SVGColor
 import SvgColor from "react-svg-color";
@@ -107,7 +109,17 @@ function NavBar({ check, change }) {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
-      <MenuItem onClick={handleProfileMenuOpen}>
+      <MenuItem onClick={change}>
+        <IconButton
+          aria-label="account of current user"
+          aria-controls="primary-search-account-menu"
+          aria-haspopup="true"
+          color="inherit"
+        >
+          {check ? <Brightness7Icon /> : <Brightness4Icon />}
+        </IconButton>
+      </MenuItem>
+      <MenuItem onClick={handleProfile}>
         <IconButton
           aria-label="account of current user"
           aria-controls="primary-search-account-menu"
@@ -117,7 +129,7 @@ function NavBar({ check, change }) {
           <AccountCircle />
         </IconButton>
       </MenuItem>
-      <MenuItem onClick={handleProfileMenuOpen}>
+      <MenuItem onClick={handleLogout}>
         <IconButton
           aria-label="account of current user"
           aria-controls="primary-search-account-menu"
