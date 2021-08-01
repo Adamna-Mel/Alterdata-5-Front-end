@@ -29,7 +29,13 @@ const obterUsuariosPorLogin = async (login) => {
 
 const adicionarUsuario = async (novoUsuario) => {
 	try {
-		return await api.post("usuarios", novoUsuario);
+		return await (
+			await api.post("usuarios", novoUsuario)
+		).headers({
+			headers: {
+				"Content-Type": `multipart/form-data; boundary=${formData._boundary}`,
+			},
+		});
 	} catch (e) {
 		return e.response;
 	}
