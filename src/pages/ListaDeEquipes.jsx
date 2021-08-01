@@ -15,6 +15,8 @@ import TeamCard from "../components/TeamCard/TeamCard";
 import api from "../services/api.equipes";
 import apiUsuarios from "../services/api.usuarios";
 
+import useWindowDimensions from "../hooks/WindowDimension";
+
 function ListaDeEquipes() {
   const [loading, setLoading] = React.useState(false);
   const [equipes, setEquipes] = React.useState([]);
@@ -29,6 +31,8 @@ function ListaDeEquipes() {
   }, []);
 
   const classes = useStyles();
+
+  const { height, width } = useWindowDimensions();
 
   return (
     <div>
@@ -59,7 +63,10 @@ function ListaDeEquipes() {
           </div>
         </div>
       ) : (
-        <LinearProgress />
+        <div>
+          <LinearProgress />
+          <div style={{ height: height }}></div>
+        </div>
       )}
     </div>
   );

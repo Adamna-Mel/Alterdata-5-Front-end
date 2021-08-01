@@ -12,6 +12,8 @@ import Login from "./Login";
 import auth from "../services/auth";
 import apiUsuarios from "../services/api.usuarios";
 
+import useWindowDimensions from "../hooks/WindowDimension";
+
 export default function Principal() {
   const [loading, setLoading] = React.useState(false);
   const [temEquipe, setTemEquipe] = React.useState(false);
@@ -28,6 +30,8 @@ export default function Principal() {
     }, 1300);
   }, []);
 
+  const { height, width } = useWindowDimensions();
+
   return (
     <>
       {loading ? (
@@ -43,7 +47,10 @@ export default function Principal() {
           )}
         </div>
       ) : (
-        <LinearProgress />
+        <div>
+          <LinearProgress />
+          <div style={{ height: height }}></div>
+        </div>
       )}
     </>
   );
