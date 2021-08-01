@@ -1,6 +1,6 @@
 import React from 'react'
 import { Grid, Paper, TextField, Button } from '@material-ui/core'
-import avatar from "./assets/2.png"
+import panico from "./assets/panico.jpg"
 
 const App = () => {
     const papercss = { padding: '25px 20px',
@@ -11,8 +11,8 @@ const App = () => {
         <Grid>
             <Paper elevation={20} style={papercss}>
                 <Grid align='center'>
-                    <img src={avatar}  style={{width: 100, 
-                      height: 100, 
+                    <img src={panico}  style={{width: 120, 
+                      height: 120, 
                       borderRadius: 400/ 2, 
                       borderStyle: "solid", 
                       borderColor:"purple", 
