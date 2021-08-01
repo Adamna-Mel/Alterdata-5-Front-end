@@ -5,16 +5,16 @@ const obterCargos = async () => {
 		const { data } = await api.get("cargos");
 		return data;
 	} catch (e) {
-		console.log(e);
+		return e.response;
 	}
 };
 
-const obterCargosPorId = async (id) => {
+const obterCargoPorId = async (id) => {
 	try {
 		const { data } = await api.get(`cargos/${id}`);
 		return data;
 	} catch (e) {
-		console.log(e);
+		return e.response;
 	}
 };
 
@@ -23,7 +23,7 @@ const obterCargosPorNome = async (nome) => {
 		const { data } = await api.get(`cargos/nome/${nome}`);
 		return data;
 	} catch (e) {
-		console.log(e);
+		return e.response;
 	}
 };
 
@@ -31,7 +31,7 @@ const adicionarCargo = async (novoCargo) => {
 	try {
 		return await api.post("cargos", novoCargo);
 	} catch (e) {
-		console.log(e);
+		return e.response;
 	}
 };
 
@@ -40,7 +40,7 @@ const atualizarCargo = async (id, cargoAtualizado) => {
 		const { data } = await api.put(`cargos/${id}`, cargoAtualizado);
 		return data;
 	} catch (e) {
-		console.log(e);
+		return e.response;
 	}
 };
 
@@ -48,14 +48,14 @@ const apagarCargo = async (id) => {
 	try {
 		return await api.delete(`cargos/${id}`);
 	} catch (e) {
-		console.log(e);
+		return e.response;
 	}
 };
 
 export default {
-	obterCargo,
+	obterCargos,
 	obterCargoPorId,
-	obterCargoPorNome,
+	obterCargosPorNome,
 	adicionarCargo,
 	atualizarCargo,
 	apagarCargo,

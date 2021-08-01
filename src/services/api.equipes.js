@@ -5,7 +5,7 @@ const obterEquipes = async () => {
 		const { data } = await api.get("equipes");
 		return data;
 	} catch (e) {
-		console.log(e);
+		return e.response;
 	}
 };
 
@@ -14,7 +14,7 @@ const obterEquipesPorId = async (id) => {
 		const { data } = await api.get(`equipes/${id}`);
 		return data;
 	} catch (e) {
-		console.log(e);
+		return e.response;
 	}
 };
 
@@ -23,7 +23,7 @@ const obterEquipesPorNome = async (nome) => {
 		const { data } = await api.get(`equipes/nome/${nome}`);
 		return data;
 	} catch (e) {
-		console.log(e);
+		return e.response;
 	}
 };
 
@@ -31,7 +31,7 @@ const adicionarEquipe = async (novoEquipe) => {
 	try {
 		return await api.post(`equipes`, novoEquipe);
 	} catch (e) {
-		console.log(e);
+		return e.response;
 	}
 };
 
@@ -40,7 +40,7 @@ const atualizarEquipe = async (id, equipeAtualizada) => {
 		const { data } = await api.put(`equipes/${id}`, equipeAtualizada);
 		return data;
 	} catch (e) {
-		console.log(e);
+		return e.response;
 	}
 };
 
@@ -48,7 +48,7 @@ const apagarEquipe = async (id) => {
 	try {
 		return await api.delete(`equipes/${id}`);
 	} catch (e) {
-		console.log(e);
+		return e.response;
 	}
 };
 
