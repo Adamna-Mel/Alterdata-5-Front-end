@@ -128,40 +128,50 @@ function RegisterUser() {
                 borderWidth: 5,
               }}
             />
+            <input type="file" onChange={handleFile} />
             <Typography style={{ fontSize: 30 }}>Cadastrar Usuário</Typography>
           </Grid>
           <form>
-            <input type="file" onChange={handleFile} />
             <TextField
+              variant="outlined"
               fullWidth
               label="Nome"
               value={nome}
               onChange={(e) => setNome(e.target.value)}
+              style={{ marginBottom: 10 }}
             />
             <TextField
+              variant="outlined"
               fullWidth
               label="Email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              style={{ marginBottom: 10 }}
             />
             <TextField
+              variant="outlined"
               fullWidth
               label="Login"
               value={login}
               onChange={(e) => setLogin(e.target.value)}
+              style={{ marginBottom: 10 }}
             />
             <TextField
+              variant="outlined"
               type="password"
               fullWidth
               label="Senha"
               value={senha}
               onChange={(e) => setSenha(e.target.value)}
+              style={{ marginBottom: 10 }}
             />
             <TextField
+              variant="outlined"
               fullWidth
               label="Status"
               value={status}
               onChange={(e) => setStatus(e.target.value)}
+              style={{ marginBottom: 10 }}
             />
             <div style={{ marginTop: 10 }}>
               <Button

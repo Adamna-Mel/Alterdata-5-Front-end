@@ -72,7 +72,13 @@ function UserProfile() {
           </Typography>
           <Typography style={{ fontSize: 23 }}>{cargo}</Typography>
 
-          <div style={{ marginTop: 10 }}></div>
+          <div
+            style={{ marginTop: 10, justifyContent: "center", display: "flex" }}
+          >
+            <Button color="primary" variant="contained">
+              Editar Perfil
+            </Button>
+          </div>
         </Paper>
       </Grid>
     </div>
