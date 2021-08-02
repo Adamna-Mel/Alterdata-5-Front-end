@@ -52,7 +52,7 @@ function UserProfile() {
 							height: 100,
 							borderRadius: 400 / 2,
 							borderStyle: "solid",
-							borderColor: "purple",
+							borderColor: "#1A2228",
 							marginTop: -50,
 						}}
 					/>
