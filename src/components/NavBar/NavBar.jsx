@@ -267,9 +267,16 @@ function NavBar({ check, change }) {
             </div>
           ) : null}
           {auth.isAuthenticated() ? null : (
-            <div style={{ textAlign: "center" }}>
-              <Switch color="primary" checked={check} onChange={change} />
-            </div>
+            <MenuItem onClick={change}>
+              <IconButton
+                aria-label="account of current user"
+                aria-controls="primary-search-account-menu"
+                aria-haspopup="true"
+                color="inherit"
+              >
+                {check ? <Brightness7Icon /> : <Brightness4Icon />}
+              </IconButton>
+            </MenuItem>
           )}
           <div className={classes.sectionMobile}>
             {auth.isAuthenticated() ? (
