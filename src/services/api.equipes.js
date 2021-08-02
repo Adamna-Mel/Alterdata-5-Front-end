@@ -52,6 +52,14 @@ const apagarEquipe = async (id) => {
 	}
 };
 
+const obterUsuariosPorLogin = async (id, login) => {
+	try {
+		return await api.get(`equipes/${id}/login/${login}`);
+	} catch (e) {
+		return e.response;
+	}
+};
+
 export default {
 	obterEquipes,
 	obterEquipesPorId,
@@ -59,4 +67,5 @@ export default {
 	adicionarEquipe,
 	atualizarEquipe,
 	apagarEquipe,
+	obterUsuariosPorLogin,
 };
