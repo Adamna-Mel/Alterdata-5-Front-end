@@ -13,7 +13,6 @@ function UserProfile() {
   const [login, setLogin] = useState();
   const [status, setStatus] = useState();
   const [cargo, setCargo] = useState();
-  const [avatar, setAvatar] = useState();
 
   const idUsuario = localStorage.getItem("@user-id");
 
@@ -26,7 +25,6 @@ function UserProfile() {
 
   React.useEffect(() => {
     apiUsuarios.obterUsuarioPorId(idUsuario).then((res) => {
-      console.log(res);
       setUserId(res.id);
       setNome(res.nome);
       setEmail(res.email);

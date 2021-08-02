@@ -67,6 +67,10 @@ function NavBar({ check, change }) {
     history.push("/perfil");
   };
 
+  const handleHome = () => {
+    history.push("/");
+  };
+
   const handleMobileMenuClose = () => {
     setMobileMoreAnchorEl(null);
   };
@@ -169,11 +173,13 @@ function NavBar({ check, change }) {
     <div className={classes.grow}>
       <AppBar position="static" color="inherit">
         <Toolbar>
-          <SvgColor
-            svg={LogoAlterdata}
-            width={190}
-            colors={check ? ["#ffffff"] : ["#0083c1"]}
-          />
+          <div onClick={handleHome}>
+            <SvgColor
+              svg={LogoAlterdata}
+              width={190}
+              colors={check ? ["#ffffff"] : ["#0083c1"]}
+            />
+          </div>
           <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />
