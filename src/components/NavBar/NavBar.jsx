@@ -19,6 +19,7 @@ import MoreIcon from "@material-ui/icons/MoreVert";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import Brightness4Icon from "@material-ui/icons/Brightness4";
 import Brightness7Icon from "@material-ui/icons/Brightness7";
+import Avatar from "@material-ui/core/Avatar";
 
 //SVGColor
 import SvgColor from "react-svg-color";
@@ -28,15 +29,19 @@ import LogoAlterdata from "../../assets/alterdata.svg";
 
 //SERVICES
 import auth from "../../services/auth";
+import apiUsuarios from "../../services/api.usuarios";
 
 //TODO: switch Dark Mode no modo Mobile duplicado, necessario remover
 function NavBar({ check, change }) {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+  const [userId, setUserId] = React.useState();
   const history = useHistory();
 
   const [menu, setMenu] = React.useState(false);
+
+  const idUsuario = localStorage.getItem("@user-id");
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -46,6 +51,9 @@ function NavBar({ check, change }) {
 
   React.useEffect(() => {
     auth.isAuthenticated() ? setMenu(true) : setMenu(false);
+    apiUsuarios.obterUsuarioPorId(idUsuario).then((res) => {
+      setUserId(res.id);
+    });
   }, []);
 
   const handleLogout = () => {
@@ -126,7 +134,11 @@ function NavBar({ check, change }) {
           aria-haspopup="true"
           color="inherit"
         >
-          <AccountCircle />
+          <Avatar
+            alt="Perfil"
+            src={`http://alterdata-5-back-end.herokuapp.com/api/usuarios/avatar/${userId}`}
+            className={classes.profileImage}
+          />
         </IconButton>
       </MenuItem>
       <MenuItem onClick={handleLogout}>
@@ -189,7 +201,11 @@ function NavBar({ check, change }) {
                 color="primary"
                 size="medium"
               >
-                <AccountCircle fontSize="inherit" />
+                <Avatar
+                  alt="Perfil"
+                  src={`http://alterdata-5-back-end.herokuapp.com/api/usuarios/avatar/${userId}`}
+                  className={classes.profileImage}
+                />
               </IconButton>
             </div>
           ) : null}
@@ -276,6 +292,10 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.up("md")]: {
       display: "none",
     },
+  },
+  profileImage: {
+    height: 25,
+    width: 25,
   },
 }));
 
