@@ -27,9 +27,8 @@ export default function StatusBar(props) {
     >
       {condicao ? (
         <TextField
-          className={props.className}
           id="filled-required"
-          label="Status"
+          label="Status - Double Click"
           defaultValue=""
           onKeyDown={handleKeyDown}
           onChange={(e) => setStatus(e.target.value)}
@@ -43,15 +42,13 @@ export default function StatusBar(props) {
         />
       ) : (
         <div
-          className={props.className}
           onClick={() => {
             setCondicao(true);
           }}
         >
           <TextField
-            className={props.className}
             id="filled-required"
-            label="Status"
+            label="Status - Double Click"
             defaultValue=""
             onKeyDown={handleKeyDown}
             onChange={(e) => setStatus(e.target.value)}

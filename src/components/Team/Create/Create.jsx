@@ -17,6 +17,10 @@ import apiEquipes from "../../../services/api.equipes";
 //HOOKS
 import useWindowDimensions from "../../../hooks/WindowDimension";
 
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
+
 function Create() {
   const handleClick = () => {
     history.push("/");
