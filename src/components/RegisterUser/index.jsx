@@ -1,7 +1,6 @@
 import React from "react";
 import { Grid, Paper, TextField, Button, Typography } from "@material-ui/core";
 import avatar from "../../assets/3-4.png";
-import useWindowDimensions from "../../hooks/WindowDimension";
 import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";
 
@@ -9,11 +8,13 @@ import axios from "axios";
 
 import apiUsuarios from "../../services/api.usuarios";
 
+import useWindowDimensions from "../../hooks/WindowDimension";
+
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
 
-function UserProfile() {
+function RegisterUser() {
   const [nome, setNome] = React.useState("");
   const [login, setLogin] = React.useState("");
   const [senha, setSenha] = React.useState("");
@@ -22,7 +23,12 @@ function UserProfile() {
   const [imagem, setImagem] = React.useState(null);
   const [caminho, setCaminho] = React.useState(null);
 
-  const papercss = { padding: "25px 20px", width: 400, margin: "30px auto" };
+  const papercss = {
+    padding: "25px 20px",
+    width: 400,
+    margin: "30px auto",
+    borderRadius: 20,
+  };
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -108,7 +114,7 @@ function UserProfile() {
         </Alert>
       </Snackbar>
       <Grid>
-        <Paper elevation={20} style={papercss}>
+        <Paper elevation={7} style={papercss}>
           <Grid align="center">
             <img
               src={caminho}
@@ -181,4 +187,4 @@ function UserProfile() {
   );
 }
 
-export default UserProfile;
+export default RegisterUser;
