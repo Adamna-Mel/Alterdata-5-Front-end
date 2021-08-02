@@ -28,9 +28,6 @@ function ListaDeUsuarios() {
   const [loading, setLoading] = React.useState(false);
   const [idEquipe, setIdEquipe] = useState("");
   const [nomeDaEquipe, setNomeDaEquipe] = useState("");
-  const [corPrimaria, setCorPrimaria] = useState("");
-  const [corSecundaria, setCorSecundaria] = useState("");
-  const [iconeEquipe, setIconeEquipe] = useState("");
   const [usuarios, setUsuarios] = useState([]);
   const [anchorEl, setAnchorEl] = useState(null);
   const [openModal, setOpenModal] = useState(false);
@@ -55,9 +52,6 @@ function ListaDeUsuarios() {
         apiEquipes.obterEquipesPorId(res.equipe.idEquipe).then((res) => {
           setUsuarios(res.membros);
           setNomeDaEquipe(res.nome);
-          setCorPrimaria(res.cor1);
-          setCorSecundaria(res.cor2);
-          setIconeEquipe(res.icone);
         });
         setTimeout(() => {
           setLoading(true);
@@ -78,7 +72,7 @@ function ListaDeUsuarios() {
   const { height, width } = useWindowDimensions();
   return (
     <>
-      <div>
+      <div style={{ height: height }}>
         {loading ? (
           <div>
             <div>
@@ -132,9 +126,6 @@ function ListaDeUsuarios() {
                       usuario.cargo != null ? usuario.cargo.nome : "Sem cargo"
                     }
                     avatar={usuario.avatar}
-                    corcargo1={usuario.cargo.cor1}
-                    corcargo2={usuario.cargo.cor2}
-                    cargoicone={usuario.cargo.icone}
                   />
                 ))
               ) : (
