@@ -233,6 +233,12 @@ function NavBar({ check, change }) {
                   aria-haspopup="true"
                   color="default"
                   onClick={change}
+                  style={{
+                    height: 45,
+                    width: 45,
+                    marginTop: "auto",
+                    marginBottom: "auto",
+                  }}
                 >
                   {check ? <Brightness7Icon /> : <Brightness4Icon />}
                 </IconButton>
@@ -241,7 +247,12 @@ function NavBar({ check, change }) {
                 color="primary"
                 aria-label="add"
                 onClick={handleCreateUser}
-                style={{ height: 15, width: 35 }}
+                style={{
+                  height: 45,
+                  width: 45,
+                  marginTop: "auto",
+                  marginBottom: "auto",
+                }}
               >
                 <AddIcon />
               </Fab>
@@ -347,8 +358,8 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   profileImage: {
-    height: 25,
-    width: 25,
+    height: 45,
+    width: 45,
   },
 }));
 
