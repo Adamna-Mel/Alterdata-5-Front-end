@@ -226,35 +226,28 @@ function NavBar({ check, change }) {
           <div className={classes.grow} />
           {menu ? (
             <div className={classes.sectionDesktop}>
-              <div>
-                <IconButton
-                  aria-label="account of current user"
-                  aria-controls="primary-search-account-menu"
-                  aria-haspopup="true"
-                  color="default"
-                  onClick={change}
-                  style={{
-                    height: 45,
-                    width: 45,
-                    marginTop: "auto",
-                    marginBottom: "auto",
-                  }}
-                >
-                  {check ? <Brightness7Icon /> : <Brightness4Icon />}
-                </IconButton>
-              </div>
+              <IconButton
+                aria-label="account of current user"
+                aria-controls="primary-search-account-menu"
+                aria-haspopup="true"
+                color="default"
+                onClick={change}
+              >
+                {check ? (
+                  <Brightness7Icon className={classes.icones} />
+                ) : (
+                  <Brightness4Icon className={classes.icones} />
+                )}
+              </IconButton>
               <Fab
+                variant="extended"
                 color="primary"
                 aria-label="add"
                 onClick={handleCreateUser}
-                style={{
-                  height: 45,
-                  width: 45,
-                  marginTop: "auto",
-                  marginBottom: "auto",
-                }}
+                className={classes.icones}
               >
                 <AddIcon />
+                CADASTRAR USUÁRIO
               </Fab>
               <IconButton
                 edge="end"
@@ -360,6 +353,10 @@ const useStyles = makeStyles((theme) => ({
   profileImage: {
     height: 45,
     width: 45,
+  },
+  icones: {
+    marginTop: "auto",
+    marginBottom: "auto",
   },
 }));
 

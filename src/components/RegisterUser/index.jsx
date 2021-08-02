@@ -123,9 +123,10 @@ function RegisterUser() {
                 height: 100,
                 borderRadius: 400 / 2,
                 borderStyle: "solid",
-                borderColor: "#1A2228",
+                borderColor: "#0083C1",
                 marginTop: -80,
                 borderWidth: 5,
+                backgroundColor: "#F5F3F4",
               }}
             />
             <input type="file" onChange={handleFile} />

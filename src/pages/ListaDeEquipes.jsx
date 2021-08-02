@@ -9,7 +9,7 @@ import Typography from "@material-ui/core/Typography";
 import LinearProgress from "@material-ui/core/LinearProgress";
 import Button from "@material-ui/core/Button";
 import Fab from "@material-ui/core/Fab";
-import AddIcon from "@material-ui/icons/Add";
+import DoubleArrowIcon from "@material-ui/icons/DoubleArrow";
 
 //COMPONENTS
 import TeamCard from "../components/TeamCard/TeamCard";
@@ -53,9 +53,15 @@ function ListaDeEquipes() {
                 Escolha uma equipe para entrar
               </Typography>
               <Typography className={classes.titulo}>
-                ou crie uma equipe{" "}
-                <Fab color="primary" aria-label="add" onClick={handleCreate}>
-                  <AddIcon />
+                ou{" "}
+                <Fab
+                  variant="extended"
+                  color="primary"
+                  aria-label="add"
+                  onClick={handleCreate}
+                >
+                  <DoubleArrowIcon />
+                  CRIE SUA PRÓPRIA EQUIPE
                 </Fab>
               </Typography>
             </CardContent>
