@@ -11,6 +11,7 @@ import MoreVertIcon from "@material-ui/icons/MoreVert";
 import Paper from "@material-ui/core/Paper";
 import Avatar from "@material-ui/core/Avatar";
 import LinearProgress from "@material-ui/core/LinearProgress";
+import Divider from "@material-ui/core/Divider";
 
 //COMPONENTS
 import UserCard from "../components/UserCard/UserCard";
@@ -113,10 +114,11 @@ function ListaDeUsuarios() {
                     history.push("editar-equipe", idEquipe);
                   }}
                 >
-                  Editar
+                  Editar Equipe
                 </MenuItem>
+                <Divider style={{ marginTop: 15, marginBottom: 15 }} />
                 <MenuItem onClick={handleDelete}>
-                  <span style={{ color: "red" }}>Apagar</span>
+                  <span style={{ color: "red" }}>Apagar Equipe</span>
                 </MenuItem>
               </Menu>
             </div>
