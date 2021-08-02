@@ -59,7 +59,7 @@ const apagarUsuario = async (id) => {
 
 const editarStatus = async (id, novoStatus) => {
 	try {
-		return await api.patch(`usuarios/${id}`, novoStatus);
+		return await api.patch(`usuarios/status/${id}`, novoStatus);
 	} catch (e) {
 		return e.response;
 	}
@@ -81,6 +81,14 @@ const editarTime = async (id, idTime) => {
 	}
 };
 
+const obterAvatar = async (id) => {
+	try {
+		return await api.get(`usuarios/avatar/${id}`);
+	} catch (e) {
+		return e.response;
+	}
+};
+
 export default {
 	obterUsuarios,
 	obterUsuariosPorLogin,
@@ -91,4 +99,5 @@ export default {
 	editarStatus,
 	editarPapel,
 	editarTime,
+	obterAvatar,
 };
