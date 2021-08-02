@@ -119,6 +119,7 @@ function UserProfile() {
                 borderStyle: "solid",
                 borderColor: "#1A2228",
                 marginTop: -80,
+                borderWidth: 5,
               }}
             />
             <Typography style={{ fontSize: 30 }}>Cadastrar Usuário</Typography>

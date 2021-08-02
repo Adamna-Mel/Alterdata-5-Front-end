@@ -95,7 +95,7 @@ export default function Login() {
   const classes = useStyles();
 
   return (
-    <div style={{ height: height }}>
+    <div style={{ minHeight: height }}>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Snackbar
