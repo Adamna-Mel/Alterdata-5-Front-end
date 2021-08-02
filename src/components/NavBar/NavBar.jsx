@@ -22,6 +22,8 @@ import Brightness7Icon from "@material-ui/icons/Brightness7";
 import Avatar from "@material-ui/core/Avatar";
 import Fab from "@material-ui/core/Fab";
 import AddIcon from "@material-ui/icons/Add";
+import AssignmentLateIcon from "@material-ui/icons/AssignmentLate";
+import Divider from "@material-ui/core/Divider";
 
 //SVGColor
 import SvgColor from "react-svg-color";
@@ -39,6 +41,7 @@ function NavBar({ check, change }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
   const [userId, setUserId] = React.useState();
+  const [username, setUsername] = React.useState();
   const history = useHistory();
 
   const [menu, setMenu] = React.useState(false);
@@ -55,6 +58,7 @@ function NavBar({ check, change }) {
     auth.isAuthenticated() ? setMenu(true) : setMenu(false);
     apiUsuarios.obterUsuarioPorId(idUsuario).then((res) => {
       setUserId(res.id);
+      setUsername(res.nome);
     });
   }, []);
 
@@ -83,6 +87,11 @@ function NavBar({ check, change }) {
   const handleMobileMenuOpen = (event) => {
     setMobileMoreAnchorEl(event.currentTarget);
   };
+
+  const handleExitTeam = () => {
+    apiUsuarios.sairDaEquipe(userId);
+  };
+
   const menuId = "primary-search-account-menu";
   const renderMenu = (
     <Menu
@@ -94,8 +103,12 @@ function NavBar({ check, change }) {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleProfile}>Usuário</MenuItem>
+      <MenuItem onClick={handleProfile}>{username}</MenuItem>
       <MenuItem onClick={handleLogout}>Logout</MenuItem>
+      <Divider style={{ marginTop: 15, marginBottom: 15 }} />
+      <MenuItem style={{ color: "red" }} onClick={handleExitTeam}>
+        Sair da Equipe
+      </MenuItem>
     </Menu>
   );
   //MENU
@@ -127,16 +140,6 @@ function NavBar({ check, change }) {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
-      <MenuItem onClick={change}>
-        <IconButton
-          aria-label="account of current user"
-          aria-controls="primary-search-account-menu"
-          aria-haspopup="true"
-          color="inherit"
-        >
-          {check ? <Brightness7Icon /> : <Brightness4Icon />}
-        </IconButton>
-      </MenuItem>
       <MenuItem onClick={handleProfile}>
         <IconButton
           aria-label="account of current user"
@@ -151,6 +154,16 @@ function NavBar({ check, change }) {
           />
         </IconButton>
       </MenuItem>
+      <MenuItem onClick={change}>
+        <IconButton
+          aria-label="account of current user"
+          aria-controls="primary-search-account-menu"
+          aria-haspopup="true"
+          color="inherit"
+        >
+          {check ? <Brightness7Icon /> : <Brightness4Icon />}
+        </IconButton>
+      </MenuItem>
       <MenuItem onClick={handleLogout}>
         <IconButton
           aria-label="account of current user"
@@ -159,6 +172,18 @@ function NavBar({ check, change }) {
           color="inherit"
         >
           <ExitToAppIcon />
+        </IconButton>
+      </MenuItem>
+      <Divider style={{ marginTop: 15, marginBottom: 15 }} />
+      <MenuItem onClick={handleExitTeam}>
+        <IconButton
+          aria-label="account of current user"
+          aria-controls="primary-search-account-menu"
+          aria-haspopup="true"
+          color="inherit"
+          style={{ color: "red" }}
+        >
+          <AssignmentLateIcon />
         </IconButton>
       </MenuItem>
     </Menu>
@@ -201,8 +226,16 @@ function NavBar({ check, change }) {
           <div className={classes.grow} />
           {menu ? (
             <div className={classes.sectionDesktop}>
-              <div style={{ marginTop: 5 }}>
-                <Switch color="primary" checked={check} onChange={change} />
+              <div>
+                <IconButton
+                  aria-label="account of current user"
+                  aria-controls="primary-search-account-menu"
+                  aria-haspopup="true"
+                  color="default"
+                  onClick={change}
+                >
+                  {check ? <Brightness7Icon /> : <Brightness4Icon />}
+                </IconButton>
               </div>
               <Fab
                 color="primary"

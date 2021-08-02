@@ -37,7 +37,7 @@ function UserProfile() {
   const { height, width } = useWindowDimensions();
 
   return (
-    <div style={{ height: height, marginTop: 100 }}>
+    <div style={{ height: height, marginTop: 130 }}>
       <Grid>
         <Paper elevation={7} style={papercss}>
           <Grid align="center">
@@ -45,32 +45,32 @@ function UserProfile() {
               alt="Perfil"
               src={`http://alterdata-5-back-end.herokuapp.com/api/usuarios/avatar/${userId}`}
               style={{
-                width: 100,
-                height: 100,
+                width: 200,
+                height: 200,
                 borderRadius: 400 / 2,
                 borderStyle: "solid",
                 borderColor: "#1A2228",
-                marginTop: -80,
+                marginTop: -130,
               }}
             />
-            <Typography style={{ fontSize: 30 }}>{nome}</Typography>
+            <Typography style={{ fontSize: 33 }}>{nome}</Typography>
           </Grid>
-          <Typography color="primary" style={{ fontSize: 17 }}>
+          <Typography color="primary" style={{ fontSize: 19 }}>
             email
           </Typography>
-          <Typography style={{ fontSize: 23 }}>{email}</Typography>
-          <Typography color="primary" style={{ fontSize: 17 }}>
+          <Typography style={{ fontSize: 25 }}>{email}</Typography>
+          <Typography color="primary" style={{ fontSize: 19 }}>
             login
           </Typography>
           <Typography style={{ fontSize: 23 }}>{login}</Typography>
-          <Typography color="primary" style={{ fontSize: 17 }}>
+          <Typography color="primary" style={{ fontSize: 19 }}>
             status
           </Typography>
-          <Typography style={{ fontSize: 23 }}>{status}</Typography>
-          <Typography color="primary" style={{ fontSize: 17 }}>
+          <Typography style={{ fontSize: 25 }}>{status}</Typography>
+          <Typography color="primary" style={{ fontSize: 19 }}>
             cargo
           </Typography>
-          <Typography style={{ fontSize: 23 }}>{cargo}</Typography>
+          <Typography style={{ fontSize: 25 }}>{cargo}</Typography>
 
           <div
             style={{ marginTop: 10, justifyContent: "center", display: "flex" }}
