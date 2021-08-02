@@ -20,6 +20,8 @@ import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import Brightness4Icon from "@material-ui/icons/Brightness4";
 import Brightness7Icon from "@material-ui/icons/Brightness7";
 import Avatar from "@material-ui/core/Avatar";
+import Fab from "@material-ui/core/Fab";
+import AddIcon from "@material-ui/icons/Add";
 
 //SVGColor
 import SvgColor from "react-svg-color";
@@ -104,6 +106,10 @@ function NavBar({ check, change }) {
 
   const handleDrawerClose = () => {
     setAnchorEl(null);
+  };
+
+  const handleCreateUser = () => {
+    history.push("/registrar");
   };
 
   const mobileMenuId = "primary-search-account-menu-mobile";
@@ -192,6 +198,14 @@ function NavBar({ check, change }) {
               <div style={{ marginTop: 5 }}>
                 <Switch color="primary" checked={check} onChange={change} />
               </div>
+              <Fab
+                color="primary"
+                aria-label="add"
+                onClick={handleCreateUser}
+                style={{ height: 15, width: 35 }}
+              >
+                <AddIcon />
+              </Fab>
               <IconButton
                 edge="end"
                 aria-label="account of current user"

@@ -15,7 +15,8 @@ import Footer from "../components/Footer/Footer";
 import Create from "../components/Team/Create/Create";
 import EditTeam from "../components/Team/Edit/Edit";
 import DeleteTeam from "../components/Team/Delete/Delete";
-import UserProfile from "../components/RegisterUser";
+import RegisterUser from "../components/RegisterUser";
+import UserProfile from "../components/UserProfile";
 
 function Rotas() {
   const [darkMode, setDarkMode] = useState(false);
@@ -86,6 +87,10 @@ function Rotas() {
 
             <Route path={"/perfil"}>
               <UserProfile />
+            </Route>
+
+            <Route path={"/registrar"}>
+              <RegisterUser />
             </Route>
 
             <Route path={"/"}>

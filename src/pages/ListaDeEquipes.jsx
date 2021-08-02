@@ -1,5 +1,5 @@
 import React from "react";
-//import { Link, useParams } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 //MATERIAL-UI
 import { makeStyles } from "@material-ui/core/styles";
@@ -24,6 +24,8 @@ function ListaDeEquipes() {
   const [loading, setLoading] = React.useState(false);
   const [equipes, setEquipes] = React.useState([]);
 
+  const history = useHistory();
+
   React.useEffect(() => {
     api.obterEquipes().then((res) => {
       setEquipes(res);
@@ -32,6 +34,10 @@ function ListaDeEquipes() {
       setLoading(true);
     }, 1300);
   }, []);
+
+  const handleCreate = () => {
+    history.push("/criartime");
+  };
 
   const classes = useStyles();
 
@@ -48,7 +54,7 @@ function ListaDeEquipes() {
               </Typography>
               <Typography className={classes.titulo}>
                 ou crie uma equipe{" "}
-                <Fab color="primary" aria-label="add">
+                <Fab color="primary" aria-label="add" onClick={handleCreate}>
                   <AddIcon />
                 </Fab>
               </Typography>
