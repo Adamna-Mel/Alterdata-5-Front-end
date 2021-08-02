@@ -249,7 +249,6 @@ function NavBar({ check, change }) {
                 <AddIcon />
                 CADASTRAR USUÁRIO
               </Fab>
-              <Typography>{username}</Typography>
               <IconButton
                 edge="end"
                 aria-label="account of current user"
