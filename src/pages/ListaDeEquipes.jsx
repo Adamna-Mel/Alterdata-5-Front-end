@@ -7,6 +7,9 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import LinearProgress from "@material-ui/core/LinearProgress";
+import Button from "@material-ui/core/Button";
+import Fab from "@material-ui/core/Fab";
+import AddIcon from "@material-ui/icons/Add";
 
 //COMPONENTS
 import TeamCard from "../components/TeamCard/TeamCard";
@@ -37,11 +40,17 @@ function ListaDeEquipes() {
   return (
     <div>
       {loading ? (
-        <div>
+        <div style={{ height: height }}>
           <Card elevation={0} className={classes.header}>
-            <CardContent>
+            <CardContent style={{ justifyContent: "center" }}>
               <Typography className={classes.titulo}>
                 Escolha uma equipe para entrar
+              </Typography>
+              <Typography className={classes.titulo}>
+                ou crie uma equipe{" "}
+                <Fab color="primary" aria-label="add">
+                  <AddIcon />
+                </Fab>
               </Typography>
             </CardContent>
           </Card>
