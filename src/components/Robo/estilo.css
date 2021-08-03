@@ -28,7 +28,7 @@ body.active-modal {
 .modal-conteudo {
     position: absolute;
     top: 40%;
-    left: 65%;
+    left: 60%;
     transform: translate(-50%, -50%);
     line-height: 1.6;
     background: #ffffff;
