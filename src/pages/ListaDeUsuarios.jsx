@@ -23,7 +23,7 @@ import apiEquipes from "../services/api.equipes";
 
 import useWindowDimensions from "../hooks/WindowDimension";
 
-import { UserContext } from "../2/UserContext";
+import { UserContext } from "../context/UserContext";
 
 function ListaDeUsuarios() {
 	const idUsuario = localStorage.getItem("@user-id");
