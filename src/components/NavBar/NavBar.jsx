@@ -38,7 +38,6 @@ import apiUsuarios from "../../services/api.usuarios";
 
 import { UserContext } from "../../context/UserContext";
 
-//TODO: switch Dark Mode no modo Mobile duplicado, necessario remover
 function NavBar({ check, change }) {
   const classes = useStyles();
 
@@ -48,6 +47,7 @@ function NavBar({ check, change }) {
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
   const [userId, setUserId] = React.useState();
   const [username, setUsername] = React.useState();
+  const [userTeam, setUserTeam] = React.useState();
   const history = useHistory();
 
   const [menu, setMenu] = React.useState(false);
@@ -65,6 +65,7 @@ function NavBar({ check, change }) {
     apiUsuarios.obterUsuarioPorId(idUsuario).then((res) => {
       setUserId(res.id);
       setUsername(res.nome);
+      setUserTeam(res.equipe);
     });
   }, []);
 
@@ -116,10 +117,14 @@ function NavBar({ check, change }) {
     >
       <MenuItem onClick={handleProfile}>{username}</MenuItem>
       <MenuItem onClick={handleLogout}>Logout</MenuItem>
-      <Divider style={{ marginTop: 15, marginBottom: 15 }} />
-      <MenuItem style={{ color: "red" }} onClick={handleExitTeam}>
-        Sair da Equipe
-      </MenuItem>
+      {userTeam !== null ? (
+        <>
+          <Divider style={{ marginTop: 15, marginBottom: 15 }} />
+          <MenuItem style={{ color: "red" }} onClick={handleExitTeam}>
+            Sair da Equipe
+          </MenuItem>
+        </>
+      ) : null}
     </Menu>
   );
   //MENU
@@ -195,18 +200,22 @@ function NavBar({ check, change }) {
           <ExitToAppIcon />
         </IconButton>
       </MenuItem>
-      <Divider style={{ marginTop: 15, marginBottom: 15 }} />
-      <MenuItem onClick={handleExitTeam}>
-        <IconButton
-          aria-label="account of current user"
-          aria-controls="primary-search-account-menu"
-          aria-haspopup="true"
-          color="inherit"
-          style={{ color: "red" }}
-        >
-          <AssignmentLateIcon />
-        </IconButton>
-      </MenuItem>
+      {userTeam !== null ? (
+        <>
+          <Divider style={{ marginTop: 15, marginBottom: 15 }} />
+          <MenuItem onClick={handleExitTeam}>
+            <IconButton
+              aria-label="account of current user"
+              aria-controls="primary-search-account-menu"
+              aria-haspopup="true"
+              color="inherit"
+              style={{ color: "red" }}
+            >
+              <AssignmentLateIcon />
+            </IconButton>
+          </MenuItem>
+        </>
+      ) : null}
     </Menu>
   );
 
