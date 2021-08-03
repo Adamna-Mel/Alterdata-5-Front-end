@@ -129,7 +129,11 @@ function RegisterUser() {
                 backgroundColor: "#F5F3F4",
               }}
             />
-            <input type="file" onChange={handleFile} />
+            <input
+              type="file"
+              onChange={handleFile}
+              accept=".jpg, .png, .jpeg, .gif"
+            />
             <Typography style={{ fontSize: 30 }}>Cadastrar Usuário</Typography>
           </Grid>
           <form>
@@ -179,7 +183,7 @@ function RegisterUser() {
                 variant="contained"
                 color="secondary"
                 style={{ marginLeft: "50%" }}
-                onClick={()=> history.push('/')}
+                onClick={() => history.push("/")}
               >
                 Voltar
               </Button>

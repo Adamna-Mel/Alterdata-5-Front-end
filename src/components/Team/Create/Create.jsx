@@ -14,42 +14,66 @@ function Alert(props) {
 
 function NovaEquipe(props) {
 	const [nome, setNome] = React.useState("");
+	const [imagem, setImagem] = React.useState(null);
+	const [caminho, setCaminho] = React.useState(null);
 
-const handleCreate = () => { 
-	const novo = {nome};
-	api.adicionarEquipe (novo)
-}
+	const handleCreate = () => {
+		const formData = new FormData();
 
-const handleClose = () => {
-	props.setOpenModal(false);
-};
+		formData.append("nome", nome);
+		formData.append("img", imagem);
 
-const classes = useStyles();
+		api.adicionarEquipe(formData);
+	};
+
+	const handleClose = () => {
+		props.setOpenModal(false);
+	};
+
+	const handleFile = (e) => {
+		setImagem(e.target.files[0]);
+		setCaminho(URL.createObjectURL(e.target.files[0]));
+	};
+
+	const classes = useStyles();
 
 	return (
 		<form className={classes.root}>
-				<Modal
-        aria-labelledby="transition-modal-title"
-        aria-describedby="transition-modal-description"
-        className={classes.modal}
-        open={props.openModal}
-        onClose={handleClose}
-        closeAfterTransition
-        BackdropComponent={Backdrop}
-        BackdropProps={{
-          timeout: 500,
-        }}
-      >
-
-        <Fade in={props.openModal}>
-		<div className={classes.paper}
-				style={{
+			<Modal
+				aria-labelledby="transition-modal-title"
+				aria-describedby="transition-modal-description"
+				className={classes.modal}
+				open={props.openModal}
+				onClose={handleClose}
+				closeAfterTransition
+				BackdropComponent={Backdrop}
+				BackdropProps={{
+					timeout: 500,
+				}}
+			>
+				<Fade in={props.openModal}>
+					<div
+						className={classes.paper}
+						style={{
 							alignSelf: "center",
 							flexDirection: "column",
 							display: "flex",
 							justifyContent: "center",
 						}}
 					>
+						<img
+							src={caminho}
+							style={{
+								width: 100,
+								height: 100,
+								borderRadius: 400 / 2,
+								borderStyle: "solid",
+								borderColor: "#0083C1",
+								marginTop: -80,
+								borderWidth: 5,
+								backgroundColor: "#F5F3F4",
+							}}
+						/>
 						<TextField
 							required
 							id="filled-required"
@@ -62,40 +86,51 @@ const classes = useStyles();
 							inputProps={{ maxLength: 20 }}
 							style={{ width: 300 }}
 						/>
-						<Button color="primary" 
-						variant="contained" 
-						onClick={handleCreate}>Criar</Button>
+						<Button
+							color="primary"
+							variant="contained"
+							onClick={handleCreate}
+							className={classes.button}
+						>
+							Criar
+						</Button>
 
-						<Button variant="contained" 
-						onClick={handleClose}>Voltar</Button>
-			</div>
-        </Fade>
-      </Modal>
-	</form>
+						<Button
+							variant="contained"
+							onClick={handleClose}
+							className={classes.button}
+						>
+							Voltar
+						</Button>
+						<input type="file" onChange={handleFile} />
+					</div>
+				</Fade>
+			</Modal>
+		</form>
 	);
-					}
+}
 
 export default NovaEquipe;
 const useStyles = makeStyles((theme) => ({
-  modal: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  paper: {
-    backgroundColor: theme.palette.background.paper,
-    boxShadow: theme.shadows[5],
-    padding: theme.spacing(2, 4, 3),
-    borderRadius: 20,
-  },
-  button: {
-    margin: 5,
-  },
-  buttonDelete: {
-    margin: 5,
-    backgroundColor: "#F22",
-    "&:hover": {
-      backgroundColor: "#F00",
-    },
-  },
+	modal: {
+		display: "flex",
+		alignItems: "center",
+		justifyContent: "center",
+	},
+	paper: {
+		backgroundColor: theme.palette.background.paper,
+		boxShadow: theme.shadows[5],
+		padding: theme.spacing(2, 4, 3),
+		borderRadius: 20,
+	},
+	button: {
+		marginTop: 15,
+	},
+	buttonDelete: {
+		margin: 5,
+		backgroundColor: "#F22",
+		"&:hover": {
+			backgroundColor: "#F00",
+		},
+	},
 }));

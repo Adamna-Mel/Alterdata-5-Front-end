@@ -165,11 +165,7 @@ export default function Login() {
                   Esqueceu sua senha?
                 </Link>
               </Grid>
-              <Grid item>
-                <Link href="#" variant="body2">
-                  {"Não tem conta? Cadastre-se"}
-                </Link>
-              </Grid>
+              <Grid item></Grid>
             </Grid>
           </form>
         </div>
