@@ -94,8 +94,13 @@ function NavBar({ check, change }) {
 	};
 
 	const handleExitTeam = () => {
-		apiUsuarios.sairDaEquipe(userId);
-		history.push('/');
+		apiUsuarios.sairDaEquipe(userId)
+							 .then(
+								 ()=> history.push('/')
+								)
+								.catch( 
+									(e) => {console.log(e)}
+								)	
 	};
 
 	const menuId = "primary-search-account-menu";

@@ -1,4 +1,6 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
+
 import { makeStyles } from "@material-ui/core/styles";
 
 import { Typography, Button, Fade, Backdrop, Modal } from "@material-ui/core";
@@ -31,6 +33,7 @@ const useStyles = makeStyles((theme) => ({
 
 function Delete({ openModal, setOpenModal, idEquipe }) {
   const [equipe, setEquipe] = React.useState("");
+  const history = useHistory();
 
   React.useEffect(() => {
     apiEquipe.obterEquipesPorId(idEquipe).then((res) => {
@@ -45,8 +48,9 @@ function Delete({ openModal, setOpenModal, idEquipe }) {
   };
 
   const handleDelete = () => {
-    console.log(idEquipe);
+    //console.log(idEquipe);
     apiEquipe.apagarEquipe(idEquipe).then((res) => console.log(res));
+    history.push('/');
   };
 
   return (
