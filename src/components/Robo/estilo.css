@@ -4,7 +4,7 @@ body.active-modal {
 
 .robo-modal {
     display: block;
-    margin-left: 86%;
+    margin-left: 80%;
     width: 18%;
     margin-bottom: 0.8%;
     position: fixed;
@@ -28,7 +28,7 @@ body.active-modal {
 .modal-conteudo {
     position: absolute;
     top: 40%;
-    left: 87%;
+    left: 65%;
     transform: translate(-50%, -50%);
     line-height: 1.6;
     background: #ffffff;
