@@ -95,6 +95,7 @@ function NavBar({ check, change }) {
 
 	const handleExitTeam = () => {
 		apiUsuarios.sairDaEquipe(userId);
+		history.push('/');
 	};
 
 	const menuId = "primary-search-account-menu";

@@ -9,6 +9,7 @@ import axios from "axios";
 import apiUsuarios from "../../services/api.usuarios";
 
 import useWindowDimensions from "../../hooks/WindowDimension";
+import { useHistory } from "react-router-dom";
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -19,9 +20,9 @@ function RegisterUser() {
   const [login, setLogin] = React.useState("");
   const [senha, setSenha] = React.useState("");
   const [email, setEmail] = React.useState("");
-  const [status, setStatus] = React.useState("");
   const [imagem, setImagem] = React.useState(null);
   const [caminho, setCaminho] = React.useState(null);
+  const history = useHistory();
 
   const papercss = {
     padding: "25px 20px",
@@ -41,7 +42,6 @@ function RegisterUser() {
     formData.append("nome", nome);
     formData.append("email", email);
     formData.append("senha", senha);
-    formData.append("status", status);
     formData.append("login", login);
 
     apiUsuarios.adicionarUsuario(formData).then((res) => console.log(res));
@@ -166,14 +166,6 @@ function RegisterUser() {
               onChange={(e) => setSenha(e.target.value)}
               style={{ marginBottom: 10 }}
             />
-            <TextField
-              variant="outlined"
-              fullWidth
-              label="Status"
-              value={status}
-              onChange={(e) => setStatus(e.target.value)}
-              style={{ marginBottom: 10 }}
-            />
             <div style={{ marginTop: 10 }}>
               <Button
                 type="submit"
@@ -187,6 +179,7 @@ function RegisterUser() {
                 variant="contained"
                 color="secondary"
                 style={{ marginLeft: "50%" }}
+                onClick={()=> history.push('/')}
               >
                 Voltar
               </Button>
