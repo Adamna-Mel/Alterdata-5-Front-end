@@ -24,6 +24,7 @@ import Fab from "@material-ui/core/Fab";
 import AddIcon from "@material-ui/icons/Add";
 import AssignmentLateIcon from "@material-ui/icons/AssignmentLate";
 import Divider from "@material-ui/core/Divider";
+import AddCircleIcon from "@material-ui/icons/AddCircle";
 
 //SVGColor
 import SvgColor from "react-svg-color";
@@ -162,6 +163,16 @@ function NavBar({ check, change }) {
             src={`http://alterdata-5-back-end.herokuapp.com/api/usuarios/avatar/${userId}`}
             className={classes.profileImageMobile}
           />
+        </IconButton>
+      </MenuItem>
+      <MenuItem onClick={handleCreateUser}>
+        <IconButton
+          aria-label="account of current user"
+          aria-controls="primary-search-account-menu"
+          aria-haspopup="true"
+          color="inherit"
+        >
+          <AddCircleIcon />
         </IconButton>
       </MenuItem>
       <MenuItem onClick={change}>
