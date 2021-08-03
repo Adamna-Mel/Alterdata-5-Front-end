@@ -14,6 +14,7 @@ import DoubleArrowIcon from "@material-ui/icons/DoubleArrow";
 //COMPONENTS
 import TeamCard from "../components/TeamCard/TeamCard";
 import NewTeam from "../components/Team/Create/Create";
+import Robo from "../components/Robo/Robo";
 
 //SERVICES
 import api from "../services/api.equipes";
@@ -98,6 +99,7 @@ function ListaDeEquipes() {
 			)}
 		</div>
 		<NewTeam openModal ={openModal} setOpenModal ={setOpenModal} />
+		<Robo />
 		</>
 	);
 }

@@ -1,6 +1,4 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
-
 import MuiAlert from "@material-ui/lab/Alert";
 import TextField from "@material-ui/core/TextField";
 import { makeStyles } from "@material-ui/core/styles";
@@ -64,10 +62,13 @@ const classes = useStyles();
 							inputProps={{ maxLength: 20 }}
 							style={{ width: 300 }}
 						/>
-						<Button  color="primary" variant="contained" onClick={handleCreate}>Criar</Button>
-						<Button  variant="contained" onClick={handleClose}>Voltar</Button>
+						<Button color="primary" 
+						variant="contained" 
+						onClick={handleCreate}>Criar</Button>
 
-					</div>
+						<Button variant="contained" 
+						onClick={handleClose}>Voltar</Button>
+			</div>
         </Fade>
       </Modal>
 	</form>
