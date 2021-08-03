@@ -9,26 +9,26 @@ import api from "../../../services/api.equipes";
 import { Typography, Modal, Fade, Backdrop } from "@material-ui/core";
 
 function Alert(props) {
-	return <MuiAlert elevation={6} variant="filled" {...props} />;
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
 
 function NovaEquipe(props) {
-	const [nome, setNome] = React.useState("");
+  const [nome, setNome] = React.useState("");
 
-const handleCreate = () => { 
-	const novo = {nome};
-	api.adicionarEquipe (novo)
-}
+  const handleCreate = () => {
+    const novo = { nome };
+    api.adicionarEquipe(novo);
+  };
 
-const handleClose = () => {
-	props.setOpenModal(false);
-};
+  const handleClose = () => {
+    props.setOpenModal(false);
+  };
 
-const classes = useStyles();
+  const classes = useStyles();
 
-	return (
-		<form className={classes.root}>
-				<Modal
+  return (
+    <form className={classes.root}>
+      <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
         className={classes.modal}
@@ -40,40 +40,50 @@ const classes = useStyles();
           timeout: 500,
         }}
       >
-
         <Fade in={props.openModal}>
-		<div className={classes.paper}
-				style={{
-							alignSelf: "center",
-							flexDirection: "column",
-							display: "flex",
-							justifyContent: "center",
-						}}
-					>
-						<TextField
-							required
-							id="filled-required"
-							label="Nome (MAX. 20)"
-							defaultValue=""
-							variant="filled"
-							onChange={(e) => setNome(e.target.value)}
-							value={nome}
-							type="text"
-							inputProps={{ maxLength: 20 }}
-							style={{ width: 300 }}
-						/>
-						<Button color="primary" 
-						variant="contained" 
-						onClick={handleCreate}>Criar</Button>
+          <div
+            className={classes.paper}
+            style={{
+              alignSelf: "center",
+              flexDirection: "column",
+              display: "flex",
+              justifyContent: "center",
+            }}
+          >
+            <TextField
+              required
+              id="filled-required"
+              label="Nome (MAX. 20)"
+              defaultValue=""
+              variant="filled"
+              onChange={(e) => setNome(e.target.value)}
+              value={nome}
+              type="text"
+              inputProps={{ maxLength: 20 }}
+              style={{ width: 300 }}
+            />
+            <Button
+              color="primary"
+              variant="contained"
+              onClick={handleCreate}
+              className={classes.button}
+            >
+              Criar
+            </Button>
 
-						<Button variant="contained" 
-						onClick={handleClose}>Voltar</Button>
-			</div>
+            <Button
+              variant="contained"
+              onClick={handleClose}
+              className={classes.button}
+            >
+              Voltar
+            </Button>
+          </div>
         </Fade>
       </Modal>
-	</form>
-	);
-					}
+    </form>
+  );
+}
 
 export default NovaEquipe;
 const useStyles = makeStyles((theme) => ({
@@ -89,7 +99,7 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: 20,
   },
   button: {
-    margin: 5,
+    marginTop: 15,
   },
   buttonDelete: {
     margin: 5,
