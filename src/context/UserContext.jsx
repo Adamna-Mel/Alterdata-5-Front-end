@@ -9,12 +9,14 @@ export const UserContext = createContext();
 function UserProvider({ children }) {
 	const [listaDeUsuarios, setListaDeUsuarios] = useState([]);
 	const [listaDeEquipes, setListaDeEquipes] = useState([]);
+	const [resposta, setResposta] = useState();
 	const [login, setLogin] = useState("");
 
 	const idUsuario = localStorage.getItem("@user-id");
 
 	useEffect(() => {
 		apiUsuarios.obterUsuarioPorId(idUsuario).then((res) => {
+			setResposta(res);
 			if (login.length !== 0) {
 				if (res.equipe !== null) {
 					apiEquipes
