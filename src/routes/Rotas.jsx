@@ -17,9 +17,23 @@ import EditTeam from "../components/Team/Edit/Edit";
 import DeleteTeam from "../components/Team/Delete/Delete";
 import RegisterUser from "../components/RegisterUser";
 import UserProfile from "../components/UserProfile";
+import { useEffect } from "react";
 
 function Rotas() {
   const [darkMode, setDarkMode] = useState(false);
+
+  useEffect( ()=> {
+      const mode = localStorage.getItem('@darkMode');
+      if (mode !== null)
+          setDarkMode(mode);
+  },[]);
+      
+  useEffect( ()=> {
+    darkMode ? 
+        localStorage.setItem('@darkMode',true)
+      : 
+        localStorage.setItem('@darkMode',false)
+  },[darkMode])
 
   const theme = createTheme({
     palette: {

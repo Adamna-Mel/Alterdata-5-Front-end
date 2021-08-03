@@ -22,6 +22,7 @@ function Alert(props) {
 }
 
 function Create() {
+  const history = useHistory();
   const handleClick = () => {
     history.push("/");
   };
@@ -38,8 +39,8 @@ function Create() {
 
     apiEquipes
       .adicionarEquipe(novaEquipe)
-      .then(setOpenAlert(true))
-      .catch(setOpenAlertError(true));
+      .then(()=> setOpenAlert(true))
+      .catch(()=> setOpenAlertError(true));
   };
 
   //Snackbar/Alert

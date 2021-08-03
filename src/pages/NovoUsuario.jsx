@@ -83,12 +83,10 @@ function UserProfile(props) {
 
 		if (validar) {
 			api.adicionarUsuario(novo).then((res) => {
-				if (res.status === 201) {
 					setOpenAlert(true);
-				} else {
-					setOpenAlertError(true);
-				}
-			});
+				}).catch( (e)=>	
+					setOpenAlertError(true)
+				)
 		} else {
 			let msg = "";
 			novo.nome.length === 0 ? (msg += " Nome") : null;
