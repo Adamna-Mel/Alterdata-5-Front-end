@@ -84,7 +84,7 @@ const useStyles = makeStyles({
   },
   teamName: {
     fontSize: 25,
-    textAlign: "center",
+    textAlign: "left",
   },
   profileImage: {
     height: 100,
