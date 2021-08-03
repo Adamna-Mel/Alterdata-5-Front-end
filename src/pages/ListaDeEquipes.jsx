@@ -13,6 +13,7 @@ import DoubleArrowIcon from "@material-ui/icons/DoubleArrow";
 
 //COMPONENTS
 import TeamCard from "../components/TeamCard/TeamCard";
+import NewTeam from "../components/Team/Create/Create";
 
 //SERVICES
 import api from "../services/api.equipes";
@@ -25,6 +26,7 @@ import useWindowDimensions from "../hooks/WindowDimension";
 function ListaDeEquipes() {
 	const [loading, setLoading] = React.useState(false);
 	const [equipes, setEquipes] = React.useState([]);
+	const [openModal, setOpenModal] = React.useState(false);
 
 	const context = useContext(UserContext);
 
@@ -40,7 +42,7 @@ function ListaDeEquipes() {
 	}, []);
 
 	const handleCreate = () => {
-		history.push("/criartime");
+		setOpenModal (true)
 	};
 
 	const classes = useStyles();
@@ -48,6 +50,7 @@ function ListaDeEquipes() {
 	const { height, width } = useWindowDimensions();
 
 	return (
+		<>
 		<div>
 			{loading ? (
 				<div style={{ minHeight: height }}>
@@ -94,6 +97,8 @@ function ListaDeEquipes() {
 				</div>
 			)}
 		</div>
+		<NewTeam openModal ={openModal} setOpenModal ={setOpenModal} />
+		</>
 	);
 }
 
