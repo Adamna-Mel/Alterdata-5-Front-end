@@ -29,7 +29,11 @@ const obterCargosPorNome = async (nome) => {
 
 const adicionarCargo = async (novoCargo) => {
 	try {
-		return await api.post("cargos", novoCargo);
+		return await api.post("cargos", novoCargo).headers({
+			headers: {
+				"Content-Type": `multipart/form-data; boundary=${formData._boundary}`,
+			},
+		});
 	} catch (e) {
 		return e.response;
 	}
