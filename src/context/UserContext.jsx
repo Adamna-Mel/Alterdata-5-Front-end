@@ -5,6 +5,7 @@ import apiEquipes from "../services/api.equipes";
 
 export const UserContext = createContext();
 
+//TODO: alterar as nomenclaturas
 function UserProvider({ children }) {
 	const [listaDeUsuarios, setListaDeUsuarios] = useState([]);
 	const [listaDeEquipes, setListaDeEquipes] = useState([]);
@@ -24,7 +25,7 @@ function UserProvider({ children }) {
 							res.data.length !== undefined
 								? setListaDeUsuarios(res.data)
 								: setListaDeUsuarios([]);
-							console.log(res);
+							console.log(listaDeUsuarios);
 						});
 				} else {
 					apiEquipes.obterEquipesPorNome(login).then((res) => {
@@ -35,8 +36,9 @@ function UserProvider({ children }) {
 				}
 			} else {
 				if (res.equipe !== null) {
-					apiEquipes.obterEquipesPorId(resposta.equipe.idEquipe).then((res) => {
+					apiEquipes.obterEquipesPorId(res.equipe.idEquipe).then((res) => {
 						setListaDeUsuarios(res.membros);
+						console.log(listaDeUsuarios);
 					});
 				} else {
 					apiEquipes
