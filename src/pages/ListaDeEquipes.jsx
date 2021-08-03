@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
 
 //MATERIAL-UI
@@ -13,16 +13,23 @@ import DoubleArrowIcon from "@material-ui/icons/DoubleArrow";
 
 //COMPONENTS
 import TeamCard from "../components/TeamCard/TeamCard";
+import NewTeam from "../components/Team/Create/Create";
+import Robo from "../components/Robo/Robo";
 
 //SERVICES
 import api from "../services/api.equipes";
 import apiUsuarios from "../services/api.usuarios";
+
+import { UserContext } from "../context/UserContext";
 
 import useWindowDimensions from "../hooks/WindowDimension";
 
 function ListaDeEquipes() {
   const [loading, setLoading] = React.useState(false);
   const [equipes, setEquipes] = React.useState([]);
+  const [openModal, setOpenModal] = React.useState(false);
+
+  const context = useContext(UserContext);
 
   const history = useHistory();
 
@@ -36,7 +43,7 @@ function ListaDeEquipes() {
   }, []);
 
   const handleCreate = () => {
-    history.push("/criartime");
+    setOpenModal(true);
   };
 
   const classes = useStyles();
@@ -44,52 +51,56 @@ function ListaDeEquipes() {
   const { height, width } = useWindowDimensions();
 
   return (
-    <div>
-      {loading ? (
-        <div style={{ minHeight: height }}>
-          <Card elevation={0} className={classes.header}>
-            <CardContent style={{ justifyContent: "center" }}>
-              <Typography className={classes.titulo}>
-                Escolha uma equipe para entrar
-              </Typography>
-              <Typography className={classes.titulo}>
-                ou{" "}
-                <Fab
-                  variant="extended"
-                  color="primary"
-                  aria-label="add"
-                  onClick={handleCreate}
-                >
-                  <DoubleArrowIcon />
-                  CRIE SUA PRÓPRIA EQUIPE
-                </Fab>
-              </Typography>
-            </CardContent>
-          </Card>
-          <div className={classes.card}>
-            {equipes.map((e) => (
-              <div key={e.idEquipe}>
-                <TeamCard
-                  key={e.id}
-                  id={e.idEquipe}
-                  name={e.nome}
-                  avatar={e.avatar}
-                />
+    <>
+      <div>
+        {loading ? (
+          <div style={{ minHeight: height }}>
+            <Card elevation={0} className={classes.header}>
+              <CardContent style={{ justifyContent: "center" }}>
+                <Typography className={classes.titulo}>
+                  Escolha uma equipe para entrar
+                </Typography>
+                <Typography className={classes.titulo}>
+                  ou{" "}
+                  <Fab
+                    variant="extended"
+                    color="primary"
+                    aria-label="add"
+                    onClick={handleCreate}
+                  >
+                    <DoubleArrowIcon />
+                    CRIE SUA PRÓPRIA EQUIPE
+                  </Fab>
+                </Typography>
+              </CardContent>
+            </Card>
+            <div className={classes.card}>
+              {context.listaDeEquipes.map((e) => (
+                <div key={e.idEquipe}>
+                  <TeamCard
+                    key={e.id}
+                    id={e.idEquipe}
+                    name={e.nome}
+                    avatar={e.avatar}
+                  />
 
-                {/* <button onClick={() => apiUsuarios.editarTime(id, e.idEquipe)}>
+                  {/* <button onClick={() => apiUsuarios.editarTime(id, e.idEquipe)}>
 							Entrar
 						</button> */}
-              </div>
-            ))}
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
-      ) : (
-        <div>
-          <LinearProgress />
-          <div style={{ minHeight: height }}></div>
-        </div>
-      )}
-    </div>
+        ) : (
+          <div>
+            <LinearProgress />
+            <div style={{ minHeight: height }}></div>
+          </div>
+        )}
+      </div>
+      <NewTeam openModal={openModal} setOpenModal={setOpenModal} />
+      <Robo />
+    </>
   );
 }
 
@@ -115,7 +126,7 @@ const useStyles = makeStyles({
     display: "flex",
     flexDirection: "row",
     justifyContent: "center",
-    width: 600,
+    maxWidth: 600,
     marginTop: 15,
     margin: "auto",
     borderRadius: 20,

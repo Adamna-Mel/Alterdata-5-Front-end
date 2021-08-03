@@ -1,11 +1,11 @@
 body.active-modal {
-    overflow-y: hidden;
+    overflow-y: auto;
 }
 
 .robo-modal {
     display: block;
-    margin-left: 81%;
-    width: 20%;
+    margin-left: 86%;
+    width: 18%;
     margin-bottom: 0.8%;
     position: fixed;
     bottom: 0;
@@ -34,7 +34,7 @@ body.active-modal {
     background: #ffffff;
     padding: 5px 5px;
     border-radius: 15px;
-    border-color: rgb(4, 4, 104);
+    border-color: rgb(0, 0, 0);
     border-style: solid;
     max-width: 600px;
     min-width: 290px;
@@ -46,11 +46,9 @@ body.active-modal {
     top: 5px;
     right: 5px;
     padding: 5px 7px;
-    border-color: cyan;
-    color: #0D5375;
-    background-color: white;
+    border-color: rgb(0, 0, 0);
 }
 .text {
-    color: #0D5375;
+    color: #000000;
     font-size: 121%;
 }

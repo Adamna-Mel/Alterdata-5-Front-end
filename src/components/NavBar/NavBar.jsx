@@ -35,7 +35,7 @@ import LogoAlterdata from "../../assets/alterdata.svg";
 import auth from "../../services/auth";
 import apiUsuarios from "../../services/api.usuarios";
 
-import { UserContext } from "../../2/UserContext";
+import { UserContext } from "../../context/UserContext";
 
 //TODO: switch Dark Mode no modo Mobile duplicado, necessario remover
 function NavBar({ check, change }) {
@@ -94,7 +94,13 @@ function NavBar({ check, change }) {
 	};
 
 	const handleExitTeam = () => {
-		apiUsuarios.sairDaEquipe(userId);
+		apiUsuarios.sairDaEquipe(userId)
+							 .then(
+								 ()=> history.push('/')
+								)
+								.catch( 
+									(e) => {console.log(e)}
+								)	
 	};
 
 	const menuId = "primary-search-account-menu";

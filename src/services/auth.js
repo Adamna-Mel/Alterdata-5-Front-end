@@ -9,6 +9,7 @@ const guardarToken = (token, id) => {
 const logout = () => {
   localStorage.removeItem("@token-jwt");
   localStorage.removeItem("@user-id");
+  localStorage.removeItem("@darkMode");
 };
 const fazerLogin = async (credenciais) => {
   try {
