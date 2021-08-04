@@ -21,12 +21,13 @@ import apiCargos from "../../../services/api.cargos";
 import Delete from "../Delete/Delete";
 import Edit from "../Edit/Edit";
 import Assign from "../Assign/Assign";
+import Pagination from "../../Pagination/Pagination";
 
 import apiUsuarios from "../../../services/api.usuarios";
 
 import { UserContext } from "../../../context/UserContext";
 
-function List({ lista, setLista, api }) {
+function List({ lista, setLista, api, setSize, setPage, page }) {
 	const context = useContext(UserContext);
 	const [anchorEl, setAnchorEl] = useState(null);
 	const [cargo, setCargo] = useState("Cargos");
@@ -34,32 +35,39 @@ function List({ lista, setLista, api }) {
 	const [apagar, setApagar] = useState(false);
 	const [assign, setAssign] = useState(false);
 	const [idCargo, setIdCargo] = useState(null);
+	const [list, setList] = useState(true);
 
 	const handleOpenEditar = () => {
 		setEditar(true);
 		setApagar(false);
 		setAssign(false);
+		setList(false);
 	};
 
 	const handleOpenApagar = () => {
 		setEditar(false);
 		setApagar(true);
 		setAssign(false);
+		setList(false);
 	};
 
 	const handleOpenAssign = () => {
 		setAssign(true);
 		setEditar(false);
 		setApagar(false);
+		setList(false);
+	};
+
+	const handleOpenList = () => {
+		setAssign(false);
+		setEditar(false);
+		setApagar(false);
+		setList(true);
 	};
 
 	useEffect(() => {
 		api();
-	}, []);
-
-	const handleClick = (event) => {
-		setAnchorEl(event.currentTarget);
-	};
+	}, [page]);
 
 	const handleClose = () => {
 		setAnchorEl(null);
@@ -76,23 +84,10 @@ function List({ lista, setLista, api }) {
 	return (
 		<div style={{ padding: "10px" }}>
 			<Card elevation={0}>
-				<Button
-					aria-controls="simple-menu"
-					aria-haspopup="true"
-					onClick={handleClick}
-				>
-					{cargo}
-				</Button>
-				<Menu
-					id="simple-menu"
-					anchorEl={anchorEl}
-					keepMounted
-					open={Boolean(anchorEl)}
-					onClose={handleClose}
-				>
-					{lista.map((c) => {
+				{list ? (
+					lista.map((c) => {
 						return (
-							<MenuItem
+							<div
 								className={classes.menuItem}
 								onClick={() => handleClickMenuItem(c.idCargo, c.nome)}
 							>
@@ -125,10 +120,12 @@ function List({ lista, setLista, api }) {
 										</Grid>
 									</Button>
 								</div>
-							</MenuItem>
+							</div>
 						);
-					})}
-				</Menu>
+					})
+				) : (
+					<Button onClick={handleOpenList}>Cargos</Button>
+				)}
 
 				{apagar ? (
 					<Delete
@@ -136,6 +133,7 @@ function List({ lista, setLista, api }) {
 						api={api}
 						setAssign={setAssign}
 						setApagar={setApagar}
+						handleOpenList={handleOpenList}
 					/>
 				) : null}
 
@@ -145,6 +143,7 @@ function List({ lista, setLista, api }) {
 						api={api}
 						setAssign={setAssign}
 						setEditar={setEditar}
+						handleOpenList={handleOpenList}
 					/>
 				) : null}
 
@@ -152,10 +151,17 @@ function List({ lista, setLista, api }) {
 					<Assign
 						setApagar={setApagar}
 						setEditar={setEditar}
+						handleOpenList={handleOpenList}
 						idCargo={idCargo}
 					/>
 				) : null}
 			</Card>
+			<Pagination
+				className={classes.pag}
+				setSize={setSize}
+				setPage={setPage}
+				page={page}
+			/>
 		</div>
 	);
 }
@@ -166,6 +172,14 @@ const useStyles = makeStyles((theme) => ({
 	menuItem: {
 		display: "flex",
 		justifyContent: "space-between",
+		padding: "0px 5px",
+		borderRadius: 10,
+		verticalAlign: "center",
+		cursor: "pointer",
+	},
+	pag: {
+		border: "1px solid red",
+		bottom: 0,
 	},
 }));
 

@@ -27,7 +27,7 @@ function Alert(props) {
 	return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
 
-function Edit({ idCargo, api, setEditar }) {
+function Edit({ idCargo, api, setEditar, handleOpenList }) {
 	const context = useContext(UserContext);
 	const [nome, setNome] = useState("");
 	const [imagem, setImagem] = useState(null);
@@ -207,7 +207,10 @@ function Edit({ idCargo, api, setEditar }) {
 					className={classes.button}
 					variant="contained"
 					color="primary"
-					onClick={() => setEditar(false)}
+					onClick={() => {
+						setEditar(false);
+						handleOpenList();
+					}}
 				>
 					Cancelar
 				</Button>

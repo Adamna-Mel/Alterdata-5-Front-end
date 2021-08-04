@@ -14,12 +14,14 @@ function Edit({ openModalCargo, setOpenModalCargo }) {
 	const [imagem, setImagem] = useState(null);
 	const [caminho, setCaminho] = useState(null);
 	const [criar, setCriar] = useState(false);
+	const [size, setSize] = useState(8);
+	const [page, setPage] = useState(0);
 
 	const [existentes, setExistentes] = useState(true);
 	const [lista, setLista] = useState([]);
 
 	const api = () => {
-		apiCargos.obterCargos().then((res) => {
+		apiCargos.obterCargos(size, page).then((res) => {
 			setLista(res);
 		});
 	};
@@ -78,7 +80,14 @@ function Edit({ openModalCargo, setOpenModalCargo }) {
 						) : null}
 
 						{existentes ? (
-							<List lista={lista} setLista={setLista} api={api} />
+							<List
+								lista={lista}
+								setSize={setSize}
+								setPage={setPage}
+								page={page}
+								setLista={setLista}
+								api={api}
+							/>
 						) : null}
 					</div>
 				</Fade>

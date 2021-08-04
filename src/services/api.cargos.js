@@ -1,8 +1,8 @@
 import api from "./api";
 
-const obterCargos = async () => {
+const obterCargos = async (size, page) => {
 	try {
-		const { data } = await api.get("cargos");
+		const { data } = await api.get(`cargos?size=${size}&page=${page}`);
 		return data;
 	} catch (e) {
 		return e.response;

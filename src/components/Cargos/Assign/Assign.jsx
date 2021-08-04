@@ -25,7 +25,7 @@ function Alert(props) {
 }
 
 //TODO: ainda tem coisa para fazer (principalmente estilização)
-function Assign({ idCargo }) {
+function Assign({ idCargo, handleOpenList }) {
 	const context = useContext(UserContext);
 	const [cargo, setCargo] = useState("");
 	const [usuario, setUsuario] = useState("");
@@ -113,6 +113,7 @@ function Assign({ idCargo }) {
 					Sim
 				</Button>
 				<Button
+					onClick={handleOpenList}
 					className={classes.buttonCancel}
 					variant="contained"
 					color="primary"

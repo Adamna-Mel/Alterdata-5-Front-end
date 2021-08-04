@@ -19,7 +19,7 @@ function Alert(props) {
 	return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
 
-function Delete({ idCargo, api, setApagar, setAssign }) {
+function Delete({ idCargo, api, setApagar, setAssign, handleOpenList }) {
 	const [nome, setNome] = useState("");
 	useEffect(() => {
 		apiCargos.obterCargoPorId(idCargo).then((res) => setNome(res.nome));
@@ -113,6 +113,7 @@ function Delete({ idCargo, api, setApagar, setAssign }) {
 					color="primary"
 					onClick={() => {
 						setApagar(false);
+						handleOpenList();
 					}}
 				>
 					Cancelar
