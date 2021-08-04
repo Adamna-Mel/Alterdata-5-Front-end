@@ -18,9 +18,11 @@ const obterCargoPorId = async (id) => {
 	}
 };
 
-const obterCargosPorNome = async (nome) => {
+const obterCargosPorNome = async (nome, size, page) => {
 	try {
-		const { data } = await api.get(`cargos/nome/${nome}`);
+		const { data } = await api.get(
+			`cargos/nome/${nome}?size=${size}&page=${page}`
+		);
 		return data;
 	} catch (e) {
 		return e.response;

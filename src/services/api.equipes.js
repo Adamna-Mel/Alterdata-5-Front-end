@@ -1,8 +1,8 @@
 import api from "./api";
 
-const obterEquipes = async () => {
+const obterEquipes = async (size, page) => {
 	try {
-		const { data } = await api.get("equipes");
+		const { data } = await api.get(`equipes?size=${size}&page=${page}`);
 		return data;
 	} catch (e) {
 		return e.response;
@@ -18,9 +18,11 @@ const obterEquipesPorId = async (id) => {
 	}
 };
 
-const obterEquipesPorNome = async (nome) => {
+const obterEquipesPorNome = async (nome, size, page) => {
 	try {
-		const { data } = await api.get(`equipes/nome/${nome}`);
+		const { data } = await api.get(
+			`equipes/nome/${nome}?size=${size}&page=${page}`
+		);
 		return data;
 	} catch (e) {
 		return e.response;
@@ -56,9 +58,11 @@ const apagarEquipe = async (id) => {
 	}
 };
 
-const obterUsuariosPorLogin = async (id, login) => {
+const obterUsuariosPorLogin = async (id, login, size, page) => {
 	try {
-		return await api.get(`equipes/${id}/login/${login}`);
+		return await api.get(
+			`equipes/${id}/login/${login}?size=${size}&page=${page}`
+		);
 	} catch (e) {
 		return e.response;
 	}

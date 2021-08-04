@@ -41,64 +41,64 @@ import Database from "../../assets/icons/database.svg";
 import apiUsuario from "../../services/api.usuarios";
 
 function TeamCard(props) {
-  const idUsuario = localStorage.getItem("@user-id");
+	const idUsuario = localStorage.getItem("@user-id");
 
-  const handleClick = () => {
-    apiUsuario
-      .editarTime(idUsuario, props.id)
-      .then((res) => window.location.reload());
-  };
-  const classes = useStyles();
+	const handleClick = () => {
+		apiUsuario
+			.editarTime(idUsuario, props.id)
+			.then((res) => window.location.reload());
+	};
+	const classes = useStyles();
 
-  return (
-    <div>
-      <Card elevation={7} className={classes.card} color="default">
-        <CardContent className={classes.cardContent}>
-          <div className={classes.cardTop}>
-            <SvgColor svg={Ninja} width={50} colors={["#000000", "#0083C1"]} />
-            <Typography className={classes.teamName}>{props.name}</Typography>
-          </div>
-          <CardContent style={{ textAlign: "center" }}>
-            <Button onClick={handleClick} variant="contained" color="primary">
-              Entrar
-            </Button>
-          </CardContent>
-        </CardContent>
-      </Card>
-    </div>
-  );
+	return (
+		<div>
+			<Card elevation={7} className={classes.card} color="default">
+				<CardContent className={classes.cardContent}>
+					<div className={classes.cardTop}>
+						<SvgColor svg={Ninja} width={50} colors={["#000000", "#0083C1"]} />
+						<Typography className={classes.teamName}>{props.name}</Typography>
+					</div>
+					<CardContent style={{ textAlign: "center" }}>
+						<Button onClick={handleClick} variant="contained" color="primary">
+							Entrar
+						</Button>
+					</CardContent>
+				</CardContent>
+			</Card>
+		</div>
+	);
 }
 export default TeamCard;
 
 const useStyles = makeStyles({
-  card: {
-    borderRadius: 20,
-    width: 300,
-    height: 150,
-    marginRight: 20,
-    marginLeft: 20,
-    marginTop: 20,
-    marginBottom: 20,
-    alignItems: "center",
-    justofyContent: "center",
-  },
-  teamName: {
-    fontSize: 25,
-    textAlign: "left",
-  },
-  profileImage: {
-    height: 100,
-    width: 100,
-    marginLeft: 85,
-  },
-  cardContent: {
-    alignItems: "center",
-    justofyContent: "center",
-  },
-  cardTop: {
-    flex: 1,
-    display: "flex",
-    flexDirection: "row",
-    columnGap: 30,
-  },
+	card: {
+		borderRadius: 20,
+		width: 300,
+		height: 150,
+		marginRight: 20,
+		marginLeft: 20,
+		marginTop: 20,
+		marginBottom: 20,
+		alignItems: "center",
+		justofyContent: "center",
+	},
+	teamName: {
+		fontSize: 25,
+		textAlign: "left",
+	},
+	profileImage: {
+		height: 100,
+		width: 100,
+		marginLeft: 85,
+	},
+	cardContent: {
+		alignItems: "center",
+		justofyContent: "center",
+	},
+	cardTop: {
+		flex: 1,
+		display: "flex",
+		flexDirection: "row",
+		columnGap: 30,
+	},
 });

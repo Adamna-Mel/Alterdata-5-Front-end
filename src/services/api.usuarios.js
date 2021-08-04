@@ -1,8 +1,8 @@
 import api from "./api";
 
-const obterUsuarios = async () => {
+const obterUsuarios = async (size, page) => {
 	try {
-		const { data } = await api.get("usuarios");
+		const { data } = await api.get(`usuarios?size=${size}&page=${page}`);
 		return data;
 	} catch (e) {
 		return e.response;
@@ -18,9 +18,11 @@ const obterUsuarioPorId = async (id) => {
 	}
 };
 
-const obterUsuariosPorLogin = async (login) => {
+const obterUsuariosPorLogin = async (login, size, page) => {
 	try {
-		const { data } = await api.get(`usuarios/login/${login}`);
+		const { data } = await api.get(
+			`usuarios/login/${login}?size=${size}&page=${page}`
+		);
 		return data;
 	} catch (e) {
 		return e.response;
@@ -29,13 +31,7 @@ const obterUsuariosPorLogin = async (login) => {
 
 const adicionarUsuario = async (novoUsuario) => {
 	try {
-		return await (
-			await api.post("usuarios", novoUsuario)
-		).headers({
-			headers: {
-				"Content-Type": `multipart/form-data; boundary=${formData._boundary}`,
-			},
-		});
+		return await await api.post("usuarios", novoUsuario);
 	} catch (e) {
 		return e.response;
 	}

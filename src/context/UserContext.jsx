@@ -12,6 +12,8 @@ function UserProvider({ children }) {
 	const [resposta, setResposta] = useState();
 	const [login, setLogin] = useState("");
 	const [usuarioAtual, setUsuarioAtual] = useState();
+	const [page, setPage] = useState(0);
+	const [size, setSize] = useState(10);
 
 	const idUsuario = localStorage.getItem("@user-id");
 
@@ -21,15 +23,14 @@ function UserProvider({ children }) {
 			if (login.length !== 0) {
 				if (res.equipe !== null) {
 					apiEquipes
-						.obterUsuariosPorLogin(res.equipe.idEquipe, login)
+						.obterUsuariosPorLogin(res.equipe.idEquipe, login, size, page)
 						.then((res) => {
 							res.data.length !== undefined
 								? setListaDeUsuarios(res.data)
 								: setListaDeUsuarios([]);
-							console.log(listaDeUsuarios);
 						});
 				} else {
-					apiEquipes.obterEquipesPorNome(login).then((res) => {
+					apiEquipes.obterEquipesPorNome(login, size, page).then((res) => {
 						res.length !== undefined
 							? setListaDeEquipes(res)
 							: setListaDeEquipes([]);
@@ -39,18 +40,19 @@ function UserProvider({ children }) {
 				if (res.equipe !== null) {
 					apiEquipes.obterEquipesPorId(res.equipe.idEquipe).then((res) => {
 						setListaDeUsuarios(res.membros);
-						console.log(listaDeUsuarios);
 					});
 				} else {
 					apiEquipes
-						.obterEquipes()
+						.obterEquipes(size, page)
 						.then((res) =>
 							res !== undefined ? setListaDeEquipes(res) : setListaDeEquipes([])
 						);
 				}
 			}
+
+			console.log(page);
 		});
-	}, [login]);
+	}, [login, page]);
 
 	return (
 		<UserContext.Provider
@@ -63,6 +65,10 @@ function UserProvider({ children }) {
 				setListaDeEquipes,
 				usuarioAtual,
 				setUsuarioAtual,
+				page,
+				setPage,
+				size,
+				setSize,
 			}}
 		>
 			{children}

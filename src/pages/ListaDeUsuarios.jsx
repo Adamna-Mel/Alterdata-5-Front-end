@@ -18,6 +18,7 @@ import UserCard from "../components/UserCard/UserCard";
 import DeleteTeam from "../components/Team/Delete/Delete";
 import Cargos from "../components/Cargos/index";
 import GoOut from "../components/Team/GoOut/GoOut";
+import Pagination from "../components/Pagination/Pagination";
 
 //SERVICES
 import apiUsuarios from "../services/api.usuarios";
@@ -173,6 +174,11 @@ function ListaDeUsuarios({ openModalTeam, setOpenModalTeam }) {
 			<GoOut
 				openModalTeam={openModalTeam}
 				setOpenModalTeam={setOpenModalTeam}
+			/>
+			<Pagination
+				setSize={context.setSize}
+				setPage={context.setPage}
+				conts={99}
 			/>
 		</>
 	);
