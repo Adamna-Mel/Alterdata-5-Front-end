@@ -16,6 +16,7 @@ import Divider from "@material-ui/core/Divider";
 //COMPONENTS
 import UserCard from "../components/UserCard/UserCard";
 import DeleteTeam from "../components/Team/Delete/Delete";
+import Cargos from "../components/Cargos/index";
 
 //SERVICES
 import apiUsuarios from "../services/api.usuarios";
@@ -40,6 +41,8 @@ function ListaDeUsuarios() {
 	const [anchorEl, setAnchorEl] = useState(null);
 	const [openModal, setOpenModal] = useState(false);
 	const [avatar, setAvatar] = useState(null);
+
+	const [openModalCargo, setOpenModalCargo] = useState(false);
 
 	const history = useHistory();
 
@@ -138,6 +141,8 @@ function ListaDeUsuarios() {
 											usuario.cargo != null ? usuario.cargo.nome : "Sem cargo"
 										}
 										avatar={usuario.avatar}
+										idCargo={usuario.cargo.idCargo}
+										setOpenModalCargo={setOpenModalCargo}
 										// corcargo1={usuario.cargo.cor1}
 										// corcargo2={usuario.cargo.cor2}
 										// cargoicone={usuario.cargo.icone}
@@ -159,6 +164,10 @@ function ListaDeUsuarios() {
 				idEquipe={idEquipe}
 				openModal={openModal}
 				setOpenModal={setOpenModal}
+			/>
+			<Cargos
+				openModalCargo={openModalCargo}
+				setOpenModalCargo={setOpenModalCargo}
 			/>
 		</>
 	);

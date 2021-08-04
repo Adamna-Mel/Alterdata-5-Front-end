@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 
 //MATERIAL-UI
 import { makeStyles } from "@material-ui/core/styles";
@@ -6,6 +6,7 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import Avatar from "@material-ui/core/Avatar";
+import Grid from "@material-ui/core/Grid";
 
 //SVGColor
 import SvgColor from "react-svg-color";
@@ -40,9 +41,14 @@ import Sly from "../../assets/icons/sly.svg";
 import Smartphone from "../../assets/icons/smartphone.svg";
 import Cancel from "../../assets/icons/cancel.svg";
 import Database from "../../assets/icons/database.svg";
+import EditIcon from "@material-ui/icons/Edit";
+
+import { UserContext } from "../../context/UserContext";
 
 function UserCard(props) {
 	const classes = useStyles();
+	const context = useContext(UserContext);
+
 	function RoleAvatar(props) {
 		if (props.icone === "Sem cargo") {
 			return (
@@ -88,9 +94,34 @@ function UserCard(props) {
 							width={200}
 							colors={[props.corcargo1, props.corcargo2]}
 						/>
+						{props.idCargo !== null ? (
+							<img
+								src={`http://alterdata-5-back-end.herokuapp.com/api/cargos/avatar/${props.idCargo}`}
+								style={{
+									width: 40,
+									height: 40,
+									borderRadius: 400 / 2,
+									borderStyle: "solid",
+									borderColor: "#0083C1",
+									borderWidth: 2,
+									backgroundColor: "#F5F3F4",
+								}}
+							/>
+						) : null}
+
 						<Typography className={classes.userRoleText}>
 							{props.role}
 						</Typography>
+						<Grid item xs={4}>
+							<Typography
+								onClick={() => {
+									props.setOpenModalCargo(true);
+									context.setUsuarioAtual(props.id);
+								}}
+							>
+								<EditIcon />
+							</Typography>
+						</Grid>
 					</CardContent>
 				</CardContent>
 			</Card>
@@ -135,6 +166,7 @@ const useStyles = makeStyles({
 		flexDirection: "row",
 		marginLeft: 18,
 		verticalAlign: "center",
+		alignItems: "center",
 	},
 	userRoleText: {
 		fontSize: 20,
