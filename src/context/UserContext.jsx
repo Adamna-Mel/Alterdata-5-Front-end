@@ -12,6 +12,8 @@ function UserProvider({ children }) {
 	const [resposta, setResposta] = useState();
 	const [login, setLogin] = useState("");
 	const [usuarioAtual, setUsuarioAtual] = useState();
+	const [page, setPage] = useState(0);
+	const [size, setSize] = useState(10);
 
 	const idUsuario = localStorage.getItem("@user-id");
 
@@ -63,6 +65,10 @@ function UserProvider({ children }) {
 				setListaDeEquipes,
 				usuarioAtual,
 				setUsuarioAtual,
+				page,
+				setPage,
+				size,
+				setSize,
 			}}
 		>
 			{children}

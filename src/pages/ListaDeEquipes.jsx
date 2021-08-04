@@ -76,10 +76,10 @@ function ListaDeEquipes() {
 						</Card>
 						<div className={classes.card}>
 							{context.listaDeEquipes.map((e) => (
-								<div key={e.idEquipe}>
+								<div key={e.id}>
 									<TeamCard
 										key={e.id}
-										id={e.idEquipe}
+										id={e.id}
 										name={e.nome}
 										avatar={e.avatar}
 									/>
