@@ -72,6 +72,7 @@ function Create({ handleClose, api, handleOpenExistentes, contextApi }) {
 						apiUsuarios.editarPapel(context.usuarioAtual, res.data.idCargo);
 						setMsg(" e atribuído com sucesso");
 						contextApi();
+						handleOpenExistentes();
 					}
 				} else {
 					setOpenAlertError(true);

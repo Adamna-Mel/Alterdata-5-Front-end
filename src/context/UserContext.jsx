@@ -13,7 +13,7 @@ function UserProvider({ children }) {
 	const [login, setLogin] = useState("");
 	const [usuarioAtual, setUsuarioAtual] = useState();
 	const [page, setPage] = useState(0);
-	const [size, setSize] = useState(10);
+	const [size, setSize] = useState(15);
 
 	const idUsuario = localStorage.getItem("@user-id");
 

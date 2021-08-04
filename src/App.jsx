@@ -11,8 +11,6 @@ import UserProvider from "./context/UserContext";
 
 //TODO: Arrumar a estilização do pagination
 
-//TODO: Bug ao apagar cargo
-
 //TODO: bug ao criar cargo
 
 //TODO: recarregar a pagina ao atribuir cargo
