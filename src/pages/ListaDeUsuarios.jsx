@@ -28,11 +28,7 @@ import useWindowDimensions from "../hooks/WindowDimension";
 
 import { UserContext } from "../context/UserContext";
 
-export default function ListaDeUsuarios({
-  openModalTeam,
-  setOpenModalTeam,
-  setOpenModalExit,
-}) {
+export default function ListaDeUsuarios({ openModalTeam, setOpenModalTeam }) {
   const idUsuario = localStorage.getItem("@user-id");
 
   const context = useContext(UserContext);
