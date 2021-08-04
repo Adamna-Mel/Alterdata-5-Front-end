@@ -31,11 +31,7 @@ const obterEquipesPorNome = async (nome, size, page) => {
 
 const adicionarEquipe = async (novoEquipe) => {
 	try {
-		return await api.post(`equipes`, novoEquipe).headers({
-			headers: {
-				"Content-Type": `multipart/form-data; boundary=${formData._boundary}`,
-			},
-		});
+		return await api.post(`equipes`, novoEquipe);
 	} catch (e) {
 		return e.response;
 	}
