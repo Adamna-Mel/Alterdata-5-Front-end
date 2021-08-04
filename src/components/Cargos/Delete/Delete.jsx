@@ -35,6 +35,7 @@ function Delete({ idCargo, api, setApagar, setAssign, handleOpenList }) {
 				setOpenAlertError(true);
 			}
 		});
+		api();
 	};
 
 	//Snackbar/Alert

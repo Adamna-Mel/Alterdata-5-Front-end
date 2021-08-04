@@ -47,21 +47,19 @@ function Edit({ idCargo, api, setEditar, handleOpenList }) {
 		const formData = new FormData();
 		if (imagem !== null) {
 			formData.append("img", imagem);
-			apiCargos
-				.alterarAvatar(idCargo, formData)
-				.then((res) => console.log(res));
+			apiCargos.alterarAvatar(idCargo, formData).then((res) => api());
 		}
 
 		if (nome.length !== 0) {
 			const novo = {
 				nome,
 			};
-			apiCargos
-				.atualizarCargo(idCargo, novo)
-				.then((res) =>
-					res.status === 200 ? setOpenAlert(true) : setOpenAlertError(true)
-				);
+			apiCargos.atualizarCargo(idCargo, novo).then((res) => {
+				res.status === 200 ? setOpenAlert(true) : setOpenAlertError(true);
+				api();
+			});
 		}
+		api();
 	};
 
 	//Snackbar/Alert

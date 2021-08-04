@@ -17,7 +17,7 @@ function UserProvider({ children }) {
 
 	const idUsuario = localStorage.getItem("@user-id");
 
-	useEffect(() => {
+	const api = () => {
 		apiUsuarios.obterUsuarioPorId(idUsuario).then((res) => {
 			setResposta(res);
 			if (login.length !== 0) {
@@ -49,9 +49,11 @@ function UserProvider({ children }) {
 						);
 				}
 			}
-
-			console.log(page);
 		});
+	};
+
+	useEffect(() => {
+		api();
 	}, [login, page]);
 
 	return (
@@ -69,6 +71,7 @@ function UserProvider({ children }) {
 				setPage,
 				size,
 				setSize,
+				api()
 			}}
 		>
 			{children}
