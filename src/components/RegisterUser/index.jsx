@@ -44,9 +44,13 @@ function RegisterUser() {
 		formData.append("login", login);
 
 		//TODO: tirar isso aqui
-		formData.append("status", " ");
+		formData.append("status", "status");
 
-		apiUsuarios.adicionarUsuario(formData).then((res) => console.log(res));
+		apiUsuarios
+			.adicionarUsuario(formData)
+			.then((res) =>
+				res.status === 201 ? setOpenAlert(true) : setOpenAlertError(true)
+			);
 	};
 
 	const handleFile = (e) => {
