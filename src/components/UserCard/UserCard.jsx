@@ -98,8 +98,8 @@ function UserCard(props) {
 							<img
 								src={`http://alterdata-5-back-end.herokuapp.com/api/cargos/avatar/${props.idCargo}`}
 								style={{
-									width: 40,
-									height: 40,
+									width: 30,
+									height: 30,
 									borderRadius: 400 / 2,
 									borderStyle: "solid",
 									borderColor: "#0083C1",
@@ -112,7 +112,7 @@ function UserCard(props) {
 						<Typography className={classes.userRoleText}>
 							{props.role}
 						</Typography>
-						<Grid item xs={4}>
+						<Grid item xs={4} className={classes.edit}>
 							<Typography
 								onClick={() => {
 									props.setOpenModalCargo(true);
@@ -178,5 +178,11 @@ const useStyles = makeStyles({
 		display: "flex",
 		flexDirection: "row",
 		columnGap: 30,
+	},
+	edit: {
+		textAlign: "end",
+		"&:hover": {
+			color: "#999",
+		},
 	},
 });

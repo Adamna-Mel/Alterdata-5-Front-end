@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 //MATERIAL-UI
@@ -17,7 +17,7 @@ import EditTeam from "../components/Team/Edit/Edit";
 import DeleteTeam from "../components/Team/Delete/Delete";
 import RegisterUser from "../components/RegisterUser";
 import UserProfile from "../components/UserProfile";
-import { useEffect } from "react";
+import NotFound from "../pages/NotFound";
 
 function Rotas() {
 	const [darkMode, setDarkMode] = useState(false);
@@ -81,32 +81,36 @@ function Rotas() {
 						change={() => setDarkMode(!darkMode)}
 					/>
 					<Switch>
-						<Route path={"/apagar-equipe"}>
+						<Route path={"/apagar-equipe"} exact>
 							<DeleteTeam />
 						</Route>
 
-						<Route path={"/editar-equipe"}>
+						<Route path={"/editar-equipe"} exact>
 							<EditTeam />
 						</Route>
 
-						<Route path={"/login"}>
+						<Route path={"/login"} exact>
 							<Login />
 						</Route>
 
-						<Route path={"/criartime"}>
+						<Route path={"/criartime"} exact>
 							<Create />
 						</Route>
 
-						<Route path={"/perfil"}>
+						<Route path={"/perfil"} exact>
 							<UserProfile />
 						</Route>
 
-						<Route path={"/registrar"}>
+						<Route path={"/registrar"} exact>
 							<RegisterUser />
 						</Route>
 
-						<Route path={"/"}>
+						<Route path={"/"} exact>
 							<Principal />
+						</Route>
+
+						<Route path={"*"}>
+							<NotFound />
 						</Route>
 					</Switch>
 				</div>

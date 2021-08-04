@@ -48,7 +48,6 @@ function CardOptions(props) {
         }}
       >
         <MenuItem onClick={handleClose}>Editar Cargo</MenuItem>
-        <MenuItem onClick={handleClose}>Mudar Time</MenuItem>
       </Menu>
     </div>
   );

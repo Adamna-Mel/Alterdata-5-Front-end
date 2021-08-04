@@ -55,22 +55,22 @@ function UserProfile() {
             />
             <Typography style={{ fontSize: 33 }}>{nome}</Typography>
           </Grid>
-          <Typography color="primary" style={{ fontSize: 19 }}>
+          <Typography color="primary" style={{ fontSize: 17 }}>
             email
           </Typography>
-          <Typography style={{ fontSize: 25 }}>{email}</Typography>
-          <Typography color="primary" style={{ fontSize: 19 }}>
+          <Typography style={{ fontSize: 21 }}>{email}</Typography>
+          <Typography color="primary" style={{ fontSize: 17 }}>
             login
           </Typography>
-          <Typography style={{ fontSize: 23 }}>{login}</Typography>
-          <Typography color="primary" style={{ fontSize: 19 }}>
+          <Typography style={{ fontSize: 21 }}>{login}</Typography>
+          <Typography color="primary" style={{ fontSize: 17 }}>
             status
           </Typography>
-          <Typography style={{ fontSize: 25 }}>{status}</Typography>
-          <Typography color="primary" style={{ fontSize: 19 }}>
+          <Typography style={{ fontSize: 21 }}>{status}</Typography>
+          <Typography color="primary" style={{ fontSize: 17 }}>
             cargo
           </Typography>
-          <Typography style={{ fontSize: 25 }}>{cargo}</Typography>
+          <Typography style={{ fontSize: 21 }}>{cargo}</Typography>
 
           <div
             style={{ marginTop: 10, justifyContent: "center", display: "flex" }}
