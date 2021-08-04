@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import {
+	BrowserRouter as Router,
+	Switch,
+	Route,
+	Link,
+	useHistory,
+} from "react-router-dom";
 
 //MATERIAL-UI
 import { createTheme } from "@material-ui/core/styles";
@@ -21,6 +27,7 @@ import NotFound from "../pages/NotFound";
 
 function Rotas() {
 	const [darkMode, setDarkMode] = useState(false);
+	const [openModal, setOpenModal] = useState(false);
 
 	useEffect(() => {
 		const mode = localStorage.getItem("@darkMode");
@@ -79,6 +86,7 @@ function Rotas() {
 						style={{ marginBottom: 100 }}
 						check={darkMode}
 						change={() => setDarkMode(!darkMode)}
+						setOpenModal={setOpenModal}
 					/>
 					<Switch>
 						<Route path={"/apagar-equipe"} exact>
@@ -106,7 +114,7 @@ function Rotas() {
 						</Route>
 
 						<Route path={"/"} exact>
-							<Principal />
+							<Principal openModal={openModal} setOpenModal={setOpenModal} />
 						</Route>
 
 						<Route path={"*"}>

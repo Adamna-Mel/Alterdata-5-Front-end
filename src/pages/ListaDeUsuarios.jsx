@@ -17,6 +17,7 @@ import Divider from "@material-ui/core/Divider";
 import UserCard from "../components/UserCard/UserCard";
 import DeleteTeam from "../components/Team/Delete/Delete";
 import Cargos from "../components/Cargos/index";
+import GoOut from "../components/Team/GoOut/GoOut";
 
 //SERVICES
 import apiUsuarios from "../services/api.usuarios";
@@ -26,7 +27,7 @@ import useWindowDimensions from "../hooks/WindowDimension";
 
 import { UserContext } from "../context/UserContext";
 
-function ListaDeUsuarios() {
+function ListaDeUsuarios({ openModalTeam, setOpenModalTeam }) {
 	const idUsuario = localStorage.getItem("@user-id");
 
 	const context = useContext(UserContext);
@@ -168,6 +169,10 @@ function ListaDeUsuarios() {
 			<Cargos
 				openModalCargo={openModalCargo}
 				setOpenModalCargo={setOpenModalCargo}
+			/>
+			<GoOut
+				openModalTeam={openModalTeam}
+				setOpenModalTeam={setOpenModalTeam}
 			/>
 		</>
 	);
