@@ -13,7 +13,6 @@ function BasicPagination({ setSize, setPage }) {
 	const classes = useStyles();
 	return (
 		<div className={classes.root}>
-			{/* <Pagination count={10} /> */}
 			<Pagination
 				count={10}
 				color="primary"
