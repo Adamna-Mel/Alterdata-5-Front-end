@@ -9,11 +9,7 @@ import UserProvider from "./context/UserContext";
 
 //TODO: Ver o lance do status
 
-//TODO: pop up Cadastro de equipe
-
 //TODO: Arrumar a estilização do pagination
-
-//TODO: Redirecionar ao apagar a equipe
 
 //TODO: Bug ao apagar cargo
 
