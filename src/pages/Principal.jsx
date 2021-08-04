@@ -14,7 +14,7 @@ import apiUsuarios from "../services/api.usuarios";
 
 import useWindowDimensions from "../hooks/WindowDimension";
 
-export default function Principal({ openModal, setOpenModal }) {
+function Principal({ openModal, setOpenModal }) {
 	const [loading, setLoading] = React.useState(false);
 	const [temEquipe, setTemEquipe] = React.useState(false);
 
@@ -57,3 +57,5 @@ export default function Principal({ openModal, setOpenModal }) {
 		</>
 	);
 }
+
+export default Principal;

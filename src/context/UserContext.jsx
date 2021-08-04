@@ -23,15 +23,14 @@ function UserProvider({ children }) {
 			if (login.length !== 0) {
 				if (res.equipe !== null) {
 					apiEquipes
-						.obterUsuariosPorLogin(res.equipe.idEquipe, login)
+						.obterUsuariosPorLogin(res.equipe.idEquipe, login, size, page)
 						.then((res) => {
 							res.data.length !== undefined
 								? setListaDeUsuarios(res.data)
 								: setListaDeUsuarios([]);
-							console.log(listaDeUsuarios);
 						});
 				} else {
-					apiEquipes.obterEquipesPorNome(login).then((res) => {
+					apiEquipes.obterEquipesPorNome(login, size, page).then((res) => {
 						res.length !== undefined
 							? setListaDeEquipes(res)
 							: setListaDeEquipes([]);
@@ -41,18 +40,19 @@ function UserProvider({ children }) {
 				if (res.equipe !== null) {
 					apiEquipes.obterEquipesPorId(res.equipe.idEquipe).then((res) => {
 						setListaDeUsuarios(res.membros);
-						console.log(listaDeUsuarios);
 					});
 				} else {
 					apiEquipes
-						.obterEquipes()
+						.obterEquipes(size, page)
 						.then((res) =>
 							res !== undefined ? setListaDeEquipes(res) : setListaDeEquipes([])
 						);
 				}
 			}
+
+			console.log(page);
 		});
-	}, [login]);
+	}, [login, page]);
 
 	return (
 		<UserContext.Provider

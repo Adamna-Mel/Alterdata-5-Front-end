@@ -31,13 +31,7 @@ const obterUsuariosPorLogin = async (login, size, page) => {
 
 const adicionarUsuario = async (novoUsuario) => {
 	try {
-		return await (
-			await api.post("usuarios", novoUsuario)
-		).headers({
-			headers: {
-				"Content-Type": `multipart/form-data; boundary=${formData._boundary}`,
-			},
-		});
+		return await await api.post("usuarios", novoUsuario);
 	} catch (e) {
 		return e.response;
 	}

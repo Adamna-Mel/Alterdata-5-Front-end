@@ -15,6 +15,7 @@ import DoubleArrowIcon from "@material-ui/icons/DoubleArrow";
 import TeamCard from "../components/TeamCard/TeamCard";
 import NewTeam from "../components/Team/Create/Create";
 import Robo from "../components/Robo/Robo";
+import Pagination from "../components/Pagination/Pagination";
 
 //SERVICES
 import api from "../services/api.equipes";
@@ -79,7 +80,7 @@ function ListaDeEquipes() {
 								<div key={e.id}>
 									<TeamCard
 										key={e.id}
-										id={e.id}
+										id={e.idEquipe}
 										name={e.nome}
 										avatar={e.avatar}
 									/>
@@ -100,6 +101,7 @@ function ListaDeEquipes() {
 			</div>
 			<NewTeam openModal={openModal} setOpenModal={setOpenModal} />
 			<Robo />
+			<Pagination setSize={context.setSize} setPage={context.setPage} />
 		</>
 	);
 }

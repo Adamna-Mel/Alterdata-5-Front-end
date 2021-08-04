@@ -58,9 +58,11 @@ const apagarEquipe = async (id) => {
 	}
 };
 
-const obterUsuariosPorLogin = async (id, login) => {
+const obterUsuariosPorLogin = async (id, login, size, page) => {
 	try {
-		return await api.get(`equipes/${id}/login/${login}`);
+		return await api.get(
+			`equipes/${id}/login/${login}?size=${size}&page=${page}`
+		);
 	} catch (e) {
 		return e.response;
 	}
