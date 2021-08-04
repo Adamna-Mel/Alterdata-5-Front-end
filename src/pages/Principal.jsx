@@ -14,7 +14,7 @@ import apiUsuarios from "../services/api.usuarios";
 
 import useWindowDimensions from "../hooks/WindowDimension";
 
-export default function Principal() {
+export default function Principal({ openModal, setOpenModal }) {
 	const [loading, setLoading] = React.useState(false);
 	const [temEquipe, setTemEquipe] = React.useState(false);
 
@@ -37,7 +37,10 @@ export default function Principal() {
 				<div>
 					{auth.isAuthenticated() ? (
 						temEquipe ? (
-							<ListaDeUsuarios />
+							<ListaDeUsuarios
+								openModalTeam={openModal}
+								setOpenModalTeam={setOpenModal}
+							/>
 						) : (
 							<ListaDeEquipes />
 						)

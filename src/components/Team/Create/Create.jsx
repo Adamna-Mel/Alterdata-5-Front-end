@@ -1,9 +1,12 @@
 import React from "react";
-import MuiAlert from "@material-ui/lab/Alert";
+
 import TextField from "@material-ui/core/TextField";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import Card from "@material-ui/core/Card";
+import Container from "@material-ui/core/Container";
+import Snackbar from "@material-ui/core/Snackbar";
+import MuiAlert from "@material-ui/lab/Alert";
 
 import api from "../../../services/api.equipes";
 //import EscolhaAvatar from "../EscolhaAvatar";
@@ -36,10 +39,66 @@ function NovaEquipe(props) {
     setCaminho(URL.createObjectURL(e.target.files[0]));
   };
 
+  //Snackbar/Alert
+  //AlertSucess
+
+  const [openAlert, setOpenAlert] = React.useState(false);
+
+  const handleClickAlert = () => {
+    setOpenAlert(true);
+  };
+
+  const handleCloseAlert = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpenAlert(false);
+  };
+
+  //
+
+  //Alert Error
+
+  const [openAlertError, setOpenAlertError] = React.useState(false);
+
+  const handleClickAlertError = () => {
+    setOpenAlertError(true);
+  };
+
+  const handleCloseAlertError = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpenAlertError(false);
+  };
+
+  //
+
   const classes = useStyles();
 
   return (
     <form className={classes.root}>
+      <Snackbar
+        open={openAlert}
+        autoHideDuration={3000}
+        onClose={handleCloseAlert}
+      >
+        <Alert onClose={handleCloseAlert} severity="success">
+          Usuário logado com sucesso!!!
+        </Alert>
+      </Snackbar>
+      <Snackbar
+        open={openAlertError}
+        autoHideDuration={4000}
+        onClose={handleCloseAlertError}
+      >
+        <Alert onClose={handleCloseAlertError} severity="error">
+          Houve algum erro ao fazer login. Confira se seu login ou senha estão
+          corretos
+        </Alert>
+      </Snackbar>
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"

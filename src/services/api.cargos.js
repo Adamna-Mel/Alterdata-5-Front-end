@@ -1,8 +1,8 @@
 import api from "./api";
 
-const obterCargos = async () => {
+const obterCargos = async (size, page) => {
 	try {
-		const { data } = await api.get("cargos");
+		const { data } = await api.get(`cargos?size=${size}&page=${page}`);
 		return data;
 	} catch (e) {
 		return e.response;
@@ -29,11 +29,7 @@ const obterCargosPorNome = async (nome) => {
 
 const adicionarCargo = async (novoCargo) => {
 	try {
-		return await api.post("cargos", novoCargo).headers({
-			headers: {
-				"Content-Type": `multipart/form-data; boundary=${formData._boundary}`,
-			},
-		});
+		return await api.post("cargos", novoCargo);
 	} catch (e) {
 		return e.response;
 	}
@@ -41,8 +37,7 @@ const adicionarCargo = async (novoCargo) => {
 
 const atualizarCargo = async (id, cargoAtualizado) => {
 	try {
-		const { data } = await api.put(`cargos/${id}`, cargoAtualizado);
-		return data;
+		return await api.put(`cargos/${id}`, cargoAtualizado);
 	} catch (e) {
 		return e.response;
 	}
@@ -56,6 +51,22 @@ const apagarCargo = async (id) => {
 	}
 };
 
+const alterarAvatar = async (id, avatar) => {
+	try {
+		return await api.patch(`cargos/alterar-avatar/${id}`, avatar);
+	} catch (e) {
+		return e.response;
+	}
+};
+
+const obterAvatar = async (id) => {
+	try {
+		return await api.get(`cargos/avatar/${id}`);
+	} catch (e) {
+		return e.response;
+	}
+};
+
 export default {
 	obterCargos,
 	obterCargoPorId,
@@ -63,4 +74,6 @@ export default {
 	adicionarCargo,
 	atualizarCargo,
 	apagarCargo,
+	alterarAvatar,
+	obterAvatar,
 };

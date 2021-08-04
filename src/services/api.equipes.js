@@ -64,6 +64,22 @@ const obterUsuariosPorLogin = async (id, login) => {
 	}
 };
 
+const alterarAvatar = async (id, avatar) => {
+	try {
+		return await api.patch.apply(`equipes/alterar-avatar/${id}`, avatar);
+	} catch (e) {
+		return e.response;
+	}
+};
+
+const obterAvatar = async (id) => {
+	try {
+		return await api.get(`equipes/avatar/${id}`);
+	} catch (e) {
+		return e.response;
+	}
+};
+
 export default {
 	obterEquipes,
 	obterEquipesPorId,
@@ -72,4 +88,6 @@ export default {
 	atualizarEquipe,
 	apagarEquipe,
 	obterUsuariosPorLogin,
+	alterarAvatar,
+	obterAvatar,
 };

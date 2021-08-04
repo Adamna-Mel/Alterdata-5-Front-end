@@ -1,13 +1,14 @@
 import React from "react";
 
-import notfound from "../assets/notfound.png";
+import forbidden from "../assets/forbidden.png";
 
 import { useHistory } from "react-router-dom";
 
 import useWindowDimensions from "../hooks/WindowDimension";
 
-function NotFound() {
+function Forbidden() {
   const { height, width } = useWindowDimensions();
+
   const history = useHistory();
 
   React.useEffect(() => {
@@ -17,9 +18,9 @@ function NotFound() {
   }, []);
   return (
     <div style={{ minHeight: height }}>
-      <img style={{ display: "block", margin: "auto" }} src={notfound} />
+      <img style={{ display: "block", margin: "auto" }} src={forbidden} />
     </div>
   );
 }
 
-export default NotFound;
+export default Forbidden;

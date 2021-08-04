@@ -9,7 +9,6 @@ import Switch from "@material-ui/core/Switch";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
-import Typography from "@material-ui/core/Typography";
 import InputBase from "@material-ui/core/InputBase";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
@@ -22,7 +21,7 @@ import Brightness7Icon from "@material-ui/icons/Brightness7";
 import Avatar from "@material-ui/core/Avatar";
 import Fab from "@material-ui/core/Fab";
 import AddIcon from "@material-ui/icons/Add";
-import AssignmentLateIcon from "@material-ui/icons/AssignmentLate";
+import PersonAddDisabledIcon from "@material-ui/icons/PersonAddDisabled";
 import Divider from "@material-ui/core/Divider";
 import AddCircleIcon from "@material-ui/icons/AddCircle";
 
@@ -38,7 +37,7 @@ import apiUsuarios from "../../services/api.usuarios";
 
 import { UserContext } from "../../context/UserContext";
 
-function NavBar({ check, change }) {
+export default function NavBar({ check, change, setOpenModal }) {
   const classes = useStyles();
 
   const context = useContext(UserContext);
@@ -96,12 +95,7 @@ function NavBar({ check, change }) {
   };
 
   const handleExitTeam = () => {
-    apiUsuarios
-      .sairDaEquipe(userId)
-      .then(() => history.push("/"))
-      .catch((e) => {
-        console.log(e);
-      });
+    setOpenModal(true);
   };
 
   const menuId = "primary-search-account-menu";
@@ -211,7 +205,7 @@ function NavBar({ check, change }) {
               color="inherit"
               style={{ color: "red" }}
             >
-              <AssignmentLateIcon />
+              <PersonAddDisabledIcon />
             </IconButton>
           </MenuItem>
         </>
@@ -400,5 +394,3 @@ const useStyles = makeStyles((theme) => ({
     width: 25,
   },
 }));
-
-export default NavBar;

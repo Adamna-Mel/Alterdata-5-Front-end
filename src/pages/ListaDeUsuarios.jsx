@@ -16,6 +16,8 @@ import Divider from "@material-ui/core/Divider";
 //COMPONENTS
 import UserCard from "../components/UserCard/UserCard";
 import DeleteTeam from "../components/Team/Delete/Delete";
+import Cargos from "../components/Cargos/index";
+import GoOut from "../components/Team/GoOut/GoOut";
 
 //SERVICES
 import apiUsuarios from "../services/api.usuarios";
@@ -25,7 +27,7 @@ import useWindowDimensions from "../hooks/WindowDimension";
 
 import { UserContext } from "../context/UserContext";
 
-function ListaDeUsuarios() {
+function ListaDeUsuarios({ openModalTeam, setOpenModalTeam }) {
 	const idUsuario = localStorage.getItem("@user-id");
 
 	const context = useContext(UserContext);
@@ -40,6 +42,8 @@ function ListaDeUsuarios() {
 	const [anchorEl, setAnchorEl] = useState(null);
 	const [openModal, setOpenModal] = useState(false);
 	const [avatar, setAvatar] = useState(null);
+
+	const [openModalCargo, setOpenModalCargo] = useState(false);
 
 	const history = useHistory();
 
@@ -138,6 +142,8 @@ function ListaDeUsuarios() {
 											usuario.cargo != null ? usuario.cargo.nome : "Sem cargo"
 										}
 										avatar={usuario.avatar}
+										cargo={usuario.cargo}
+										setOpenModalCargo={setOpenModalCargo}
 										// corcargo1={usuario.cargo.cor1}
 										// corcargo2={usuario.cargo.cor2}
 										// cargoicone={usuario.cargo.icone}
@@ -159,6 +165,14 @@ function ListaDeUsuarios() {
 				idEquipe={idEquipe}
 				openModal={openModal}
 				setOpenModal={setOpenModal}
+			/>
+			<Cargos
+				openModalCargo={openModalCargo}
+				setOpenModalCargo={setOpenModalCargo}
+			/>
+			<GoOut
+				openModalTeam={openModalTeam}
+				setOpenModalTeam={setOpenModalTeam}
 			/>
 		</>
 	);

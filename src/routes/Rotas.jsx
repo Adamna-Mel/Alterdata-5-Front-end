@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useHistory,
+} from "react-router-dom";
 
 //MATERIAL-UI
 import { createTheme } from "@material-ui/core/styles";
@@ -18,9 +24,13 @@ import DeleteTeam from "../components/Team/Delete/Delete";
 import RegisterUser from "../components/RegisterUser";
 import UserProfile from "../components/UserProfile";
 import NotFound from "../pages/NotFound";
+import Forbidden from "../pages/Forbidden";
+
+import auth from "../services/auth";
 
 function Rotas() {
   const [darkMode, setDarkMode] = useState(false);
+  const [openModal, setOpenModal] = useState(false);
 
   useEffect(() => {
     const mode = localStorage.getItem("@darkMode");
@@ -79,14 +89,15 @@ function Rotas() {
             style={{ marginBottom: 100 }}
             check={darkMode}
             change={() => setDarkMode(!darkMode)}
+            setOpenModal={setOpenModal}
           />
           <Switch>
             <Route path={"/apagar-equipe"} exact>
-              <DeleteTeam />
+              {auth.isAuthenticated() ? <DeleteTeam /> : <Forbidden />}
             </Route>
 
             <Route path={"/editar-equipe"} exact>
-              <EditTeam />
+              {auth.isAuthenticated() ? <EditTeam /> : <Forbidden />}
             </Route>
 
             <Route path={"/login"} exact>
@@ -94,19 +105,19 @@ function Rotas() {
             </Route>
 
             <Route path={"/criartime"} exact>
-              <Create />
+              {auth.isAuthenticated() ? <Create /> : <Forbidden />}
             </Route>
 
             <Route path={"/perfil"} exact>
-              <UserProfile />
+              {auth.isAuthenticated() ? <UserProfile /> : <Forbidden />}
             </Route>
 
             <Route path={"/registrar"} exact>
-              <RegisterUser />
+              {auth.isAuthenticated() ? <RegisterUser /> : <Forbidden />}
             </Route>
 
             <Route path={"/"} exact>
-              <Principal />
+              <Principal openModal={openModal} setOpenModal={setOpenModal} />
             </Route>
 
             <Route path={"*"}>
