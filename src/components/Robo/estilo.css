@@ -4,9 +4,9 @@ body.active-modal {
 
 .robo-modal {
     display: block;
-    margin-left: 83%;
-    width: 18%;
-    margin-bottom: 0.6%;
+    margin-left: 85%;
+    width: 17%;
+    margin-bottom: 1.2%;
     position: fixed;
     bottom: 0;
 }
@@ -15,8 +15,7 @@ body.active-modal {
   and (min-device-width: 320px) 
   and (max-device-width: 675px){
       .robo-modal{
-          width: 45%;
-          right: 9%;
+          width: 0%
       };
   }
 
@@ -24,7 +23,7 @@ body.active-modal {
   and (min-device-width: 320px) 
   and (max-device-width: 675px){
       .modal-conteudo{
-          margin-left: -30%
+          width: 0%
       };
   }
 
@@ -45,7 +44,7 @@ body.active-modal {
 .modal-conteudo {
     position: absolute;
     top: 40%;
-    left: 87%;
+    left: 88%;
     transform: translate(-50%, -50%);
     line-height: 1.6;
     background: #ffffff;
