@@ -25,7 +25,7 @@ import UserProvider from "./context/UserContext";
 
 //TODO: editar avatar equipe cargo e usario
 
-//TODO: colocar a imagem da equipe
+//TODO: bug alterar nome da euipe
 
 function App() {
 	return (

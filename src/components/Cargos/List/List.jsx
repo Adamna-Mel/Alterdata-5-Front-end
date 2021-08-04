@@ -27,7 +27,7 @@ import apiUsuarios from "../../../services/api.usuarios";
 
 import { UserContext } from "../../../context/UserContext";
 
-function List({ lista, setLista, api, setSize, setPage, page }) {
+function List({ lista, setLista, api, setSize, setPage, page, contextApi }) {
 	const context = useContext(UserContext);
 	const [anchorEl, setAnchorEl] = useState(null);
 	const [cargo, setCargo] = useState("Cargos");
@@ -134,6 +134,7 @@ function List({ lista, setLista, api, setSize, setPage, page }) {
 						setAssign={setAssign}
 						setApagar={setApagar}
 						handleOpenList={handleOpenList}
+						contextApi={contextApi}
 					/>
 				) : null}
 
@@ -144,6 +145,7 @@ function List({ lista, setLista, api, setSize, setPage, page }) {
 						setAssign={setAssign}
 						setEditar={setEditar}
 						handleOpenList={handleOpenList}
+						contextApi={contextApi}
 					/>
 				) : null}
 
@@ -153,6 +155,7 @@ function List({ lista, setLista, api, setSize, setPage, page }) {
 						setEditar={setEditar}
 						handleOpenList={handleOpenList}
 						idCargo={idCargo}
+						contextApi={contextApi}
 					/>
 				) : null}
 			</Card>

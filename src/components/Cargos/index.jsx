@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 
 import { Button, Fade, Backdrop, Modal, makeStyles } from "@material-ui/core";
 
@@ -9,8 +9,10 @@ import apiUsuarios from "../../services/api.usuarios";
 import apiCagos from "../../services/api.cargos";
 import apiCargos from "../../services/api.cargos";
 
-//TODO: Fazer o editar cargo
+import { UserContext } from "../../context/UserContext";
+
 function Edit({ openModalCargo, setOpenModalCargo }) {
+	const context = useContext(UserContext);
 	const [imagem, setImagem] = useState(null);
 	const [caminho, setCaminho] = useState(null);
 	const [criar, setCriar] = useState(false);
@@ -76,6 +78,7 @@ function Edit({ openModalCargo, setOpenModalCargo }) {
 								handleClose={handleClose}
 								handleOpenExistentes={handleOpenExistentes}
 								api={api}
+								contextApi={context.api}
 							/>
 						) : null}
 
@@ -87,6 +90,7 @@ function Edit({ openModalCargo, setOpenModalCargo }) {
 								page={page}
 								setLista={setLista}
 								api={api}
+								contextApi={context.api}
 							/>
 						) : null}
 					</div>

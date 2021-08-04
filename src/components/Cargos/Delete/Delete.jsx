@@ -19,7 +19,14 @@ function Alert(props) {
 	return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
 
-function Delete({ idCargo, api, setApagar, setAssign, handleOpenList }) {
+function Delete({
+	idCargo,
+	api,
+	setApagar,
+	setAssign,
+	handleOpenList,
+	contextApi,
+}) {
 	const [nome, setNome] = useState("");
 	useEffect(() => {
 		apiCargos.obterCargoPorId(idCargo).then((res) => setNome(res.nome));
@@ -31,10 +38,13 @@ function Delete({ idCargo, api, setApagar, setAssign, handleOpenList }) {
 				setOpenAlert(true);
 				api();
 				setApagar(false);
+				contextApi();
+				handleOpenList();
 			} else {
 				setOpenAlertError(true);
 			}
 		});
+		api();
 	};
 
 	//Snackbar/Alert

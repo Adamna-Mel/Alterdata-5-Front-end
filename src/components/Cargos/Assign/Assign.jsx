@@ -25,7 +25,7 @@ function Alert(props) {
 }
 
 //TODO: ainda tem coisa para fazer (principalmente estilização)
-function Assign({ idCargo, handleOpenList }) {
+function Assign({ idCargo, handleOpenList, contextApi }) {
 	const context = useContext(UserContext);
 	const [cargo, setCargo] = useState("");
 	const [usuario, setUsuario] = useState("");
@@ -38,11 +38,10 @@ function Assign({ idCargo, handleOpenList }) {
 	}, [idCargo]);
 
 	const handleConfirm = () => {
-		apiUsuarios
-			.editarPapel(context.usuarioAtual, idCargo)
-			.then((res) =>
-				res.status === 200 ? setOpenAlert(true) : setOpenAlertError(true)
-			);
+		apiUsuarios.editarPapel(context.usuarioAtual, idCargo).then((res) => {
+			res.status === 200 ? setOpenAlert(true) : setOpenAlertError(true);
+			contextApi();
+		});
 	};
 
 	const classes = useStyles();
