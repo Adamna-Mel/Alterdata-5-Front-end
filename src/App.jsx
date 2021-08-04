@@ -11,10 +11,6 @@ import UserProvider from "./context/UserContext";
 
 //TODO: Arrumar a estilização do pagination
 
-//TODO: Bug ao apagar cargo
-
-//TODO: bug ao criar cargo
-
 //TODO: recarregar a pagina ao atribuir cargo
 
 //TODO: fazer o remover da equipe
@@ -26,6 +22,8 @@ import UserProvider from "./context/UserContext";
 //TODO: editar avatar equipe cargo e usario
 
 //TODO: bug alterar nome da euipe
+
+//TODO: tirar a senha ao cadastrar usuario
 
 function App() {
 	return (
