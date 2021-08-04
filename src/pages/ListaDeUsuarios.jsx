@@ -93,10 +93,17 @@ function ListaDeUsuarios({ openModalTeam, setOpenModalTeam }) {
 					<div>
 						<div>
 							<Paper elevation={0} className={classes.header}>
-								<Avatar
-									alt="Perfil"
-									src="src/assets/profile.jpg"
-									className={classes.teamImage}
+								<img
+									src={`http://alterdata-5-back-end.herokuapp.com/api/equipes/avatar/${idEquipe}`}
+									style={{
+										width: 100,
+										height: 100,
+										borderRadius: 400 / 2,
+										borderStyle: "solid",
+										borderColor: "#0083C1",
+										borderWidth: 2,
+										backgroundColor: "#F5F3F4",
+									}}
 								/>
 								<Typography className={classes.teamName}>
 									{nomeDaEquipe}
