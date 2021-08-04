@@ -76,19 +76,12 @@ function Edit({ openModalCargo, setOpenModalCargo }) {
           <div className={classes.paper}>
             <div className={classes.sair}></div>
             <div className={classes.botoes}>
-              {/* <Button
-                variant="outlined"
-                color="primary"
-                onClick={handleOpenCriar}
-              >
-                <AddIcon />
-                Novo Cargo
-              </Button> */}
               <Fab
                 variant="extended"
                 color="primary"
                 aria-label="add"
                 onClick={handleOpenCriar}
+                className={classes.add}
               >
                 <AddIcon />
                 Criar Novo Cargo
@@ -159,6 +152,9 @@ const useStyles = makeStyles((theme) => ({
   x: {
     color: "red",
     marginBottom: "5px",
+  },
+  add: {
+    marginBottom: 5,
   },
 }));
 
