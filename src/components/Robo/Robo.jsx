@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import robo from "../../assets/3-4.png";
+import robo from "../../assets/robo.png";
 import "./estilo.css";
 import { Typography, CardContent, Fab, Card } from "@material-ui/core";
 
@@ -41,8 +41,10 @@ export default function Robo() {
                     marginBottom: 5,
                   }}
                 >
-                  <PersonAddIcon />
-                  <Typography>Adicionar Integrantes;</Typography>
+                  <SupervisedUserCircleIcon />
+                  <Typography style={{ marginLeft: 10 }}>
+                    Criar sua equipe;
+                  </Typography>
                 </div>
 
                 <div
@@ -52,8 +54,10 @@ export default function Robo() {
                     marginBottom: 5,
                   }}
                 >
-                  <SupervisedUserCircleIcon />
-                  <Typography>Criar sua equipe;</Typography>
+                  <PersonAddIcon />
+                  <Typography style={{ marginLeft: 10 }}>
+                    Adicionar Integrantes;
+                  </Typography>
                 </div>
 
                 <div
@@ -64,8 +68,8 @@ export default function Robo() {
                   }}
                 >
                   <RecentActorsIcon />
-                  <Typography>
-                    Informar o status e o Cargo dos integrantes;
+                  <Typography style={{ marginLeft: 10 }}>
+                    Informar o Status e o Cargo dos Integrantes;
                   </Typography>
                 </div>
 
@@ -77,7 +81,9 @@ export default function Robo() {
                   }}
                 >
                   <SearchIcon />
-                  <Typography>Filtrar Integrantes;</Typography>
+                  <Typography style={{ marginLeft: 10 }}>
+                    Filtrar Integrantes;
+                  </Typography>
                 </div>
               </CardContent>
             </Card>
