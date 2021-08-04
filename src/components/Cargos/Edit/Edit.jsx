@@ -27,7 +27,7 @@ function Alert(props) {
 	return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
 
-function Edit({ idCargo, api, setEditar, handleOpenList }) {
+function Edit({ idCargo, api, setEditar, handleOpenList, contextApi }) {
 	const context = useContext(UserContext);
 	const [nome, setNome] = useState("");
 	const [imagem, setImagem] = useState(null);
@@ -47,7 +47,10 @@ function Edit({ idCargo, api, setEditar, handleOpenList }) {
 		const formData = new FormData();
 		if (imagem !== null) {
 			formData.append("img", imagem);
-			apiCargos.alterarAvatar(idCargo, formData).then((res) => api());
+			apiCargos.alterarAvatar(idCargo, formData).then((res) => {
+				api();
+				contextApi();
+			});
 		}
 
 		if (nome.length !== 0) {
@@ -57,6 +60,7 @@ function Edit({ idCargo, api, setEditar, handleOpenList }) {
 			apiCargos.atualizarCargo(idCargo, novo).then((res) => {
 				res.status === 200 ? setOpenAlert(true) : setOpenAlertError(true);
 				api();
+				contextApi();
 			});
 		}
 		api();

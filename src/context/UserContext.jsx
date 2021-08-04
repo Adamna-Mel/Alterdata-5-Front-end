@@ -71,7 +71,7 @@ function UserProvider({ children }) {
 				setPage,
 				size,
 				setSize,
-				api()
+				api,
 			}}
 		>
 			{children}
