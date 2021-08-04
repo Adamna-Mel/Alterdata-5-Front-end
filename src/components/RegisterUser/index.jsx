@@ -1,6 +1,5 @@
 import React from "react";
 import { Grid, Paper, TextField, Button, Typography } from "@material-ui/core";
-import avatar from "../../assets/3-4.png";
 import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";
 
