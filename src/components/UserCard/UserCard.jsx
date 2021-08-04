@@ -94,9 +94,9 @@ function UserCard(props) {
 							width={200}
 							colors={[props.corcargo1, props.corcargo2]}
 						/>
-						{props.idCargo !== null ? (
+						{props.cargo !== null ? (
 							<img
-								src={`http://alterdata-5-back-end.herokuapp.com/api/cargos/avatar/${props.idCargo}`}
+								src={`http://alterdata-5-back-end.herokuapp.com/api/cargos/avatar/${props.cargo.idCargo}`}
 								style={{
 									width: 30,
 									height: 30,

@@ -142,7 +142,7 @@ function ListaDeUsuarios({ openModalTeam, setOpenModalTeam }) {
 											usuario.cargo != null ? usuario.cargo.nome : "Sem cargo"
 										}
 										avatar={usuario.avatar}
-										idCargo={usuario.cargo.idCargo}
+										cargo={usuario.cargo}
 										setOpenModalCargo={setOpenModalCargo}
 										// corcargo1={usuario.cargo.cor1}
 										// corcargo2={usuario.cargo.cor2}
