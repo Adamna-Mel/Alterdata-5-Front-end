@@ -37,7 +37,7 @@ import apiUsuarios from "../../services/api.usuarios";
 
 import { UserContext } from "../../context/UserContext";
 
-export default function NavBar({ check, change, setOpenModal }) {
+export default function NavBar({ check, change }) {
   const classes = useStyles();
 
   const context = useContext(UserContext);
@@ -94,10 +94,6 @@ export default function NavBar({ check, change, setOpenModal }) {
     setMobileMoreAnchorEl(event.currentTarget);
   };
 
-  const handleExitTeam = () => {
-    setOpenModal(true);
-  };
-
   const menuId = "primary-search-account-menu";
   const renderMenu = (
     <Menu
@@ -111,14 +107,6 @@ export default function NavBar({ check, change, setOpenModal }) {
     >
       <MenuItem onClick={handleProfile}>{username}</MenuItem>
       <MenuItem onClick={handleLogout}>Logout</MenuItem>
-      {userTeam !== null ? (
-        <>
-          <Divider style={{ marginTop: 15, marginBottom: 15 }} />
-          <MenuItem style={{ color: "red" }} onClick={handleExitTeam}>
-            Sair da Equipe
-          </MenuItem>
-        </>
-      ) : null}
     </Menu>
   );
   //MENU
@@ -194,22 +182,6 @@ export default function NavBar({ check, change, setOpenModal }) {
           <ExitToAppIcon />
         </IconButton>
       </MenuItem>
-      {userTeam !== null ? (
-        <>
-          <Divider style={{ marginTop: 15, marginBottom: 15 }} />
-          <MenuItem onClick={handleExitTeam}>
-            <IconButton
-              aria-label="account of current user"
-              aria-controls="primary-search-account-menu"
-              aria-haspopup="true"
-              color="inherit"
-              style={{ color: "red" }}
-            >
-              <PersonAddDisabledIcon />
-            </IconButton>
-          </MenuItem>
-        </>
-      ) : null}
     </Menu>
   );
 

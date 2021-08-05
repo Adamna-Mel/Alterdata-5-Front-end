@@ -95,7 +95,7 @@ const sairDaEquipe = async (id) => {
 
 const alterarAvatar = async (id, avatar) => {
 	try {
-		return await api.patch.apply(`usuarios/alterar-avatar/${id}`, avatar);
+		return await api.patch(`usuarios/alterar-avatar/${id}`, avatar);
 	} catch (e) {
 		return e.response;
 	}

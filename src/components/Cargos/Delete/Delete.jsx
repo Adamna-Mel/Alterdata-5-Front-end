@@ -154,6 +154,7 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "center",
   },
   buttonDelete: {
+    margin: 5,
     backgroundColor: "red",
     "&:hover": {
       backgroundColor: "#F12",
