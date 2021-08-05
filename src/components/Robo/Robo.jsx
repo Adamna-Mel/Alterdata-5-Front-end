@@ -54,19 +54,6 @@ export default function Robo() {
                     marginBottom: 5,
                   }}
                 >
-                  <PersonAddIcon />
-                  <Typography style={{ marginLeft: 10 }}>
-                    Adicionar Integrantes;
-                  </Typography>
-                </div>
-
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "row",
-                    marginBottom: 5,
-                  }}
-                >
                   <RecentActorsIcon />
                   <Typography style={{ marginLeft: 10 }}>
                     Informar o Status e o Cargo dos Integrantes;
