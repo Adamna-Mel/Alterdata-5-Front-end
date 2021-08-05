@@ -70,7 +70,7 @@ export default function NavBar({ check, change }) {
 
   const handleLogout = () => {
     auth.logout();
-    window.location.reload(false);
+    history.push("/");
   };
 
   const handleProfile = () => {
@@ -201,26 +201,26 @@ export default function NavBar({ check, change }) {
               colors={check ? ["#ffffff"] : ["#0083c1"]}
             />
           </div>
-          {auth.isAuthenticated() ?
-          <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
-            </div>
+          {auth.isAuthenticated() ? (
+            <div className={classes.search}>
+              <div className={classes.searchIcon}>
+                <SearchIcon />
+              </div>
 
-            <InputBase
-              style={check ? { color: "#fff" } : { color: "#000" }}
-              placeholder="Pesquisar…"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              value={context.login}
-              inputProps={{ "aria-label": "search" }}
-              onChange={(e) => context.setLogin(e.target.value)}
-              color="secondary"
-            />
-          </div>
-          : null}
+              <InputBase
+                style={check ? { color: "#fff" } : { color: "#000" }}
+                placeholder="Pesquisar…"
+                classes={{
+                  root: classes.inputRoot,
+                  input: classes.inputInput,
+                }}
+                value={context.login}
+                inputProps={{ "aria-label": "search" }}
+                onChange={(e) => context.setLogin(e.target.value)}
+                color="secondary"
+              />
+            </div>
+          ) : null}
           <div className={classes.grow} />
           {menu ? (
             <div className={classes.sectionDesktop}>
