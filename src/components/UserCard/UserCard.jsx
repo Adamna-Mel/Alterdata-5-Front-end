@@ -29,6 +29,13 @@ import apiUsuarios from "../../services/api.usuarios";
 function UserCard(props) {
 	const classes = useStyles();
 	const context = useContext(UserContext);
+	const [avatarCargo, setAvatarCargo] = React.useState(false);
+
+	React.useEffect(() => {
+		if (props.cargo !== null) {
+			setAvatarCargo(props.cargo.avatarName);
+		}
+	}, [props.cargo]);
 
 	return (
 		<div>
@@ -65,7 +72,7 @@ function UserCard(props) {
 					</Typography>
 					<CardContent className={classes.userRole}>
 						<div>
-							{props.cargo !== null ? (
+							{avatarCargo ? (
 								<img
 									src={`http://alterdata-5-back-end.herokuapp.com/api/cargos/avatar/${props.cargo.idCargo}`}
 									style={{

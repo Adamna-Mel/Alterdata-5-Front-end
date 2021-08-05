@@ -40,7 +40,7 @@ function UserProfile() {
 	const [cargo, setCargo] = useState();
 	const [imagem, setImagem] = useState(null);
 	const [caminho, setCaminho] = useState(null);
-	const [avatarName, setAvatarName] = useState("");
+	const [avatarName, setAvatarName] = useState(false);
 	const [IdCargo, setIdCargo] = useState("");
 
 	const [condicaoNome, setCondicaoNome] = useState();
@@ -70,7 +70,10 @@ function UserProfile() {
 
 	const apiUsuario = () => {
 		apiUsuarios.obterUsuarioPorId(idUsuario).then((res) => {
-			setAvatarName(res.avatarName);
+			if (res.avatarName !== "") {
+				setAvatarName(res.avatarName);
+			}
+
 			setUserId(res.id);
 			setNome(res.nome);
 			setEmail(res.email);
@@ -173,9 +176,10 @@ function UserProfile() {
 
 		if (avatarName) {
 			path = `http://alterdata-5-back-end.herokuapp.com/api/usuarios/avatar/${userId}`;
+		} else {
+			path = imagemPadrao;
 		}
-		path = imagemPadrao;
-		caminho !== null ? (path = caminho) : (path = imagemPadrao);
+		caminho !== null ? (path = caminho) : null;
 
 		return (
 			<Avatar

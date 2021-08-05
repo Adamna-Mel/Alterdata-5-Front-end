@@ -47,7 +47,7 @@ export default function ListaDeUsuarios({ openModalTeam, setOpenModalTeam }) {
 	const [openModal, setOpenModal] = useState(false);
 	const [avatar, setAvatar] = useState(null);
 	const [openModalRemove, setOpenModalRemove] = useState(false);
-	const { avatarEquipe, setAvatarEquipe } = useState("");
+	const { avatarEquipe, setAvatarEquipe } = useState(false);
 
 	const [openModalCargo, setOpenModalCargo] = useState(false);
 	const [openModalDelete, setOpenModalDelete] = useState(false);
@@ -78,7 +78,9 @@ export default function ListaDeUsuarios({ openModalTeam, setOpenModalTeam }) {
 					setCorPrimaria(res.cor1);
 					setCorSecundaria(res.cor2);
 					setIconeEquipe(res.icone);
-					imagemPadraoEquipe(res.avatarName);
+					if (res.avatarName !== "") {
+						imagemPadraoEquipe(res.avatarName);
+					}
 				});
 				setTimeout(() => {
 					setLoading(true);
@@ -104,7 +106,7 @@ export default function ListaDeUsuarios({ openModalTeam, setOpenModalTeam }) {
 					<div>
 						<div>
 							<Paper elevation={0} className={classes.header}>
-								{avatarEquipe !== 0 ? (
+								{avatarEquipe ? (
 									<img
 										src={`http://alterdata-5-back-end.herokuapp.com/api/equipes/avatar/${idEquipe}`}
 										style={{
