@@ -149,7 +149,7 @@ export default function NavBar({ check, change }) {
 					aria-haspopup="true"
 					color="inherit"
 				>
-					{avatarName.length !== 0 ? (
+					{avatarName ? (
 						<Avatar
 							alt="Perfil"
 							src={`http://alterdata-5-back-end.herokuapp.com/api/usuarios/avatar/${userId}`}
@@ -268,7 +268,7 @@ export default function NavBar({ check, change }) {
 								color="primary"
 								size="medium"
 							>
-								{avatarName.length !== 0 ? (
+								{avatarName ? (
 									<Avatar
 										alt="Perfil"
 										src={`http://alterdata-5-back-end.herokuapp.com/api/usuarios/avatar/${userId}`}
