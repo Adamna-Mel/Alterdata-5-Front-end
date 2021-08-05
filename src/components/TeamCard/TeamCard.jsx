@@ -58,7 +58,7 @@ function TeamCard(props) {
 			<Card elevation={7} className={classes.card} color="default">
 				<CardContent className={classes.cardContent}>
 					<div className={classes.cardTop}>
-						{props.avatarName ? (
+						{props.avatarName.length !== null ? (
 							<img
 								src={`http://alterdata-5-back-end.herokuapp.com/api/equipes/avatar/${props.id}`}
 								style={{

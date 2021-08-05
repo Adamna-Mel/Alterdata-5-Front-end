@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
 
 import { makeStyles } from "@material-ui/core/styles";
@@ -11,10 +11,20 @@ import {
 	Modal,
 	Card,
 } from "@material-ui/core";
+import apiUsuarios from "../../services/api.usuarios";
+import { UserContext } from "../../context/UserContext";
 
-function RemoveUser({ openModal, setOpenModal, idEquipe }) {
+function RemoveUser({ openModal, setOpenModal }) {
+	const context = useContext(UserContext);
 	const [equipe, setEquipe] = React.useState("");
+	const [usuario, setUsuario] = React.useState("");
 	const history = useHistory();
+
+	React.useEffect(() => {
+		apiUsuarios
+			.obterUsuarioPorId(context.usuarioAtual)
+			.then((res) => setUsuario(res.nome));
+	}, []);
 
 	const classes = useStyles();
 
@@ -22,7 +32,11 @@ function RemoveUser({ openModal, setOpenModal, idEquipe }) {
 		setOpenModal(false);
 	};
 
-	const handleRemove = () => {};
+	const handleRemove = () => {
+		apiUsuarios.sairDaEquipe(context.usuarioAtual);
+		context.api();
+		handleClose();
+	};
 
 	return (
 		<div>
@@ -48,6 +62,7 @@ function RemoveUser({ openModal, setOpenModal, idEquipe }) {
 							justifyContent: "center",
 						}}
 					>
+						<Typography>Remover {usuario} da equipe?</Typography>
 						<Button
 							// style={{  }}
 							onClick={handleRemove}

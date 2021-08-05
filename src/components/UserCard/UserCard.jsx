@@ -34,19 +34,12 @@ function UserCard(props) {
 			<Card elevation={7} className={classes.card} color="default">
 				<CardContent className={classes.cardContent}>
 					<div className={classes.cardTop}>
-						{props.avatar ? (
-							<Avatar
-								alt="Perfil"
-								src={`http://alterdata-5-back-end.herokuapp.com/api/usuarios/avatar/${props.id}`}
-								className={classes.profileImage}
-							/>
-						) : (
-							<Avatar
-								alt="Perfil"
-								src={imagemPadrao}
-								className={classes.profileImage}
-							/>
-						)}
+						<Avatar
+							alt="Perfil"
+							src={`http://alterdata-5-back-end.herokuapp.com/api/usuarios/avatar/${props.id}`}
+							className={classes.profileImage}
+						/>
+
 						<CardOptions
 							id={props.id}
 							setOpenModalRemove={props.setOpenModalRemove}

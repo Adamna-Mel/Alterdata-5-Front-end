@@ -102,7 +102,7 @@ export default function ListaDeUsuarios({ openModalTeam, setOpenModalTeam }) {
 					<div>
 						<div>
 							<Paper elevation={0} className={classes.header}>
-								{avatarEquipe ? (
+								{avatarEquipe !== 0 ? (
 									<img
 										src={`http://alterdata-5-back-end.herokuapp.com/api/equipes/avatar/${idEquipe}`}
 										style={{

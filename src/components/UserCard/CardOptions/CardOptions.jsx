@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 
 //MATERIAL-UI
 import { makeStyles } from "@material-ui/core/styles";
@@ -11,9 +11,12 @@ import MoreVertIcon from "@material-ui/icons/MoreVert";
 import api from "../../../services/api.usuarios";
 import auth from "../../../services/auth";
 
+import { UserContext } from "../../../context/UserContext";
+
 const ITEM_HEIGHT = 45;
 
 function CardOptions(props) {
+	const context = useContext(UserContext);
 	const [anchorEl, setAnchorEl] = React.useState(null);
 	const open = Boolean(anchorEl);
 
@@ -26,6 +29,7 @@ function CardOptions(props) {
 	};
 
 	const userLeave = () => {
+		context.setUsuarioAtual(props.id);
 		props.setOpenModalRemove(true);
 	};
 
