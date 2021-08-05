@@ -76,14 +76,13 @@ function UserProfile() {
 			setEmail(res.email);
 			setLogin(res.login);
 			res.status ? setStatus(res.status) : setStatus("...");
-			if (res.cargo !== null) {
+			if (res.cargo) {
 				setCargo(res.cargo.nome);
-				setIdCargo(res.cargo.IdCargo);
+				setIdCargo(res.cargo.idCargo);
 			} else {
 				setCargo("Sem Cargo.");
 			}
 		});
-		console.log(status);
 	};
 	React.useEffect(() => {
 		apiUsuario();
@@ -170,52 +169,31 @@ function UserProfile() {
 	const classes = useStyles();
 
 	const UserAvatar = () => {
+		let path;
 		{
-			if (avatarName.length !== 0) {
-				return (
-					<Avatar
-						alt="Perfil"
-						src={`http://alterdata-5-back-end.herokuapp.com/api/usuarios/avatar/${userId}`}
-						style={{
-							width: 200,
-							height: 200,
-							borderRadius: 400 / 2,
-							borderStyle: "solid",
-							borderColor: "#1A2228",
-							marginTop: -130,
-						}}
-					/>
-				);
+			if (avatarName) {
+				path = `http://alterdata-5-back-end.herokuapp.com/api/usuarios/avatar/${userId}`;
 			} else {
-				return imagem !== null ? (
-					<Avatar
-						alt="Perfil"
-						src={caminho}
-						style={{
-							width: 200,
-							height: 200,
-							borderRadius: 400 / 2,
-							borderStyle: "solid",
-							borderColor: "#1A2228",
-							marginTop: -130,
-						}}
-					/>
-				) : (
-					<Avatar
-						alt="Perfil"
-						src={imagemPadrao}
-						style={{
-							width: 200,
-							height: 200,
-							borderRadius: 400 / 2,
-							borderStyle: "solid",
-							borderColor: "#1A2228",
-							marginTop: -130,
-						}}
-					/>
-				);
+				path = imagemPadrao;
 			}
+
+			caminho !== null ? (path = caminho) : (path = imagemPadrao);
 		}
+
+		return (
+			<Avatar
+				alt="Perfil"
+				src={path}
+				style={{
+					width: 200,
+					height: 200,
+					borderRadius: 400 / 2,
+					borderStyle: "solid",
+					borderColor: "#1A2228",
+					marginTop: -130,
+				}}
+			/>
+		);
 	};
 
 	return (

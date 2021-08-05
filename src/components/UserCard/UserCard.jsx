@@ -43,6 +43,7 @@ function UserCard(props) {
 						<CardOptions
 							id={props.id}
 							setOpenModalRemove={props.setOpenModalRemove}
+							setOpenModalDelete={props.setOpenModalDelete}
 						/>
 					</div>
 					<Typography className={classes.userName}>{props.name}</Typography>

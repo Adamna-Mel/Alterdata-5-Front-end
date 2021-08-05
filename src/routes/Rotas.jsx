@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Redirect,
+	BrowserRouter as Router,
+	Switch,
+	Route,
+	Redirect,
 } from "react-router-dom";
 
 //MATERIAL-UI
@@ -28,130 +28,130 @@ import auth from "../services/auth";
 import ForgotPassword from "../components/ForgotPassword";
 
 function Rotas() {
-  const [darkMode, setDarkMode] = useState(false);
-  const [openModal, setOpenModal] = useState(false);
+	const [darkMode, setDarkMode] = useState(false);
+	const [openModal, setOpenModal] = useState(false);
 
-  useEffect(() => {
-    const mode = localStorage.getItem("@darkMode");
-    if (mode !== null) setDarkMode(mode);
-  }, []);
+	useEffect(() => {
+		const mode = localStorage.getItem("@darkMode");
+		if (mode !== null) setDarkMode(mode);
+	}, []);
 
-  useEffect(() => {
-    darkMode
-      ? localStorage.setItem("@darkMode", true)
-      : localStorage.setItem("@darkMode", false);
-  }, [darkMode]);
+	useEffect(() => {
+		darkMode
+			? localStorage.setItem("@darkMode", true)
+			: localStorage.setItem("@darkMode", false);
+	}, [darkMode]);
 
-  const theme = createTheme({
-    palette: {
-      type: darkMode ? "dark" : "light",
-      primary: {
-        light: "#7bbbdb",
-        main: "#0083c1",
-        dark: "#0d5375",
-        contrastText: "#fff",
-      },
-      secondary: {
-        light: "#fafafa",
-        main: "#F5f3f4",
-        dark: "#808080",
-        contrastText: "#000",
-      },
-      alert: {
-        light: "#d4463b",
-        primary: "#a11a10",
-        dark: "#5e0e08",
-        contrastText: "#fff",
-      },
-    },
-  });
+	const theme = createTheme({
+		palette: {
+			type: darkMode ? "dark" : "light",
+			primary: {
+				light: "#7bbbdb",
+				main: "#0083c1",
+				dark: "#0d5375",
+				contrastText: "#fff",
+			},
+			secondary: {
+				light: "#fafafa",
+				main: "#F5f3f4",
+				dark: "#808080",
+				contrastText: "#000",
+			},
+			alert: {
+				light: "#d4463b",
+				primary: "#a11a10",
+				dark: "#5e0e08",
+				contrastText: "#fff",
+			},
+		},
+	});
 
-  return (
-    <ThemeProvider theme={theme}>
-      <Router>
-        <div
-          style={
-            darkMode
-              ? {
-                  backgroundColor: "#303030",
-                  height: "100%",
-                  marginBottom: 50,
-                }
-              : {
-                  backgroundColor: "#F5F3F4",
-                  height: "100%",
-                  marginBottom: 50,
-                }
-          }
-        >
-          <NavBar
-            style={{ marginBottom: 100 }}
-            check={darkMode}
-            change={() => setDarkMode(!darkMode)}
-            setOpenModal={setOpenModal}
-          />
-          <Switch>
-            <Route path={"/apagar-equipe"} exact>
-              {auth.isAuthenticated() ? (
-                <DeleteTeam />
-              ) : (
-                <Redirect to={{ pathname: "/" }} />
-              )}
-            </Route>
+	return (
+		<ThemeProvider theme={theme}>
+			<Router>
+				<div
+					style={
+						darkMode
+							? {
+									backgroundColor: "#303030",
+									height: "100%",
+									marginBottom: 50,
+							  }
+							: {
+									backgroundColor: "#F5F3F4",
+									height: "100%",
+									marginBottom: 50,
+							  }
+					}
+				>
+					<NavBar
+						style={{ marginBottom: 100 }}
+						check={darkMode}
+						change={() => setDarkMode(!darkMode)}
+						setOpenModal={setOpenModal}
+					/>
+					<Switch>
+						<Route path={"/apagar-equipe"} exact>
+							{auth.isAuthenticated() ? (
+								<DeleteTeam />
+							) : (
+								<Redirect to={{ pathname: "/" }} />
+							)}
+						</Route>
 
-            <Route path={"/editar-equipe"} exact>
-              {auth.isAuthenticated() ? (
-                <EditTeam />
-              ) : (
-                <Redirect to={{ pathname: "/" }} />
-              )}
-            </Route>
+						<Route path={"/editar-equipe"} exact>
+							{auth.isAuthenticated() ? (
+								<EditTeam />
+							) : (
+								<Redirect to={{ pathname: "/" }} />
+							)}
+						</Route>
 
-            <Route path={"/login"} exact>
-              <Login />
-            </Route>
+						<Route path={"/login"} exact>
+							<Login />
+						</Route>
 
-            <Route path={"/criartime"} exact>
-              {auth.isAuthenticated() ? (
-                <Create />
-              ) : (
-                <Redirect to={{ pathname: "/" }} />
-              )}
-            </Route>
+						<Route path={"/criartime"} exact>
+							{auth.isAuthenticated() ? (
+								<Create />
+							) : (
+								<Redirect to={{ pathname: "/" }} />
+							)}
+						</Route>
 
-            <Route path={"/perfil"} exact>
-              {auth.isAuthenticated() ? (
-                <UserProfile />
-              ) : (
-                <Redirect to={{ pathname: "/" }} />
-              )}
-            </Route>
+						<Route path={"/perfil"} exact>
+							{auth.isAuthenticated() ? (
+								<UserProfile />
+							) : (
+								<Redirect to={{ pathname: "/" }} />
+							)}
+						</Route>
 
-            <Route path={"/registrar"} exact>
-              {auth.isAuthenticated() ? (
-                <RegisterUser />
-              ) : (
-                <Redirect to={{ pathname: "/" }} />
-              )}
-            </Route>
+						<Route path={"/registrar"} exact>
+							{auth.isAuthenticated() ? (
+								<RegisterUser />
+							) : (
+								<Redirect to={{ pathname: "/" }} />
+							)}
+						</Route>
 
-            <Route path={"/esqueci"} exact>
-              <ForgotPassword />
-            </Route>
+						<Route path={"/esqueci"} exact>
+							<ForgotPassword />
+						</Route>
 
-            <Route path={"/"} exact>
-              <Principal openModal={openModal} setOpenModal={setOpenModal} />
-            </Route>
+						<Route path={"/"} exact>
+							<Principal openModal={openModal} setOpenModal={setOpenModal} />
+						</Route>
 
-            <Route path={"*"}>
-              <NotFound />
-            </Route>
-          </Switch>
-        </div>
-      </Router>
-      <Footer />
-    </ThemeProvider>
-  );
+						<Route path={"*"}>
+							<NotFound />
+						</Route>
+					</Switch>
+				</div>
+			</Router>
+			<Footer />
+		</ThemeProvider>
+	);
 }
 
 export default Rotas;

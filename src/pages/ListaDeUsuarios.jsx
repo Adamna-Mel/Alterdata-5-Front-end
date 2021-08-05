@@ -19,6 +19,7 @@ import DeleteTeam from "../components/Team/Delete/Delete";
 import Cargos from "../components/Cargos/index";
 import GoOut from "../components/Team/GoOut/GoOut";
 import RemoveUser from "../components/RemoveUser/RemoveUser";
+import DeleteUser from "../components/DeleteUser/DeleteUser";
 
 //SERVICES
 import apiUsuarios from "../services/api.usuarios";
@@ -49,6 +50,7 @@ export default function ListaDeUsuarios({ openModalTeam, setOpenModalTeam }) {
 	const { avatarEquipe, setAvatarEquipe } = useState("");
 
 	const [openModalCargo, setOpenModalCargo] = useState(false);
+	const [openModalDelete, setOpenModalDelete] = useState(false);
 
 	const history = useHistory();
 
@@ -181,6 +183,8 @@ export default function ListaDeUsuarios({ openModalTeam, setOpenModalTeam }) {
 										cargo={usuario.cargo}
 										setOpenModalRemove={setOpenModalRemove}
 										setOpenModalCargo={setOpenModalCargo}
+										openModalDelete={openModalDelete}
+										setOpenModalDelete={setOpenModalDelete}
 										// corcargo1={usuario.cargo.cor1}
 										// corcargo2={usuario.cargo.cor2}
 										// cargoicone={usuario.cargo.icone}
@@ -214,6 +218,10 @@ export default function ListaDeUsuarios({ openModalTeam, setOpenModalTeam }) {
 			<RemoveUser
 				openModal={openModalRemove}
 				setOpenModal={setOpenModalRemove}
+			/>
+			<DeleteUser
+				openModal={openModalDelete}
+				setOpenModal={setOpenModalDelete}
 			/>
 		</>
 	);

@@ -268,7 +268,7 @@ export default function NavBar({ check, change }) {
 								color="primary"
 								size="medium"
 							>
-								{avatarName ? (
+								{avatarName.length !== 0 ? (
 									<Avatar
 										alt="Perfil"
 										src={`http://alterdata-5-back-end.herokuapp.com/api/usuarios/avatar/${userId}`}

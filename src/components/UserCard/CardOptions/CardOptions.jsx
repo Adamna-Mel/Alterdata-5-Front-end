@@ -34,13 +34,8 @@ function CardOptions(props) {
 	};
 
 	const userDeleted = () => {
-		api.apagarUsuario(props.id).then((res) => {
-			if (localStorage.getItem("@user-id") == props.id) {
-				auth.logout();
-			}
-
-			window.location.reload(false);
-		});
+		context.setUsuarioAtual(props.id);
+		props.setOpenModalDelete(true);
 	};
 
 	const classes = useStyles();

@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 
 import { makeStyles } from "@material-ui/core/styles";
 
+//TODO: Finalizar isso aqui
 import {
 	Typography,
 	Button,
@@ -24,7 +25,7 @@ function RemoveUser({ openModal, setOpenModal }) {
 		apiUsuarios
 			.obterUsuarioPorId(context.usuarioAtual)
 			.then((res) => setUsuario(res.nome));
-	}, []);
+	}, [context.usuarioAtual]);
 
 	const classes = useStyles();
 
