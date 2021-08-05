@@ -27,6 +27,7 @@ import NotFound from "../pages/NotFound";
 import Forbidden from "../pages/Forbidden";
 
 import auth from "../services/auth";
+import ForgotPassword from "../components/ForgotPassword";
 
 function Rotas() {
   const [darkMode, setDarkMode] = useState(false);
@@ -114,6 +115,10 @@ function Rotas() {
 
             <Route path={"/registrar"} exact>
               {auth.isAuthenticated() ? <RegisterUser /> : <Forbidden />}
+            </Route>
+
+            <Route path={"/esqueci"} exact>
+              <ForgotPassword/>
             </Route>
 
             <Route path={"/"} exact>

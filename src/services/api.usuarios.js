@@ -101,6 +101,14 @@ const alterarAvatar = async (id, avatar) => {
 	}
 };
 
+const esqueciSenha = async (dados) => {
+	try {
+		return await api.post(`usuarios/esqueci-senha`,dados);
+	} catch (e) {
+		return e.response;
+	}
+};
+
 export default {
 	obterUsuarios,
 	obterUsuariosPorLogin,
@@ -114,4 +122,5 @@ export default {
 	obterAvatar,
 	sairDaEquipe,
 	alterarAvatar,
+	esqueciSenha,
 };

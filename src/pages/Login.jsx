@@ -1,12 +1,12 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory,Link} from "react-router-dom";
 
 //MATERIAL-UI
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
-import Link from "@material-ui/core/Link";
+//import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import Container from "@material-ui/core/Container";
@@ -146,10 +146,6 @@ export default function Login() {
               onChange={(e) => setSenha(e.target.value)}
               ke
             />
-            {/*<FormControlLabel
-            control={<Checkbox value="Lembrar" color="primary" />}
-            label="Lembre de mim"
-          />*/}
             <Button
               type="submit"
               fullWidth
@@ -161,8 +157,8 @@ export default function Login() {
             </Button>
             <Grid container>
               <Grid item xs>
-                <Link href="#" variant="body2">
-                  Esqueceu sua senha?
+                <Link style={{textDecoration:"none", color:"inherit"}} to="/esqueci" variant="body2">
+                  <Typography> Esqueceu sua senha? </Typography>
                 </Link>
               </Grid>
               <Grid item></Grid>
