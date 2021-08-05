@@ -37,6 +37,8 @@ import apiUsuarios from "../../services/api.usuarios";
 
 import { UserContext } from "../../context/UserContext";
 
+import imagemPadrao from "../../assets/profilepic.png";
+
 export default function NavBar({ check, change }) {
 	const classes = useStyles();
 
@@ -47,6 +49,7 @@ export default function NavBar({ check, change }) {
 	const [userId, setUserId] = React.useState();
 	const [username, setUsername] = React.useState();
 	const [userTeam, setUserTeam] = React.useState();
+	const [avatar, setAvatar] = React.useState(false);
 	const history = useHistory();
 
 	const [menu, setMenu] = React.useState(false);
@@ -65,6 +68,9 @@ export default function NavBar({ check, change }) {
 			setUserId(res.id);
 			setUsername(res.nome);
 			setUserTeam(res.equipe);
+			if (res.avatarName !== "") {
+				setAvatar(res.avatarName);
+			}
 		});
 	}, []);
 
@@ -145,11 +151,19 @@ export default function NavBar({ check, change }) {
 					aria-haspopup="true"
 					color="inherit"
 				>
-					<Avatar
-						alt="Perfil"
-						src={`http://alterdata-5-back-end.herokuapp.com/api/usuarios/avatar/${userId}`}
-						className={classes.profileImageMobile}
-					/>
+					{avatar ? (
+						<Avatar
+							alt="Perfil"
+							src={`http://alterdata-5-back-end.herokuapp.com/api/usuarios/avatar/${userId}`}
+							className={classes.profileImageMobile}
+						/>
+					) : (
+						<Avatar
+							alt="Perfil"
+							src={imagemPadrao}
+							className={classes.profileImageMobile}
+						/>
+					)}
 				</IconButton>
 			</MenuItem>
 			<MenuItem onClick={handleCreateUser}>
@@ -256,11 +270,19 @@ export default function NavBar({ check, change }) {
 								color="primary"
 								size="medium"
 							>
-								<Avatar
-									alt="Perfil"
-									src={`http://alterdata-5-back-end.herokuapp.com/api/usuarios/avatar/${userId}`}
-									className={classes.profileImage}
-								/>
+								{avatar ? (
+									<Avatar
+										alt="Perfil"
+										src={`http://alterdata-5-back-end.herokuapp.com/api/usuarios/avatar/${userId}`}
+										className={classes.profileImage}
+									/>
+								) : (
+									<Avatar
+										alt="Perfil"
+										src={imagemPadrao}
+										className={classes.profileImage}
+									/>
+								)}
 							</IconButton>
 						</div>
 					) : null}
