@@ -50,9 +50,6 @@ function RegisterUser() {
 		formData.append("senha", senha);
 		formData.append("login", login);
 
-		//TODO: tirar isso aqui
-		formData.append("status", "status");
-
 		apiUsuarios
 			.adicionarUsuario(formData)
 			.then((res) =>

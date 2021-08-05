@@ -21,9 +21,9 @@ import UserProvider from "./context/UserContext";
 
 //TODO: tirar a senha ao cadastrar usuario
 
-//TODO: atualizar status no perfil
-
 //TODO: Atualizar a senha
+
+//TODO: pop up perfil atuallizado
 
 function App() {
 	return (
