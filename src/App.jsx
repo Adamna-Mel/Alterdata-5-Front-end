@@ -14,8 +14,6 @@ import UserProvider from "./context/UserContext";
 
 //TODO: colocar a paginação entre a lista de cargos e o botao
 
-//TODO: Altear a visualização dos inputs no perfil
-
 //TODO: Colocar os modais e recarregar as paginas
 
 //TODO: tirar as 99 pag da lista de usuario

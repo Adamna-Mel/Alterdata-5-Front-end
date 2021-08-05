@@ -12,14 +12,21 @@ import {
 	Modal,
 	Card,
 	TextField,
+	Snackbar,
 } from "@material-ui/core";
+import MuiAlert from "@material-ui/lab/Alert";
 
 import apiUsuarios from "../../services/api.usuarios";
+
+function Alert(props) {
+	return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
 
 function ChangePassword({ openModal, setOpenModal }) {
 	const [equipe, setEquipe] = React.useState("");
 	const [novaSenha, setNovaSenha] = React.useState("");
 	const [senhaAntiga, setSenhaAntiga] = React.useState("");
+	const [mensagem, setMensagem] = React.useState("");
 
 	const idUsuario = localStorage.getItem("@user-id");
 
@@ -37,9 +44,19 @@ function ChangePassword({ openModal, setOpenModal }) {
 		formData.append("antigaSenha", senhaAntiga);
 		formData.append("novaSenha", novaSenha);
 
-		apiUsuarios
-			.alterarSenha(idUsuario, formData)
-			.then((res) => console.log(res));
+		if (novaSenha.length > 6) {
+			apiUsuarios.alterarSena(idUsuario, formData).then((res) => {
+				if (res.status === 204) {
+					setOpenAlert(true);
+				} else {
+					setMensagem("Houve algum erro ao atualizar sua senha.");
+					setOpenAlertError(true);
+				}
+			});
+		} else {
+			setMensagem("Senha muito curta!");
+			setOpenAlertError(true);
+		}
 	};
 
 	const handleKeyDown = (e) => {
@@ -53,8 +70,63 @@ function ChangePassword({ openModal, setOpenModal }) {
 		alterarSenha();
 	};
 
+	//Snackbar/Alert
+	//AlertSucess
+
+	const [openAlert, setOpenAlert] = React.useState(false);
+
+	const handleClickAlert = () => {
+		setOpenAlert(true);
+	};
+
+	const handleCloseAlert = (event, reason) => {
+		if (reason === "clickaway") {
+			return;
+		}
+
+		setOpenAlert(false);
+	};
+
+	//
+
+	//Alert Error
+
+	const [openAlertError, setOpenAlertError] = React.useState(false);
+
+	const handleClickAlertError = () => {
+		setOpenAlertError(true);
+	};
+
+	const handleCloseAlertError = (event, reason) => {
+		if (reason === "clickaway") {
+			return;
+		}
+
+		setOpenAlertError(false);
+	};
+
+	//
+
 	return (
 		<div>
+			<Snackbar
+				open={openAlert}
+				autoHideDuration={3000}
+				onClose={handleCloseAlert}
+			>
+				<Alert onClose={handleCloseAlert} severity="success">
+					Senha atualizada com sucesso!!!
+				</Alert>
+			</Snackbar>
+			<Snackbar
+				open={openAlertError}
+				autoHideDuration={4000}
+				onClose={handleCloseAlertError}
+			>
+				<Alert onClose={handleCloseAlertError} severity="error">
+					{mensagem}
+				</Alert>
+			</Snackbar>
 			<Modal
 				aria-labelledby="transition-modal-title"
 				aria-describedby="transition-modal-description"
