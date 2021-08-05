@@ -189,7 +189,6 @@ function RegisterUser() {
               label="senha (MIN. 6)"
               value={senha}
               onChange={(e) => setSenha(e.target.value)}
-              inputProps={{ minLength: 6 }}
               style={{ marginBottom: 10 }}
             />
             <div style={{ marginTop: 10 }} className={classes.botoes}>
