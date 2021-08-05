@@ -63,7 +63,9 @@ function CardOptions(props) {
           },
         }}
       >
-        <MenuItem onClick={userLeave}> Retirar da equipe </MenuItem>
+        {localStorage.getItem("@user-id") != props.id 
+            ? <MenuItem onClick={userLeave}> Retirar da equipe </MenuItem>
+            : null}
         <MenuItem onClick={userDeleted}> Excluir usuário </MenuItem>
       </Menu>
     </div>
