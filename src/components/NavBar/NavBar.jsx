@@ -201,6 +201,7 @@ export default function NavBar({ check, change }) {
               colors={check ? ["#ffffff"] : ["#0083c1"]}
             />
           </div>
+          {auth.isAuthenticated() ?
           <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />
@@ -219,6 +220,7 @@ export default function NavBar({ check, change }) {
               color="secondary"
             />
           </div>
+          : null}
           <div className={classes.grow} />
           {menu ? (
             <div className={classes.sectionDesktop}>
