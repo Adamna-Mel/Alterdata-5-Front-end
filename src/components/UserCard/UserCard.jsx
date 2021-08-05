@@ -70,37 +70,36 @@ function UserCard(props) {
 						/>
 					</Typography>
 					<CardContent className={classes.userRole}>
-						<SvgColor
-							svg={props.cargoicone}
-							width={200}
-							colors={[props.corcargo1, props.corcargo2]}
-						/>
-						{props.cargo !== null ? (
-							<img
-								src={`http://alterdata-5-back-end.herokuapp.com/api/cargos/avatar/${props.cargo.idCargo}`}
-								style={{
-									width: 30,
-									height: 30,
-									borderRadius: 400 / 2,
-									borderStyle: "solid",
-									borderColor: "#0083C1",
-									borderWidth: 2,
-									backgroundColor: "#F5F3F4",
-								}}
-							/>
-						) : null}
+						<div>
+							{props.cargo !== null ? (
+								<img
+									src={`http://alterdata-5-back-end.herokuapp.com/api/cargos/avatar/${props.cargo.idCargo}`}
+									style={{
+										width: 30,
+										height: 30,
+										borderRadius: 400 / 2,
+										borderStyle: "solid",
+										borderColor: "#0083C1",
+										borderWidth: 2,
+										backgroundColor: "#F5F3F4",
+									}}
+								/>
+							) : null}
+						</div>
 
 						<Typography className={classes.userRoleText}>
 							{props.role}
 						</Typography>
+
 						<Grid item xs={4} className={classes.edit}>
 							<Typography
 								onClick={() => {
 									props.setOpenModalCargo(true);
 									context.setUsuarioAtual(props.id);
 								}}
+								className={classes.icon}
 							>
-								<EditIcon />
+								<EditIcon fontSize="small" />
 							</Typography>
 						</Grid>
 					</CardContent>
@@ -147,12 +146,13 @@ const useStyles = makeStyles({
 		flexDirection: "row",
 		marginLeft: 18,
 		verticalAlign: "center",
-		alignItems: "center",
+		// justifyContent: "space-between",
 	},
 	userRoleText: {
 		fontSize: 20,
 		color: "#ffffff",
-		marginLeft: 10,
+		// marginLeft: 10,
+		textAlign: "left",
 	},
 	cardTop: {
 		flex: 1,
