@@ -26,16 +26,20 @@ function NovaEquipe(props) {
 
 	const idUsuario = localStorage.getItem("@user-id");
 
+
+	
 	const handleCreate = () => {
 		const formData = new FormData();
 
 		formData.append("nome", nome);
-		formData.append("img", imagem);
 
 		if (nome.length > 0) {
 			api.adicionarEquipe(formData).then((res) => {
 				if (res.status === 201) {
 					setOpenAlert(true);
+					const formData2 = new FormData();
+					formData2.append("img", imagem);
+					api.alterarAvatar(res.data.idEquipe,formData2).then((res)=>{});
 					apiUsuario.editarTime(idUsuario, res.data.idEquipe).then((res) => {
 						history.go("/");
 					});

@@ -64,16 +64,18 @@ function Create({
     setChecked(e.target.checked);
   };
 
-  const handleCriate = () => {
+  const handleCreate = () => {
     const formData = new FormData();
 
     formData.append("nome", nome.trim());
-    formData.append("img", imagem);
-
-    if (nome.length > 0 && imagem !== null) {
+    
+    if (nome.length > 0) {
       apiCargos.adicionarCargo(formData).then((res) => {
         if (res.status === 201) {
           setOpenAlert(true);
+          const formData2 = new FormData();
+          formData2.append("img", imagem);
+          apiCargos.alterarAvatar(res.data.idCargo,formData2);
           if (checked) {
             apiUsuarios.editarPapel(context.usuarioAtual, res.data.idCargo);
             setMsg(" e atribuído com sucesso");
@@ -87,7 +89,7 @@ function Create({
       api();
       apiUsuario();
     } else {
-      alert("Algo deu errado!");
+      setOpenAlertError(true);
     }
   };
 
@@ -207,7 +209,7 @@ function Create({
             variant="contained"
             color="primary"
             className={classes.button}
-            onClick={handleCriate}
+            onClick={handleCreate}
           >
             Criar
           </Button>

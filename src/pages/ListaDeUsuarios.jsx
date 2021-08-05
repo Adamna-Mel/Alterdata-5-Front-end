@@ -189,11 +189,6 @@ export default function ListaDeUsuarios({ openModalTeam, setOpenModalTeam }) {
         openModalTeam={openModalTeam}
         setOpenModalTeam={setOpenModalTeam}
       />
-      <Pagination
-        setSize={context.setSize}
-        setPage={context.setPage}
-        conts={99}
-      />
     </>
   );
 }
