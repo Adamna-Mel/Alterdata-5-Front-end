@@ -37,7 +37,13 @@ function Alert(props) {
 
 //TODO: tirar o ALERT
 
-function Create({ handleClose, api, handleOpenExistentes, contextApi }) {
+function Create({
+	handleClose,
+	api,
+	handleOpenExistentes,
+	contextApi,
+	apiUsuario,
+}) {
 	const context = useContext(UserContext);
 	const [onChecked, setOnChecked] = useState(true);
 	const [checked, setChecked] = useState(true);
@@ -79,6 +85,7 @@ function Create({ handleClose, api, handleOpenExistentes, contextApi }) {
 				}
 			});
 			api();
+			apiUsuario();
 		} else {
 			alert("Algo deu errado!");
 		}

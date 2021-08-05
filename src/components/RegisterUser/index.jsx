@@ -217,6 +217,5 @@ const useStyles = makeStyles({
 		display: "flex",
 		justifyContent: "space-around",
 		width: "100%",
-		border: "1px solid red",
 	},
 });

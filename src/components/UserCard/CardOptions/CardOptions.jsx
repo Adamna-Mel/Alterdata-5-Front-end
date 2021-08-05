@@ -28,13 +28,16 @@ function CardOptions(props) {
   const userLeave = ()=> {
     api.sairDaEquipe(props.id).then( (res) => {
       setAnchorEl(null);
+      console.log(res);
     });
   }
 
   const userDeleted = ()=> {
     api.apagarUsuario(props.id).then( (res) => {
-      if (localStorage.getItem("@user-id") == props.id)
+      if (localStorage.getItem("@user-id") == props.id){
           auth.logout();
+      }
+      
       window.location.reload(false);
     });
   }
