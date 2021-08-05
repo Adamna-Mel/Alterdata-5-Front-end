@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 
 //MATERIAL-UI
 import { makeStyles } from "@material-ui/core/styles";
@@ -24,6 +24,7 @@ import imagemPadrao from "../../assets/profilepic.png";
 import ImagemPadraoCargo from "../../assets/rolepic.png";
 
 import { UserContext } from "../../context/UserContext";
+import apiUsuarios from "../../services/api.usuarios";
 
 function UserCard(props) {
 	const classes = useStyles();
@@ -34,11 +35,19 @@ function UserCard(props) {
 			<Card elevation={7} className={classes.card} color="default">
 				<CardContent className={classes.cardContent}>
 					<div className={classes.cardTop}>
-						<Avatar
-							alt="Perfil"
-							src={`http://alterdata-5-back-end.herokuapp.com/api/usuarios/avatar/${props.id}`}
-							className={classes.profileImage}
-						/>
+						{props.avatar ? (
+							<Avatar
+								alt="Perfil"
+								src={`http://alterdata-5-back-end.herokuapp.com/api/usuarios/avatar/${props.id}`}
+								className={classes.profileImage}
+							/>
+						) : (
+							<Avatar
+								alt="Perfil"
+								src={imagemPadrao}
+								className={classes.profileImage}
+							/>
+						)}
 
 						<CardOptions
 							id={props.id}

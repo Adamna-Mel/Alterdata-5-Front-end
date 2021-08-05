@@ -138,7 +138,7 @@ function UserProfile() {
 	const handleSave = () => {
 		const formData = new FormData();
 
-		if (imagem !== null) {
+		if (imagem) {
 			formData.append("img", imagem);
 
 			apiUsuarios.alterarAvatar(idUsuario, formData).then((res) => {
@@ -170,15 +170,12 @@ function UserProfile() {
 
 	const UserAvatar = () => {
 		let path;
-		{
-			if (avatarName) {
-				path = `http://alterdata-5-back-end.herokuapp.com/api/usuarios/avatar/${userId}`;
-			} else {
-				path = imagemPadrao;
-			}
 
-			caminho !== null ? (path = caminho) : (path = imagemPadrao);
+		if (avatarName) {
+			path = `http://alterdata-5-back-end.herokuapp.com/api/usuarios/avatar/${userId}`;
 		}
+		path = imagemPadrao;
+		caminho !== null ? (path = caminho) : (path = imagemPadrao);
 
 		return (
 			<Avatar
@@ -195,6 +192,9 @@ function UserProfile() {
 			/>
 		);
 	};
+	useEffect(() => {
+		UserAvatar();
+	}, [caminho]);
 
 	return (
 		<>

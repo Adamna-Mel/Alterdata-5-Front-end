@@ -32,7 +32,11 @@ function DeleteUser({ openModal, setOpenModal }) {
 		setOpenModal(false);
 	};
 
-	const handleDelete = () => {};
+	const handleDelete = () => {
+		apiUsuarios.apagarUsuario(context.usuarioAtual);
+		context.api();
+		handleClose();
+	};
 
 	return (
 		<div>

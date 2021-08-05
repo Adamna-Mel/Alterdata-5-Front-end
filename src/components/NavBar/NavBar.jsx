@@ -25,8 +25,6 @@ import PersonAddDisabledIcon from "@material-ui/icons/PersonAddDisabled";
 import Divider from "@material-ui/core/Divider";
 import AddCircleIcon from "@material-ui/icons/AddCircle";
 
-import imagemPadrao from "../../assets/profilepic.png";
-
 //SVGColor
 import SvgColor from "react-svg-color";
 
@@ -49,7 +47,6 @@ export default function NavBar({ check, change }) {
 	const [userId, setUserId] = React.useState();
 	const [username, setUsername] = React.useState();
 	const [userTeam, setUserTeam] = React.useState();
-	const [avatarName, setAvatarName] = React.useState("");
 	const history = useHistory();
 
 	const [menu, setMenu] = React.useState(false);
@@ -65,7 +62,6 @@ export default function NavBar({ check, change }) {
 	React.useEffect(() => {
 		auth.isAuthenticated() ? setMenu(true) : setMenu(false);
 		apiUsuarios.obterUsuarioPorId(idUsuario).then((res) => {
-			setAvatarName(res.avatarName);
 			setUserId(res.id);
 			setUsername(res.nome);
 			setUserTeam(res.equipe);
@@ -149,19 +145,11 @@ export default function NavBar({ check, change }) {
 					aria-haspopup="true"
 					color="inherit"
 				>
-					{avatarName ? (
-						<Avatar
-							alt="Perfil"
-							src={`http://alterdata-5-back-end.herokuapp.com/api/usuarios/avatar/${userId}`}
-							className={classes.profileImageMobile}
-						/>
-					) : (
-						<Avatar
-							alt="Perfil"
-							src={imagemPadrao}
-							className={classes.profileImageMobile}
-						/>
-					)}
+					<Avatar
+						alt="Perfil"
+						src={`http://alterdata-5-back-end.herokuapp.com/api/usuarios/avatar/${userId}`}
+						className={classes.profileImageMobile}
+					/>
 				</IconButton>
 			</MenuItem>
 			<MenuItem onClick={handleCreateUser}>
@@ -268,19 +256,11 @@ export default function NavBar({ check, change }) {
 								color="primary"
 								size="medium"
 							>
-								{avatarName.length !== 0 ? (
-									<Avatar
-										alt="Perfil"
-										src={`http://alterdata-5-back-end.herokuapp.com/api/usuarios/avatar/${userId}`}
-										className={classes.profileImage}
-									/>
-								) : (
-									<Avatar
-										alt="Perfil"
-										src={imagemPadrao}
-										className={classes.profileImage}
-									/>
-								)}
+								<Avatar
+									alt="Perfil"
+									src={`http://alterdata-5-back-end.herokuapp.com/api/usuarios/avatar/${userId}`}
+									className={classes.profileImage}
+								/>
 							</IconButton>
 						</div>
 					) : null}
