@@ -18,7 +18,7 @@ import UserCard from "../components/UserCard/UserCard";
 import DeleteTeam from "../components/Team/Delete/Delete";
 import Cargos from "../components/Cargos/index";
 import GoOut from "../components/Team/GoOut/GoOut";
-// import RemoveUser from "../components/RemoveUser/RemoveUser";
+import RemoveUser from "../components/RemoveUser/RemoveUser";
 
 //SERVICES
 import apiUsuarios from "../services/api.usuarios";
@@ -191,10 +191,10 @@ export default function ListaDeUsuarios({ openModalTeam, setOpenModalTeam }) {
 				openModalTeam={openModalTeam}
 				setOpenModalTeam={setOpenModalTeam}
 			/>
-			{/* <RemoveUser
+			<RemoveUser
 				openModal={openModalRemove}
 				setOpenModal={setOpenModalRemove}
-			/> */}
+			/>
 		</>
 	);
 }

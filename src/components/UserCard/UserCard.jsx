@@ -21,6 +21,7 @@ import StatusBar from "../StatusBar/StatusBar";
 import EditIcon from "@material-ui/icons/Edit";
 
 import imagemPadrao from "../../assets/profilepic.png";
+import ImagemPadraoCargo from "../../assets/rolepic.png";
 
 import { UserContext } from "../../context/UserContext";
 
@@ -74,7 +75,20 @@ function UserCard(props) {
 										backgroundColor: "#F5F3F4",
 									}}
 								/>
-							) : null}
+							) : (
+								<img
+									src={ImagemPadraoCargo}
+									style={{
+										width: 30,
+										height: 30,
+										borderRadius: 400 / 2,
+										borderStyle: "solid",
+										borderColor: "#0083C1",
+										borderWidth: 2,
+										backgroundColor: "#F5F3F4",
+									}}
+								/>
+							)}
 						</div>
 
 						<Typography className={classes.userRoleText}>

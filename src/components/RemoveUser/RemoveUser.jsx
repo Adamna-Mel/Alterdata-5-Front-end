@@ -16,12 +16,6 @@ function RemoveUser({ openModal, setOpenModal, idEquipe }) {
 	const [equipe, setEquipe] = React.useState("");
 	const history = useHistory();
 
-	React.useEffect(() => {
-		apiEquipe.obterEquipesPorId(idEquipe).then((res) => {
-			setEquipe(res.nome);
-		});
-	}, [openModal]);
-
 	const classes = useStyles();
 
 	const handleClose = () => {
