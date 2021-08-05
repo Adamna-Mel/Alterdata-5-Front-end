@@ -77,7 +77,7 @@ function List({
 
 	useEffect(() => {
 		api();
-		apiUsuario();
+		apiUsuario !== undefined ? apiUsuario() : null;
 	}, [page]);
 
 	const handleClose = () => {

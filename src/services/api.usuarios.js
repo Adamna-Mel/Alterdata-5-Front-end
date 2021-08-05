@@ -103,7 +103,19 @@ const alterarAvatar = async (id, avatar) => {
 
 const esqueciSenha = async (dados) => {
 	try {
-		return await api.post(`usuarios/esqueci-senha`,dados);
+		return await api.post(`usuarios/esqueci-senha`, dados);
+	} catch (e) {
+		return e.response;
+	}
+};
+
+const alterarSenha = async (id, senhaAntiga, novaSenha) => {
+	try {
+		return await api.patch(
+			`usuarios/alterar-senha/${id}`,
+			senhaAntiga,
+			novaSenha
+		);
 	} catch (e) {
 		return e.response;
 	}
@@ -123,4 +135,5 @@ export default {
 	sairDaEquipe,
 	alterarAvatar,
 	esqueciSenha,
+	alterarSenha,
 };

@@ -19,6 +19,7 @@ import useWindowDimensions from "../../hooks/WindowDimension";
 
 import apiUsuarios from "../../services/api.usuarios";
 import Cargo from "../Cargos/index";
+import ChangePassword from "../ChangePassword/ChangePassword";
 
 import { UserContext } from "../../context/UserContext";
 
@@ -43,6 +44,8 @@ function UserProfile() {
 	const [condicaoStatus, setCondicaoStatus] = useState();
 	const [condicaoCargo, setCondicaoCargo] = useState();
 
+	const [openModal, setOpenModal] = useState(false);
+
 	const [openModalCargo, setOpenModalCargo] = useState(false);
 
 	const idUsuario = localStorage.getItem("@user-id");
@@ -54,6 +57,10 @@ function UserProfile() {
 		width: 400,
 		margin: "30px auto",
 		borderRadius: 20,
+	};
+
+	const handleOpenModal = () => {
+		setOpenModal(true);
 	};
 
 	const apiUsuario = () => {
@@ -304,6 +311,7 @@ function UserProfile() {
 								</Typography>
 							)}
 						</ClickAwayListener>
+						<Button onClick={handleOpenModal}>Alterar Senha</Button>
 						<Typography color="primary" style={{ fontSize: 17 }}>
 							status
 						</Typography>
@@ -381,6 +389,7 @@ function UserProfile() {
 				setOpenModalCargo={setOpenModalCargo}
 				apiUsuario={apiUsuario}
 			/>
+			<ChangePassword openModal={openModal} setOpenModal={setOpenModal} />
 		</>
 	);
 }
