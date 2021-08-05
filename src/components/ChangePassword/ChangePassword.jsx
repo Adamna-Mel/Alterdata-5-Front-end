@@ -42,6 +42,13 @@ function ChangePassword({ openModal, setOpenModal }) {
 			.then((res) => console.log(res));
 	};
 
+	const handleKeyDown = (e) => {
+		if (e.key === "Enter") {
+			handleClickAway();
+			alterarSenha();
+		}
+	};
+
 	const handleConfirm = () => {
 		alterarSenha();
 	};
@@ -71,32 +78,26 @@ function ChangePassword({ openModal, setOpenModal }) {
 						}}
 					>
 						<TextField
-							id="filled-required"
+							id="standard-password-input"
 							label="Senha antiga"
-							defaultValue=""
-							//   onKeyDown={handleKeyDown}
+							type="password"
+							inputProps={{ maxLength: 140 }}
+							style={{ marginBottom: 10 }}
+							size="small"
+							onKeyDown={handleKeyDown}
 							onChange={(e) => setSenhaAntiga(e.target.value)}
 							value={senhaAntiga}
-							type="password"
-							size="small"
-							multiline
-							rows={1}
-							inputProps={{ maxLength: 140 }}
-							style={{ marginBottom: 10 }}
 						/>
+
 						<TextField
-							id="filled-required"
+							id="standard-password-input"
 							label="Nova Senha"
-							defaultValue=""
-							//   onKeyDown={handleKeyDown}
+							type="password"
+							inputProps={{ maxLength: 140 }}
+							size="small"
+							onKeyDown={handleKeyDown}
 							onChange={(e) => setNovaSenha(e.target.value)}
 							value={novaSenha}
-							type="password"
-							size="small"
-							multiline
-							rows={1}
-							inputProps={{ maxLength: 140 }}
-							style={{ marginBottom: 10 }}
 						/>
 
 						<Button
@@ -105,7 +106,7 @@ function ChangePassword({ openModal, setOpenModal }) {
 							className={classes.buttonDelete}
 							onClick={handleConfirm}
 						>
-							Sim
+							salvar
 						</Button>
 						<Button
 							variant="contained"
