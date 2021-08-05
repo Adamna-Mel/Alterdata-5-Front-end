@@ -44,7 +44,7 @@ function ChangePassword({ openModal, setOpenModal }) {
 		formData.append("antigaSenha", senhaAntiga);
 		formData.append("novaSenha", novaSenha);
 
-		if (novaSenha.length > 6) {
+		if (novaSenha.length >= 6) {
 			apiUsuarios.alterarSena(idUsuario, formData).then((res) => {
 				if (res.status === 204) {
 					setOpenAlert(true);

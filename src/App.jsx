@@ -6,7 +6,7 @@ import UserProvider from "./context/UserContext";
 
 //TODO: fazer a imagem padrao de cargo usuario e time se naõ conseguir arrumar as mensagem do cadastro de usuario
 
-//TODO: Estilizar o perfil para ficar mais intuitivo
+//TODO: Tirar o texto double click dos inputs
 
 //TODO: consertar o lapisinho
 
@@ -15,6 +15,8 @@ import UserProvider from "./context/UserContext";
 //TODO: Colocar os modais e recarregar as paginas
 
 //TODO: tirar as 99 pag da lista de usuario
+
+//TODO: alterar o máximo de paginas do pagination
 
 function App() {
 	return (
