@@ -7,7 +7,9 @@ import {
 	Typography,
 	ClickAwayListener,
 	Input,
+	makeStyles,
 } from "@material-ui/core";
+import { useHistory } from "react-router-dom";
 import Avatar from "@material-ui/core/Avatar";
 
 import useWindowDimensions from "../../hooks/WindowDimension";
@@ -24,11 +26,11 @@ function UserProfile() {
 	const [imagem, setImagem] = useState(null);
 	const [caminho, setCaminho] = useState(null);
 
-	const [newNome, setNewNome] = useState();
-	const [newEmail, setNewEmail] = useState();
-	const [newLogin, setNewLogin] = useState();
-	const [newStatus, setNewStatus] = useState();
-	const [newCargo, setNewCargo] = useState();
+	const [newNome, setNewNome] = useState("");
+	const [newEmail, setNewEmail] = useState("");
+	const [newLogin, setNewLogin] = useState("");
+	const [newStatus, setNewStatus] = useState("");
+	const [newCargo, setNewCargo] = useState("");
 
 	const [condicaoNome, setCondicaoNome] = useState();
 	const [condicaoEmail, setCondicaoEmail] = useState();
@@ -37,6 +39,8 @@ function UserProfile() {
 	const [condicaoCargo, setCondicaoCargo] = useState();
 
 	const idUsuario = localStorage.getItem("@user-id");
+
+	const history = useHistory();
 
 	const papercss = {
 		padding: "25px 20px",
@@ -58,14 +62,6 @@ function UserProfile() {
 
 	const { height, width } = useWindowDimensions();
 
-	const handleClickAway = () => {
-		setCondicaoNome(false);
-		setCondicaoEmail(false);
-		setCondicaoLogin(false);
-		setCondicaoStatus(false);
-		setCondicaoCargo(false);
-	};
-
 	const handleFile = (e) => {
 		setImagem(e.target.files[0]);
 		setCaminho(URL.createObjectURL(e.target.files[0]));
@@ -82,7 +78,32 @@ function UserProfile() {
 				.alterarAvatar(idUsuario, formData)
 				.then((res) => console.log(res));
 		}
+
+		newNome.length > 0 ? null : setNewNome(nome);
+		newLogin.length > 0 ? null : setNewLogin(login);
+		newEmail.length > 0 ? null : setNewEmail(email);
+		newStatus.length > 0 ? null : setNewStatus(status);
+
+		if (
+			newNome.length > 0 ||
+			newLogin.length > 0 ||
+			newEmail.length > 0 ||
+			newStatus.length > 0
+		) {
+			const novo = {
+				email: newEmail,
+				nome: newNome,
+				status: newStatus,
+				login: newLogin,
+			};
+
+			apiUsuarios
+				.atualizarUsuario(idUsuario, novo)
+				.then((res) => console.log(res));
+		}
 	};
+
+	const classes = useStyles();
 
 	return (
 		<div style={{ height: height, marginTop: 130 }}>
@@ -121,7 +142,7 @@ function UserProfile() {
 						<ClickAwayListener
 							mouseEvent="onMouseDown"
 							touchEvent="onTouchStart"
-							onClickAway={handleClickAway}
+							onClickAway={() => setCondicaoNome(false)}
 						>
 							{condicaoNome ? (
 								<TextField
@@ -154,7 +175,7 @@ function UserProfile() {
 					<ClickAwayListener
 						mouseEvent="onMouseDown"
 						touchEvent="onTouchStart"
-						onClickAway={handleClickAway}
+						onClickAway={() => setCondicaoEmail(false)}
 					>
 						{condicaoEmail ? (
 							<TextField
@@ -186,7 +207,7 @@ function UserProfile() {
 					<ClickAwayListener
 						mouseEvent="onMouseDown"
 						touchEvent="onTouchStart"
-						onClickAway={handleClickAway}
+						onClickAway={() => setCondicaoLogin(false)}
 					>
 						{condicaoLogin ? (
 							<TextField
@@ -218,7 +239,7 @@ function UserProfile() {
 					<ClickAwayListener
 						mouseEvent="onMouseDown"
 						touchEvent="onTouchStart"
-						onClickAway={handleClickAway}
+						onClickAway={() => setCondicaoStatus(false)}
 					>
 						{condicaoStatus ? (
 							<TextField
@@ -250,7 +271,7 @@ function UserProfile() {
 					<ClickAwayListener
 						mouseEvent="onMouseDown"
 						touchEvent="onTouchStart"
-						onClickAway={handleClickAway}
+						onClickAway={() => setCondicaoCargo(false)}
 					>
 						{condicaoCargo ? (
 							<TextField
@@ -283,9 +304,18 @@ function UserProfile() {
 							display: "flex",
 						}}
 					>
-						<Button color="primary" variant="contained" onClick={handleSave}>
-							Salvar Perfil
-						</Button>
+						<div className={classes.botoes}>
+							<Button color="primary" variant="contained" onClick={handleSave}>
+								Salvar Perfil
+							</Button>
+							<Button
+								color="primary"
+								variant="contained"
+								onClick={() => history.goBack()}
+							>
+								Voltar
+							</Button>
+						</div>
 					</div>
 				</Paper>
 			</Grid>
@@ -294,3 +324,11 @@ function UserProfile() {
 }
 
 export default UserProfile;
+
+const useStyles = makeStyles({
+	botoes: {
+		display: "flex",
+		justifyContent: "space-around",
+		width: "100%",
+	},
+});
