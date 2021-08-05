@@ -17,6 +17,8 @@ import MuiAlert from "@material-ui/lab/Alert";
 
 import useWindowDimensions from "../../hooks/WindowDimension";
 
+import imagemPadrao from "../../assets/profilepic.png";
+
 import apiUsuarios from "../../services/api.usuarios";
 import Cargo from "../Cargos/index";
 import ChangePassword from "../ChangePassword/ChangePassword";
@@ -37,6 +39,7 @@ function UserProfile() {
   const [cargo, setCargo] = useState();
   const [imagem, setImagem] = useState(null);
   const [caminho, setCaminho] = useState(null);
+  const [avatarName, setAvatarName] = useState("");
 
   const [condicaoNome, setCondicaoNome] = useState();
   const [condicaoEmail, setCondicaoEmail] = useState();
@@ -65,6 +68,7 @@ function UserProfile() {
 
   const apiUsuario = () => {
     apiUsuarios.obterUsuarioPorId(idUsuario).then((res) => {
+      setAvatarName(res.avatarName);
       setUserId(res.id);
       setNome(res.nome);
       setEmail(res.email);
@@ -158,6 +162,55 @@ function UserProfile() {
 
   const classes = useStyles();
 
+  const UserAvatar = () => {
+    {
+      if (avatarName.length !== 0) {
+        return (
+          <Avatar
+            alt="Perfil"
+            src={`http://alterdata-5-back-end.herokuapp.com/api/usuarios/avatar/${userId}`}
+            style={{
+              width: 200,
+              height: 200,
+              borderRadius: 400 / 2,
+              borderStyle: "solid",
+              borderColor: "#1A2228",
+              marginTop: -130,
+            }}
+          />
+        );
+      } else {
+        return imagem !== null ? (
+          <Avatar
+            alt="Perfil"
+            src={caminho}
+            style={{
+              width: 200,
+              height: 200,
+              borderRadius: 400 / 2,
+              borderStyle: "solid",
+              borderColor: "#1A2228",
+              marginTop: -130,
+            }}
+          />
+        ) : (
+          <Avatar
+            alt="Perfil"
+            src={imagemPadrao}
+            style={{
+              width: 200,
+              height: 200,
+              borderRadius: 400 / 2,
+              borderStyle: "solid",
+              borderColor: "#1A2228",
+              marginTop: -130,
+            }}
+          />
+        );
+      }
+    }
+  };
+
   return (
     <>
       <div style={{ height: height, marginTop: 130 }}>
@@ -182,33 +235,7 @@ function UserProfile() {
         <Grid>
           <Paper elevation={7} style={papercss}>
             <Grid align="center">
-              {imagem === null ? (
-                <Avatar
-                  alt="Perfil"
-                  src={`http://alterdata-5-back-end.herokuapp.com/api/usuarios/avatar/${userId}`}
-                  style={{
-                    width: 200,
-                    height: 200,
-                    borderRadius: 400 / 2,
-                    borderStyle: "solid",
-                    borderColor: "#1A2228",
-                    marginTop: -130,
-                  }}
-                />
-              ) : (
-                <Avatar
-                  alt="Perfil"
-                  src={caminho}
-                  style={{
-                    width: 200,
-                    height: 200,
-                    borderRadius: 400 / 2,
-                    borderStyle: "solid",
-                    borderColor: "#1A2228",
-                    marginTop: -130,
-                  }}
-                />
-              )}
+              <UserAvatar />
 
               <Input type="file" onChange={handleFile} />
               <ClickAwayListener
@@ -275,19 +302,21 @@ function UserProfile() {
                   style={{ marginBottom: 10 }}
                 />
               ) : (
-                <div>
+                <div
+                  style={{ display: "flex", justifyContent: "space-between" }}
+                >
                   <Typography
                     style={{ fontSize: 21 }}
                     onClick={() => setCondicaoEmail(true)}
                     className={classes.miniCont}
                   >
                     {email} {"⁣⁣⠀"}
-                    <Grid>
-                      <Typography>
-                        <EditIcon fontSize="small" />
-                      </Typography>
-                    </Grid>
                   </Typography>
+                  <Grid>
+                    <Typography>
+                      <EditIcon fontSize="small" />
+                    </Typography>
+                  </Grid>
                 </div>
               )}
             </ClickAwayListener>
@@ -315,18 +344,22 @@ function UserProfile() {
                   style={{ marginBottom: 10 }}
                 />
               ) : (
-                <Typography
-                  style={{ fontSize: 21 }}
-                  onClick={() => setCondicaoLogin(true)}
-                  className={classes.miniCont}
+                <div
+                  style={{ display: "flex", justifyContent: "space-between" }}
                 >
-                  {login} {"⁣⁣⠀"}
+                  <Typography
+                    style={{ fontSize: 21 }}
+                    onClick={() => setCondicaoLogin(true)}
+                    className={classes.miniCont}
+                  >
+                    {login} {"⁣⁣⠀"}
+                  </Typography>
                   <Grid>
                     <Typography>
                       <EditIcon fontSize="small" />
                     </Typography>
                   </Grid>
-                </Typography>
+                </div>
               )}
             </ClickAwayListener>
             <Typography color="primary" style={{ fontSize: 17 }}>
@@ -354,39 +387,45 @@ function UserProfile() {
                   style={{ marginBottom: 10 }}
                 />
               ) : (
-                <Typography
-                  style={{ fontSize: 21 }}
-                  onClick={() => {
-                    setCondicaoStatus(true);
-                  }}
-                  className={classes.miniCont}
+                <div
+                  style={{ display: "flex", justifyContent: "space-between" }}
                 >
-                  {status} {"⁣⁣⠀"}
+                  <Typography
+                    style={{ fontSize: 21 }}
+                    onClick={() => {
+                      setCondicaoStatus(true);
+                    }}
+                    className={classes.miniCont}
+                  >
+                    {status} {"⁣⁣⠀"}
+                  </Typography>
                   <Grid>
                     <Typography>
                       <EditIcon fontSize="small" />
                     </Typography>
                   </Grid>
-                </Typography>
+                </div>
               )}
             </ClickAwayListener>
             <Typography color="primary" style={{ fontSize: 17 }}>
               cargo
             </Typography>
-            <Typography
-              onClick={() => {
-                setOpenModalCargo(true);
-              }}
-              style={{ fontSize: 21 }}
-              className={classes.miniCont}
-            >
-              {cargo} {"⁣⁣⠀"}
+            <div style={{ display: "flex", justifyContent: "space-between" }}>
+              <Typography
+                onClick={() => {
+                  setOpenModalCargo(true);
+                }}
+                style={{ fontSize: 21 }}
+                className={classes.miniCont}
+              >
+                {cargo} {"⁣⁣⠀"}
+              </Typography>
               <Grid>
                 <Typography>
                   <EditIcon fontSize="small" />
                 </Typography>
               </Grid>
-            </Typography>
+            </div>
             <div
               style={{
                 marginTop: 10,

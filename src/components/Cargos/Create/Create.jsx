@@ -5,16 +5,16 @@ import apiUsuarios from "../../../services/api.usuarios";
 
 //TODO: Alterar o alerta
 import {
-  Typography,
-  Button,
-  Fade,
-  Backdrop,
-  Modal,
-  makeStyles,
-  TextField,
-  Input,
-  Paper,
-  Card,
+	Typography,
+	Button,
+	Fade,
+	Backdrop,
+	Modal,
+	makeStyles,
+	TextField,
+	Input,
+	Paper,
+	Card,
 } from "@material-ui/core";
 import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";
@@ -32,37 +32,37 @@ import FavoriteBorder from "@material-ui/icons/FavoriteBorder";
 import { UserContext } from "../../../context/UserContext";
 
 function Alert(props) {
-  return <MuiAlert elevation={6} variant="filled" {...props} />;
+	return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
 
 //TODO: tirar o ALERT
 
 function Create({
-  handleClose,
-  api,
-  handleOpenExistentes,
-  contextApi,
-  apiUsuario,
+	handleClose,
+	api,
+	handleOpenExistentes,
+	contextApi,
+	apiUsuario,
 }) {
-  const context = useContext(UserContext);
-  const [onChecked, setOnChecked] = useState(true);
-  const [checked, setChecked] = useState(true);
-  const [nome, setNome] = useState("");
-  const [imagem, setImagem] = useState(null);
-  const [caminho, setCaminho] = useState(null);
-  const [usuario, setUsuario] = useState("");
-  const [msg, setMsg] = useState("");
+	const context = useContext(UserContext);
+	const [onChecked, setOnChecked] = useState(true);
+	const [checked, setChecked] = useState(true);
+	const [nome, setNome] = useState("");
+	const [imagem, setImagem] = useState(null);
+	const [caminho, setCaminho] = useState(null);
+	const [usuario, setUsuario] = useState("");
+	const [msg, setMsg] = useState("");
 
-  useEffect(() => {
-    apiUsuarios
-      .obterUsuarioPorId(context.usuarioAtual)
-      .then((res) => setUsuario(res.nome));
-  }, []);
+	useEffect(() => {
+		apiUsuarios
+			.obterUsuarioPorId(context.usuarioAtual)
+			.then((res) => setUsuario(res.nome));
+	}, []);
 
-  const handleChange = (e) => {
-    onChecked ? setOnChecked(false) : setOnChecked(true);
-    setChecked(e.target.checked);
-  };
+	const handleChange = (e) => {
+		onChecked ? setOnChecked(false) : setOnChecked(true);
+		setChecked(e.target.checked);
+	};
 
   const handleCreate = () => {
     const formData = new FormData();
@@ -93,47 +93,45 @@ function Create({
     }
   };
 
-  const handleFile = (e) => {
-    setImagem(e.target.files[0]);
-    setCaminho(URL.createObjectURL(e.target.files[0]));
-  };
+	const handleFile = (e) => {
+		setImagem(e.target.files[0]);
+		setCaminho(URL.createObjectURL(e.target.files[0]));
+	};
 
-  //Snackbar/Alert
-  //AlertSucess
+	//Snackbar/Alert
+	//AlertSucess
 
-  const [openAlert, setOpenAlert] = React.useState(false);
+	const [openAlert, setOpenAlert] = React.useState(false);
 
-  const handleClickAlert = () => {
-    setOpenAlert(true);
-  };
+	const handleClickAlert = () => {
+		setOpenAlert(true);
+	};
 
-  const handleCloseAlert = (event, reason) => {
-    if (reason === "clickaway") {
-      return;
-    }
+	const handleCloseAlert = (event, reason) => {
+		if (reason === "clickaway") {
+			return;
+		}
 
-    setOpenAlert(false);
-  };
+		setOpenAlert(false);
+	};
 
-  //
+	//
 
-  //Alert Error
+	//Alert Error
 
-  const [openAlertError, setOpenAlertError] = React.useState(false);
+	const [openAlertError, setOpenAlertError] = React.useState(false);
 
-  const handleClickAlertError = () => {
-    setOpenAlertError(true);
-  };
+	const handleClickAlertError = () => {
+		setOpenAlertError(true);
+	};
 
-  const handleCloseAlertError = (event, reason) => {
-    if (reason === "clickaway") {
-      return;
-    }
+	const handleCloseAlertError = (event, reason) => {
+		if (reason === "clickaway") {
+			return;
+		}
 
-    setOpenAlertError(false);
-  };
-
-  //
+		setOpenAlertError(false);
+	};
 
   const classes = useStyles();
   return (
@@ -232,37 +230,37 @@ function Create({
 export default Create;
 
 const useStyles = makeStyles((theme) => ({
-  modal: {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  paper: {
-    borderRadius: 20,
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    textAlign: "center",
-  },
-  button: {
-    marginTop: 15,
-  },
-  buttonCancel: {
-    margin: 5,
-    backgroundColor: "#F22",
-    "&:hover": {
-      backgroundColor: "#F00",
-    },
-  },
-  inputText: {
-    marginTop: 7,
-    marginBottom: 7,
-  },
+	modal: {
+		display: "flex",
+		alignItems: "center",
+		justifyContent: "center",
+	},
+	paper: {
+		borderRadius: 20,
+		display: "flex",
+		flexDirection: "column",
+		justifyContent: "center",
+		textAlign: "center",
+	},
+	button: {
+		marginTop: 15,
+	},
+	buttonCancel: {
+		margin: 5,
+		backgroundColor: "#F22",
+		"&:hover": {
+			backgroundColor: "#F00",
+		},
+	},
+	inputText: {
+		marginTop: 7,
+		marginBottom: 7,
+	},
 }));
 
 const papercss = {
-  padding: "25px 20px",
-  width: 400,
-  margin: "30px auto",
-  borderRadius: 20,
+	padding: "25px 20px",
+	width: 400,
+	margin: "30px auto",
+	borderRadius: 20,
 };
