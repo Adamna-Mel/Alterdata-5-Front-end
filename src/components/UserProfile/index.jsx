@@ -218,7 +218,7 @@ function UserProfile() {
                 {condicaoNome ? (
                   <TextField
                     id="filled-required"
-                    label="nome"
+                    label="(MAX. 30)"
                     defaultValue=""
                     //   onKeyDown={handleKeyDown}
                     onChange={(e) => {
@@ -228,6 +228,7 @@ function UserProfile() {
                     type="text"
                     size="small"
                     multiline
+                    fullWidth
                     rows={1}
                     inputProps={{ maxLength: 30 }}
                     style={{ marginBottom: 10 }}
@@ -258,7 +259,7 @@ function UserProfile() {
               {condicaoEmail ? (
                 <TextField
                   id="filled-required"
-                  label="email"
+                  label=""
                   defaultValue=""
                   //   onKeyDown={handleKeyDown}
                   onChange={(e) => setEmail(e.target.value)}
@@ -267,6 +268,7 @@ function UserProfile() {
                   size="small"
                   multiline
                   rows={1}
+                  fullWidth
                   inputProps={{ maxLength: 80 }}
                   style={{ marginBottom: 10 }}
                 />
@@ -290,7 +292,7 @@ function UserProfile() {
               {condicaoLogin ? (
                 <TextField
                   id="filled-required"
-                  label="login"
+                  label="(MAX. 50)"
                   defaultValue=""
                   //   onKeyDown={handleKeyDown}
                   onChange={(e) => setLogin(e.target.value)}
@@ -298,6 +300,7 @@ function UserProfile() {
                   type="text"
                   size="small"
                   multiline
+                  fullWidth
                   rows={1}
                   inputProps={{ maxLength: 50 }}
                   style={{ marginBottom: 10 }}
@@ -322,7 +325,7 @@ function UserProfile() {
               {condicaoStatus ? (
                 <TextField
                   id="filled-required"
-                  label="Status"
+                  label="(MAX. 140)"
                   defaultValue=""
                   //   onKeyDown={handleKeyDown}
                   onChange={(e) => setStatus(e.target.value)}
@@ -330,6 +333,7 @@ function UserProfile() {
                   type="text"
                   size="small"
                   multiline
+                  fullWidth
                   rows={1}
                   inputProps={{ maxLength: 140 }}
                   style={{ marginBottom: 10 }}
