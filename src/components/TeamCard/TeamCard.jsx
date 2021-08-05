@@ -40,6 +40,8 @@ import Database from "../../assets/icons/database.svg";
 
 import apiUsuario from "../../services/api.usuarios";
 
+import imagemPadraoEquipe from "../../assets/teampic.png";
+
 function TeamCard(props) {
 	const idUsuario = localStorage.getItem("@user-id");
 	console.log(props.id);
@@ -56,18 +58,34 @@ function TeamCard(props) {
 			<Card elevation={7} className={classes.card} color="default">
 				<CardContent className={classes.cardContent}>
 					<div className={classes.cardTop}>
-						<img
-							src={`http://alterdata-5-back-end.herokuapp.com/api/equipes/avatar/${props.id}`}
-							style={{
-								width: 30,
-								height: 30,
-								borderRadius: 400 / 2,
-								borderStyle: "solid",
-								borderColor: "#0083C1",
-								borderWidth: 2,
-								backgroundColor: "#F5F3F4",
-							}}
-						/>
+						{props.avatarName ? (
+							<img
+								src={`http://alterdata-5-back-end.herokuapp.com/api/equipes/avatar/${props.id}`}
+								style={{
+									width: 30,
+									height: 30,
+									borderRadius: 400 / 2,
+									borderStyle: "solid",
+									borderColor: "#0083C1",
+									borderWidth: 2,
+									backgroundColor: "#F5F3F4",
+								}}
+							/>
+						) : (
+							<img
+								src={imagemPadraoEquipe}
+								style={{
+									width: 30,
+									height: 30,
+									borderRadius: 400 / 2,
+									borderStyle: "solid",
+									borderColor: "#0083C1",
+									borderWidth: 2,
+									backgroundColor: "#F5F3F4",
+								}}
+							/>
+						)}
+
 						<Typography className={classes.teamName}>{props.name}</Typography>
 					</div>
 					<CardContent style={{ textAlign: "center" }}>

@@ -26,6 +26,8 @@ import apiEquipes from "../services/api.equipes";
 
 import useWindowDimensions from "../hooks/WindowDimension";
 
+import imagemPadraoTime from "../assets/teampic.png";
+
 import { UserContext } from "../context/UserContext";
 
 export default function ListaDeUsuarios({ openModalTeam, setOpenModalTeam }) {
@@ -44,6 +46,7 @@ export default function ListaDeUsuarios({ openModalTeam, setOpenModalTeam }) {
 	const [openModal, setOpenModal] = useState(false);
 	const [avatar, setAvatar] = useState(null);
 	const [openModalRemove, setOpenModalRemove] = useState(false);
+	const { avatarEquipe, setAvatarEquipe } = useState("");
 
 	const [openModalCargo, setOpenModalCargo] = useState(false);
 
@@ -73,6 +76,7 @@ export default function ListaDeUsuarios({ openModalTeam, setOpenModalTeam }) {
 					setCorPrimaria(res.cor1);
 					setCorSecundaria(res.cor2);
 					setIconeEquipe(res.icone);
+					imagemPadraoEquipe(res.avatarName);
 				});
 				setTimeout(() => {
 					setLoading(true);
@@ -98,18 +102,34 @@ export default function ListaDeUsuarios({ openModalTeam, setOpenModalTeam }) {
 					<div>
 						<div>
 							<Paper elevation={0} className={classes.header}>
-								<img
-									src={`http://alterdata-5-back-end.herokuapp.com/api/equipes/avatar/${idEquipe}`}
-									style={{
-										width: 100,
-										height: 100,
-										borderRadius: 400 / 2,
-										borderStyle: "solid",
-										borderColor: "#0083C1",
-										borderWidth: 2,
-										backgroundColor: "#F5F3F4",
-									}}
-								/>
+								{avatarEquipe ? (
+									<img
+										src={`http://alterdata-5-back-end.herokuapp.com/api/equipes/avatar/${idEquipe}`}
+										style={{
+											width: 100,
+											height: 100,
+											borderRadius: 400 / 2,
+											borderStyle: "solid",
+											borderColor: "#0083C1",
+											borderWidth: 2,
+											backgroundColor: "#F5F3F4",
+										}}
+									/>
+								) : (
+									<img
+										src={imagemPadraoTime}
+										style={{
+											width: 100,
+											height: 100,
+											borderRadius: 400 / 2,
+											borderStyle: "solid",
+											borderColor: "#0083C1",
+											borderWidth: 2,
+											backgroundColor: "#F5F3F4",
+										}}
+									/>
+								)}
+
 								<Typography className={classes.teamName}>
 									{nomeDaEquipe}
 								</Typography>
