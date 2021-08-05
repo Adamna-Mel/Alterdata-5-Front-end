@@ -8,6 +8,7 @@ import IconButton from "@material-ui/core/IconButton";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
+import api from '../../../services/api.usuarios'
 
 const ITEM_HEIGHT = 45;
 
@@ -22,6 +23,18 @@ function CardOptions(props) {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  const userLeave = ()=> {
+    api.sairDaEquipe(props.id).then( (res) => {
+      setAnchorEl(null);
+    });
+  }
+
+  const userDeleted = ()=> {
+    api.apagarUsuario(props.id).then( (res) => {
+      setAnchorEl(null);
+    });
+  }
 
   const classes = useStyles();
   return (
@@ -47,7 +60,8 @@ function CardOptions(props) {
           },
         }}
       >
-        <MenuItem onClick={handleClose}>Editar Cargo</MenuItem>
+        <MenuItem onClick={userLeave}> Retirar da equipe </MenuItem>
+        <MenuItem onClick={userDeleted}> Excluir usuário </MenuItem>
       </Menu>
     </div>
   );
