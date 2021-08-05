@@ -3,8 +3,7 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link,
-  useHistory,
+  Redirect,
 } from "react-router-dom";
 
 //MATERIAL-UI
@@ -24,7 +23,6 @@ import DeleteTeam from "../components/Team/Delete/Delete";
 import RegisterUser from "../components/RegisterUser";
 import UserProfile from "../components/UserProfile";
 import NotFound from "../pages/NotFound";
-import Forbidden from "../pages/Forbidden";
 
 import auth from "../services/auth";
 import ForgotPassword from "../components/ForgotPassword";
@@ -94,11 +92,19 @@ function Rotas() {
           />
           <Switch>
             <Route path={"/apagar-equipe"} exact>
-              {auth.isAuthenticated() ? <DeleteTeam /> : <Forbidden />}
+              {auth.isAuthenticated() ? (
+                <DeleteTeam />
+              ) : (
+                <Redirect to={{ pathname: "/" }} />
+              )}
             </Route>
 
             <Route path={"/editar-equipe"} exact>
-              {auth.isAuthenticated() ? <EditTeam /> : <Forbidden />}
+              {auth.isAuthenticated() ? (
+                <EditTeam />
+              ) : (
+                <Redirect to={{ pathname: "/" }} />
+              )}
             </Route>
 
             <Route path={"/login"} exact>
@@ -106,19 +112,31 @@ function Rotas() {
             </Route>
 
             <Route path={"/criartime"} exact>
-              {auth.isAuthenticated() ? <Create /> : <Forbidden />}
+              {auth.isAuthenticated() ? (
+                <Create />
+              ) : (
+                <Redirect to={{ pathname: "/" }} />
+              )}
             </Route>
 
             <Route path={"/perfil"} exact>
-              {auth.isAuthenticated() ? <UserProfile /> : <Forbidden />}
+              {auth.isAuthenticated() ? (
+                <UserProfile />
+              ) : (
+                <Redirect to={{ pathname: "/" }} />
+              )}
             </Route>
 
             <Route path={"/registrar"} exact>
-              {auth.isAuthenticated() ? <RegisterUser /> : <Forbidden />}
+              {auth.isAuthenticated() ? (
+                <RegisterUser />
+              ) : (
+                <Redirect to={{ pathname: "/" }} />
+              )}
             </Route>
 
             <Route path={"/esqueci"} exact>
-              <ForgotPassword/>
+              <ForgotPassword />
             </Route>
 
             <Route path={"/"} exact>
