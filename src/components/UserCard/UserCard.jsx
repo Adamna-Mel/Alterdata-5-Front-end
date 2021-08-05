@@ -33,7 +33,7 @@ function UserCard(props) {
 			<Card elevation={7} className={classes.card} color="default">
 				<CardContent className={classes.cardContent}>
 					<div className={classes.cardTop}>
-						{props.avatar.length > 0 ? (
+						{props.avatar ? (
 							<Avatar
 								alt="Perfil"
 								src={`http://alterdata-5-back-end.herokuapp.com/api/usuarios/avatar/${props.id}`}
@@ -46,7 +46,10 @@ function UserCard(props) {
 								className={classes.profileImage}
 							/>
 						)}
-						<CardOptions id={props.id} />
+						<CardOptions
+							id={props.id}
+							setOpenModalRemove={props.setOpenModalRemove}
+						/>
 					</div>
 					<Typography className={classes.userName}>{props.name}</Typography>
 					<Typography className={classes.userStatus}>

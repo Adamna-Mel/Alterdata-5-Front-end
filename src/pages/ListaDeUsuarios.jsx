@@ -18,7 +18,7 @@ import UserCard from "../components/UserCard/UserCard";
 import DeleteTeam from "../components/Team/Delete/Delete";
 import Cargos from "../components/Cargos/index";
 import GoOut from "../components/Team/GoOut/GoOut";
-import Pagination from "../components/Pagination/Pagination";
+// import RemoveUser from "../components/RemoveUser/RemoveUser";
 
 //SERVICES
 import apiUsuarios from "../services/api.usuarios";
@@ -43,6 +43,7 @@ export default function ListaDeUsuarios({ openModalTeam, setOpenModalTeam }) {
 	const [anchorEl, setAnchorEl] = useState(null);
 	const [openModal, setOpenModal] = useState(false);
 	const [avatar, setAvatar] = useState(null);
+	const [openModalRemove, setOpenModalRemove] = useState(false);
 
 	const [openModalCargo, setOpenModalCargo] = useState(false);
 
@@ -158,6 +159,7 @@ export default function ListaDeUsuarios({ openModalTeam, setOpenModalTeam }) {
 										}
 										avatar={usuario.avatarName}
 										cargo={usuario.cargo}
+										setOpenModalRemove={setOpenModalRemove}
 										setOpenModalCargo={setOpenModalCargo}
 										// corcargo1={usuario.cargo.cor1}
 										// corcargo2={usuario.cargo.cor2}
@@ -189,11 +191,10 @@ export default function ListaDeUsuarios({ openModalTeam, setOpenModalTeam }) {
 				openModalTeam={openModalTeam}
 				setOpenModalTeam={setOpenModalTeam}
 			/>
-			<Pagination
-				setSize={context.setSize}
-				setPage={context.setPage}
-				conts={99}
-			/>
+			{/* <RemoveUser
+				openModal={openModalRemove}
+				setOpenModal={setOpenModalRemove}
+			/> */}
 		</>
 	);
 }
