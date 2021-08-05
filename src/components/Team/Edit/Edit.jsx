@@ -131,29 +131,41 @@ function Edit() {
       <Card className={classes.card}>
         <CardContent>
           <Typography className={classes.title}>Editar Equipe</Typography>
-          <Avatar
-            alt="Perfil"
-            src={caminho}
+          <div
+            className={classes.paper}
             style={{
-              width: 100,
-              height: 100,
-              borderRadius: 400 / 2,
-              borderStyle: "solid",
-              borderColor: "#1A2228",
+              alignSelf: "center",
+              flexDirection: "column",
+              display: "flex",
+              justifyContent: "center",
             }}
-          />
-          <Input type="file" onChange={handleFile} />
+          >
+            <div style={{ marginLeft: "auto", marginRight: "auto" }}>
+              <Avatar
+                alt="Perfil"
+                src={caminho}
+                style={{
+                  width: 100,
+                  height: 100,
+                  borderRadius: 400 / 2,
+                  borderStyle: "solid",
+                  borderColor: "#1A2228",
+                }}
+              />
+            </div>
+            <Input type="file" onChange={handleFile} />
+          </div>
           <form onSubmit={handleSubmit}>
             <TextField
               id="filled-required"
               label="Nome da equipe (MAX. 20)"
               defaultValue=""
               variant="filled"
+              fullWidth
               onChange={(e) => setNome(e.target.value)}
               value={nome}
               type="text"
               inputProps={{ maxLength: 20 }}
-              style={{ width: 300 }}
             />
             <CardContent className={classes.buttonContainer}>
               <Button
