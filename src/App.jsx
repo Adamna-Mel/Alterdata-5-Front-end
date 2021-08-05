@@ -8,8 +8,6 @@ import UserProvider from "./context/UserContext";
 
 //TODO: Tirar o texto double click dos inputs
 
-//TODO: Estilizar o perfil para ficar mais intuitivo
-
 //TODO: consertar o lapisinho
 
 //TODO: colocar a paginação entre a lista de cargos e o botao
@@ -17,6 +15,8 @@ import UserProvider from "./context/UserContext";
 //TODO: Colocar os modais e recarregar as paginas
 
 //TODO: tirar as 99 pag da lista de usuario
+
+//TODO: alterar o máximo de paginas do pagination
 
 function App() {
 	return (
