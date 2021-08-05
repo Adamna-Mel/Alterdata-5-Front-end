@@ -100,8 +100,8 @@ function ListaDeEquipes() {
 				)}
 			</div>
 			<NewTeam openModal={openModal} setOpenModal={setOpenModal} />
-			<Robo />
 			<Pagination setSize={context.setSize} setPage={context.setPage} />
+			<Robo/>
 		</>
 	);
 }

@@ -13,7 +13,7 @@ function UserProvider({ children }) {
 	const [login, setLogin] = useState("");
 	const [usuarioAtual, setUsuarioAtual] = useState();
 	const [page, setPage] = useState(0);
-	const [size, setSize] = useState(15);
+	const [size, setSize] = useState(10);
 
 	const idUsuario = localStorage.getItem("@user-id");
 
@@ -44,9 +44,9 @@ function UserProvider({ children }) {
 				} else {
 					apiEquipes
 						.obterEquipes(size, page)
-						.then((res) =>
-							res !== undefined ? setListaDeEquipes(res) : setListaDeEquipes([])
-						);
+						.then((res) => {
+							res !== undefined ? setListaDeEquipes(res) : setListaDeEquipes([]);
+						});
 				}
 			}
 		});
