@@ -17,6 +17,8 @@ import MuiAlert from "@material-ui/lab/Alert";
 
 import useWindowDimensions from "../../hooks/WindowDimension";
 
+import imagemPadrao from "../../assets/profilepic.png";
+
 import apiUsuarios from "../../services/api.usuarios";
 import Cargo from "../Cargos/index";
 import ChangePassword from "../ChangePassword/ChangePassword";
@@ -37,6 +39,7 @@ function UserProfile() {
 	const [cargo, setCargo] = useState();
 	const [imagem, setImagem] = useState(null);
 	const [caminho, setCaminho] = useState(null);
+	const [avatarName, setAvatarName] = useState("");
 
 	const [condicaoNome, setCondicaoNome] = useState();
 	const [condicaoEmail, setCondicaoEmail] = useState();
@@ -65,6 +68,7 @@ function UserProfile() {
 
 	const apiUsuario = () => {
 		apiUsuarios.obterUsuarioPorId(idUsuario).then((res) => {
+			setAvatarName(res.avatarName);
 			setUserId(res.id);
 			setNome(res.nome);
 			setEmail(res.email);
@@ -72,7 +76,6 @@ function UserProfile() {
 			res.status ? setStatus(res.status) : setStatus("...");
 			res.cargo !== null ? setCargo(res.cargo.nome) : setCargo("Sem Cargo.");
 		});
-		console.log(status);
 	};
 	React.useEffect(() => {
 		apiUsuario();
@@ -158,6 +161,55 @@ function UserProfile() {
 
 	const classes = useStyles();
 
+	const UserAvatar = () => {
+		{
+			if (avatarName.length !== 0) {
+				return (
+					<Avatar
+						alt="Perfil"
+						src={`http://alterdata-5-back-end.herokuapp.com/api/usuarios/avatar/${userId}`}
+						style={{
+							width: 200,
+							height: 200,
+							borderRadius: 400 / 2,
+							borderStyle: "solid",
+							borderColor: "#1A2228",
+							marginTop: -130,
+						}}
+					/>
+				);
+			} else {
+				return imagem !== null ? (
+					<Avatar
+						alt="Perfil"
+						src={caminho}
+						style={{
+							width: 200,
+							height: 200,
+							borderRadius: 400 / 2,
+							borderStyle: "solid",
+							borderColor: "#1A2228",
+							marginTop: -130,
+						}}
+					/>
+				) : (
+					<Avatar
+						alt="Perfil"
+						src={imagemPadrao}
+						style={{
+							width: 200,
+							height: 200,
+							borderRadius: 400 / 2,
+							borderStyle: "solid",
+							borderColor: "#1A2228",
+							marginTop: -130,
+						}}
+					/>
+				);
+			}
+		}
+	};
+
 	return (
 		<>
 			<div style={{ height: height, marginTop: 130 }}>
@@ -182,34 +234,7 @@ function UserProfile() {
 				<Grid>
 					<Paper elevation={7} style={papercss}>
 						<Grid align="center">
-							{imagem === null ? (
-								<Avatar
-									alt="Perfil"
-									src={`http://alterdata-5-back-end.herokuapp.com/api/usuarios/avatar/${userId}`}
-									style={{
-										width: 200,
-										height: 200,
-										borderRadius: 400 / 2,
-										borderStyle: "solid",
-										borderColor: "#1A2228",
-										marginTop: -130,
-									}}
-								/>
-							) : (
-								<Avatar
-									alt="Perfil"
-									src={caminho}
-									style={{
-										width: 200,
-										height: 200,
-										borderRadius: 400 / 2,
-										borderStyle: "solid",
-										borderColor: "#1A2228",
-										marginTop: -130,
-									}}
-								/>
-							)}
-
+							<UserAvatar />
 							<Input type="file" onChange={handleFile} />
 							<ClickAwayListener
 								mouseEvent="onMouseDown"

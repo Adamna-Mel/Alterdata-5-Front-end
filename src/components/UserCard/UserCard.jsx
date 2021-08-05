@@ -17,31 +17,10 @@ import StatusBar from "../StatusBar/StatusBar";
 
 //ASSETS
 //Icones
-import CrystalShine from "../../assets/icons/crystal-shine.svg";
-import CoffeeCup from "../../assets/icons/coffee-cup.svg";
-import FireExtinguisher from "../../assets/icons/fire-extinguisher.svg";
-import BatMask from "../../assets/icons/bat-mask.svg";
-import Clockwork from "../../assets/icons/clockwork.svg";
-import Controller from "../../assets/icons/controller.svg";
-import Daggers from "../../assets/icons/daggers.svg";
-import Fireball from "../../assets/icons/fireball.svg";
-import Hades from "../../assets/icons/hades.svg";
-import MineralHeart from "../../assets/icons/mineral-heart.svg";
-import MoonBat from "../../assets/icons/moon-bats.svg";
-import Mouse from "../../assets/icons/mouse.svg";
-import NightSky from "../../assets/icons/night-sky.svg";
-import Ninja from "../../assets/icons/ninja.svg";
-import NinjaCloud from "../../assets/icons/ninja-cloud.svg";
-import Palette from "../../assets/icons/palette.svg";
-import PawHeart from "../../assets/icons/paw-heart.svg";
-import PencilBrush from "../../assets/icons/pencil-brush.svg";
-import SharkBite from "../../assets/icons/shark-bite.svg";
-import Shuriken from "../../assets/icons/shuriken.svg";
-import Sly from "../../assets/icons/sly.svg";
-import Smartphone from "../../assets/icons/smartphone.svg";
-import Cancel from "../../assets/icons/cancel.svg";
-import Database from "../../assets/icons/database.svg";
+
 import EditIcon from "@material-ui/icons/Edit";
+
+import imagemPadrao from "../../assets/profilepic.png";
 
 import { UserContext } from "../../context/UserContext";
 
@@ -49,16 +28,27 @@ function UserCard(props) {
 	const classes = useStyles();
 	const context = useContext(UserContext);
 
+	console.log(props);
+
 	return (
 		<div>
 			<Card elevation={7} className={classes.card} color="default">
 				<CardContent className={classes.cardContent}>
 					<div className={classes.cardTop}>
-						<Avatar
-							alt="Perfil"
-							src={`http://alterdata-5-back-end.herokuapp.com/api/usuarios/avatar/${props.id}`}
-							className={classes.profileImage}
-						/>
+						{props.avatar.length > 0 ? (
+							<Avatar
+								alt="Perfil"
+								src={`http://alterdata-5-back-end.herokuapp.com/api/usuarios/avatar/${props.id}`}
+								className={classes.profileImage}
+							/>
+						) : (
+							<Avatar
+								alt="Perfil"
+								src={imagemPadrao}
+								className={classes.profileImage}
+							/>
+						)}
+
 						<CardOptions id={props.id} />
 					</div>
 					<Typography className={classes.userName}>{props.name}</Typography>
