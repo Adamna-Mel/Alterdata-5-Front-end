@@ -66,7 +66,7 @@ const obterUsuariosPorLogin = async (id, login, size, page) => {
 
 const alterarAvatar = async (id, avatar) => {
 	try {
-		return await api.patch.apply(`equipes/alterar-avatar/${id}`, avatar);
+		return await api.patch(`equipes/alterar-avatar/${id}`, avatar);
 	} catch (e) {
 		return e.response;
 	}

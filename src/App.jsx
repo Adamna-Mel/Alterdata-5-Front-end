@@ -3,27 +3,10 @@ import "./App.css";
 import Rotas from "./routes/Rotas";
 
 import UserProvider from "./context/UserContext";
-//TODO: Atualizar perfil
-
-//TODO: pop up Cadastro de usuário (verificar se ta funfando)
-
-//TODO: Ver o lance do status
-
-//TODO: fazer o remover da equipe
-
-//TODO: Botao apagar usuario do sistema
-
-//TODO: pagina do usuario
-
-//TODO: editar avatar equipe cargo e usario
-
-//TODO: bug alterar nome da equipe
-
-//TODO: tirar a senha ao cadastrar usuario
 
 //TODO: Atualizar a senha
 
-//TODO: pop up perfil atuallizado
+//TODO: fazer a imagem padrao de cargo usuario e time se naõ conseguir arrumar as mensagem do cadastro de usuario
 
 function App() {
 	return (

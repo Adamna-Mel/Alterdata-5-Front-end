@@ -8,10 +8,12 @@ import {
 	ClickAwayListener,
 	Input,
 	makeStyles,
+	Avatar,
+	Snackbar,
 } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
-import Avatar from "@material-ui/core/Avatar";
 import EditIcon from "@material-ui/icons/Edit";
+import MuiAlert from "@material-ui/lab/Alert";
 
 import useWindowDimensions from "../../hooks/WindowDimension";
 
@@ -19,6 +21,10 @@ import apiUsuarios from "../../services/api.usuarios";
 import Cargo from "../Cargos/index";
 
 import { UserContext } from "../../context/UserContext";
+
+function Alert(props) {
+	return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
 
 function UserProfile() {
 	const context = useContext(UserContext);
@@ -65,6 +71,43 @@ function UserProfile() {
 		context.setUsuarioAtual(idUsuario);
 	}, []);
 
+	//Snackbar/Alert
+	//AlertSucess
+
+	const [openAlert, setOpenAlert] = React.useState(false);
+
+	const handleClickAlert = () => {
+		setOpenAlert(true);
+	};
+
+	const handleCloseAlert = (event, reason) => {
+		if (reason === "clickaway") {
+			return;
+		}
+
+		setOpenAlert(false);
+	};
+
+	//
+
+	//Alert Error
+
+	const [openAlertError, setOpenAlertError] = React.useState(false);
+
+	const handleClickAlertError = () => {
+		setOpenAlertError(true);
+	};
+
+	const handleCloseAlertError = (event, reason) => {
+		if (reason === "clickaway") {
+			return;
+		}
+
+		setOpenAlertError(false);
+	};
+
+	//
+
 	const { height, width } = useWindowDimensions();
 
 	const handleFile = (e) => {
@@ -72,15 +115,21 @@ function UserProfile() {
 		setCaminho(URL.createObjectURL(e.target.files[0]));
 	};
 
+	const [confirmacaoImg, setConfirmacaoImg] = useState(false);
+	const [confirmacaoTxts, setConfirmacaoTxts] = useState(false);
 	const handleSave = () => {
 		const formData = new FormData();
 
 		if (imagem !== null) {
 			formData.append("img", imagem);
 
-			apiUsuarios
-				.alterarAvatar(idUsuario, formData)
-				.then((res) => console.log(res));
+			apiUsuarios.alterarAvatar(idUsuario, formData).then((res) => {
+				if (res.status === 200) {
+					setOpenAlert(true);
+				} else {
+					setOpenAlertError(true);
+				}
+			});
 		}
 
 		const novo = {
@@ -90,9 +139,13 @@ function UserProfile() {
 			login,
 		};
 
-		apiUsuarios
-			.atualizarUsuario(idUsuario, novo)
-			.then((res) => console.log(res));
+		apiUsuarios.atualizarUsuario(idUsuario, novo).then((res) => {
+			if (res.status === 200) {
+				setOpenAlert(true);
+			} else {
+				setOpenAlertError(true);
+			}
+		});
 	};
 
 	const classes = useStyles();
@@ -100,6 +153,24 @@ function UserProfile() {
 	return (
 		<>
 			<div style={{ height: height, marginTop: 130 }}>
+				<Snackbar
+					open={openAlert}
+					autoHideDuration={3000}
+					onClose={handleCloseAlert}
+				>
+					<Alert onClose={handleCloseAlert} severity="success">
+						Informações atualizadas com sucesso!!!
+					</Alert>
+				</Snackbar>
+				<Snackbar
+					open={openAlertError}
+					autoHideDuration={4000}
+					onClose={handleCloseAlertError}
+				>
+					<Alert onClose={handleCloseAlertError} severity="error">
+						Houve algum erro ao atualizar informações do usuário.
+					</Alert>
+				</Snackbar>
 				<Grid>
 					<Paper elevation={7} style={papercss}>
 						<Grid align="center">

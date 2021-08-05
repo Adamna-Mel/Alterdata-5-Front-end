@@ -10,6 +10,8 @@ import {
 import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";
 
+import imagemPadrao from "../../assets/profilepic.png";
+
 import axios from "axios";
 
 import apiUsuarios from "../../services/api.usuarios";
@@ -39,11 +41,11 @@ function RegisterUser() {
 
 	const handleClick = (e) => {
 		e.preventDefault();
-
-		let file = imagem;
-
 		let formData = new FormData();
 
+		console.log(imagem);
+
+		let file = imagem;
 		formData.append("img", file);
 		formData.append("nome", nome);
 		formData.append("email", email);
@@ -55,6 +57,10 @@ function RegisterUser() {
 			.then((res) =>
 				res.status === 201 ? setOpenAlert(true) : setOpenAlertError(true)
 			);
+	};
+
+	const handleLoad = (e) => {
+		console.log(e.target);
 	};
 
 	const handleFile = (e) => {
@@ -129,7 +135,7 @@ function RegisterUser() {
 				<Paper elevation={7} style={papercss}>
 					<Grid align="center">
 						<img
-							src={caminho}
+							src={caminho === null ? imagemPadrao : caminho}
 							style={{
 								width: 100,
 								height: 100,
