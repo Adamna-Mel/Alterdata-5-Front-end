@@ -46,124 +46,122 @@ import EditIcon from "@material-ui/icons/Edit";
 import { UserContext } from "../../context/UserContext";
 
 function UserCard(props) {
-	const classes = useStyles();
-	const context = useContext(UserContext);
+  const classes = useStyles();
+  const context = useContext(UserContext);
 
-	return (
-		<div>
-			<Card elevation={7} className={classes.card} color="default">
-				<CardContent className={classes.cardContent}>
-					<div className={classes.cardTop}>
-						<Avatar
-							alt="Perfil"
-							src={`http://alterdata-5-back-end.herokuapp.com/api/usuarios/avatar/${props.id}`}
-							className={classes.profileImage}
-						/>
-						<CardOptions id={props.id} />
-					</div>
-					<Typography className={classes.userName}>{props.name}</Typography>
-					<Typography className={classes.userStatus}>
-						<StatusBar
-							id={props.id}
-							status={props.status}
-							className={classes.UserStatus}
-						/>
-					</Typography>
-					<CardContent className={classes.userRole}>
-						<div>
-							{props.cargo !== null ? (
-								<img
-									src={`http://alterdata-5-back-end.herokuapp.com/api/cargos/avatar/${props.cargo.idCargo}`}
-									style={{
-										width: 30,
-										height: 30,
-										borderRadius: 400 / 2,
-										borderStyle: "solid",
-										borderColor: "#0083C1",
-										borderWidth: 2,
-										backgroundColor: "#F5F3F4",
-									}}
-								/>
-							) : null}
-						</div>
+  return (
+    <div>
+      <Card elevation={7} className={classes.card} color="default">
+        <CardContent className={classes.cardContent}>
+          <div className={classes.cardTop}>
+            <Avatar
+              alt="Perfil"
+              src={`http://alterdata-5-back-end.herokuapp.com/api/usuarios/avatar/${props.id}`}
+              className={classes.profileImage}
+            />
+            <CardOptions id={props.id} />
+          </div>
+          <Typography className={classes.userName}>{props.name}</Typography>
+          <Typography className={classes.userStatus}>
+            <StatusBar
+              id={props.id}
+              status={props.status}
+              className={classes.UserStatus}
+            />
+          </Typography>
+          <CardContent className={classes.userRole}>
+            <div>
+              {props.cargo !== null ? (
+                <img
+                  src={`http://alterdata-5-back-end.herokuapp.com/api/cargos/avatar/${props.cargo.idCargo}`}
+                  style={{
+                    width: 30,
+                    height: 30,
+                    borderRadius: 400 / 2,
+                    borderStyle: "solid",
+                    borderColor: "#0083C1",
+                    borderWidth: 2,
+                    backgroundColor: "#F5F3F4",
+                  }}
+                />
+              ) : null}
+            </div>
 
-						<Typography className={classes.userRoleText}>
-							{props.role}
-						</Typography>
+            <Typography className={classes.userRoleText}>
+              {props.role}
+            </Typography>
 
-						<Grid item xs={4} className={classes.edit}>
-							<Typography
-								onClick={() => {
-									props.setOpenModalCargo(true);
-									context.setUsuarioAtual(props.id);
-								}}
-								className={classes.icon}
-							>
-								<EditIcon fontSize="small" />
-							</Typography>
-						</Grid>
-					</CardContent>
-				</CardContent>
-			</Card>
-		</div>
-	);
+            <Grid item xs={4} className={classes.edit}>
+              <Typography
+                onClick={() => {
+                  props.setOpenModalCargo(true);
+                  context.setUsuarioAtual(props.id);
+                }}
+                className={classes.icon}
+              >
+                <EditIcon fontSize="small" />
+              </Typography>
+            </Grid>
+          </CardContent>
+        </CardContent>
+      </Card>
+    </div>
+  );
 }
 export default UserCard;
 
 const useStyles = makeStyles({
-	card: {
-		borderRadius: 20,
-		width: 300,
-		height: "auto",
-		marginRight: 20,
-		marginLeft: 20,
-		marginTop: 20,
-		marginBottom: 20,
-	},
-	userName: {
-		fontSize: 20,
-		textAlign: "center",
-	},
-	userStatus: {
-		fontSize: 15,
-		textAlign: "center",
-	},
-	profileImage: {
-		height: 100,
-		width: 100,
-		marginLeft: 85,
-	},
-	cardContent: {
-		alignItems: "center",
-	},
-	userRole: {
-		backgroundColor: "#1A2228",
-		borderRadius: 20,
-		height: 22,
-		width: 200,
-		flex: 1,
-		display: "flex",
-		flexDirection: "row",
-		marginLeft: 18,
-		verticalAlign: "center",
-		// justifyContent: "space-between",
-	},
-	userRoleText: {
-		fontSize: 20,
-		color: "#ffffff",
-		// marginLeft: 10,
-		textAlign: "left",
-	},
-	cardTop: {
-		flex: 1,
-		display: "flex",
-		flexDirection: "row",
-		columnGap: 30,
-	},
-	edit: {
-		textAlign: "end",
-		"&:hover": {
-			color: "#999",
-		},
-	},
+  card: {
+    borderRadius: 20,
+    width: 300,
+    height: "auto",
+    marginRight: 20,
+    marginLeft: 20,
+    marginTop: 20,
+    marginBottom: 20,
+  },
+  userName: {
+    fontSize: 20,
+    textAlign: "center",
+  },
+  userStatus: {
+    fontSize: 15,
+    textAlign: "center",
+  },
+  profileImage: {
+    height: 100,
+    width: 100,
+    marginLeft: 85,
+  },
+  cardContent: {
+    alignItems: "center",
+  },
+  userRole: {
+    backgroundColor: "#1A2228",
+    borderRadius: 20,
+    height: 22,
+    width: 200,
+    display: "flex",
+    flexDirection: "row",
+    marginLeft: 18,
+    verticalAlign: "center",
+  },
+  userRoleText: {
+    marginTop: 3,
+    fontSize: 18,
+    color: "#ffffff",
+    marginLeft: 5,
+    textAlign: "left",
+    verticalAlign: "center",
+    minWidth: 143,
+  },
+  cardTop: {
+    flex: 1,
+    display: "flex",
+    flexDirection: "row",
+    columnGap: 30,
+  },
+  edit: {
+    marginTop: 7,
+  },
 });
