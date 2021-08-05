@@ -6,8 +6,6 @@ import UserProvider from "./context/UserContext";
 
 //TODO: fazer a imagem padrao de cargo usuario e time se naõ conseguir arrumar as mensagem do cadastro de usuario
 
-//TODO: Tirar o texto double click dos inputs
-
 //TODO: Estilizar o perfil para ficar mais intuitivo
 
 //TODO: consertar o lapisinho
