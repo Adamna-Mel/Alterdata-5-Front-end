@@ -76,6 +76,7 @@ function UserProfile() {
 			res.status ? setStatus(res.status) : setStatus("...");
 			res.cargo !== null ? setCargo(res.cargo.nome) : setCargo("Sem Cargo.");
 		});
+		console.log(status);
 	};
 	React.useEffect(() => {
 		apiUsuario();
@@ -235,6 +236,7 @@ function UserProfile() {
 					<Paper elevation={7} style={papercss}>
 						<Grid align="center">
 							<UserAvatar />
+
 							<Input type="file" onChange={handleFile} />
 							<ClickAwayListener
 								mouseEvent="onMouseDown"
@@ -246,7 +248,6 @@ function UserProfile() {
 										id="filled-required"
 										label="(MAX. 30)"
 										defaultValue=""
-										//   onKeyDown={handleKeyDown}
 										onChange={(e) => {
 											setNome(e.target.value);
 										}}
@@ -301,18 +302,20 @@ function UserProfile() {
 									style={{ marginBottom: 10 }}
 								/>
 							) : (
-								<Typography
-									style={{ fontSize: 21 }}
-									onClick={() => setCondicaoEmail(true)}
-									className={classes.miniCont}
-								>
-									{email} {"⁣⁣⠀"}
-									<Grid>
-										<Typography>
-											<EditIcon fontSize="small" />
-										</Typography>
-									</Grid>
-								</Typography>
+								<div>
+									<Typography
+										style={{ fontSize: 21 }}
+										onClick={() => setCondicaoEmail(true)}
+										className={classes.miniCont}
+									>
+										{email} {"⁣⁣⠀"}
+										<Grid>
+											<Typography>
+												<EditIcon fontSize="small" />
+											</Typography>
+										</Grid>
+									</Typography>
+								</div>
 							)}
 						</ClickAwayListener>
 						<Typography color="primary" style={{ fontSize: 17 }}>

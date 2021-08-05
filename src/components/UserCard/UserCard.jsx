@@ -28,8 +28,6 @@ function UserCard(props) {
 	const classes = useStyles();
 	const context = useContext(UserContext);
 
-	console.log(props);
-
 	return (
 		<div>
 			<Card elevation={7} className={classes.card} color="default">
@@ -48,7 +46,6 @@ function UserCard(props) {
 								className={classes.profileImage}
 							/>
 						)}
-
 						<CardOptions id={props.id} />
 					</div>
 					<Typography className={classes.userName}>{props.name}</Typography>
@@ -131,18 +128,19 @@ const useStyles = makeStyles({
 		borderRadius: 20,
 		height: 22,
 		width: 200,
-		flex: 1,
 		display: "flex",
 		flexDirection: "row",
 		marginLeft: 18,
 		verticalAlign: "center",
-		// justifyContent: "space-between",
 	},
 	userRoleText: {
-		fontSize: 20,
+		marginTop: 3,
+		fontSize: 18,
 		color: "#ffffff",
-		// marginLeft: 10,
+		marginLeft: 5,
 		textAlign: "left",
+		verticalAlign: "center",
+		minWidth: 143,
 	},
 	cardTop: {
 		flex: 1,
@@ -151,9 +149,6 @@ const useStyles = makeStyles({
 		columnGap: 30,
 	},
 	edit: {
-		textAlign: "end",
-		"&:hover": {
-			color: "#999",
-		},
+		marginTop: 7,
 	},
 });
