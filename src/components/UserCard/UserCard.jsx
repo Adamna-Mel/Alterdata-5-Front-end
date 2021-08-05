@@ -49,25 +49,6 @@ function UserCard(props) {
 	const classes = useStyles();
 	const context = useContext(UserContext);
 
-	function RoleAvatar(props) {
-		if (props.icone === "Sem cargo") {
-			return (
-				<SvgColor svg={Cancel} width={30} colors={["#cf1527", "#000000"]} />
-			);
-		} else if (props.icone == "FrontEnd") {
-			return (
-				<SvgColor svg={Palette} width={30} colors={["#FFFFFF", "#e8dbb7"]} />
-			);
-		} else if (props.icone == "BackEnd") {
-			return (
-				<SvgColor svg={Database} width={30} colors={["#787551", "#dbca12"]} />
-			);
-		} else {
-			return (
-				<SvgColor svg={Ninja} width={30} colors={["#000000", "#0083C1"]} />
-			);
-		}
-	}
 	return (
 		<div>
 			<Card elevation={7} className={classes.card} color="default">
