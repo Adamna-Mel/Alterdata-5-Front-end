@@ -70,7 +70,7 @@ export default function NavBar({ check, change }) {
 
   const handleLogout = () => {
     auth.logout();
-    history.push("/");
+    window.location.reload(false);
   };
 
   const handleProfile = () => {
