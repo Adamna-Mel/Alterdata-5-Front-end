@@ -15,13 +15,13 @@ import UserProvider from "./context/UserContext";
 
 //TODO: fazer o remover da equipe
 
-//TODO: Botao apagar usuario do sitema
+//TODO: Botao apagar usuario do sistema
 
 //TODO: pagina do usuario
 
 //TODO: editar avatar equipe cargo e usario
 
-//TODO: bug alterar nome da euipe
+//TODO: bug alterar nome da equipe
 
 //TODO: tirar a senha ao cadastrar usuario
 
