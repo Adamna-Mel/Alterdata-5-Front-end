@@ -9,6 +9,7 @@ import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import api from '../../../services/api.usuarios'
+import auth from "../../../services/auth";
 
 const ITEM_HEIGHT = 45;
 
@@ -32,7 +33,9 @@ function CardOptions(props) {
 
   const userDeleted = ()=> {
     api.apagarUsuario(props.id).then( (res) => {
-      setAnchorEl(null);
+      if (localStorage.getItem("@user-id") == props.id)
+          auth.logout();
+      window.location.reload(false);
     });
   }
 
