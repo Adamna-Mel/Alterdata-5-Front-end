@@ -420,7 +420,7 @@ function UserProfile() {
 						<div style={{ display: "flex", justifyContent: "space-between" }}>
 							{cargo !== "Sem Cargo." ? (
 								<img
-									src={`http://alterdata-5-back-end.herokuapp.com/api/cargos/avatar/${idCargo}`}
+									src={`http://alterdata-5-back-end.herokuapp.com/api/cargos/avatar/${IdCargo}`}
 									style={{
 										width: 30,
 										height: 30,
