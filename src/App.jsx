@@ -9,10 +9,6 @@ import UserProvider from "./context/UserContext";
 
 //TODO: Ver o lance do status
 
-//TODO: Arrumar a estilização do pagination
-
-//TODO: recarregar a pagina ao atribuir cargo
-
 //TODO: fazer o remover da equipe
 
 //TODO: Botao apagar usuario do sistema
@@ -24,6 +20,10 @@ import UserProvider from "./context/UserContext";
 //TODO: bug alterar nome da equipe
 
 //TODO: tirar a senha ao cadastrar usuario
+
+//TODO: atualizar status no perfil
+
+//TODO: Atualizar a senha
 
 function App() {
 	return (

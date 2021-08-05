@@ -1,5 +1,12 @@
 import React from "react";
-import { Grid, Paper, TextField, Button, Typography } from "@material-ui/core";
+import {
+	Grid,
+	Paper,
+	TextField,
+	Button,
+	Typography,
+	makeStyles,
+} from "@material-ui/core";
 import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";
 
@@ -99,6 +106,8 @@ function RegisterUser() {
 
 	const { height, width } = useWindowDimensions();
 
+	const classes = useStyles();
+
 	return (
 		<div style={{ height: height, marginTop: 100 }}>
 			<Snackbar
@@ -176,7 +185,7 @@ function RegisterUser() {
 							onChange={(e) => setSenha(e.target.value)}
 							style={{ marginBottom: 10 }}
 						/>
-						<div style={{ marginTop: 10 }}>
+						<div style={{ marginTop: 10 }} className={classes.botoes}>
 							<Button
 								type="submit"
 								color="primary"
@@ -202,3 +211,12 @@ function RegisterUser() {
 }
 
 export default RegisterUser;
+
+const useStyles = makeStyles({
+	botoes: {
+		display: "flex",
+		justifyContent: "space-around",
+		width: "100%",
+		border: "1px solid red",
+	},
+});
