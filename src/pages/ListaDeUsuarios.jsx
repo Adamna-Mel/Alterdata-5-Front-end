@@ -47,8 +47,7 @@ export default function ListaDeUsuarios({ openModalTeam, setOpenModalTeam }) {
 	const [openModal, setOpenModal] = useState(false);
 	const [avatar, setAvatar] = useState(null);
 	const [openModalRemove, setOpenModalRemove] = useState(false);
-	const { avatarEquipe, setAvatarEquipe } = useState(false);
-
+	const [avatarEquipe, setAvatarEquipe] = useState(false);
 	const [openModalCargo, setOpenModalCargo] = useState(false);
 	const [openModalDelete, setOpenModalDelete] = useState(false);
 
@@ -78,8 +77,10 @@ export default function ListaDeUsuarios({ openModalTeam, setOpenModalTeam }) {
 					setCorPrimaria(res.cor1);
 					setCorSecundaria(res.cor2);
 					setIconeEquipe(res.icone);
-					if (res.avatarName !== "") {
-						imagemPadraoEquipe(res.avatarName);
+					console.log(setAvatarEquipe);
+
+					if (res.avatarName) {
+						setAvatarEquipe(res.avatarName);
 					}
 				});
 				setTimeout(() => {
