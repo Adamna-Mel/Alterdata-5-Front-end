@@ -25,15 +25,19 @@ function UserProvider({ children }) {
 					apiEquipes
 						.obterUsuariosPorLogin(res.equipe.idEquipe, login, size, page)
 						.then((res) => {
-							res.data.length !== undefined
-								? setListaDeUsuarios(res.data)
-								: setListaDeUsuarios([]);
+							if (res.data.length !== undefined) {
+								setListaDeUsuarios(res.data);
+							} else {
+								setListaDeUsuarios([]);
+							}
 						});
 				} else {
 					apiEquipes.obterEquipesPorNome(login, size, page).then((res) => {
-						res.length !== undefined
-							? setListaDeEquipes(res)
-							: setListaDeEquipes([]);
+						if (res.length !== undefined) {
+							setListaDeEquipes(res);
+						} else {
+							setListaDeEquipes([]);
+						}
 					});
 				}
 			} else {
@@ -42,11 +46,13 @@ function UserProvider({ children }) {
 						setListaDeUsuarios(res.membros);
 					});
 				} else {
-					apiEquipes
-						.obterEquipes(size, page)
-						.then((res) => {
-							res !== undefined ? setListaDeEquipes(res) : setListaDeEquipes([]);
-						});
+					apiEquipes.obterEquipes(size, page).then((res) => {
+						if (res !== undefined) {
+							setListaDeEquipes(res);
+						} else {
+							setListaDeEquipes([]);
+						}
+					});
 				}
 			}
 		});
