@@ -1,16 +1,12 @@
 import React from "react";
 
-import { useHistory } from "react-router-dom";
-
 import { makeStyles } from "@material-ui/core/styles";
 
 import {
-	Typography,
 	Button,
 	Fade,
 	Backdrop,
 	Modal,
-	Card,
 	TextField,
 	Snackbar,
 } from "@material-ui/core";
@@ -23,14 +19,11 @@ function Alert(props) {
 }
 
 function ChangePassword({ openModal, setOpenModal }) {
-	const [equipe, setEquipe] = React.useState("");
 	const [novaSenha, setNovaSenha] = React.useState("");
 	const [senhaAntiga, setSenhaAntiga] = React.useState("");
 	const [mensagem, setMensagem] = React.useState("");
 
 	const idUsuario = localStorage.getItem("@user-id");
-
-	const history = useHistory();
 
 	const classes = useStyles();
 
@@ -45,7 +38,7 @@ function ChangePassword({ openModal, setOpenModal }) {
 		formData.append("novaSenha", novaSenha);
 
 		if (novaSenha.length >= 6) {
-			apiUsuarios.alterarSena(idUsuario, formData).then((res) => {
+			apiUsuarios.alterarSenha(idUsuario, formData).then((res) => {
 				if (res.status === 204) {
 					setOpenAlert(true);
 				} else {
@@ -75,10 +68,6 @@ function ChangePassword({ openModal, setOpenModal }) {
 
 	const [openAlert, setOpenAlert] = React.useState(false);
 
-	const handleClickAlert = () => {
-		setOpenAlert(true);
-	};
-
 	const handleCloseAlert = (event, reason) => {
 		if (reason === "clickaway") {
 			return;
@@ -92,10 +81,6 @@ function ChangePassword({ openModal, setOpenModal }) {
 	//Alert Error
 
 	const [openAlertError, setOpenAlertError] = React.useState(false);
-
-	const handleClickAlertError = () => {
-		setOpenAlertError(true);
-	};
 
 	const handleCloseAlertError = (event, reason) => {
 		if (reason === "clickaway") {

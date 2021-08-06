@@ -9,7 +9,6 @@ import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
 import MoreVertIcon from "@material-ui/icons/MoreVert";
 import Paper from "@material-ui/core/Paper";
-import Avatar from "@material-ui/core/Avatar";
 import LinearProgress from "@material-ui/core/LinearProgress";
 import Divider from "@material-ui/core/Divider";
 
@@ -39,13 +38,9 @@ export default function ListaDeUsuarios({ openModalTeam, setOpenModalTeam }) {
 	const [loading, setLoading] = React.useState(false);
 	const [idEquipe, setIdEquipe] = useState("");
 	const [nomeDaEquipe, setNomeDaEquipe] = useState("");
-	const [corPrimaria, setCorPrimaria] = useState("");
-	const [corSecundaria, setCorSecundaria] = useState("");
-	const [iconeEquipe, setIconeEquipe] = useState("");
-	const [usuarios, setUsuarios] = useState([]);
+	const [, setUsuarios] = useState([]);
 	const [anchorEl, setAnchorEl] = useState(null);
 	const [openModal, setOpenModal] = useState(false);
-	const [avatar, setAvatar] = useState(null);
 	const [openModalRemove, setOpenModalRemove] = useState(false);
 	const [avatarEquipe, setAvatarEquipe] = useState(false);
 	const [openModalCargo, setOpenModalCargo] = useState(false);
@@ -74,9 +69,7 @@ export default function ListaDeUsuarios({ openModalTeam, setOpenModalTeam }) {
 				apiEquipes.obterEquipesPorId(res.equipe.idEquipe).then((res) => {
 					setUsuarios(res.membros);
 					setNomeDaEquipe(res.nome);
-					setCorPrimaria(res.cor1);
-					setCorSecundaria(res.cor2);
-					setIconeEquipe(res.icone);
+
 					console.log(setAvatarEquipe);
 
 					if (res.avatarName) {
@@ -188,9 +181,6 @@ export default function ListaDeUsuarios({ openModalTeam, setOpenModalTeam }) {
 										setOpenModalCargo={setOpenModalCargo}
 										openModalDelete={openModalDelete}
 										setOpenModalDelete={setOpenModalDelete}
-										// corcargo1={usuario.cargo.cor1}
-										// corcargo2={usuario.cargo.cor2}
-										// cargoicone={usuario.cargo.icone}
 									/>
 								))
 							) : (

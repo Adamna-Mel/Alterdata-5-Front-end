@@ -2,16 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import apiCargos from "../../../services/api.cargos";
 
-import {
-	Typography,
-	Button,
-	makeStyles,
-	TextField,
-	Input,
-	Grid,
-	ClickAwayListener,
-	Card,
-} from "@material-ui/core";
+import { Typography, Button, makeStyles, Card } from "@material-ui/core";
 import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";
 
@@ -54,10 +45,6 @@ function Delete({
 
 	const [openAlert, setOpenAlert] = React.useState(false);
 
-	const handleClickAlert = () => {
-		setOpenAlert(true);
-	};
-
 	const handleCloseAlert = (event, reason) => {
 		if (reason === "clickaway") {
 			return;
@@ -71,10 +58,6 @@ function Delete({
 	//Alert Error
 
 	const [openAlertError, setOpenAlertError] = React.useState(false);
-
-	const handleClickAlertError = () => {
-		setOpenAlertError(true);
-	};
 
 	const handleCloseAlertError = (event, reason) => {
 		if (reason === "clickaway") {

@@ -3,23 +3,14 @@ import { useHistory } from "react-router-dom";
 
 import { makeStyles } from "@material-ui/core/styles";
 
-//TODO: Finalizar isso aqui
-import {
-	Typography,
-	Button,
-	Fade,
-	Backdrop,
-	Modal,
-	Card,
-} from "@material-ui/core";
+import { Typography, Button, Fade, Backdrop, Modal } from "@material-ui/core";
 import apiUsuarios from "../../services/api.usuarios";
 import { UserContext } from "../../context/UserContext";
 
 function RemoveUser({ openModal, setOpenModal }) {
 	const context = useContext(UserContext);
-	const [equipe, setEquipe] = React.useState("");
+
 	const [usuario, setUsuario] = React.useState("");
-	const history = useHistory();
 
 	React.useEffect(() => {
 		apiUsuarios

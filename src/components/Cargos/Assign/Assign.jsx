@@ -1,17 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
 
-import {
-	Typography,
-	Button,
-	Fade,
-	Backdrop,
-	Modal,
-	makeStyles,
-	TextField,
-	Input,
-	Paper,
-	Card,
-} from "@material-ui/core";
+import { Typography, Button, makeStyles, Card } from "@material-ui/core";
 import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";
 
@@ -24,7 +13,6 @@ function Alert(props) {
 	return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
 
-//TODO: ainda tem coisa para fazer (principalmente estilização)
 function Assign({ idCargo, handleOpenList, contextApi, apiUsuario }) {
 	const context = useContext(UserContext);
 	const [cargo, setCargo] = useState("");
@@ -52,10 +40,6 @@ function Assign({ idCargo, handleOpenList, contextApi, apiUsuario }) {
 	//AlertSucess
 
 	const [openAlert, setOpenAlert] = React.useState(false);
-
-	const handleClickAlert = () => {
-		setOpenAlert(true);
-	};
 
 	const handleCloseAlert = (event, reason) => {
 		if (reason === "clickaway") {
@@ -151,10 +135,3 @@ const useStyles = makeStyles((theme) => ({
 		margin: 5,
 	},
 }));
-
-const papercss = {
-	padding: "25px 20px",
-	width: 400,
-	margin: "30px auto",
-	borderRadius: 20,
-};

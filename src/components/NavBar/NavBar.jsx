@@ -3,9 +3,6 @@ import { useHistory } from "react-router-dom";
 
 //MATERIAL-UI
 import { makeStyles } from "@material-ui/core/styles";
-import { createTheme } from "@material-ui/core/styles";
-import { ThemeProvider } from "@material-ui/core";
-import Switch from "@material-ui/core/Switch";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
@@ -13,7 +10,6 @@ import InputBase from "@material-ui/core/InputBase";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
 import SearchIcon from "@material-ui/icons/Search";
-import AccountCircle from "@material-ui/icons/AccountCircle";
 import MoreIcon from "@material-ui/icons/MoreVert";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import Brightness4Icon from "@material-ui/icons/Brightness4";
@@ -21,8 +17,6 @@ import Brightness7Icon from "@material-ui/icons/Brightness7";
 import Avatar from "@material-ui/core/Avatar";
 import Fab from "@material-ui/core/Fab";
 import AddIcon from "@material-ui/icons/Add";
-import PersonAddDisabledIcon from "@material-ui/icons/PersonAddDisabled";
-import Divider from "@material-ui/core/Divider";
 import AddCircleIcon from "@material-ui/icons/AddCircle";
 
 //SVGColor
@@ -116,18 +110,8 @@ export default function NavBar({ check, change }) {
 		</Menu>
 	);
 	//MENU
-	const ITEM_HEIGHT = 45;
 
-	const [anchorElDrawer, setAnchorElDrawer] = React.useState(null);
-	const open = Boolean(anchorElDrawer);
-
-	const handleDrawerClick = (event) => {
-		setAnchorElDrawer(event.currentTarget);
-	};
-
-	const handleDrawerClose = () => {
-		setAnchorEl(null);
-	};
+	const [, setAnchorElDrawer] = React.useState(null);
 
 	const handleCreateUser = () => {
 		history.push("/registrar");
@@ -198,11 +182,6 @@ export default function NavBar({ check, change }) {
 			</MenuItem>
 		</Menu>
 	);
-
-	const [login, setLogin] = React.useState("");
-	const [usuarios, setUsuarios] = React.useState([]);
-
-	const [darkMode, setDarkMode] = useState(false);
 
 	return (
 		<div className={classes.grow}>

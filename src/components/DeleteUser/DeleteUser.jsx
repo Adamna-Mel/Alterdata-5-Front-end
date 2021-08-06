@@ -3,14 +3,7 @@ import { useHistory } from "react-router-dom";
 
 import { makeStyles } from "@material-ui/core/styles";
 
-import {
-	Typography,
-	Button,
-	Fade,
-	Backdrop,
-	Modal,
-	Card,
-} from "@material-ui/core";
+import { Typography, Button, Fade, Backdrop, Modal } from "@material-ui/core";
 import apiUsuarios from "../../services/api.usuarios";
 import { UserContext } from "../../context/UserContext";
 

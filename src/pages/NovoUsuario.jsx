@@ -34,10 +34,6 @@ function UserProfile(props) {
 
 	const [openAlert, setOpenAlert] = React.useState(false);
 
-	const handleClickAlert = () => {
-		setOpenAlert(true);
-	};
-
 	const handleCloseAlert = (event, reason) => {
 		if (reason === "clickaway") {
 			return;
@@ -51,10 +47,6 @@ function UserProfile(props) {
 	//Alert Error
 
 	const [openAlertError, setOpenAlertError] = React.useState(false);
-
-	const handleClickAlertError = () => {
-		setOpenAlertError(true);
-	};
 
 	const handleCloseAlertError = (event, reason) => {
 		if (reason === "clickaway") {
@@ -82,11 +74,12 @@ function UserProfile(props) {
 			novo.login.length !== 0;
 
 		if (validar) {
-			api.adicionarUsuario(novo).then((res) => {
+			api
+				.adicionarUsuario(novo)
+				.then((res) => {
 					setOpenAlert(true);
-				}).catch( (e)=>	
-					setOpenAlertError(true)
-				)
+				})
+				.catch((e) => setOpenAlertError(true));
 		} else {
 			let msg = "";
 			novo.nome.length === 0 ? (msg += " Nome") : null;

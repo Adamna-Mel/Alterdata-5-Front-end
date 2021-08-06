@@ -7,7 +7,6 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import LinearProgress from "@material-ui/core/LinearProgress";
-import Button from "@material-ui/core/Button";
 import Fab from "@material-ui/core/Fab";
 import DoubleArrowIcon from "@material-ui/icons/DoubleArrow";
 
@@ -19,7 +18,6 @@ import Pagination from "../components/Pagination/Pagination";
 
 //SERVICES
 import api from "../services/api.equipes";
-import apiUsuarios from "../services/api.usuarios";
 
 import { UserContext } from "../context/UserContext";
 
@@ -27,12 +25,10 @@ import useWindowDimensions from "../hooks/WindowDimension";
 
 function ListaDeEquipes() {
 	const [loading, setLoading] = React.useState(false);
-	const [equipes, setEquipes] = React.useState([]);
+	const [, setEquipes] = React.useState([]);
 	const [openModal, setOpenModal] = React.useState(false);
 
 	const context = useContext(UserContext);
-
-	const history = useHistory();
 
 	React.useEffect(() => {
 		api.obterEquipes().then((res) => {

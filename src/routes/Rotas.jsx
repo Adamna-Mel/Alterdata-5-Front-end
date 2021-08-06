@@ -9,13 +9,11 @@ import {
 //MATERIAL-UI
 import { createTheme } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/core";
-import CssBaseline from "@material-ui/core/CssBaseline";
 
 //COMPONENTS
 import Login from "../pages/Login";
 import Principal from "../pages/Principal";
 import NavBar from "../components/NavBar/NavBar";
-import ListaDeUsuarios from "../pages/ListaDeUsuarios";
 import Footer from "../components/Footer/Footer";
 import Create from "../components/Team/Create/Create";
 import EditTeam from "../components/Team/Edit/Edit";

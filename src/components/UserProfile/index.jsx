@@ -97,10 +97,6 @@ function UserProfile() {
 
 	const [openAlert, setOpenAlert] = React.useState(false);
 
-	const handleClickAlert = () => {
-		setOpenAlert(true);
-	};
-
 	const handleCloseAlert = (event, reason) => {
 		if (reason === "clickaway") {
 			return;
@@ -114,10 +110,6 @@ function UserProfile() {
 	//Alert Error
 
 	const [openAlertError, setOpenAlertError] = React.useState(false);
-
-	const handleClickAlertError = () => {
-		setOpenAlertError(true);
-	};
 
 	const handleCloseAlertError = (event, reason) => {
 		if (reason === "clickaway") {

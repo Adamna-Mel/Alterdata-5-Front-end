@@ -17,7 +17,7 @@ import apiUsuarios from "../../../services/api.usuarios";
 function GoOut({ openModalTeam, setOpenModalTeam }) {
 	const idUsuario = localStorage.getItem("@user-id");
 	const [equipe, setEquipe] = useState("");
-	const [idEquipe, setIdEquipe] = useState();
+	const [, setIdEquipe] = useState();
 	const history = useHistory();
 
 	useEffect(() => {

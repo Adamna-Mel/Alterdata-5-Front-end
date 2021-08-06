@@ -6,13 +6,6 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
-import Fab from "@material-ui/core/Fab";
-
-//SVGColor
-import SvgColor from "react-svg-color";
-
-//ASSETS
-//icons
 
 import apiUsuario from "../../services/api.usuarios";
 

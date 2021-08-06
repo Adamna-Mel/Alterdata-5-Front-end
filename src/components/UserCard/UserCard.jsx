@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useContext } from "react";
 
 //MATERIAL-UI
 import { makeStyles } from "@material-ui/core/styles";
@@ -8,15 +8,9 @@ import Typography from "@material-ui/core/Typography";
 import Avatar from "@material-ui/core/Avatar";
 import Grid from "@material-ui/core/Grid";
 
-//SVGColor
-import SvgColor from "react-svg-color";
-
 //COMPONENTS
 import CardOptions from "./CardOptions/CardOptions";
 import StatusBar from "../StatusBar/StatusBar";
-
-//ASSETS
-//Icones
 
 import EditIcon from "@material-ui/icons/Edit";
 

@@ -12,8 +12,6 @@ import MuiAlert from "@material-ui/lab/Alert";
 
 import imagemPadrao from "../../assets/profilepic.png";
 
-import axios from "axios";
-
 import apiUsuarios from "../../services/api.usuarios";
 
 import useWindowDimensions from "../../hooks/WindowDimension";
@@ -57,10 +55,6 @@ function RegisterUser() {
 				apiUsuarios.alterarAvatar(res.data.id, formData);
 			}
 		});
-	};
-
-	const handleLoad = (e) => {
-		console.log(e.target);
 	};
 
 	const handleFile = (e) => {

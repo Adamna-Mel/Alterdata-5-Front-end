@@ -5,7 +5,6 @@ import TextField from "@material-ui/core/TextField";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import Card from "@material-ui/core/Card";
-import Container from "@material-ui/core/Container";
 import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";
 
@@ -26,8 +25,6 @@ function NovaEquipe(props) {
 
 	const idUsuario = localStorage.getItem("@user-id");
 
-
-	
 	const handleCreate = () => {
 		const formData = new FormData();
 
@@ -39,7 +36,7 @@ function NovaEquipe(props) {
 					setOpenAlert(true);
 					const formData2 = new FormData();
 					formData2.append("img", imagem);
-					api.alterarAvatar(res.data.idEquipe,formData2).then((res)=>{});
+					api.alterarAvatar(res.data.idEquipe, formData2).then((res) => {});
 					apiUsuario.editarTime(idUsuario, res.data.idEquipe).then((res) => {
 						history.go("/");
 					});
@@ -66,10 +63,6 @@ function NovaEquipe(props) {
 
 	const [openAlert, setOpenAlert] = React.useState(false);
 
-	const handleClickAlert = () => {
-		setOpenAlert(true);
-	};
-
 	const handleCloseAlert = (event, reason) => {
 		if (reason === "clickaway") {
 			return;
@@ -83,10 +76,6 @@ function NovaEquipe(props) {
 	//Alert Error
 
 	const [openAlertError, setOpenAlertError] = React.useState(false);
-
-	const handleClickAlertError = () => {
-		setOpenAlertError(true);
-	};
 
 	const handleCloseAlertError = (event, reason) => {
 		if (reason === "clickaway") {

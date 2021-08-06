@@ -10,8 +10,6 @@ import {
 import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";
 
-import axios from "axios";
-
 import apiUsuarios from "../../services/api.usuarios";
 
 import useWindowDimensions from "../../hooks/WindowDimension";
@@ -42,7 +40,9 @@ function ForgotPassword() {
 		apiUsuarios
 			.esqueciSenha(formData)
 			.then((res) =>
-				(res.status === 201 || res.status === 200 ) ? setOpenAlert(true) : setOpenAlertError(true)
+				res.status === 201 || res.status === 200
+					? setOpenAlert(true)
+					: setOpenAlertError(true)
 			);
 	};
 
@@ -50,10 +50,6 @@ function ForgotPassword() {
 	//AlertSucess
 
 	const [openAlert, setOpenAlert] = React.useState(false);
-
-	const handleClickAlert = () => {
-		setOpenAlert(true);
-	};
 
 	const handleCloseAlert = (event, reason) => {
 		if (reason === "clickaway") {
@@ -68,10 +64,6 @@ function ForgotPassword() {
 	//Alert Error
 
 	const [openAlertError, setOpenAlertError] = React.useState(false);
-
-	const handleClickAlertError = () => {
-		setOpenAlertError(true);
-	};
 
 	const handleCloseAlertError = (event, reason) => {
 		if (reason === "clickaway") {
@@ -108,9 +100,9 @@ function ForgotPassword() {
 				</Alert>
 			</Snackbar>
 			<Grid>
-			<Paper elevation={7} style={papercss}>
-				<Grid align="center">
-					<Typography style={{ fontSize: 30 }}>Recuperar senha</Typography>
+				<Paper elevation={7} style={papercss}>
+					<Grid align="center">
+						<Typography style={{ fontSize: 30 }}>Recuperar senha</Typography>
 					</Grid>
 					<form>
 						<TextField
@@ -121,7 +113,7 @@ function ForgotPassword() {
 							onChange={(e) => setEmail(e.target.value)}
 							style={{ marginBottom: 10 }}
 						/>
-						
+
 						<div style={{ marginTop: 10 }} className={classes.botoes}>
 							<Button
 								type="submit"
